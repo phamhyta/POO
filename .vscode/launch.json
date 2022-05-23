@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "POO"
+        },
+        {
+            "type": "java",
+            "name": "Launch GameFrame",
+            "request": "launch",
+            "mainClass": "com.poo.userinterface.GameFrame",
+            "projectName": "POO"
+        },
+        {
             "name": "Java",
             "type": "java",
             "request": "launch",
