@@ -14,7 +14,7 @@ public class OBJ_Door extends Material {
 
 //			name = "Door";
 			type = type_player;
-			spriteSheet = new SpriteSheet("ui/items.png");
+			spriteSheet = new SpriteSheet("res/ui/items.png");
 			image =  spriteSheet.getSubimage(192,64,32,32);
 
 		}
