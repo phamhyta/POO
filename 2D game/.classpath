@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="game/gameObject/object/|game/ui/" kind="src" path="2D game/src"/>
+	<classpathentry kind="src" path="2D game/src/game/gameObject/object"/>
+	<classpathentry kind="src" path="2D game/src/game/ui"/>
+	<classpathentry kind="output" path="2D game/out/production/2D game"/>
+</classpath>
