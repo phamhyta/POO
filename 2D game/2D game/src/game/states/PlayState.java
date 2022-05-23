@@ -2,7 +2,6 @@ package game.states;
 
 import game.GamePanel;
 
-import game.data.AssetSetter;
 import game.gameObject.GameObject;
 import game.gameObject.Player;
 import game.gameObject.object.OBJ_Door;

@@ -1,5 +1,4 @@
 package game.gameObject;
-import game.data.AssetSetter;
 import game.gameObject.object.OBJ_Coin_Bronze;
 import game.gameObject.object.OBJ_Door;
 import game.gameObject.object.OBJ_ManaCrystal;
