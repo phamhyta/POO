@@ -28,6 +28,7 @@ public abstract class Entity extends GameObject{
     protected Animation ani;
     protected int hitsize;
 
+
     protected boolean up = false;
     protected boolean down = false;
     protected boolean right = false;
@@ -44,6 +45,11 @@ public abstract class Entity extends GameObject{
     protected boolean die = false;
 
     protected int attackSpeed = 1050; // in milliseconds
+
+    public int getAttackDuration() {
+        return attackDuration;
+    }
+
     protected int attackDuration = 650; // in milliseconds
     protected double attacktime;
     protected boolean canAttack = true;
@@ -96,6 +102,36 @@ public abstract class Entity extends GameObject{
     public AABB getHitBounds() { return hitBounds; }
     public int getEXP(){ return EXP;}
     public void setEXP(int EXP){ this.EXP= EXP;}
+    public boolean isUp() {
+        return up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public boolean isAttack() {
+        return attack;
+    }
+
+    public boolean isFallen() {
+        return fallen;
+    }
+
+    public boolean isAttacking() {
+        return attacking;
+    }
+    public boolean isHasIdle() {
+        return hasIdle;
+    }
 
     public int getDirection() {
         if(currentDirection == UP || currentDirection == LEFT) {
@@ -150,41 +186,7 @@ public abstract class Entity extends GameObject{
             }
         }
     }
-    public void animate1() {
 
-        if(attacking) {
-            if(currentAnimation < 5) {
-                setAnimation(currentAnimation + ATTACK, spriteSheet.getSpriteArray(currentAnimation + ATTACK), attackDuration / 100);
-            }
-        } else if (up) {
-            if ((currentAnimation != UP || ani.getDelay() == -1)) {
-                setAnimation(UP, spriteSheet.getSpriteArray(UP), 5);
-            }
-        } else if (down) {
-            if ((currentAnimation != DOWN || ani.getDelay() == -1)) {
-                setAnimation(DOWN, spriteSheet.getSpriteArray(DOWN), 5);
-            }
-        } else if (left) {
-            if ((currentAnimation != LEFT || ani.getDelay() == -1)) {
-                setAnimation(LEFT, spriteSheet.getSpriteArray(LEFT), 5);
-            }
-        } else if (right) {
-            if ((currentAnimation != RIGHT || ani.getDelay() == -1)) {
-                setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 5);
-            }
-        } else if (fallen) {
-            if (currentAnimation != FALLEN || ani.getDelay() == -1) {
-                setAnimation(FALLEN, spriteSheet.getSpriteArray(FALLEN), 15);
-            }
-        }
-        else {
-            if(!attacking && currentAnimation > 4) {
-                setAnimation(currentAnimation - ATTACK, spriteSheet.getSpriteArray(currentAnimation - ATTACK), -1);
-            } else if(!attacking) {
-                    setAnimation(currentAnimation, spriteSheet.getSpriteArray(currentAnimation), -1);
-                }
-            }
-    }
 
     private void setHitBoxDirection() {
         if (up && !attacking) {
@@ -216,7 +218,6 @@ public abstract class Entity extends GameObject{
 
         return false;
     }
-
     public boolean isInCircle (Vector2f center, double r) {
         if (this.bounds.distance(center) < r) {return true;}
         return false;
@@ -225,7 +226,6 @@ public abstract class Entity extends GameObject{
         if (this.bounds.distance(center)  > (r-size) && this.bounds.distance(center)  < (r+ size)) {return true;}
         return false;
     }
-
     public void move() {
         if(up) {
             currentDirection = UP;

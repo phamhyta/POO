@@ -75,7 +75,7 @@ public class Player extends Entity {
         this.inventory.remove(material);
     }
 
-    private void resetPosition(){
+    public void resetPosition(){
         System.out.println("Reseting Player... ");
         pos.x = GamePanel.width/2-32;
         PlayState.map.x=0;
@@ -85,7 +85,7 @@ public class Player extends Entity {
         cam.getPos().y =0;
         PlayState.map.y=0;
 
-        setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 10);
+//        setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 10);
     }
     private void checkLevelUp(){
         if(this.EXP >= nextLevelEXP){
