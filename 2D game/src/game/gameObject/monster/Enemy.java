@@ -7,15 +7,15 @@ import game.gameObject.object.OBJ_Door;
 import game.gameObject.object.OBJ_ManaCrystal;
 import game.gameObject.object.OBJ_Potion_Red;
 import game.graphics.Animation;
-import game.math.AABB;
+import game.math.BoundingBox;
 import game.util.Camera;
 import game.math.Vector2f;
 
 public class Enemy extends Entity {
 
-    protected AABB sense;
+    protected BoundingBox sense;
     protected int r_sense;
-    protected AABB attackrange;
+    protected BoundingBox attackrange;
     protected int r_attackrange;
     protected int r_enemyArea;
     public Camera cam;
@@ -41,8 +41,8 @@ public class Enemy extends Entity {
         bounds.setXOffset(12);
         bounds.setYOffset(40);
 
-        sense = new AABB(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
-        attackrange = new AABB(new Vector2f(origin.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2,
+        sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
+        attackrange = new BoundingBox(new Vector2f(origin.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2,
                 origin.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2), r_attackrange);
     }
 
@@ -99,7 +99,7 @@ public class Enemy extends Entity {
     }
 
     private void chase(Player player) {
-        AABB playerBounds = player.getBounds();
+        BoundingBox playerBounds = player.getBounds();
         if (sense.colCircleBox(playerBounds) && !attackrange.colCircleBox(player.getBounds())) {
             autoDirecting(this.pos, player.getPos());
         } else {
@@ -152,11 +152,11 @@ public class Enemy extends Entity {
                 bounds.setXOffset(size / 2 - xOffset);
                 bounds.setYOffset(size / 2 + yOffset);
 
-                hitBounds = new AABB(pos, size, size);
+                hitBounds = new BoundingBox(pos, size, size);
                 hitBounds.setXOffset(size / 2);
 
-                sense = new AABB(new Vector2f(pos.x + size / 2 - r_sense / 2, pos.y + size / 2 - r_sense / 2), r_sense);
-                attackrange = new AABB(new Vector2f(pos.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2 , pos.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2 ), r_attackrange);
+                sense = new BoundingBox(new Vector2f(pos.x + size / 2 - r_sense / 2, pos.y + size / 2 - r_sense / 2), r_sense);
+                attackrange = new BoundingBox(new Vector2f(pos.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2 , pos.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2 ), r_attackrange);
             }
 
             if (attackrange.colCircleBox(player.getBounds()) && !isInvincible) {

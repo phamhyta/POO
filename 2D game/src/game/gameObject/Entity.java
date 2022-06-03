@@ -1,6 +1,6 @@
 package game.gameObject;
 
-import game.math.AABB;
+import game.math.BoundingBox;
 import game.util.TileCollision;
 import game.math.Vector2f;
 
@@ -8,6 +8,12 @@ public class Entity {
 
     protected int currentDirection = 0;
     protected int hitsize;
+
+    protected BoundingBox hitBounds;
+    protected BoundingBox bounds;
+    protected Vector2f pos;
+    protected int size;
+
     protected int UP =3;
     protected int DOWN=2;
     protected int RIGHT=0;
@@ -44,78 +50,40 @@ public class Entity {
     protected float healthpercent = 1;
     protected int defense = 10;
     protected int damage = 25;
-
     protected int EXP;
 
-    protected AABB hitBounds;
-
-    protected AABB bounds;
-    protected Vector2f pos;
-    protected int size;
-
-    // used for moving objects like boxes and such
     protected float dx;
     protected float dy;
-
     protected float maxSpeed = 4f;
     protected float acc = 2f;
     protected float deacc = 0.3f;
     protected float force = 25f;
 
     protected int coin =0;
-
     protected boolean teleported = false;
     protected TileCollision tc;
     protected String name = "";
 
-
     public Entity (Vector2f origin, int size){
-        this.bounds = new AABB(origin, size, size);
+        this.bounds = new BoundingBox(origin, size, size);
         this.pos = origin;
         this.size = size;
         this.hitsize = size;
-
-        hitBounds = new AABB(origin,size,size);
+        hitBounds = new BoundingBox(origin,size,size);
         hitBounds.setXOffset(size/2);
-
 
         tc = new TileCollision(this);
     }
     public void setPos(Vector2f pos) {
         this.pos = pos;
-        this.bounds = new AABB(pos, size, size);
+        this.bounds = new BoundingBox(pos, size, size);
         teleported = true;
     }
 
-    public void setName(String name) { this.name = name; }
-
-    public void setSize(int i) { size = i; }
-    public void setMaxSpeed(float f) { maxSpeed = f; }
-    public void setAcc(float f) { acc = f; }
-    public void setDeacc(float f) { deacc = f; }
-    public int getCoin() {return coin;}
-    public void setCoin(int coin) {this.coin = coin;}
-
-    public float getDeacc() { return deacc; }
-    public float getAcc() { return acc; }
-    public float getMaxSpeed() { return maxSpeed; }
-    public float getDx() { return dx; }
-    public float getDy() { return dy; }
-    public AABB getBounds() { return bounds; }
-    public Vector2f getPos() { return pos; }
-    public int getSize() { return size; }
-
     public void addForce(float a, boolean vertical) {
-        if(!vertical) {
-            dx -= a;
-        } else {
-            dy -= a;
-        }
+        if(!vertical) {dx -= a;}
+            else {dy -= a;}
     }
-
-
-    public void setFallen(boolean b){ fallen = b; }
-
     public void setHealth(int i, float f, boolean dir) {
         if(!isInvincible) {
             health = i;
@@ -130,48 +98,9 @@ public class Entity {
             healthpercent = (float) health / (float) maxHealth;
         }
     }
-    public boolean getDeath() { return die; }
-    public int getHealth() { return health; }
-    public float getHealthPercent() { return healthpercent; }
-    public int getDefense() { return defense; }
-    public AABB getHitBounds() { return hitBounds; }
-    public int getEXP(){ return EXP;}
-    public void setEXP(int EXP){ this.EXP= EXP;}
-    public boolean isUp() {
-        return up;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public boolean isAttack() {
-        return attack;
-    }
-
-    public boolean isFallen() {
-        return fallen;
-    }
-
-    public boolean isAttacking() {
-        return attacking;
-    }
-    public boolean isHasIdle() {
-        return hasIdle;
-    }
 
     public int getDirection() {
-        if(currentDirection == UP || currentDirection == LEFT) {
-            return 1;
-        }
+        if(currentDirection == UP || currentDirection == LEFT)  return 1;
         return -1;
     }
 
@@ -192,17 +121,9 @@ public class Entity {
     }
 
     protected boolean isAttacking(double time) {
-
-        if((attacktime / 1000000) > ((time / 1000000) - attackSpeed)) {
-            canAttack = false;
-        } else {
-            canAttack = true;
-        }
-
-        if((attacktime / 1000000) + attackDuration > (time / 1000000)) {
-            return true;
-        }
-
+        if((attacktime / 1000000) > ((time / 1000000) - attackSpeed)) {canAttack = false;}
+            else canAttack = true;
+        if((attacktime / 1000000) + attackDuration > (time / 1000000)) {return true;}
         return false;
     }
     public boolean isInCircle (Vector2f center, double r) {
@@ -224,7 +145,6 @@ public class Entity {
                 if(dy > 0) {dy = 0;}
             }
         }
-
         if(down) {
             currentDirection = DOWN;
             dy += acc;
@@ -235,7 +155,6 @@ public class Entity {
                 if(dy < 0) {dy = 0;}
             }
         }
-
         if(left) {
             currentDirection = LEFT;
             dx -= acc;
@@ -246,7 +165,6 @@ public class Entity {
                 if(dx > 0) {dx = 0;}
             }
         }
-
         if(right) {
             currentDirection = RIGHT;
             dx += acc;
@@ -267,6 +185,39 @@ public class Entity {
         }
         setHitBoxDirection();
     }
+
+    public void setFallen(boolean b){ fallen = b; }
+    public boolean getDeath() { return die; }
+    public int getHealth() { return health; }
+    public float getHealthPercent() { return healthpercent; }
+    public int getDefense() { return defense; }
+    public BoundingBox getHitBounds() { return hitBounds; }
+    public int getEXP(){ return EXP;}
+    public void setEXP(int EXP){ this.EXP= EXP;}
+    public boolean isUp() {return up;}
+    public boolean isDown() {return down;}
+    public boolean isRight() {return right;}
+    public boolean isLeft() {return left;}
+    public boolean isAttack() {return attack;}
+    public boolean isFallen() {return fallen;}
+    public boolean isAttacking() {return attacking;   }
+    public boolean isHasIdle() {return hasIdle;}
+    public void setName(String name) { this.name = name; }
+    public void setSize(int i) { size = i; }
+    public void setMaxSpeed(float f) { maxSpeed = f; }
+    public void setAcc(float f) { acc = f; }
+    public void setDeacc(float f) { deacc = f; }
+    public int getCoin() {return coin;}
+    public void setCoin(int coin) {this.coin = coin;}
+    public float getDeacc() { return deacc; }
+    public float getAcc() { return acc; }
+    public float getMaxSpeed() { return maxSpeed; }
+    public float getDx() { return dx; }
+    public float getDy() { return dy; }
+    public BoundingBox getBounds() { return bounds; }
+    public Vector2f getPos() { return pos; }
+    public int getSize() { return size; }
+
 
 }
 

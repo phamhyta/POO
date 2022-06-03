@@ -3,15 +3,11 @@ package game.gameObject;
 import game.GamePanel;
 import game.gameObject.monster.Enemy;
 import game.graphics.Animation;
-import game.graphics.SpriteSheet;
 import game.states.PlayState;
 import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 public class Player extends Entity {
@@ -40,7 +36,6 @@ public class Player extends Entity {
         bounds.setHeight(30);
         bounds.setXOffset(10);
         bounds.setYOffset(30);
-
         hitBounds.setWidth(37);
         hitBounds.setHeight(37);
 
