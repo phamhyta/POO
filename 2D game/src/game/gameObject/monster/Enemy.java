@@ -6,13 +6,10 @@ import game.gameObject.object.OBJ_Coin_Bronze;
 import game.gameObject.object.OBJ_Door;
 import game.gameObject.object.OBJ_ManaCrystal;
 import game.gameObject.object.OBJ_Potion_Red;
-import game.graphics.SpriteSheet;
+import game.graphics.Animation;
 import game.math.AABB;
 import game.util.Camera;
 import game.math.Vector2f;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
 
 public class Enemy extends Entity {
 
@@ -21,14 +18,14 @@ public class Enemy extends Entity {
     protected AABB attackrange;
     protected int r_attackrange;
     protected int r_enemyArea;
-    protected Camera cam;
+    public Camera cam;
     protected int xOffset;
     protected int yOffset;
 
     public boolean useRight = false;
 
-    public Enemy(Camera cam, SpriteSheet spriteSheet, Vector2f origin, int size) {
-        super(spriteSheet, origin, size);
+    public Enemy(Camera cam, Vector2f origin, int size) {
+        super(origin, size);
         this.cam = cam;
 
         damage = 10;
@@ -181,26 +178,13 @@ public class Enemy extends Entity {
                     pos.y += dy;
                 }
             } else {
-                if (ani.hasPlayedOnce()) {
+                if (Animation.hasPlayedOnce()) {
                     die = true;
                 }
             }
         }
     }
 
-    @Override
-    public void render(Graphics2D g) {
-        if (cam.getBounds().collides(this.bounds)) {
 
-            g.drawImage(ani.getImage().image, (int) (pos.getWorldVar().x), (int) (pos.getWorldVar().y), size, size, null);
-            // Health Bar UI
-            g.setColor(Color.red);
-            g.fillRect((int) (pos.getWorldVar().x + bounds.getXOffset()) +10, (int) (pos.getWorldVar().y - 5), 24, 5);
 
-            g.setColor(Color.green);
-            g.fillRect((int) (pos.getWorldVar().x + bounds.getXOffset()) +10, (int) (pos.getWorldVar().y - 5), (int) (24 * healthpercent), 5);
-
-        }
-
-    }
 }

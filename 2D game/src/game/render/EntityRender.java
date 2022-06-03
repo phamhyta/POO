@@ -20,7 +20,6 @@ public abstract class EntityRender {
     protected int IDLE = 6;
 
     protected int currentAnimation;
-    protected int currentDirection = RIGHT;
 
     protected SpriteSheet spriteSheet;
 

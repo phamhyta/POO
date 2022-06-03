@@ -2,6 +2,7 @@ package game.gameObject;
 
 import game.GamePanel;
 import game.gameObject.monster.Enemy;
+import game.graphics.Animation;
 import game.graphics.SpriteSheet;
 import game.states.PlayState;
 import game.util.Camera;
@@ -24,8 +25,8 @@ public class Player extends Entity {
 
     private int nextLevelEXP = 50;
 
-    public Player(Camera cam, SpriteSheet spriteSheet, Vector2f orgin, int size) {
-        super(spriteSheet, orgin, size);
+    public Player(Camera cam, Vector2f orgin, int size) {
+        super(orgin, size);
         this.cam = cam;
         setDefaultValue();
         enemy = new ArrayList<>();
@@ -42,13 +43,6 @@ public class Player extends Entity {
 
         hitBounds.setWidth(37);
         hitBounds.setHeight(37);
-
-        ani.setNumFrames(4, UP);
-        ani.setNumFrames(4, DOWN);
-        ani.setNumFrames(4, ATTACK + RIGHT);
-        ani.setNumFrames(4, ATTACK + LEFT);
-        ani.setNumFrames(4, ATTACK + UP);
-        ani.setNumFrames(4, ATTACK + DOWN);
 
         health = 200;
         maxHealth = 200;
@@ -85,7 +79,6 @@ public class Player extends Entity {
         cam.getPos().y =0;
         PlayState.map.y=0;
 
-//        setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 10);
     }
     private void checkLevelUp(){
         if(this.EXP >= nextLevelEXP){
@@ -134,7 +127,7 @@ public class Player extends Entity {
             } else {
                 xCol = false;
                 yCol = false;
-                if (ani.hasPlayedOnce()) {
+                if (Animation.hasPlayedOnce()) {
                     resetPosition();
                     dx = 0;
                     dy = 0;
@@ -143,19 +136,6 @@ public class Player extends Entity {
             }
         checkLevelUp();
         updateHealthManaPercent();
-    }
-    @Override
-    public void render(Graphics2D g) {
-        g.setColor(Color.green);
-        g.drawRect((int) (pos.getWorldVar().x + bounds.getXOffset()),(int)(pos.getWorldVar().y+ bounds.getYOffset()),
-                (int) bounds.getWidth(), (int) bounds.getHeight());
-        if(attack){
-            g.setColor(Color.red);
-            g.drawRect((int) (hitBounds.getPos().getWorldVar().x + hitBounds.getXOffset()),(int)(hitBounds.getPos().getWorldVar().y+ hitBounds.getYOffset()),
-                    (int) hitBounds.getWidth(), (int) hitBounds.getHeight());
-        }
-
-        g.drawImage(ani.getImage().image,(int) (pos.getWorldVar().x),(int)(pos.getWorldVar().y), size, size,null);
     }
 
     public void input(MouseHandler mouse,KeyHandler key ){

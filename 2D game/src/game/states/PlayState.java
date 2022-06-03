@@ -28,14 +28,12 @@ public class PlayState extends GameState {
     private PlayerUI pui;
     private GameControl gc;
 
-    private OBJ_Door obj_door;
-
     public PlayState(GameStateManager gsm, Camera cam) {
         super(gsm);
         map = new Vector2f(0,0);
         Vector2f.setWorldVar(map.x,map.y);
         this.cam = cam;
-        player = new Player(cam, new SpriteSheet("res/entity/linkFormatted.png", 32, 32), new Vector2f(0 + (GamePanel.width / 2) - 32, 0 + (GamePanel.height / 2) - 32), 64);
+        player = new Player(cam, new Vector2f(0 + (GamePanel.width / 2) - 32, 0 + (GamePanel.height / 2) - 32), 64);
         playerRender = new PlayerRender(player,new SpriteSheet("res/entity/linkFormatted.png", 32, 32) );
         gc = new GameControl(player, cam, gsm);
 
@@ -50,7 +48,6 @@ public class PlayState extends GameState {
         if(!gsm.isStateActive(GameStateManager.PAUSE) && !gsm.isStateActive(GameStateManager.GAMEOVER) ){
             playerRender.update();
             player.update(time);
-
             gc.update(time);
             pui.update(time);
             cam.update();
@@ -83,6 +80,5 @@ public class PlayState extends GameState {
 
         cam.render(g);
         pui.render(g);
-
     }
 }
