@@ -3,15 +3,16 @@ package game.render;
 
 import game.gameObject.monster.TinyBox;
 import game.graphics.SpriteSheet;
+import game.util.Camera;
 
 import java.awt.*;
 
-public class TinyBoxRender extends EnemyRender{
+public class TinyBoxRender extends EntityRender{
     private final TinyBox tiny;
 
 
-    public TinyBoxRender(TinyBox tiny, SpriteSheet spriteSheet) {
-        super(tiny, spriteSheet);
+    public TinyBoxRender(Camera camera,TinyBox tiny, SpriteSheet spriteSheet) {
+        super(camera,tiny, spriteSheet);
         this.tiny= tiny;
 
         ATTACK = 0;
@@ -35,7 +36,7 @@ public class TinyBoxRender extends EnemyRender{
 
     @Override
     public void render(Graphics2D g) {
-        if(tiny.cam.getBounds().collides(tiny.getBounds())) {
+        if(camera.getBounds().collides(tiny.getBounds())) {
 
             if(tiny.useRight && tiny.isLeft()) {
                 g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x) + tiny.getSize(), (int) (tiny.getPos().getWorldVar().y), -tiny.getSize(), tiny.getSize(), null);

@@ -2,12 +2,13 @@ package game.render;
 
 import game.gameObject.monster.Enemy;
 import game.graphics.SpriteSheet;
+import game.util.Camera;
 
 import java.awt.*;
 
-public class TinyMonRender extends EnemyRender{
-    public TinyMonRender(Enemy enemy, SpriteSheet spriteSheet) {
-        super(enemy, spriteSheet);
+public class TinyMonRender extends EntityRender{
+    public TinyMonRender(Camera camera,Enemy enemy, SpriteSheet spriteSheet) {
+        super(camera,enemy, spriteSheet);
         ATTACK = 0;
         FALLEN = 0;
         UP = 3;

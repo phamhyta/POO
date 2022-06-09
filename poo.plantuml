@@ -51,16 +51,6 @@
         - attack: int
         - currentEXP: int
     }
-    class Monster{
-        - type: String
-        - damage: integer
-        + Monster(): constructor
-        + movingAround(): void
-        + chasePlayer(): void
-        + hit(): void
-        + invincible(): void
-        + attackPlayer(): void
-    }
     class GameObject{
         + name: String
         + image: BufferedImage
@@ -175,7 +165,7 @@
         + loadSpriteArray: void
         + drawArray(): void
     }
-    class AABB {
+    class BoundingBox {
         - pos: Vector2f
         - xOffset: float
         - yOffset: float
@@ -201,11 +191,10 @@
     }
     GameObject <|-- Shop
     Entity <|-- Player
-    Entity <|-- Monster
     Entity <|-- NPC
-    GameObject o-- AABB
-    Entity o-- AABB
-    AABB o-- Vector2f
+    GameObject o-- BoundingBox
+    Entity o-- BoundingBox
+    BoundingBox o-- Vector2f
 
 
 @enduml

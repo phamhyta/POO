@@ -1,14 +1,14 @@
 package game.gameObject.object;
 
 
-import game.gameObject.Material;
+import game.gameObject.GameObject;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 
 import java.awt.*;
 
 
-public class OBJ_Boots extends Material {
+public class OBJ_Boots extends GameObject {
 
 	public OBJ_Boots(Vector2f origin, int size){
 		super(origin, size);

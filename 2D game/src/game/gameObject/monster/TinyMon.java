@@ -1,12 +1,11 @@
 package game.gameObject.monster;
 
-import game.util.Camera;
 import game.math.Vector2f;
 
 public class TinyMon extends Enemy {
 
-    public TinyMon(Camera cam, Vector2f origin, int size) {
-        super(cam, origin, size);
+    public TinyMon(Vector2f origin, int size) {
+        super( origin, size);
         xOffset = size / 4;
         yOffset = size / 4;
         damage = 10;

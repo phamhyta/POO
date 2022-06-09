@@ -1,6 +1,6 @@
 package game.gameObject.object;
 
-import game.gameObject.Material;
+import game.gameObject.GameObject;
 import game.gameObject.Player;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -8,7 +8,7 @@ import game.math.Vector2f;
 import java.awt.Graphics2D;
 
 
-public class OBJ_Potion_Red extends Material {
+public class OBJ_Potion_Red extends GameObject {
 
 	public OBJ_Potion_Red(Vector2f origin, int size) {
 		super(origin, size);

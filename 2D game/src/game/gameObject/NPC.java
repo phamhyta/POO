@@ -9,7 +9,7 @@ import game.util.MouseHandler;
 import java.awt.*;
 
 public class NPC extends Entity{
-    public NPC(Camera cam, Vector2f orgin, int size){
+    public NPC(Vector2f orgin, int size){
         super(orgin, size);
     }
 
