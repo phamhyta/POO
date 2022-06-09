@@ -6,29 +6,26 @@ import game.gameObject.object.OBJ_Coin_Bronze;
 import game.gameObject.object.OBJ_Door;
 import game.gameObject.object.OBJ_ManaCrystal;
 import game.gameObject.object.OBJ_Potion_Red;
-import game.graphics.SpriteSheet;
-import game.math.AABB;
+import game.graphics.Animation;
+import game.math.BoundingBox;
 import game.util.Camera;
 import game.math.Vector2f;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
 public class Enemy extends Entity {
 
-    protected AABB sense;
+    protected BoundingBox sense;
     protected int r_sense;
-    protected AABB attackrange;
+    protected BoundingBox attackrange;
     protected int r_attackrange;
     protected int r_enemyArea;
-    protected Camera cam;
+    public Camera cam;
     protected int xOffset;
     protected int yOffset;
 
     public boolean useRight = false;
 
-    public Enemy(Camera cam, SpriteSheet spriteSheet, Vector2f origin, int size) {
-        super(spriteSheet, origin, size);
+    public Enemy(Camera cam, Vector2f origin, int size) {
+        super(origin, size);
         this.cam = cam;
 
         damage = 10;
@@ -44,8 +41,8 @@ public class Enemy extends Entity {
         bounds.setXOffset(12);
         bounds.setYOffset(40);
 
-        sense = new AABB(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
-        attackrange = new AABB(new Vector2f(origin.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2,
+        sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
+        attackrange = new BoundingBox(new Vector2f(origin.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2,
                 origin.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2), r_attackrange);
     }
 
@@ -102,7 +99,7 @@ public class Enemy extends Entity {
     }
 
     private void chase(Player player) {
-        AABB playerBounds = player.getBounds();
+        BoundingBox playerBounds = player.getBounds();
         if (sense.colCircleBox(playerBounds) && !attackrange.colCircleBox(player.getBounds())) {
             autoDirecting(this.pos, player.getPos());
         } else {
@@ -155,11 +152,11 @@ public class Enemy extends Entity {
                 bounds.setXOffset(size / 2 - xOffset);
                 bounds.setYOffset(size / 2 + yOffset);
 
-                hitBounds = new AABB(pos, size, size);
+                hitBounds = new BoundingBox(pos, size, size);
                 hitBounds.setXOffset(size / 2);
 
-                sense = new AABB(new Vector2f(pos.x + size / 2 - r_sense / 2, pos.y + size / 2 - r_sense / 2), r_sense);
-                attackrange = new AABB(new Vector2f(pos.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2 , pos.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2 ), r_attackrange);
+                sense = new BoundingBox(new Vector2f(pos.x + size / 2 - r_sense / 2, pos.y + size / 2 - r_sense / 2), r_sense);
+                attackrange = new BoundingBox(new Vector2f(pos.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2 , pos.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2 ), r_attackrange);
             }
 
             if (attackrange.colCircleBox(player.getBounds()) && !isInvincible) {
@@ -181,26 +178,13 @@ public class Enemy extends Entity {
                     pos.y += dy;
                 }
             } else {
-                if (ani.hasPlayedOnce()) {
+                if (Animation.hasPlayedOnce()) {
                     die = true;
                 }
             }
         }
     }
 
-    @Override
-    public void render(Graphics2D g) {
-        if (cam.getBounds().collides(this.bounds)) {
 
-            g.drawImage(ani.getImage().image, (int) (pos.getWorldVar().x), (int) (pos.getWorldVar().y), size, size, null);
-            // Health Bar UI
-            g.setColor(Color.red);
-            g.fillRect((int) (pos.getWorldVar().x + bounds.getXOffset()) +10, (int) (pos.getWorldVar().y - 5), 24, 5);
 
-            g.setColor(Color.green);
-            g.fillRect((int) (pos.getWorldVar().x + bounds.getXOffset()) +10, (int) (pos.getWorldVar().y - 5), (int) (24 * healthpercent), 5);
-
-        }
-
-    }
 }

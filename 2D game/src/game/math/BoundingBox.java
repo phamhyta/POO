@@ -2,9 +2,7 @@ package game.math;
 
 import game.gameObject.Entity;
 
-// Axis-Aligned Bounding Box And Circle
-
-public class AABB {
+public class BoundingBox {
     private Vector2f pos;
     private float xOffset =0;
     private float yOffset =0;
@@ -15,14 +13,14 @@ public class AABB {
     private Entity e;
 
     //BOX
-    public AABB(Vector2f pos, int w, int h){
+    public BoundingBox(Vector2f pos, int w, int h){
         this.pos=pos;
         this.w=w;
         this.h=h;
         size = Math.max(w,h);
     }
     //CIRCLE
-    public AABB(Vector2f pos, int r){
+    public BoundingBox(Vector2f pos, int r){
         this.pos= pos;
         this.r =r;
         size =r;
@@ -58,7 +56,7 @@ public class AABB {
         return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
-    public boolean collides(AABB bBox){
+    public boolean collides(BoundingBox bBox){
         float ax= ((pos.getWorldVar().x + (xOffset))+ (this.w/2));
         float ay= ((pos.getWorldVar().y + (yOffset))+ (this.h/2));
         float bx= ((bBox.getPos().getWorldVar().x + (bBox.xOffset))+ (bBox.getWidth()/2));
@@ -72,7 +70,7 @@ public class AABB {
         return false;
     }
 
-    public boolean colCircleBox(AABB aBox) {
+    public boolean colCircleBox(BoundingBox aBox) {
         float dx= Math.max(aBox.getPos().getWorldVar().x + aBox.getXOffset(),Math.min(pos.getWorldVar().x +(r/2),aBox.getPos().getWorldVar().x +aBox.getXOffset()+ aBox.getWidth()));
         float dy= Math.max(aBox.getPos().getWorldVar().y + aBox.getYOffset(),Math.min(pos.getWorldVar().y +(r/2),aBox.getPos().getWorldVar().y +aBox.getYOffset()+ aBox.getHeight()));
 
