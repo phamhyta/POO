@@ -2,7 +2,7 @@ package game.tile.blocks;
 
 
 import game.graphics.Sprite;
-import game.math.BoundingBox;
+import game.math.AABB;
 import game.math.Vector2f;
 
 import java.awt.*;
@@ -24,8 +24,8 @@ public abstract class Block {
     public int getWidth() { return w; }
     public int getHeight() { return h; }
 
-    public abstract boolean update(BoundingBox p);
-    public abstract boolean isInside(BoundingBox p);
+    public abstract boolean update(AABB p);
+    public abstract boolean isInside(AABB p);
 
     public abstract Sprite getImage();
     public Vector2f getPos() { return pos; }

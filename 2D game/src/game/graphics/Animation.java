@@ -12,7 +12,7 @@ public class Animation {
     private int count;
     private int delay;
 
-    private static int timesPlayed;
+    private int timesPlayed;
 
     public Animation(Sprite[] frames){
         timesPlayed =0;
@@ -59,7 +59,7 @@ public class Animation {
     public int getCount(){ return count; }
 
     public Sprite getImage(){ return frames[currentFrame]; }
-    public static boolean hasPlayedOnce(){ return timesPlayed >0; }
-    public static boolean hasPlayed (int i){ return timesPlayed == i; }
+    public boolean hasPlayedOnce(){ return timesPlayed >0; }
+    public boolean hasPlayed (int i){ return timesPlayed == i; }
 
 }

@@ -5,7 +5,7 @@ import game.graphics.SpriteSheet;
 import game.tile.blocks.Block;
 import game.tile.blocks.HoleBlock;
 import game.tile.blocks.ObjBlock;
-import game.math.BoundingBox;
+import game.math.AABB;
 import game.math.Vector2f;
 
 import java.awt.*;
@@ -44,7 +44,7 @@ public class TileMapObj extends TileMap {
         }
     }
 
-    public void render(Graphics2D g, BoundingBox cam) {
+    public void render(Graphics2D g, AABB cam) {
         int x = (int) ((cam.getPos().x) / tileWidth);
         int y = (int) ((cam.getPos().y) / tileHeight);
 
