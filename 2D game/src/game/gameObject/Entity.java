@@ -1,32 +1,23 @@
 package game.gameObject;
 
-import game.graphics.Animation;
-import game.graphics.Sprite;
-import game.graphics.SpriteSheet;
-import game.math.AABB;
+import game.math.BoundingBox;
 import game.util.TileCollision;
 import game.math.Vector2f;
 
-import java.awt.Graphics2D;
+public class Entity {
 
+    protected int currentDirection = 0;
+    protected int hitsize;
 
-public abstract class Entity extends GameObject{
+    protected BoundingBox hitBounds;
+    protected BoundingBox bounds;
+    protected Vector2f pos;
+    protected int size;
 
     protected int UP =3;
     protected int DOWN=2;
     protected int RIGHT=0;
     protected int LEFT=1;
-    protected int FALLEN=4;
-    protected int ATTACK = 5;
-    protected int IDLE = 6;
-
-
-    protected int currentAnimation;
-    protected int currentDirection = RIGHT;
-
-
-    protected Animation ani;
-    protected int hitsize;
 
     protected boolean up = false;
     protected boolean down = false;
@@ -44,6 +35,11 @@ public abstract class Entity extends GameObject{
     protected boolean die = false;
 
     protected int attackSpeed = 1050; // in milliseconds
+
+    public int getAttackDuration() {
+        return attackDuration;
+    }
+
     protected int attackDuration = 650; // in milliseconds
     protected double attacktime;
     protected boolean canAttack = true;
@@ -54,27 +50,40 @@ public abstract class Entity extends GameObject{
     protected float healthpercent = 1;
     protected int defense = 10;
     protected int damage = 25;
-
     protected int EXP;
 
-    protected AABB hitBounds;
+    protected float dx;
+    protected float dy;
+    protected float maxSpeed = 4f;
+    protected float acc = 2f;
+    protected float deacc = 0.3f;
+    protected float force = 25f;
 
+    protected int coin =0;
+    protected boolean teleported = false;
+    protected TileCollision tc;
+    protected String name = "";
 
-    public Entity (SpriteSheet spriteSheet, Vector2f origin, int size){
-        super(spriteSheet, origin, size);
+    public Entity (Vector2f origin, int size){
+        this.bounds = new BoundingBox(origin, size, size);
+        this.pos = origin;
+        this.size = size;
         this.hitsize = size;
-
-        hitBounds = new AABB(origin,size,size);
+        hitBounds = new BoundingBox(origin,size,size);
         hitBounds.setXOffset(size/2);
-
-        ani = new Animation();
-        setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT),10 );
 
         tc = new TileCollision(this);
     }
+    public void setPos(Vector2f pos) {
+        this.pos = pos;
+        this.bounds = new BoundingBox(pos, size, size);
+        teleported = true;
+    }
 
-    public void setFallen(boolean b){ fallen = b; }
-
+    public void addForce(float a, boolean vertical) {
+        if(!vertical) {dx -= a;}
+            else {dy -= a;}
+    }
     public void setHealth(int i, float f, boolean dir) {
         if(!isInvincible) {
             health = i;
@@ -89,101 +98,10 @@ public abstract class Entity extends GameObject{
             healthpercent = (float) health / (float) maxHealth;
         }
     }
-    public boolean getDeath() { return die; }
-    public int getHealth() { return health; }
-    public float getHealthPercent() { return healthpercent; }
-    public int getDefense() { return defense; }
-    public AABB getHitBounds() { return hitBounds; }
-    public int getEXP(){ return EXP;}
-    public void setEXP(int EXP){ this.EXP= EXP;}
 
     public int getDirection() {
-        if(currentDirection == UP || currentDirection == LEFT) {
-            return 1;
-        }
+        if(currentDirection == UP || currentDirection == LEFT)  return 1;
         return -1;
-    }
-    public Animation getAnimation() { return ani; }
-
-    public void setAnimation(int i, Sprite[] frames, int delay){
-        currentAnimation = i;
-        ani.setFrames(i,frames);
-        ani.setDelay(delay);
-    }
-
-    public void animate() {
-
-        if(attacking) {
-            if(currentAnimation < 5) {
-                setAnimation(currentAnimation + ATTACK, spriteSheet.getSpriteArray(currentAnimation + ATTACK), attackDuration / 100);
-            }
-        } else if (up) {
-            if ((currentAnimation != UP || ani.getDelay() == -1)) {
-                setAnimation(UP, spriteSheet.getSpriteArray(UP), 5);
-            }
-        } else if (down) {
-            if ((currentAnimation != DOWN || ani.getDelay() == -1)) {
-                setAnimation(DOWN, spriteSheet.getSpriteArray(DOWN), 5);
-            }
-        } else if (left) {
-            if ((currentAnimation != LEFT || ani.getDelay() == -1)) {
-                setAnimation(LEFT, spriteSheet.getSpriteArray(LEFT), 5);
-            }
-        } else if (right) {
-            if ((currentAnimation != RIGHT || ani.getDelay() == -1)) {
-                setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 5);
-            }
-        } else if (fallen) {
-            if (currentAnimation != FALLEN || ani.getDelay() == -1) {
-                setAnimation(FALLEN, spriteSheet.getSpriteArray(FALLEN), 15);
-            }
-        }
-        else {
-            if(!attacking && currentAnimation > 4) {
-                setAnimation(currentAnimation - ATTACK, spriteSheet.getSpriteArray(currentAnimation - ATTACK), -1);
-            } else if(!attacking) {
-                if(hasIdle && currentAnimation != IDLE) {
-                    setAnimation(IDLE, spriteSheet.getSpriteArray(IDLE), 10);
-                } else if(!hasIdle) {
-                    setAnimation(currentAnimation, spriteSheet.getSpriteArray(currentAnimation), -1);
-                }
-            }
-        }
-    }
-    public void animate1() {
-
-        if(attacking) {
-            if(currentAnimation < 5) {
-                setAnimation(currentAnimation + ATTACK, spriteSheet.getSpriteArray(currentAnimation + ATTACK), attackDuration / 100);
-            }
-        } else if (up) {
-            if ((currentAnimation != UP || ani.getDelay() == -1)) {
-                setAnimation(UP, spriteSheet.getSpriteArray(UP), 5);
-            }
-        } else if (down) {
-            if ((currentAnimation != DOWN || ani.getDelay() == -1)) {
-                setAnimation(DOWN, spriteSheet.getSpriteArray(DOWN), 5);
-            }
-        } else if (left) {
-            if ((currentAnimation != LEFT || ani.getDelay() == -1)) {
-                setAnimation(LEFT, spriteSheet.getSpriteArray(LEFT), 5);
-            }
-        } else if (right) {
-            if ((currentAnimation != RIGHT || ani.getDelay() == -1)) {
-                setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 5);
-            }
-        } else if (fallen) {
-            if (currentAnimation != FALLEN || ani.getDelay() == -1) {
-                setAnimation(FALLEN, spriteSheet.getSpriteArray(FALLEN), 15);
-            }
-        }
-        else {
-            if(!attacking && currentAnimation > 4) {
-                setAnimation(currentAnimation - ATTACK, spriteSheet.getSpriteArray(currentAnimation - ATTACK), -1);
-            } else if(!attacking) {
-                    setAnimation(currentAnimation, spriteSheet.getSpriteArray(currentAnimation), -1);
-                }
-            }
     }
 
     private void setHitBoxDirection() {
@@ -203,20 +121,11 @@ public abstract class Entity extends GameObject{
     }
 
     protected boolean isAttacking(double time) {
-
-        if((attacktime / 1000000) > ((time / 1000000) - attackSpeed)) {
-            canAttack = false;
-        } else {
-            canAttack = true;
-        }
-
-        if((attacktime / 1000000) + attackDuration > (time / 1000000)) {
-            return true;
-        }
-
+        if((attacktime / 1000000) > ((time / 1000000) - attackSpeed)) {canAttack = false;}
+            else canAttack = true;
+        if((attacktime / 1000000) + attackDuration > (time / 1000000)) {return true;}
         return false;
     }
-
     public boolean isInCircle (Vector2f center, double r) {
         if (this.bounds.distance(center) < r) {return true;}
         return false;
@@ -225,65 +134,45 @@ public abstract class Entity extends GameObject{
         if (this.bounds.distance(center)  > (r-size) && this.bounds.distance(center)  < (r+ size)) {return true;}
         return false;
     }
-
     public void move() {
         if(up) {
             currentDirection = UP;
             dy -= acc;
-            if(dy < -maxSpeed) {
-                dy = -maxSpeed;
-            }
+            if(dy < -maxSpeed) {dy = -maxSpeed;}
         } else {
             if(dy < 0) {
                 dy += deacc;
-                if(dy > 0) {
-                    dy = 0;
-                }
+                if(dy > 0) {dy = 0;}
             }
         }
-
         if(down) {
             currentDirection = DOWN;
             dy += acc;
-            if(dy > maxSpeed) {
-                dy = maxSpeed;
-            }
+            if(dy > maxSpeed) {dy = maxSpeed;}
         } else {
             if(dy > 0) {
                 dy -= deacc;
-                if(dy < 0) {
-                    dy = 0;
-                }
+                if(dy < 0) {dy = 0;}
             }
         }
-
         if(left) {
             currentDirection = LEFT;
             dx -= acc;
-            if(dx < -maxSpeed) {
-                dx = -maxSpeed;
-            }
+            if(dx < -maxSpeed) {dx = -maxSpeed;}
         } else {
             if(dx < 0) {
                 dx += deacc;
-                if(dx > 0) {
-                    dx = 0;
-                }
+                if(dx > 0) {dx = 0;}
             }
         }
-
         if(right) {
             currentDirection = RIGHT;
             dx += acc;
-            if(dx > maxSpeed) {
-                dx = maxSpeed;
-            }
+            if(dx > maxSpeed) {dx = maxSpeed;}
         } else {
             if(dx > 0) {
                 dx -= deacc;
-                if(dx < 0) {
-                    dx = 0;
-                }
+                if(dx < 0) {dx = 0;}
             }
         }
     }
@@ -294,13 +183,42 @@ public abstract class Entity extends GameObject{
                 isInvincible = false;
             }
         }
-        animate();
         setHitBoxDirection();
-        ani.update();
     }
 
-    @Override
-    public abstract void render(Graphics2D g);
+    public void setFallen(boolean b){ fallen = b; }
+    public boolean getDeath() { return die; }
+    public int getHealth() { return health; }
+    public float getHealthPercent() { return healthpercent; }
+    public int getDefense() { return defense; }
+    public BoundingBox getHitBounds() { return hitBounds; }
+    public int getEXP(){ return EXP;}
+    public void setEXP(int EXP){ this.EXP= EXP;}
+    public boolean isUp() {return up;}
+    public boolean isDown() {return down;}
+    public boolean isRight() {return right;}
+    public boolean isLeft() {return left;}
+    public boolean isAttack() {return attack;}
+    public boolean isFallen() {return fallen;}
+    public boolean isAttacking() {return attacking;   }
+    public boolean isHasIdle() {return hasIdle;}
+    public void setName(String name) { this.name = name; }
+    public void setSize(int i) { size = i; }
+    public void setMaxSpeed(float f) { maxSpeed = f; }
+    public void setAcc(float f) { acc = f; }
+    public void setDeacc(float f) { deacc = f; }
+    public int getCoin() {return coin;}
+    public void setCoin(int coin) {this.coin = coin;}
+    public float getDeacc() { return deacc; }
+    public float getAcc() { return acc; }
+    public float getMaxSpeed() { return maxSpeed; }
+    public float getDx() { return dx; }
+    public float getDy() { return dy; }
+    public BoundingBox getBounds() { return bounds; }
+    public Vector2f getPos() { return pos; }
+    public int getSize() { return size; }
+
+
 }
 
 

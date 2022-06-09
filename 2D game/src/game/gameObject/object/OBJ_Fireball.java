@@ -1,4 +1,4 @@
-package game.gameObject.object;//package game.gameObject.object;
+//package game.gameObject.object;
 //
 //import java.awt.image.BufferedImage;
 //
