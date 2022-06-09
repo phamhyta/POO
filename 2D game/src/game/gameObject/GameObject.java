@@ -1,7 +1,7 @@
 package game.gameObject;
 
 import game.graphics.SpriteSheet;
-import game.math.BoundingBox;
+import game.math.AABB;
 import game.util.TileCollision;
 import game.math.Vector2f;
 
@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 public abstract class GameObject {
 
     protected SpriteSheet spriteSheet;
-    protected BoundingBox bounds;
+    protected AABB bounds;
     protected Vector2f pos;
     protected int size;
 
@@ -35,14 +35,14 @@ public abstract class GameObject {
         this.spriteSheet = spriteSheet;
     }
     public GameObject(Vector2f origin,int size) {
-        this.bounds = new BoundingBox(origin, size, size);
+        this.bounds = new AABB(origin, size, size);
         this.pos = origin;
         this.size = size;
     }
 
     public void setPos(Vector2f pos) {
         this.pos = pos;
-        this.bounds = new BoundingBox(pos, size, size);
+        this.bounds = new AABB(pos, size, size);
         teleported = true;
     }
 
@@ -60,7 +60,7 @@ public abstract class GameObject {
     public float getMaxSpeed() { return maxSpeed; }
     public float getDx() { return dx; }
     public float getDy() { return dy; }
-    public BoundingBox getBounds() { return bounds; }
+    public AABB getBounds() { return bounds; }
     public Vector2f getPos() { return pos; }
     public int getSize() { return size; }
 

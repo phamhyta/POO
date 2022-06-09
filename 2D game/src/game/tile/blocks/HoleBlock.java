@@ -1,7 +1,7 @@
 package game.tile.blocks;
 
 import game.graphics.Sprite;
-import game.math.BoundingBox;
+import game.math.AABB;
 import game.math.Vector2f;
 
 import java.awt.*;
@@ -12,7 +12,7 @@ public class HoleBlock extends Block {
         super(sprite, pos, w, h);
     }
 
-    public boolean update(BoundingBox p) {
+    public boolean update(AABB p) {
         return false;
     }
 
@@ -20,7 +20,7 @@ public class HoleBlock extends Block {
         return sprite;
     }
 
-    public boolean isInside(BoundingBox p) {
+    public boolean isInside(AABB p) {
 
         if(p.getPos().x + p.getXOffset() < pos.x) return false;
         if(p.getPos().y + p.getYOffset() < pos.y) return false;

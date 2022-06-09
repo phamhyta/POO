@@ -3,7 +3,7 @@ package game.tile.blocks;
 
 
 import game.graphics.Sprite;
-import game.math.BoundingBox;
+import game.math.AABB;
 import game.math.Vector2f;
 
 import java.awt.*;
@@ -14,13 +14,13 @@ public class NormBlock extends Block {
         super(sprite, pos, w, h);
     }
 
-    public boolean update(BoundingBox p) {
+    public boolean update(AABB p) {
         return false;
     }
 
     public Sprite getImage() { return sprite; }
 
-    public boolean isInside(BoundingBox p) {
+    public boolean isInside(AABB p) {
         return false;
     }
 

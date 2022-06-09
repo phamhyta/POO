@@ -2,7 +2,7 @@ package game.util;
 
 import game.GamePanel;
 import game.gameObject.Entity;
-import game.math.BoundingBox;
+import game.math.AABB;
 import game.math.Vector2f;
 import game.states.PlayState;
 
@@ -10,7 +10,7 @@ import java.awt.Graphics;
 
 public class Camera {
 
-    private BoundingBox collisionCam;
+    private AABB collisionCam;
 
     private boolean up;
     private boolean down;
@@ -30,7 +30,7 @@ public class Camera {
 
     private Entity e;
 
-    public Camera(BoundingBox collisionCam) {
+    public Camera(AABB collisionCam) {
         this.collisionCam = collisionCam;
     }
 
@@ -48,7 +48,7 @@ public class Camera {
     public Vector2f getPos() {
         return collisionCam.getPos();
     }
-    public BoundingBox getBounds() {
+    public AABB getBounds() {
         return collisionCam;
     }
 
