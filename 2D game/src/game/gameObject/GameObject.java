@@ -51,9 +51,7 @@ public abstract class GameObject {
     }
 
 	public void setName(String name) { this.name = name; }
-
     public void setSize(int i) { size = i; }
-
     public int getCoin() {return coin;}
     public void setCoin(int coin) {this.coin = coin;}
 

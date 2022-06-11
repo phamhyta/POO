@@ -25,6 +25,7 @@ public class Entity {
     protected boolean left = false;
     protected boolean attack = false;
     protected boolean fallen = false;
+    protected boolean skill = false;
 
     protected boolean hasIdle = false;
     public boolean xCol = false;
@@ -63,6 +64,8 @@ public class Entity {
     protected boolean teleported = false;
     protected TileCollision tc;
     protected String name = "";
+
+    protected Skill skillAttack;
 
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
@@ -189,9 +192,11 @@ public class Entity {
     public void setFallen(boolean b){ fallen = b; }
     public boolean getDeath() { return die; }
     public int getHealth() { return health; }
+    public void setHealth(int health){ this.health = health;}
     public float getHealthPercent() { return healthpercent; }
     public int getDefense() { return defense; }
     public BoundingBox getHitBounds() { return hitBounds; }
+    public BoundingBox getBounds(){ return bounds;}
     public int getEXP(){ return EXP;}
     public void setEXP(int EXP){ this.EXP= EXP;}
     public boolean isUp() {return up;}
@@ -201,6 +206,7 @@ public class Entity {
     public boolean isAttack() {return attack;}
     public boolean isFallen() {return fallen;}
     public boolean isAttacking() {return attacking;   }
+    public boolean isSkill() {return skill;}
     public boolean isHasIdle() {return hasIdle;}
     public void setName(String name) { this.name = name; }
     public void setSize(int i) { size = i; }
@@ -214,10 +220,9 @@ public class Entity {
     public float getMaxSpeed() { return maxSpeed; }
     public float getDx() { return dx; }
     public float getDy() { return dy; }
-    public BoundingBox getBounds() { return bounds; }
     public Vector2f getPos() { return pos; }
     public int getSize() { return size; }
-
+    public Skill getSkillAttack() {return skillAttack;}
 
 }
 

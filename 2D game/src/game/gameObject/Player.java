@@ -8,6 +8,8 @@ import game.states.PlayState;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends Entity {
@@ -18,6 +20,7 @@ public class Player extends Entity {
     private int mana = 5;
     private float manapercent = 1;
     private int nextLevelEXP = 50;
+    private boolean skillOn= false;
 
     public Player(Vector2f orgin, int size) {
         super(orgin, size);
@@ -127,6 +130,25 @@ public class Player extends Entity {
             }
         checkLevelUp();
         updateHealthManaPercent();
+        if(skill){
+            if(skillOn){
+                if(skillAttack == null){
+                    skillAttack = new Skill(new Vector2f(this.pos.x, this.pos.y),32, currentDirection);
+                }
+                else{
+                    skillAttack.update();
+                    System.out.println(pos.x);
+                    System.out.println(pos.y);
+                    System.out.println(skillAttack.getPos().x);
+                    System.out.println(skillAttack.getPos().y);
+                    if(skillAttack.getDeath()){
+                        skillOn= false;
+                        skillAttack = null;
+                    }
+                }
+            }
+        }
+
     }
 
     public void input(MouseHandler mouse,KeyHandler key ){
@@ -135,6 +157,12 @@ public class Player extends Entity {
             down =key.down.down;
             left=key.left.down;
             right=key.right.down;
+            //SKILL
+            key.skill.tick();
+            if(key.skill.clicked && canAttack){
+                skill = true;
+                skillOn = true;
+            }
             if(key.attack.down && canAttack){
                 attack = true;
                 attacktime = System.nanoTime();

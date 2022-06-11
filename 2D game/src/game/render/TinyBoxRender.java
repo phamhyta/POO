@@ -8,9 +8,7 @@ import game.util.Camera;
 import java.awt.*;
 
 public class TinyBoxRender extends EntityRender{
-    private final TinyBox tiny;
-
-
+    private TinyBox tiny;
     public TinyBoxRender(Camera camera,TinyBox tiny, SpriteSheet spriteSheet) {
         super(camera,tiny, spriteSheet);
         this.tiny= tiny;
@@ -29,7 +27,6 @@ public class TinyBoxRender extends EntityRender{
         currentAnimation = IDLE;
     }
 
-    @Override
     public void update() {
         super.update();
     }
@@ -44,7 +41,7 @@ public class TinyBoxRender extends EntityRender{
                 g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x), (int) (tiny.getPos().getWorldVar().y), tiny.getSize(), tiny.getSize(), null);
             }
 
-            // Health Bar UI
+            // Health Bar
             g.setColor(Color.red);
             g.fillRect((int) (tiny.getPos().getWorldVar().x + tiny.getBounds().getXOffset()), (int) (tiny.getPos().getWorldVar().y - 5), 24, 5);
 

@@ -1,4 +1,4 @@
-@startuml
+startuml
     class Entity{
         - posX: float
         - posY: float
@@ -195,6 +195,5 @@
     GameObject o-- BoundingBox
     Entity o-- BoundingBox
     BoundingBox o-- Vector2f
-
 
 @enduml
