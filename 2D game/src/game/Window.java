@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame {
 
-    private GamePanel gp;
 
     public Window() {
         setTitle("GAME 2D RPG");
