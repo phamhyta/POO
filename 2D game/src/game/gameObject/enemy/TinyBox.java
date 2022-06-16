@@ -1,4 +1,4 @@
-package game.gameObject.monster;
+package game.gameObject.enemy;
 
 import game.math.Vector2f;
 

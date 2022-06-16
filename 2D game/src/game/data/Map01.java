@@ -1,6 +1,5 @@
 package game.data;
 
-import game.gameObject.monster.TinyMon;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;

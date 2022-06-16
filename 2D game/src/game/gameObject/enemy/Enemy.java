@@ -1,15 +1,12 @@
-package game.gameObject.monster;
+package game.gameObject.enemy;
 import game.data.GameControl;
 import game.gameObject.Entity;
 import game.gameObject.Player;
-import game.gameObject.object.OBJ_Coin_Bronze;
-import game.gameObject.object.OBJ_Door;
-import game.gameObject.object.OBJ_ManaCrystal;
-import game.gameObject.object.OBJ_Potion_Red;
+import game.gameObject.object.Coin;
+import game.gameObject.object.ManaCrystal;
+import game.gameObject.object.Potion_Red;
 import game.graphics.Animation;
 import game.math.BoundingBox;
-import game.render.EntityRender;
-import game.util.Camera;
 import game.math.Vector2f;
 
 public class Enemy extends Entity {
@@ -51,20 +48,20 @@ public class Enemy extends Entity {
     }
 
     public void drop() {
-        GameControl.setGameObject(new OBJ_Coin_Bronze((new Vector2f(this.getPos().x,this.getPos().y)),32, this.coin));
-        GameControl.setGameObject(new OBJ_ManaCrystal(new Vector2f(this.getPos().x-50,this.getPos().y),32));
-        GameControl.setGameObject(new OBJ_Potion_Red(new Vector2f(this.getPos().x-20,this.getPos().y),32));
+        GameControl.setGameObject(new Coin((new Vector2f(this.getPos().x,this.getPos().y)),32, this.coin));
+        GameControl.setGameObject(new ManaCrystal(new Vector2f(this.getPos().x-50,this.getPos().y),32));
+        GameControl.setGameObject(new Potion_Red(new Vector2f(this.getPos().x-20,this.getPos().y),32));
         int rand = (int) (Math.random()*75);
         if(rand<15){
-            GameControl.setGameObject(new OBJ_Door(new Vector2f(this.getPos().x,this.getPos().y),32));
+
             }
         else if(rand<50 && rand >= 15){
-            GameControl.setGameObject(new OBJ_ManaCrystal(new Vector2f(this.getPos().x+25,this.getPos().y),32));}
+            GameControl.setGameObject(new ManaCrystal(new Vector2f(this.getPos().x+25,this.getPos().y),32));}
         else if(rand>=50 && rand <=75) {
-            GameControl.setGameObject(new OBJ_Potion_Red(new Vector2f(this.getPos().x-50,this.getPos().y),32));
-            GameControl.setGameObject(new OBJ_ManaCrystal(new Vector2f(this.getPos().x+25,this.getPos().y),32));
+            GameControl.setGameObject(new Potion_Red(new Vector2f(this.getPos().x-50,this.getPos().y),32));
+            GameControl.setGameObject(new ManaCrystal(new Vector2f(this.getPos().x+25,this.getPos().y),32));
         }
-//        if(75<rand && rand <=100) {new OBJ_Item}
+
     }
     private void autoDirecting(Vector2f posA, Vector2f posB){
         if (posA.y > posB.y + 1) {

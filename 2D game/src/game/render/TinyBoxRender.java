@@ -1,7 +1,7 @@
 package game.render;
 
 
-import game.gameObject.monster.TinyBox;
+import game.gameObject.enemy.TinyBox;
 import game.graphics.SpriteSheet;
 import game.util.Camera;
 

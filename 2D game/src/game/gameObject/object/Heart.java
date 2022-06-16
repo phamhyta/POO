@@ -1,26 +1,21 @@
 package game.gameObject.object;
 
 
-import game.gameObject.GameObject;
-import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 
 import java.awt.*;
 
 
-public class OBJ_Heart extends GameObject {
+public class Heart extends GameObject {
 
-	public OBJ_Heart(Vector2f origin, int size) {
+	public Heart(Vector2f origin, int size) {
 		super(origin, size);
 		type = type_pickupOnly;
 		name = "Heart";
 		HP = 2;
-		spriteSheet = new SpriteSheet("/objects/heart_full.png");
-		image =  spriteSheet.getSubimage(0,0,size,size);
 
 	}
 
-	@Override
 	public void render(Graphics2D g) {
 
 	}

@@ -86,7 +86,9 @@ public class EntityRender {
     }
 
     public void render(Graphics2D g){
-        g.drawImage(ani.getImage().image,(int) (entity.getPos().getWorldVar().x),(int)(entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(),null);
+        if(camera.getBounds().collides(entity.getBounds())) {
+            g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
+        }
         if(entity.isSkill() && entity.getSkillAttack() != null){
                 g.setColor(Color.cyan);
                 g.drawRect((int)entity.getSkillAttack().getPos().getWorldVar().x,(int)entity.getSkillAttack().getPos().getWorldVar().y,entity.getSkillAttack().getSize(),entity.getSkillAttack().getSize());

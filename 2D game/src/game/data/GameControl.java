@@ -1,7 +1,7 @@
 package game.data;
 
-import game.gameObject.GameObject;
-import game.gameObject.monster.Enemy;
+import game.gameObject.object.GameObject;
+import game.gameObject.enemy.Enemy;
 import game.gameObject.NPC;
 import game.gameObject.Player;
 import game.math.Vector2f;
@@ -64,10 +64,10 @@ public class GameControl {
 
         for(int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
-                if (gameObject.get(i).type == 6) {
+                if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
-                } else if (gameObject.get(i).type != 8) {
+                } else if (gameObject.get(i).type != GameObject.type_nextMap) {
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
                 }
@@ -112,7 +112,7 @@ public class GameControl {
         }
 
         for(int i = 0; i < gameObject.size(); ++i) {
-            gameObject.get(i).render(g);
+            gameObject.get(i).getObjectRender().render(g);
         }
 
     }

@@ -1,7 +1,8 @@
 package game.gameObject;
 
 import game.GamePanel;
-import game.gameObject.monster.Enemy;
+import game.gameObject.enemy.Enemy;
+import game.gameObject.object.GameObject;
 import game.graphics.Animation;
 import game.states.GameStateManager;
 import game.states.PlayState;
@@ -9,7 +10,6 @@ import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends Entity {
