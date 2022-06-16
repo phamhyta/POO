@@ -1,6 +1,6 @@
 package game.gameObject.object;
 
-import game.gameObject.Material;
+import game.gameObject.GameObject;
 import game.gameObject.Player;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -8,7 +8,7 @@ import game.math.Vector2f;
 import java.awt.*;
 
 
-public class OBJ_Coin_Bronze extends Material {
+public class OBJ_Coin_Bronze extends GameObject {
 
 	public OBJ_Coin_Bronze(Vector2f origin, int size, int value) {
 		super(origin, size);

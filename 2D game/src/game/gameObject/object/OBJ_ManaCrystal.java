@@ -1,6 +1,6 @@
 package game.gameObject.object;
 
-import game.gameObject.Material;
+import game.gameObject.GameObject;
 import game.gameObject.Player;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -8,7 +8,7 @@ import game.math.Vector2f;
 import java.awt.*;
 
 
-public class OBJ_ManaCrystal extends Material {
+public class OBJ_ManaCrystal extends GameObject {
 
 	public OBJ_ManaCrystal(Vector2f origin, int size) {
 		super(origin, size);

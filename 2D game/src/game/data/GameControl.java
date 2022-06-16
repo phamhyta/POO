@@ -1,12 +1,11 @@
 package game.data;
 
-
+import game.gameObject.GameObject;
 import game.gameObject.monster.Enemy;
-import game.gameObject.Material;
 import game.gameObject.NPC;
 import game.gameObject.Player;
 import game.math.Vector2f;
-import game.render.EnemyRender;
+import game.render.EntityRender;
 import game.states.GameStateManager;
 import game.tile.TileManager;
 import game.util.Camera;
@@ -21,24 +20,24 @@ public class GameControl {
     public GameStateManager gsm;
     private MapAsset[] mapAs;
     private int currentMap = 0;
-    public static ArrayList<Material> materialGame;
+    private static ArrayList<GameObject> gameObject;
     public Enemy[] enemy;
     public long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
     public TileManager tm;
-    public EnemyRender enemyRender[];
+    public EntityRender entityRender[];
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
         this.cam = cam;
         this.gsm = gsm;
         mapAs = new MapAsset[5];
-        materialGame = new ArrayList();
+        gameObject = new ArrayList();
         enemy = new Enemy[20];
         origin = new Vector2f[20];
         deadStartTime = new long[20];
-        enemyRender = new EnemyRender[20];
+        entityRender = new EntityRender[20];
 
         for(int i = 0; i < this.deadStartTime.length; ++i) {
             this.deadStartTime[i] = 0L;
@@ -49,15 +48,13 @@ public class GameControl {
     }
 
     private void resetAsset() {
-        materialGame.clear();
-
-        int i;
-        for(i = 0; i < this.enemy.length; ++i) {
+        gameObject.clear();
+        for(int i = 0; i < this.enemy.length; ++i) {
             this.enemy[i] = null;
-            this.enemyRender[i]=null;
+            this.entityRender[i]=null;
         }
 
-        for(i = 0; i < this.npc.length; ++i) {
+        for(int i = 0; i < this.npc.length; ++i) {
             this.npc[i] = null;
         }
 
@@ -65,14 +62,14 @@ public class GameControl {
 
     public void update(double time) {
 
-        for(int i = 0; i < materialGame.size(); ++i) {
-            if (this.player.getBounds().collides(materialGame.get(i).getBounds())) {
-                if (materialGame.get(i).type == 6) {
-                    materialGame.get(i).use(player);
-                    materialGame.remove(i);
-                } else if (materialGame.get(i).type != 8) {
-                    player.setTargetMaterial(materialGame.get(i));
-                    materialGame.remove(i);
+        for(int i = 0; i < gameObject.size(); ++i) {
+            if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
+                if (gameObject.get(i).type == 6) {
+                    gameObject.get(i).use(player);
+                    gameObject.remove(i);
+                } else if (gameObject.get(i).type != 8) {
+                    player.setTargetMaterial(gameObject.get(i));
+                    gameObject.remove(i);
                 }
             }
         }
@@ -86,11 +83,11 @@ public class GameControl {
                 if (enemy[i].getDeath()) {
                     player.setEXP(this.player.getEXP() + enemy[i].getEXP());
                     enemy[i].drop();
-                    enemyRender[i]= null;
+                    entityRender[i]= null;
                     enemy[i] = null;
                     deadStartTime[i] = System.currentTimeMillis();
                 } else {
-                    if(enemyRender[i] != null) enemyRender[i].update();
+                    if(entityRender[i] != null) entityRender[i].update();
                     enemy[i].update(player, time, origin[i]);
                 }
             }
@@ -106,17 +103,16 @@ public class GameControl {
 
     public void render(Graphics2D g) {
         this.tm.render(g);
-
         for(int i = 0; i < enemy.length; i++) {
             if (enemy[i] != null && cam.getBounds().collides(enemy[i].getBounds())) {
-                if(enemyRender[i] != null) {
-                    this.enemyRender[i].render(g);
+                if(entityRender[i] != null) {
+                    this.entityRender[i].render(g);
                 }
             }
         }
 
-        for(int i = 0; i < materialGame.size(); ++i) {
-            materialGame.get(i).render(g);
+        for(int i = 0; i < gameObject.size(); ++i) {
+            gameObject.get(i).render(g);
         }
 
     }
@@ -128,6 +124,9 @@ public class GameControl {
             if (npc[i] != null && player.getBounds().collides(npc[i].getBounds()) && key.enter.clicked) {
             }
         }
+    }
 
+    public static void setGameObject(GameObject go) {
+        gameObject.add(go);
     }
 }

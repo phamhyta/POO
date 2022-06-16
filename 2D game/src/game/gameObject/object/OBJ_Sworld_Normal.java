@@ -1,14 +1,14 @@
 package game.gameObject.object;
 
 
-import game.gameObject.Material;
+import game.gameObject.GameObject;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 
 import java.awt.*;
 
 
-public class OBJ_Sworld_Normal extends Material {
+public class OBJ_Sworld_Normal extends GameObject {
 
 
 	public OBJ_Sworld_Normal(Vector2f origin, int size) {

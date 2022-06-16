@@ -3,15 +3,14 @@ package game.render;
 
 import game.gameObject.monster.TinyBox;
 import game.graphics.SpriteSheet;
+import game.util.Camera;
 
 import java.awt.*;
 
-public class TinyBoxRender extends EnemyRender{
-    private final TinyBox tiny;
-
-
-    public TinyBoxRender(TinyBox tiny, SpriteSheet spriteSheet) {
-        super(tiny, spriteSheet);
+public class TinyBoxRender extends EntityRender{
+    private TinyBox tiny;
+    public TinyBoxRender(Camera camera,TinyBox tiny, SpriteSheet spriteSheet) {
+        super(camera,tiny, spriteSheet);
         this.tiny= tiny;
 
         ATTACK = 0;
@@ -28,14 +27,13 @@ public class TinyBoxRender extends EnemyRender{
         currentAnimation = IDLE;
     }
 
-    @Override
     public void update() {
         super.update();
     }
 
     @Override
     public void render(Graphics2D g) {
-        if(tiny.cam.getBounds().collides(tiny.getBounds())) {
+        if(camera.getBounds().collides(tiny.getBounds())) {
 
             if(tiny.useRight && tiny.isLeft()) {
                 g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x) + tiny.getSize(), (int) (tiny.getPos().getWorldVar().y), -tiny.getSize(), tiny.getSize(), null);
@@ -43,7 +41,7 @@ public class TinyBoxRender extends EnemyRender{
                 g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x), (int) (tiny.getPos().getWorldVar().y), tiny.getSize(), tiny.getSize(), null);
             }
 
-            // Health Bar UI
+            // Health Bar
             g.setColor(Color.red);
             g.fillRect((int) (tiny.getPos().getWorldVar().x + tiny.getBounds().getXOffset()), (int) (tiny.getPos().getWorldVar().y - 5), 24, 5);
 

@@ -3,27 +3,27 @@ package game.gameObject;
 import game.GamePanel;
 import game.gameObject.monster.Enemy;
 import game.graphics.Animation;
+import game.states.GameStateManager;
 import game.states.PlayState;
-import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends Entity {
-    private Camera cam;
     private ArrayList<Enemy> enemy;
-    private ArrayList<Material> inventory;
+    private ArrayList<GameObject> inventory;
 
     private int maxMana=50;
     private int mana = 5;
     private float manapercent = 1;
-
     private int nextLevelEXP = 50;
+    private boolean skillOn= false;
 
-    public Player(Camera cam, Vector2f orgin, int size) {
+    public Player(Vector2f orgin, int size) {
         super(orgin, size);
-        this.cam = cam;
         setDefaultValue();
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
@@ -57,23 +57,22 @@ public class Player extends Entity {
         this.enemy.add(enemy);
     }
 
-    public void setTargetMaterial(Material material) {
-        this.inventory.add(material);
+    public void setTargetMaterial(GameObject go) {
+        this.inventory.add(go);
     }
-    public void removeMaterial(Material material){
-        this.inventory.remove(material);
+    public void removeMaterial(GameObject go){
+        this.inventory.remove(go);
     }
 
-    public void resetPosition(){
+    private void resetPosition(){
         System.out.println("Reseting Player... ");
         pos.x = GamePanel.width/2-32;
         PlayState.map.x=0;
-        cam.getPos().x =0;
+        GameStateManager.cam.getPos().x =0;
 
         pos.y = GamePanel.height/2-32;
-        cam.getPos().y =0;
+        GameStateManager.cam.getPos().y =0;
         PlayState.map.y=0;
-
     }
     private void checkLevelUp(){
         if(this.EXP >= nextLevelEXP){
@@ -131,6 +130,25 @@ public class Player extends Entity {
             }
         checkLevelUp();
         updateHealthManaPercent();
+        if(skill){
+            if(skillOn){
+                if(skillAttack == null){
+                    skillAttack = new Skill(new Vector2f(this.pos.x, this.pos.y),32, currentDirection);
+                }
+                else{
+                    skillAttack.update();
+                    System.out.println(pos.x);
+                    System.out.println(pos.y);
+                    System.out.println(skillAttack.getPos().x);
+                    System.out.println(skillAttack.getPos().y);
+                    if(skillAttack.getDeath()){
+                        skillOn= false;
+                        skillAttack = null;
+                    }
+                }
+            }
+        }
+
     }
 
     public void input(MouseHandler mouse,KeyHandler key ){
@@ -139,6 +157,12 @@ public class Player extends Entity {
             down =key.down.down;
             left=key.left.down;
             right=key.right.down;
+            //SKILL
+            key.skill.tick();
+            if(key.skill.clicked && canAttack){
+                skill = true;
+                skillOn = true;
+            }
             if(key.attack.down && canAttack){
                 attack = true;
                 attacktime = System.nanoTime();
@@ -150,10 +174,10 @@ public class Player extends Entity {
             }
             if(key.shift.down) {
                 maxSpeed = 8;
-                cam.setMaxSpeed(7);
+                GameStateManager.cam.setMaxSpeed(7);
             } else {
                 maxSpeed = 4;
-                cam.setMaxSpeed(4);
+                GameStateManager.cam.setMaxSpeed(4);
             }
 
             if(up && down) {

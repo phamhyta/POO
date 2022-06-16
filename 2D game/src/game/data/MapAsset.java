@@ -7,6 +7,7 @@ import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.render.TinyBoxRender;
 import game.render.TinyMonRender;
+import game.util.Camera;
 
 public abstract class MapAsset {
     protected GameControl gc;
@@ -23,15 +24,15 @@ public abstract class MapAsset {
 
     public abstract void resetEnemy(int i);
 
-    public void setTinyBox(int i, Vector2f vt, SpriteSheet spriteSheet,int size){
-        TinyBox tiny = new TinyBox(this.gc.cam, new Vector2f(gc.origin[i]), size);
+    public void setTinyBox(Camera camera,int i, Vector2f vt, SpriteSheet spriteSheet, int size){
+        TinyBox tiny = new TinyBox( new Vector2f(gc.origin[i]), size);
         gc.enemy[i] = tiny;
-        gc.enemyRender[i] = new TinyBoxRender(tiny,spriteSheet);
+        gc.entityRender[i] = new TinyBoxRender(camera,tiny,spriteSheet);
     }
-    public void setTinyMoon(int i, Vector2f vt, SpriteSheet spriteSheet,int size){
-        TinyMon tiny = new TinyMon(this.gc.cam, new Vector2f(gc.origin[i]), size);
+    public void setTinyMoon(Camera camera,int i, Vector2f vt, SpriteSheet spriteSheet,int size){
+        TinyMon tiny = new TinyMon(new Vector2f(gc.origin[i]), size);
         gc.enemy[i] = tiny;
-        gc.enemyRender[i] = new TinyMonRender(tiny,spriteSheet);
+        gc.entityRender[i] = new TinyMonRender(camera,tiny,spriteSheet);
     }
 
     public abstract void setNPC();

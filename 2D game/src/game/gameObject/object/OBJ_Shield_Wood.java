@@ -1,14 +1,14 @@
 package game.gameObject.object;
 
 
-import game.gameObject.Material;
+import game.gameObject.GameObject;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 
 import java.awt.*;
 
 
-public class OBJ_Shield_Wood extends Material {
+public class OBJ_Shield_Wood extends GameObject {
 
 	public OBJ_Shield_Wood(Vector2f origin, int size) {
 		super(origin, size);

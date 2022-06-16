@@ -4,7 +4,6 @@ import game.GamePanel;
 
 import game.data.GameControl;
 import game.gameObject.Player;
-import game.gameObject.object.OBJ_Door;
 import game.graphics.SpriteSheet;
 import game.render.PlayerRender;
 import game.tile.TileManager;
@@ -33,8 +32,8 @@ public class PlayState extends GameState {
         map = new Vector2f(0,0);
         Vector2f.setWorldVar(map.x,map.y);
         this.cam = cam;
-        player = new Player(cam, new Vector2f(0 + (GamePanel.width / 2) - 32, 0 + (GamePanel.height / 2) - 32), 64);
-        playerRender = new PlayerRender(player,new SpriteSheet("res/entity/linkFormatted.png", 32, 32) );
+        player = new Player(new Vector2f(0 + (GamePanel.width / 2) - 32, 0 + (GamePanel.height / 2) - 32), 64);
+        playerRender = new PlayerRender(cam,player,new SpriteSheet("res/entity/linkFormatted.png", 32, 32) );
         gc = new GameControl(player, cam, gsm);
 
         cam.target(player);

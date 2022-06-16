@@ -4,12 +4,14 @@ import game.gameObject.Entity;
 import game.graphics.Animation;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
+import game.util.Camera;
 
 import java.awt.*;
 
-public abstract class EntityRender {
+public class EntityRender {
     protected Entity entity;
-    protected Animation ani;
+    public Animation ani;
+    protected Camera camera;
 
     protected int UP =3;
     protected int DOWN=2;
@@ -23,10 +25,10 @@ public abstract class EntityRender {
 
     protected SpriteSheet spriteSheet;
 
-    public EntityRender(Entity entity, SpriteSheet spriteSheet){
+    public EntityRender(Camera camera,Entity entity, SpriteSheet spriteSheet){
         this.entity = entity;
         this.spriteSheet = spriteSheet;
-
+        this.camera=camera;
         ani = new Animation();
         setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT),10 );
 
@@ -80,8 +82,16 @@ public abstract class EntityRender {
     public void update(){
         animate();
         ani.update();
+        if(ani.hasPlayedOnce() ){currentAnimation = RIGHT;}
     }
 
-    public abstract void render(Graphics2D g);
+    public void render(Graphics2D g){
+        g.drawImage(ani.getImage().image,(int) (entity.getPos().getWorldVar().x),(int)(entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(),null);
+        if(entity.isSkill() && entity.getSkillAttack() != null){
+                g.setColor(Color.cyan);
+                g.drawRect((int)entity.getSkillAttack().getPos().getWorldVar().x,(int)entity.getSkillAttack().getPos().getWorldVar().y,entity.getSkillAttack().getSize(),entity.getSkillAttack().getSize());
+
+        }
+    }
 
 }
