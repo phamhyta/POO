@@ -1,8 +1,8 @@
 
 package game.data;
 
-import game.gameObject.monster.TinyBox;
-import game.gameObject.monster.TinyMon;
+import game.gameObject.enemy.TinyBox;
+import game.gameObject.enemy.TinyMon;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.render.TinyBoxRender;

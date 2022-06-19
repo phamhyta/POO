@@ -17,12 +17,12 @@ public class Animation {
     public Animation(Sprite[] frames){
         timesPlayed =0;
         setFrames(0,frames);
-        states = new int[10];
+        states = new int[200];
 
     }
     public Animation(){
         timesPlayed =0;
-        states = new int[10];
+        states = new int[20];
     }
 
     public void setFrames(int state ,Sprite[] frames){
