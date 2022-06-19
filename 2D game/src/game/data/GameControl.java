@@ -19,9 +19,9 @@ public class GameControl {
     public Player player;
     public GameStateManager gsm;
     private MapAsset[] mapAs;
-    private int currentMap = 0;
-    private static ArrayList<GameObject> gameObject;
-    public Enemy[] enemy;
+    public static int currentMap = 0;
+    public static ArrayList<GameObject> gameObject;
+    public static Enemy[] enemy;
     public long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
@@ -39,11 +39,7 @@ public class GameControl {
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
 
-        for(int i = 0; i < this.deadStartTime.length; ++i) {
-            this.deadStartTime[i] = 0L;
-        }
         this.npc = new NPC[5];
-
         this.mapAs[0] = new Map01(this);
     }
 
@@ -53,7 +49,6 @@ public class GameControl {
             this.enemy[i] = null;
             this.entityRender[i]=null;
         }
-
         for(int i = 0; i < this.npc.length; ++i) {
             this.npc[i] = null;
         }
@@ -76,9 +71,11 @@ public class GameControl {
 
         for(int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
+
                 if (player.getHitBounds().collides(enemy[i].getBounds())) {
                     player.setTargetEnemy(enemy[i]);
                 }
+
 
                 if (enemy[i].getDeath()) {
                     player.setEXP(this.player.getEXP() + enemy[i].getEXP());

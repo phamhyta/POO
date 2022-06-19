@@ -5,7 +5,7 @@ import game.GamePanel;
 import game.data.GameControl;
 import game.gameObject.Player;
 import game.graphics.SpriteSheet;
-import game.render.PlayerRender;
+import game.render.EntityRender;
 import game.tile.TileManager;
 import game.ui.PlayerUI;
 import game.util.Camera;
@@ -20,7 +20,7 @@ import java.awt.*;
 public class PlayState extends GameState {
     private TileManager tm;
     private Player player;
-    private PlayerRender playerRender;
+    private EntityRender playerRender;
 
     public static Vector2f map;
     private Camera cam;
@@ -32,8 +32,8 @@ public class PlayState extends GameState {
         map = new Vector2f(0,0);
         Vector2f.setWorldVar(map.x,map.y);
         this.cam = cam;
-        player = new Player(new Vector2f(0 + (GamePanel.width / 2) - 32, 0 + (GamePanel.height / 2) - 32), 64);
-        playerRender = new PlayerRender(cam,player,new SpriteSheet("res/entity/linkFormatted.png", 32, 32) );
+        player = new Player(new Vector2f(0 + (GamePanel.width / 2) +100, 0 + (GamePanel.height / 2) +100), 64);
+        playerRender = new EntityRender(cam,player,new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32) );
         gc = new GameControl(player, cam, gsm);
 
         cam.target(player);
@@ -43,7 +43,6 @@ public class PlayState extends GameState {
 
     public void update(double time) {
         Vector2f.setWorldVar(map.x,map.y);
-
         if(!gsm.isStateActive(GameStateManager.PAUSE) && !gsm.isStateActive(GameStateManager.GAMEOVER) ){
             playerRender.update();
             player.update(time);

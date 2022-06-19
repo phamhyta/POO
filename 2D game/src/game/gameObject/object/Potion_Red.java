@@ -16,10 +16,10 @@ public class Potion_Red extends GameObject {
 
 	public void use(Player player) {
 		if(player.getHealth() + this.HP < player.getMaxHealth()) {
-			player.setCurrentHealth(player.getHealth() + this.HP);
+			player.setHealth(player.getHealth() + this.HP);
 		}
 		else{
-			player.setCurrentHealth(player.getMaxHealth());
+			player.setHealth(player.getMaxHealth());
 		}
 	}
 

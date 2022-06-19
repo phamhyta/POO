@@ -31,21 +31,11 @@ public class Enemy extends Entity {
         r_attackrange = 32;
         r_enemyArea= 500;
 
-        bounds.setWidth(42);
-        bounds.setHeight(20);
-        bounds.setXOffset(16);
-        bounds.setYOffset(40);
-
         sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
         attackrange = new BoundingBox(new Vector2f(origin.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2,
                 origin.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2), r_attackrange);
     }
 
-
-    public void reset(){
-        health = maxHealth;
-        healthpercent = health / maxHealth;
-    }
 
     public void drop() {
         GameControl.setGameObject(new Coin((new Vector2f(this.getPos().x,this.getPos().y)),32, this.coin));
@@ -123,7 +113,6 @@ public class Enemy extends Entity {
                 if (sense.colCircleBox(player.getBounds())) {
                     this.chase(player);
                 } else {
-                    reset();
                     this.moveBack(center);
                 }
             } else {
@@ -153,10 +142,10 @@ public class Enemy extends Entity {
         }
 
         if (attackrange.colCircleBox(player.getBounds()) && !isInvincible) {
-            attack = true;
+            attacking = true;
             player.setHealth(player.getHealth() - damage, 5f * getDirection(), currentDirection == UP || currentDirection == DOWN);
         } else {
-            attack = false;
+            attacking = false;
         }
 
         if (!fallen) {

@@ -1,21 +1,25 @@
 package game.gameObject;
 
+import game.data.GameControl;
 import game.math.Vector2f;
 
 public class Skill extends Entity{
     private int direction;
 
-    private int ManaConsume =50;
+    private Entity entity;
+    private SkillRender skillRender;
 
-    public Skill(Vector2f origin, int size, int direction) {
-        super(origin, size);
-        this.direction = direction;
+    public Skill(Entity entity, int size) {
+        super(new Vector2f(entity.getPos()), size);
+        this.entity = entity;
+        this.direction = entity.currentDirection;
+        skillRender = new SkillRender(this);
         checkCurrentDirection();
-        damage = 50;
+        damage = entity.getDamage()*2;
         health= 100;
         maxSpeed = 5;
         acc = 2;
-        deacc=5;
+        deacc=1;
     }
 
     private void checkCurrentDirection() {
@@ -25,26 +29,28 @@ public class Skill extends Entity{
         if(direction == RIGHT) right =true;
     }
 
-
-    public void checkAlive(Entity entity){
-        if(this.bounds.collides(entity.getBounds())){
-            die = true;
-            entity.setHealth(entity.getHealth() - damage);
-        }
-    }
-
     public void update() {
         if(!die){
             move();
             this.pos.x += dx;
             this.pos.y += dy;
             health = health -1;
-            System.out.println(health);
         }
         if(health <= 0) {die = true;}
-        else die = false;
-        System.out.println(die);
-    }
 
-    public int getManaConsume() {return ManaConsume;}
+        for(int i=0; i< GameControl.enemy.length; i++){
+            if(GameControl.enemy[i] != null){
+                if(this.getBounds().collides(GameControl.enemy[i].getBounds())){
+                    die = true;
+                    GameControl.enemy[i].setHealth(GameControl.enemy[i].getHealth() - this.damage);
+                    GameControl.enemy[i].updateHealthManaPercent();
+                    if(GameControl.enemy[i].getHealth() <= 0) GameControl.enemy[i].setDeath(true);
+                }
+            }
+        }
+        if(tc.collisionTile(dx, 0) || tc.collisionTile(0, dy)) die = true;
+    }
+    public SkillRender getSkillRender() {return skillRender;}
+
 }
+

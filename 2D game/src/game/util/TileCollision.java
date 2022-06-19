@@ -47,6 +47,5 @@ public class TileCollision {
         e.setFallen(false);
         return false;
     }
-
 }
 
