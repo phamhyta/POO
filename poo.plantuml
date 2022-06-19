@@ -1,82 +1,91 @@
-startuml
+@startuml
     class Entity{
-        - posX: float
-        - posY: float
-        - speed:int
-        - defense: int
-        {static} - maxHP: int
-        - HP: int
+        # currentDirection: int
+        # hitsize: int
+        # hitBounds: BoundingBox
+        # bounds: BoundingBox
+        # pos: Vector2f
+        # size: int
+        # invincible: int
+        # attackSpeed: int
+        # attackDuration: int
+        # maxHealth: int
+        # health: int
+        # healthpercent: float
+        # defense: int
+        # damage: int
+        # EXP: int
+        + Entity()
+        + setPos(): void
+        + addForce(): void
+        + setHealth(): void
+        + getDirection(): int
+        - setHitBoxDirection(): void
+        # isAttacking(): boolean
+        +  isInCircle(): boolean
+        +  isInCirclePath(): boolean
+        + move(): void
+        + update(): void
     }
     class Enemy extends Entity{
-        # sense: AABB
+        # sense: BoundingBox
+        # attackrange: BoundingBox
         # r_sense: int
-        # attackrange: AABB 
         # r_attackrange: int
         # r_enemyArea: int
         # xOffset: int
         # yOffset: int
+        + useRight: boolean
         + Enemy()
         + reset(): void
         + drop(): void
+        - autoDirecting(): void
+        - stopDirecting(): void
         + chase(): void
         + moveBack(): void
         + moveInCircle(): void
         + update(): void
-        + render(): void
     }
     class TinyBox extends Enemy{
         + TinyBox()
-        + render(): void
     }
     class TinyMon extends Enemy{
         + TinyMon()
     }
-    class Player{
-        + Player(): constructor
-        + update(): void
-        + render(): void 
-        - input(): void 
-        - setDefaultValue(): void 
-        + pickUpObject(): void 
-        - checkLevelUp(): void 
-        + useItem(): void 
-        + receiveDamage(): Integer
-        + damageMonster(): Integer
-        {static} + levelEXP : int
-        {static} + maxMana: int
+    class Player extends Entity{
+        - maxMana: int
         - mana: int
-        - level: int
-        - coin: int
-        - name: String
-        - attack: int
-        - currentEXP: int
+        - manapercent: float
+        - nextLevelEXP: int
+        - skillOn: boolean
+        + Player()
+        - setDefaultValue(): void
+        + setTargetEnemy(): void
+        + setTargetMaterial(): void
+        + removeMaterial(): void
+        - resetPosition(): void
+        - checkLevelUp(): void
+        - updateHealthManaPercent(): void
+        + update(): void
+        + input(): void 
     }
-    class GameObject{
-        + name: String
-        + image: BufferedImage
-        + objAttack: int
-        + objDefense: int
-        + objSpeed: int
-        + objHp:int
-        + objMana:int
-        + postion_X: float
-        + postion_Y: float
-        + GameObject(): constructor
-        + setup(): BufferedImage 
-        + draw():void
-        + update():void
-    }
-    class Material extends GameObject{
-        # MP: int
+    abstract class GameObject{
+        # spriteSheet: spriteSheet
+        # bounds: BoundingBox
+        # pos: Vector2f
+        # size: int
+        # coin: int
+        # teleported: boolean
+        # name: String
         # HP: int
+        # MP: int
         # speed: int
         # attackValue: int
         # defense: int
-        # image: BufferedImage
-        + Material()
+        + GameObject()
+        + setPos(): void
         + use(): void
-        + update(): void
-        + render(): void
+        + update():void
     }
     class NPC{
         - name: String
@@ -93,7 +102,6 @@ startuml
         + NpcUI()
         + drawDialogues(): void
         + drawSubWindow(): public
-
     }
     class Shop{
         - cost: int
@@ -174,7 +182,7 @@ startuml
         - r: float
         - size: int
         - e: Entity
-        + AABB()
+        + BoundingBox()
         + setBox(): void
         + setCircle(): void
         + collides(): boolean
@@ -189,8 +197,140 @@ startuml
         + setVector()
         + setWorldVar()
     }
+    class EntityRender{
+        # entity: Entity
+        + ani: Animation
+        # camera: Camera 
+        # currentAnimation: int
+        # spriteSheet: SpriteSheet
+        + EntityRender()
+        + setAnimation(): void
+        + animate(): void
+        + update(): void
+        + render(): void
+    }
+    class TinyBoxRender extends EntityRender{
+        - tiny: TinyBox
+        + TinyBoxRender()
+        + update()
+        + render(): void
+    }
+    class TinyMonRender extends EntityRender{
+        - tiny: TinyMon
+        + TinyMonRender()
+        + update(): void
+        + render(): void
+    }
+    abstract class GameState{
+        # gsm: GameStateManager
+        + GameState()
+        + update(): void
+        + intput(): void
+        + render(): void
+    }
+    class GameStateManager{
+        - states: GameState
+        + map: Vector2f
+        + cam: Camera
+        + g: Graphics2D
+        + font: Font
+        + fontf: Fontf
+        + GameStateManager()
+        + isStateActive(): boolean
+        + pop(): void
+        + add(): void
+        + addAndpop(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class MenuState extends GameState {
+        + MenuState()
+        + update(): void
+        + input: void
+        + render(): void
+    }
+    class PauseState extends GameState {
+        + PauseState()
+        + update(): void
+        + input: void
+        + render(): void
+    }
+    class TitleState extends GameState{
+        - commandNum: int
+        + TitleState()
+        + update(): void
+        + input: void
+        + render(): void
+        + getXforCenteredText(): int
+    }
+    class PlayState extends GameState{
+        - player: Player
+        - playerRender: PlayerRender
+        + map: Vector2f
+        - cam: Camera
+        - pui: PlayerUI
+        - gc: GameControl
+        + PlayState()
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class GameOverState extends GameState {
+        + GameOverState()
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class GameControl{
+        + cam: Camera
+        + player: Player
+        + gsm: GameStateManager
+        - mapAs: MapAsset
+        - currentMap: int
+        - gameObject: GameObject 
+        + enemy: Enemy
+        + npc: NPC
+        + origin: Vector2f
+        + tm: TileManager
+        + entityRender: EntityRender
+        + GameControl()
+        + resetAsset(): void
+        + update(): void
+        + render(): void
+        + setGameObject(): void
+    }
+    abstract class MapAsset{
+        # gc: GameControl
+        + MapAsset()
+        + setTinyBox(): void
+        + setTinyMoon(): void
+    }
+    class Map01 extends MapAsset {
+        + Map01()
+        + setMaterialPosition(): void
+        + setMonsterPosition(): void
+        + resetEnemy(): void
+        + setNPC(): void
+    }
+    class Camera{
+        - collisionCam: BoundingBox
+        - dx: float
+        - dy: float
+        - maxSpeed: float
+        - acc: float
+        - deacc: float
+        - widthLimit: int
+        - heightLimit: int
+        - tileSize: int
+        + Camera()
+        + update(): void
+        + move(): void
+        + target(): void
+        + input(): void
+        + render(): void
+    }
     GameObject <|-- Shop
-    Entity <|-- Player
     Entity <|-- NPC
     GameObject o-- BoundingBox
     Entity o-- BoundingBox

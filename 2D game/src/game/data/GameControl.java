@@ -45,11 +45,11 @@ public class GameControl {
 
     private void resetAsset() {
         gameObject.clear();
-        for(int i = 0; i < this.enemy.length; ++i) {
+        for (int i = 0; i < this.enemy.length; ++i) {
             this.enemy[i] = null;
-            this.entityRender[i]=null;
+            this.entityRender[i] = null;
         }
-        for(int i = 0; i < this.npc.length; ++i) {
+        for (int i = 0; i < this.npc.length; ++i) {
             this.npc[i] = null;
         }
 
@@ -57,7 +57,7 @@ public class GameControl {
 
     public void update(double time) {
 
-        for(int i = 0; i < gameObject.size(); ++i) {
+        for (int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
@@ -69,32 +69,32 @@ public class GameControl {
             }
         }
 
-        for(int i = 0; i < enemy.length; ++i) {
+        for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
 
                 if (player.getHitBounds().collides(enemy[i].getBounds())) {
                     player.setTargetEnemy(enemy[i]);
                 }
 
-
                 if (enemy[i].getDeath()) {
                     player.setEXP(this.player.getEXP() + enemy[i].getEXP());
                     enemy[i].drop();
-                    entityRender[i]= null;
+                    entityRender[i] = null;
                     enemy[i] = null;
                     deadStartTime[i] = System.currentTimeMillis();
                 } else {
-                    if(entityRender[i] != null) entityRender[i].update();
+                    if (entityRender[i] != null)
+                        entityRender[i].update();
                     enemy[i].update(player, time, origin[i]);
                 }
             }
 
-            if (enemy[i] == null && this.deadStartTime[i] != 0L && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
+            if (enemy[i] == null && this.deadStartTime[i] != 0L
+                    && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
                 mapAs[currentMap].resetEnemy(i);
                 deadStartTime[i] = 0L;
             }
         }
-
 
     }
 
@@ -114,7 +114,7 @@ public class GameControl {
 
     }
 
-    public void input(MouseHandler mouse, KeyHandler key) {
+    public  void input(MouseHandler mouse, KeyHandler key) {
         key.enter.tick();
 
         for(int i = 0; i < this.npc.length; ++i) {
