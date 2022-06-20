@@ -73,6 +73,7 @@ public class Player extends Entity {
             mana= maxMana;
             nextLevelEXP *=2;
             damage = damage +10;
+            GameStateManager.sound.playSingleMusic(8);
         }
     }
 
