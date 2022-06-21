@@ -1,6 +1,5 @@
 package game.tile;
 
-
 import game.graphics.SpriteSheet;
 import game.util.Camera;
 import org.w3c.dom.Document;
@@ -20,10 +19,8 @@ public class TileManager {
     private Camera cam;
     private SpriteSheet spritesheet;
 
-
     private int width;
     private int height;
-
 
     private String file;
     private int columns;
@@ -69,7 +66,11 @@ public class TileManager {
 
             this.columns = tileColumns;
             this.file = imagePath;
+<<<<<<< HEAD
             sprite = new SpriteSheet("res/tile/" + imagePath + ".png", tileWidth, tileHeight);
+=======
+            sprite = new SpriteSheet("res/tile/" + imagePath +".png", tileWidth, tileHeight);
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
             list = doc.getElementsByTagName("layer");
             layers = list.getLength();
@@ -107,7 +108,6 @@ public class TileManager {
     public void render(Graphics2D g) {
         if(cam == null)
             return;
-
         for(int i = 0; i < tm.size(); i++) {
             tm.get(i).render(g, cam.getBounds());
         }

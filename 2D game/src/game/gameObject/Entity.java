@@ -4,6 +4,11 @@ import game.math.BoundingBox;
 import game.util.TileCollision;
 import game.math.Vector2f;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 public class Entity {
 
     protected int currentDirection = 0;
@@ -14,18 +19,29 @@ public class Entity {
     protected Vector2f pos;
     protected int size;
 
+<<<<<<< HEAD
     protected int UP =3;
     protected int DOWN=2;
     protected int RIGHT=0;
     protected int LEFT=1;
+=======
+    protected final int UP =3;
+    protected final int DOWN=2;
+    protected final int RIGHT=0;
+    protected final int LEFT=1;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     protected boolean up = false;
     protected boolean down = false;
     protected boolean right = false;
     protected boolean left = false;
+<<<<<<< HEAD
     protected boolean attack = false;
     protected boolean fallen = false;
     protected boolean skill = false;
+=======
+    protected boolean fallen = false;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     protected boolean hasIdle = false;
     public boolean xCol = false;
@@ -36,21 +52,44 @@ public class Entity {
     protected boolean die = false;
 
     protected int attackSpeed = 1050; // in milliseconds
+<<<<<<< HEAD
 
     public int getAttackDuration() {
         return attackDuration;
     }
 
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     protected int attackDuration = 650; // in milliseconds
     protected double attacktime;
     protected boolean canAttack = true;
     protected boolean attacking = false;
 
+<<<<<<< HEAD
     protected int maxHealth = 100;
     protected int health = 100;
     protected float healthpercent = 1;
     protected int defense = 10;
     protected int damage = 25;
+=======
+    protected int skillSpeed = 2500; // in milliseconds
+    protected int skillDuration = 1500; // in milliseconds
+    protected double skilltime;
+    protected boolean canSkill = true;
+    protected boolean skilling = false;
+
+
+    protected int maxHealth= 100 ;
+    protected int health=100 ;
+    protected float healthpercent = 1;
+    protected int defense = 10;
+    protected int damage= 10;
+
+    protected int maxMana=1000;
+    protected int mana = 1000;
+    protected float manapercent = 1;
+
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     protected int EXP;
 
     protected float dx;
@@ -64,8 +103,14 @@ public class Entity {
     protected boolean teleported = false;
     protected TileCollision tc;
     protected String name = "";
+<<<<<<< HEAD
 
     protected Skill skillAttack;
+=======
+    protected int attackManaConsume = 2;
+    protected int skillManaConsume = 10;
+    protected ArrayList<Skill> skill;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
@@ -76,6 +121,10 @@ public class Entity {
         hitBounds.setXOffset(size/2);
 
         tc = new TileCollision(this);
+<<<<<<< HEAD
+=======
+        skill= new ArrayList<>();
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
     public void setPos(Vector2f pos) {
         this.pos = pos;
@@ -95,12 +144,23 @@ public class Entity {
             if(health <= 0) {
                 die = true;
             }
+<<<<<<< HEAD
 
             addForce(f, dir);
 
             healthpercent = (float) health / (float) maxHealth;
         }
     }
+=======
+            addForce(f, dir);
+            healthpercent = (float) health / (float) maxHealth;
+        }
+    }
+    public int damageCaculate(Entity entity){
+        if(damage - entity.getDefense() <= 0) return 1;
+        return damage - entity.getDefense();
+    }
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     public int getDirection() {
         if(currentDirection == UP || currentDirection == LEFT)  return 1;
@@ -124,11 +184,29 @@ public class Entity {
     }
 
     protected boolean isAttacking(double time) {
+<<<<<<< HEAD
         if((attacktime / 1000000) > ((time / 1000000) - attackSpeed)) {canAttack = false;}
             else canAttack = true;
         if((attacktime / 1000000) + attackDuration > (time / 1000000)) {return true;}
         return false;
     }
+=======
+        if((attacktime / 1000000) > ((time / 1000000) - attackSpeed) || (this.mana - attackManaConsume) <= 0) {canAttack = false;}
+            else canAttack = true;
+        if((attacktime / 1000000) + attackDuration > (time / 1000000) && (this.mana - attackManaConsume) >= 0) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isSkilling(double time) {
+        if((skilltime / 1000000) > ((time / 1000000) - skillSpeed) || (this.mana - skillManaConsume) <= 0) {canSkill = false;}
+        else canSkill = true;
+        if((skilltime / 1000000) + skillDuration > (time / 1000000) && (this.mana - skillManaConsume) >= 0) {return true;}
+        return false;
+    }
+
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public boolean isInCircle (Vector2f center, double r) {
         if (this.bounds.distance(center) < r) {return true;}
         return false;
@@ -187,10 +265,22 @@ public class Entity {
             }
         }
         setHitBoxDirection();
+<<<<<<< HEAD
+=======
+        updateHealthManaPercent();
+    }
+    public void updateHealthManaPercent(){
+        manapercent = (float) mana/maxMana;
+        healthpercent= (float) health/maxHealth;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
 
     public void setFallen(boolean b){ fallen = b; }
     public boolean getDeath() { return die; }
+<<<<<<< HEAD
+=======
+    public void setDeath(boolean death){this.die = death;}
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public int getHealth() { return health; }
     public void setHealth(int health){ this.health = health;}
     public float getHealthPercent() { return healthpercent; }
@@ -203,10 +293,16 @@ public class Entity {
     public boolean isDown() {return down;}
     public boolean isRight() {return right;}
     public boolean isLeft() {return left;}
+<<<<<<< HEAD
     public boolean isAttack() {return attack;}
     public boolean isFallen() {return fallen;}
     public boolean isAttacking() {return attacking;   }
     public boolean isSkill() {return skill;}
+=======
+    public boolean isFallen() {return fallen;}
+    public boolean isAttacking() {return attacking;   }
+    public boolean isSkilling() {return skilling;}
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public boolean isHasIdle() {return hasIdle;}
     public void setName(String name) { this.name = name; }
     public void setSize(int i) { size = i; }
@@ -222,8 +318,22 @@ public class Entity {
     public float getDy() { return dy; }
     public Vector2f getPos() { return pos; }
     public int getSize() { return size; }
+<<<<<<< HEAD
     public Skill getSkillAttack() {return skillAttack;}
 
+=======
+    public int getAttackDuration() {
+        return attackDuration;
+    }
+    public int getMaxMana() {return maxMana;}
+    public void setMaxMana(int maxMana) {this.maxMana = maxMana;}
+    public int getMana() {return mana;}
+    public void setCurrentMana(int mana) {this.mana = mana;}
+    public float getManapercent() {return manapercent;}
+    public int getMaxHealth() {return maxHealth;}
+    public int getDamage() { return damage;}
+    public ArrayList<Skill> getSkill() {return skill;}
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 }
 
 

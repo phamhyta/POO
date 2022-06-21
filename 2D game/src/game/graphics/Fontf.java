@@ -14,9 +14,15 @@ public class Fontf {
             System.out.println("Loading: " + path + "...");
             Font font = Font.createFont(0, this.getClass().getClassLoader().getResourceAsStream(path));
             this.fonts.put(name, font);
+<<<<<<< HEAD
         } catch (Exception var4) {
             System.out.println("ERROR: ttfFont - can't load font " + path + "...");
             var4.printStackTrace();
+=======
+        } catch (Exception e) {
+            System.out.println("ERROR: ttfFont - can't load font " + path + "...");
+            e.printStackTrace();
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         }
 
     }
