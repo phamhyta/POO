@@ -10,6 +10,7 @@ import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
+import game.util.Sound;
 
 
 import java.awt.Graphics2D;
@@ -18,8 +19,7 @@ public class GameStateManager {
 
     private GameState states[];
     public static Vector2f map;
-
-
+    public static Sound sound;
     public static final int TITLE = 0;
     public static final int PLAY = 1;
     public static final int PAUSE = 2;
@@ -41,7 +41,7 @@ public class GameStateManager {
         fontf.loadFont("res/font/Stackedpixel.ttf", "MeatMadness");
         fontf.loadFont("res/font/MotionPersonalUseBold-2O0od.ttf", "Motion");
         fontf.loadFont("res/font/x12y16pxMaruMonica.ttf", "MaruMonica");
-
+        sound= new Sound();
         SpriteSheet.currentFont = font;
         cam = new Camera(new BoundingBox(new Vector2f(-64, -64), GamePanel.width + 128, GamePanel.height + 128));
         states[TITLE]= new TitleState(this);

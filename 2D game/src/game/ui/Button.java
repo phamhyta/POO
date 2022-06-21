@@ -1,7 +1,12 @@
 //package game.ui;
 //
-//import game.math.AABB;
+//import game.GamePanel;
+//import game.graphics.SpriteSheet;
+//import game.math.BoundingBox;
 //import game.math.Vector2f;
+//import game.states.GameStateManager;
+//import game.util.KeyHandler;
+//import game.util.MouseHandler;
 //
 //import java.awt.Graphics2D;
 //import java.awt.Graphics;
@@ -10,7 +15,6 @@
 //import java.awt.FontMetrics;
 //import java.awt.image.BufferedImage;
 //import java.util.ArrayList;
-//
 //
 //
 //public class Button {
@@ -26,7 +30,7 @@
 //    private Vector2f iPos;
 //    private Vector2f lbPos;
 //
-//    private AABB bounds;
+//    private BoundingBox bounds;
 //    private boolean hovering = false;
 //    private int hoverSize;
 //    private ArrayList<ClickedEvent> events;
@@ -44,7 +48,7 @@
 //    public Button(BufferedImage icon, BufferedImage image, Vector2f pos, int width, int height, int iconsize) {
 //        this.image = createIconButton(icon, image, width + iconsize, height + iconsize, iconsize);
 //        this.iPos = pos;
-//        this.bounds = new AABB(iPos, this.image.getWidth(), this.image.getHeight());
+//        this.bounds = new BoundingBox(iPos, this.image.getWidth(), this.image.getHeight());
 //
 //        events = new ArrayList<ClickedEvent>();
 //        slotevents = new ArrayList<SlotEvent>();
@@ -94,7 +98,7 @@
 //
 //        this.image = createButton(label, image, font, width + buttonWidth, height + buttonHeight, buttonWidth, buttonHeight);
 //        this.iPos = new Vector2f(pos.x - this.image.getWidth() / 2, pos.y - this.image.getHeight() / 2);
-//        this.bounds = new AABB(iPos, this.image.getWidth(), this.image.getHeight());
+//        this.bounds = new BoundingBox(iPos, this.image.getWidth(), this.image.getHeight());
 //
 //
 //        events = new ArrayList<ClickedEvent>();
@@ -139,7 +143,7 @@
 //        iPos = new Vector2f((GamePanel.width / 2 - iWidth / 2 + offset.x) , (GamePanel.height / 2 - iHeight / 2 + offset.y));
 //        lbPos = new Vector2f((iPos.x + iWidth / 2 + lbWidth / 2) - ((label.length()) * lbWidth / 2), iPos.y + iHeight / 2 - lbHeight / 2 - 4);
 //
-//        this.bounds = new AABB(iPos, iWidth, iHeight);
+//        this.bounds = new BoundingBox(iPos, iWidth, iHeight);
 //    }
 //
 //    public Button(String label, int lbWidth, int lbHeight, BufferedImage image, int iWidth, int iHeight) {
@@ -152,7 +156,7 @@
 //        iPos = new Vector2f((GamePanel.width / 2 - iWidth / 2) , (GamePanel.height / 2 - iHeight / 2));
 //        lbPos = new Vector2f((iPos.x + iWidth / 2 + lbWidth / 2) - ((label.length()) * lbWidth / 2), iPos.y + iHeight / 2 - lbHeight / 2 - 4);
 //
-//        this.bounds = new AABB(iPos, iWidth, iHeight);
+//        this.bounds = new BoundingBox(iPos, iWidth, iHeight);
 //
 //        events = new ArrayList<ClickedEvent>();
 //    }
@@ -169,7 +173,7 @@
 //        this.iPos = iPos;
 //        this.lbPos = lbPos;
 //
-//        this.bounds = new AABB(iPos, iWidth, iHeight);
+//        this.bounds = new BoundingBox(iPos, iWidth, iHeight);
 //    }
 //
 //    // ******************************************** END ************************************************************
@@ -206,7 +210,7 @@
 //            iPos.y -= value / 2;
 //            float iWidth = value + bounds.getWidth();
 //            float iHeight = value + bounds.getHeight();
-//            this.bounds = new AABB(iPos, (int) iWidth, (int) iHeight);
+//            this.bounds = new BoundingBox(iPos, (int) iWidth, (int) iHeight);
 //
 //            lbPos.x -= value / 2;
 //            lbPos.y -= value / 2;
