@@ -28,13 +28,12 @@ public class TinyBoxRender extends EntityRender{
         LEFT = 1;
         RIGHT = 1;
 
-        ani.setNumFrames(3, 0);
-        ani.setNumFrames(5, 1);
+
 
         currentAnimation = IDLE;
 
         ani.setNumFrames(3, 0);
-        ani.setNumFrames(5, 1);
+        ani.setNumFrames(3, 1);
         currentAnimation = IDLE;
 
     }
