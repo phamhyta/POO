@@ -13,9 +13,10 @@ public class Map01 extends MapAsset {
 
     public void setMonsterPosition() {
         int i = 0;
+        SpriteSheet ghostSpriteSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         gc.origin[i] = new Vector2f(500.0F, 500.0F);
-        setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
+        setTinyBox(gc.cam, i, gc.origin[i],ghostSpriteSheet, 128);
         i++;
 
         gc.origin[i] = new Vector2f(600.0F, 600.0F);
