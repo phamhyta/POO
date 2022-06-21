@@ -2,12 +2,14 @@ package game.data;
 
 import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
-import game.gameObject.NPC;
+import game.gameObject.npc.NPC;
 import game.gameObject.Player;
+import game.math.BoundingBox;
 import game.math.Vector2f;
 import game.render.EntityRender;
 import game.states.GameStateManager;
 import game.tile.TileManager;
+import game.ui.NpcUI;
 import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class GameControl {
     public Camera cam;
     public Player player;
+    public NpcUI pui;
     public GameStateManager gsm;
     private MapAsset[] mapAs;
     public static int currentMap = 0;
@@ -95,7 +98,19 @@ public class GameControl {
                 deadStartTime[i] = 0L;
             }
         }
-
+        for(int i=0; i< npc.length; i++ ) {
+            if(npc[i]!=null) {
+                if (player.getHitBounds().collides(npc[i].getBounds())) {
+                    System.out.println("Shop");
+                    if(gsm.isStateActive(GameStateManager.DIALOGUES)){
+                        gsm.pop(GameStateManager.DIALOGUES);
+                    }else{
+                        gsm.add(GameStateManager.DIALOGUES);
+                    }
+                    pui = new NpcUI(npc[i]);
+                }
+            }
+        }
     }
 
     public void render(Graphics2D g) {

@@ -43,7 +43,7 @@ public class PlayState extends GameState {
 
     public void update(double time) {
         Vector2f.setWorldVar(map.x,map.y);
-        if(!gsm.isStateActive(GameStateManager.PAUSE) && !gsm.isStateActive(GameStateManager.GAMEOVER) ){
+        if(!gsm.isStateActive(GameStateManager.PAUSE) && !gsm.isStateActive(GameStateManager.GAMEOVER) && !gsm.isStateActive(GameStateManager.SHOP) ){
             playerRender.update();
             player.update(time);
             gc.update(time);
@@ -60,6 +60,15 @@ public class PlayState extends GameState {
                 gsm.pop(GameStateManager.PAUSE);
             }else{
                 gsm.add(GameStateManager.PAUSE);
+            }
+
+        }
+        key.shop.tick();
+        if(key.shop.clicked){
+            if(gsm.isStateActive(GameStateManager.SHOP)){
+                gsm.pop(GameStateManager.SHOP);
+            }else{
+                gsm.add(GameStateManager.SHOP);
             }
 
         }
