@@ -42,8 +42,7 @@ public class Skill extends Entity{
             if(GameControl.enemy[i] != null){
                 if(this.getBounds().collides(GameControl.enemy[i].getBounds())){
                     die = true;
-                    GameControl.enemy[i].setHealth(GameControl.enemy[i].getHealth() - this.damage);
-                    GameControl.enemy[i].updateHealthManaPercent();
+                    GameControl.enemy[i].setHealth( GameControl.enemy[i].getHealth()- damageCaculate( GameControl.enemy[i]), force*getDirection(), currentDirection == UP || currentDirection == DOWN);
                     if(GameControl.enemy[i].getHealth() <= 0) GameControl.enemy[i].setDeath(true);
                 }
             }

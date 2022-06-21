@@ -51,7 +51,6 @@ public class Enemy extends Entity {
             GameControl.setGameObject(new Potion_Red(new Vector2f(this.getPos().x-50,this.getPos().y),32));
             GameControl.setGameObject(new ManaCrystal(new Vector2f(this.getPos().x+25,this.getPos().y),32));
         }
-
     }
     private void autoDirecting(Vector2f posA, Vector2f posB){
         if (posA.y > posB.y + 1) {
@@ -100,7 +99,6 @@ public class Enemy extends Entity {
             stopDirecting();
         }
     }
-
     public void moveInCircle(Vector2f center,double r, Player player) {
         if(this.isInCirclePath(center,r) && sense.colCircleBox(player.getBounds())
                 && !player.isInCircle(center,r)){
@@ -120,7 +118,6 @@ public class Enemy extends Entity {
             }
             move();
         }
-
     }
 
     public void update(Player player, double time, Vector2f defaultPosition) {
@@ -143,7 +140,7 @@ public class Enemy extends Entity {
 
         if (attackrange.colCircleBox(player.getBounds()) && !isInvincible) {
             attacking = true;
-            player.setHealth(player.getHealth() - damage, 5f * getDirection(), currentDirection == UP || currentDirection == DOWN);
+            player.setHealth(player.getHealth()-damageCaculate(player), 5f * getDirection(), currentDirection == UP || currentDirection == DOWN);
         } else {
             attacking = false;
         }

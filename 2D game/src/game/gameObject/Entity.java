@@ -108,6 +108,10 @@ public class Entity {
             healthpercent = (float) health / (float) maxHealth;
         }
     }
+    public int damageCaculate(Entity entity){
+        if(damage - entity.getDefense() <= 0) return 1;
+        return damage - entity.getDefense();
+    }
 
     public int getDirection() {
         if(currentDirection == UP || currentDirection == LEFT)  return 1;
@@ -137,7 +141,6 @@ public class Entity {
             return true;
         }
         return false;
-
     }
 
     protected boolean isSkilling(double time) {

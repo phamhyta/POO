@@ -11,7 +11,7 @@ public class Sound {
 
     public Sound() {
         //change file music for game!!!!!!!!!!!1
-        soundURL[0]= getClass().getResource("/res/sound/BlueBoyAdventure.wav");
+        soundURL[0]= getClass().getResource("/res/sound/Our-Mountain.wav");
         soundURL[1]= getClass().getResource("/res/sound/coin.wav");
         soundURL[2]= getClass().getResource("/res/sound/powerup.wav");
         soundURL[3]= getClass().getResource("/res/sound/unlock.wav");

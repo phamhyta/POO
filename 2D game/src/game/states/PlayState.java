@@ -49,7 +49,6 @@ public class PlayState extends GameState {
             gc.update(time);
             pui.update(time);
             cam.update();
-
         }
     }
     public void input(MouseHandler mouse, KeyHandler key) {
