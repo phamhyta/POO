@@ -8,7 +8,7 @@ public class Map01 extends MapAsset {
 
     public Map01(GameControl gc) {
         super(gc);
-        gc.tm = new TileManager("res/tile/tilemap.xml", gc.cam);
+        gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
     }
 
     public void setMonsterPosition() {
