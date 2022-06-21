@@ -73,7 +73,7 @@ public class Player extends Entity {
             nextLevelEXP *=2;
             damage = damage +10;
             defense +=2;
-            GameStateManager.sound.playSingleMusic(8);
+//            GameStateManager.sound.playSingleMusic(8);
         }
     }
 

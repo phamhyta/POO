@@ -15,8 +15,6 @@ class SkillRender{
 
     }
     public void render(Graphics2D g){
-//        g.setColor(Color.cyan);
-//        g.drawRect((int)skill.getPos().getWorldVar().x,(int)skill.getPos().getWorldVar().y,32,32);
         if(skill.isUp()) {
             g.drawImage( arrow.getSubimage(0,0,256,256), (int)skill.getPos().getWorldVar().x,(int)skill.getPos().getWorldVar().y,64,64,null);
         }
