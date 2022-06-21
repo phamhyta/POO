@@ -13,7 +13,7 @@ import game.math.Vector2f;
 import game.util.Sound;
 
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public class GameStateManager {
 
@@ -24,6 +24,8 @@ public class GameStateManager {
     public static final int PLAY = 1;
     public static final int PAUSE = 2;
     public static final int GAMEOVER = 3;
+    public static final int SHOP = 4;
+    public static final int DIALOGUES = 5;
 
     public static Camera cam;
     public Graphics2D g;
@@ -74,6 +76,12 @@ public class GameStateManager {
         }
         else if (state == GAMEOVER) {
             states[GAMEOVER] = new GameOverState(this);
+        }
+        else if (state == SHOP) {
+            states[SHOP] = new ShopState(this);
+        }
+        else if (state == DIALOGUES) {
+            states[DIALOGUES] = new DialoguesState(this);
         }
 //        else if (state == EDIT) {
 //            if(states[PLAY] != null) {
