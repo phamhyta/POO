@@ -1,14 +1,12 @@
 package game.render;
 
 import game.gameObject.Entity;
-import game.gameObject.Skill;
 import game.graphics.Animation;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
 import game.util.Camera;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class EntityRender {
     protected Entity entity;

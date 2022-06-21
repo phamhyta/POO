@@ -31,8 +31,10 @@ public class Player extends Entity {
         damage = 25;
         maxMana=100;
         mana = 100;
-        maxHealth= 300;
         health = 200;
+        maxHealth = 200;
+        defense=10;
+
         acc = 2f;
         maxSpeed= 4f;
         deacc = 0.3f;
@@ -40,9 +42,6 @@ public class Player extends Entity {
         bounds.setHeight(30);
         bounds.setXOffset(10);
         bounds.setYOffset(30);
-
-        health = 200;
-        maxHealth = 200;
         name = "player";
     }
 
@@ -67,18 +66,19 @@ public class Player extends Entity {
     }
     private void checkLevelUp(){
         if(this.EXP >= nextLevelEXP){
-            maxHealth *=2;
+            maxHealth = (int)(maxHealth*1.5);
             health = maxHealth;
             maxMana = maxMana*2;
             mana= maxMana;
             nextLevelEXP *=2;
             damage = damage +10;
+            defense +=2;
+            GameStateManager.sound.playSingleMusic(8);
         }
     }
 
     public void update(double time){
         super.update(time);
-        System.out.println(EXP);
         attacking = isAttacking(time);
         skilling = isSkilling(time);
 
@@ -100,7 +100,7 @@ public class Player extends Entity {
                 if(!enemy.get(i).isInvincible) {
                     mana = mana - attackManaConsume;
                 }
-                enemy.get(i).setHealth(enemy.get(i).getHealth()- damage, force*getDirection(), currentDirection == UP || currentDirection == DOWN);
+                enemy.get(i).setHealth(enemy.get(i).getHealth()- damageCaculate(enemy.get(i)), force*getDirection(), currentDirection == UP || currentDirection == DOWN);
                 enemy.remove(i);
             }
         }
@@ -130,11 +130,7 @@ public class Player extends Entity {
                     fallen = false;
                 }
             }
-//        move();
-//        pos.x += dx;
-//        pos.y += dy;
         checkLevelUp();
-
     }
 
     public void input(MouseHandler mouse,KeyHandler key ){
@@ -154,13 +150,9 @@ public class Player extends Entity {
                 if(key.skill.down && canSkill){
                     skilltime = System.nanoTime();
                 }
-
-
                 if(key.attack.down && canAttack){
                     attacktime = System.nanoTime();
                 }
-
-
                 if(key.shift.down) {
                     maxSpeed = 8;
                     GameStateManager.cam.setMaxSpeed(7);
@@ -186,7 +178,5 @@ public class Player extends Entity {
             right = false;
             left = false;
         }
-
     }
-
 }

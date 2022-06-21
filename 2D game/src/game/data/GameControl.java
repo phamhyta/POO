@@ -18,7 +18,7 @@ public class GameControl {
     public Camera cam;
     public Player player;
     public GameStateManager gsm;
-    private MapAsset[] mapAs;
+    private MapAsset mapAs;
     public static int currentMap = 0;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
@@ -32,7 +32,6 @@ public class GameControl {
         this.player = player;
         this.cam = cam;
         this.gsm = gsm;
-        mapAs = new MapAsset[5];
         gameObject = new ArrayList();
         enemy = new Enemy[20];
         origin = new Vector2f[20];
@@ -40,7 +39,7 @@ public class GameControl {
         entityRender = new EntityRender[20];
 
         this.npc = new NPC[5];
-        this.mapAs[0] = new Map01(this);
+        mapAs = new Map01(this);
     }
 
     private void resetAsset() {
@@ -77,7 +76,7 @@ public class GameControl {
                 }
 
                 if (enemy[i].getDeath()) {
-                    player.setEXP(this.player.getEXP() + enemy[i].getEXP());
+                    player.setEXP(player.getEXP() + enemy[i].getEXP());
                     enemy[i].drop();
                     entityRender[i] = null;
                     enemy[i] = null;
@@ -85,13 +84,13 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                    enemy[i].update(player, time, origin[i]);
+                        enemy[i].update(player, time, origin[i]);
                 }
             }
 
             if (enemy[i] == null && this.deadStartTime[i] != 0L
                     && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
-                mapAs[currentMap].resetEnemy(i);
+                mapAs.resetEnemy(i);
                 deadStartTime[i] = 0L;
             }
         }
@@ -107,11 +106,9 @@ public class GameControl {
                 }
             }
         }
-
         for(int i = 0; i < gameObject.size(); ++i) {
             gameObject.get(i).getObjectRender().render(g);
         }
-
     }
 
     public  void input(MouseHandler mouse, KeyHandler key) {
