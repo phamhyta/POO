@@ -1,6 +1,10 @@
 package game.gameObject;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import game.data.GameControl;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 import game.data.GameControl;
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
@@ -9,6 +13,7 @@ import game.math.Vector2f;
 public class Skill extends Entity{
     private int direction;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private int ManaConsume =50;
 
@@ -22,6 +27,8 @@ public class Skill extends Entity{
         acc = 2;
         deacc=5;
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     private Entity entity;
     private SkillRender skillRender;
 
@@ -36,6 +43,9 @@ public class Skill extends Entity{
         maxSpeed = 5;
         acc = 2;
         deacc=1;
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
 
@@ -47,6 +57,7 @@ public class Skill extends Entity{
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public void checkAlive(Entity entity){
         if(this.bounds.collides(entity.getBounds())){
@@ -57,12 +68,15 @@ public class Skill extends Entity{
 
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public void update() {
         if(!die){
             move();
             this.pos.x += dx;
             this.pos.y += dy;
             health = health -1;
+<<<<<<< HEAD
 <<<<<<< HEAD
             System.out.println(health);
         }
@@ -74,6 +88,8 @@ public class Skill extends Entity{
     public int getManaConsume() {return ManaConsume;}
 }
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         }
         if(health <= 0) {die = true;}
 
@@ -92,4 +108,7 @@ public class Skill extends Entity{
 
 }
 
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6

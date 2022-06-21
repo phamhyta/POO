@@ -67,7 +67,11 @@ public class TileManager {
             this.columns = tileColumns;
             this.file = imagePath;
 <<<<<<< HEAD
+<<<<<<< HEAD
             sprite = new SpriteSheet("res/tile/" + imagePath + ".png", tileWidth, tileHeight);
+=======
+            sprite = new SpriteSheet("res/tile/" + imagePath +".png", tileWidth, tileHeight);
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
             sprite = new SpriteSheet("res/tile/" + imagePath +".png", tileWidth, tileHeight);
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6

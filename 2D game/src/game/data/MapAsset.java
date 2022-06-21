@@ -2,8 +2,13 @@
 package game.data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import game.gameObject.monster.TinyBox;
 import game.gameObject.monster.TinyMon;
+=======
+import game.gameObject.enemy.TinyBox;
+import game.gameObject.enemy.TinyMon;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 import game.gameObject.enemy.TinyBox;
 import game.gameObject.enemy.TinyMon;

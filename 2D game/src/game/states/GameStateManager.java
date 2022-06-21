@@ -42,7 +42,11 @@ public class GameStateManager {
         fontf.loadFont("res/font/MotionPersonalUseBold-2O0od.ttf", "Motion");
         fontf.loadFont("res/font/x12y16pxMaruMonica.ttf", "MaruMonica");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+        sound= new Sound();
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
         sound= new Sound();
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6

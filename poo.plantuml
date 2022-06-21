@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 startuml
     class Entity{
         - posX: float
@@ -13,6 +14,8 @@ startuml
         # r_sense: int
         # attackrange: AABB 
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 @startuml
     class Entity{
         # currentDirection: int
@@ -46,33 +49,48 @@ startuml
         # sense: BoundingBox
         # attackrange: BoundingBox
         # r_sense: int
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         # r_attackrange: int
         # r_enemyArea: int
         # xOffset: int
         # yOffset: int
 <<<<<<< HEAD
+<<<<<<< HEAD
         + Enemy()
         + reset(): void
         + drop(): void
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         + useRight: boolean
         + Enemy()
         + reset(): void
         + drop(): void
         - autoDirecting(): void
         - stopDirecting(): void
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         + chase(): void
         + moveBack(): void
         + moveInCircle(): void
         + update(): void
 <<<<<<< HEAD
+<<<<<<< HEAD
         + render(): void
     }
     class TinyBox extends Enemy{
         + TinyBox()
         + render(): void
+=======
+    }
+    class TinyBox extends Enemy{
+        + TinyBox()
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
     }
     class TinyBox extends Enemy{
@@ -82,6 +100,7 @@ startuml
     class TinyMon extends Enemy{
         + TinyMon()
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     class Player{
         + Player(): constructor
@@ -130,6 +149,8 @@ startuml
         + update(): void
         + render(): void
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     class Player extends Entity{
         - maxMana: int
         - mana: int
@@ -164,6 +185,9 @@ startuml
         + setPos(): void
         + use(): void
         + update():void
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
     class NPC{
@@ -182,7 +206,10 @@ startuml
         + drawDialogues(): void
         + drawSubWindow(): public
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
@@ -266,7 +293,11 @@ startuml
         - size: int
         - e: Entity
 <<<<<<< HEAD
+<<<<<<< HEAD
         + AABB()
+=======
+        + BoundingBox()
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
         + BoundingBox()
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
@@ -285,9 +316,12 @@ startuml
         + setWorldVar()
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     GameObject <|-- Shop
     Entity <|-- Player
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     class EntityRender{
         # entity: Entity
         + ani: Animation
@@ -422,6 +456,9 @@ startuml
         + render(): void
     }
     GameObject <|-- Shop
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     Entity <|-- NPC
     GameObject o-- BoundingBox

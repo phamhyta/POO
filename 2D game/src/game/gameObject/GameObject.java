@@ -15,15 +15,21 @@ public abstract class GameObject {
     protected int size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     protected int coin =0;
 
     protected boolean teleported = false;
 	protected String name = "";
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     protected int coin = 0;
 
     protected boolean teleported = false;
     protected String name = "";
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     protected int HP;
@@ -35,6 +41,7 @@ public abstract class GameObject {
     protected BufferedImage image;
 
     public int type;
+<<<<<<< HEAD
 <<<<<<< HEAD
     public static final int type_player=0;
     public static final int type_npc=1;
@@ -48,6 +55,8 @@ public abstract class GameObject {
 
     public GameObject(Vector2f origin,int size) {
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public static final int type_player = 0;
     public static final int type_npc = 1;
     public static final int type_monster = 2;
@@ -59,6 +68,9 @@ public abstract class GameObject {
     public static final int type_nextMap = 8;
 
     public GameObject(Vector2f origin, int size) {
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         this.bounds = new BoundingBox(origin, size, size);
         this.pos = origin;
@@ -71,6 +83,7 @@ public abstract class GameObject {
         teleported = true;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public void setName(String name) { this.name = name; }
     public void setSize(int i) { size = i; }
@@ -86,6 +99,8 @@ public abstract class GameObject {
     public abstract void render(Graphics2D g);
 
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public void setName(String name) {
         this.name = name;
     }
@@ -121,5 +136,8 @@ public abstract class GameObject {
     };
 
     public abstract void render(Graphics2D g);
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 }

@@ -1,9 +1,13 @@
 package game.render;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import game.gameObject.monster.Enemy;
 import game.gameObject.monster.TinyBox;
 import game.gameObject.monster.TinyMon;
+=======
+import game.gameObject.enemy.TinyMon;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 import game.gameObject.enemy.TinyMon;
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
@@ -18,8 +22,11 @@ public class TinyMonRender extends EntityRender{
         super(camera,tiny, spriteSheet);
         this.tiny = tiny;
 <<<<<<< HEAD
+<<<<<<< HEAD
         ATTACK = 0;
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
         ATTACK_DOWN = 2;
         ATTACK_UP = 3;
@@ -29,6 +36,9 @@ public class TinyMonRender extends EntityRender{
         SKILL_DOWN=0;
         SKILL_LEFT=0;
         SKILL_RIGHT=0;
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         FALLEN = 0;
         UP = 3;
@@ -41,10 +51,13 @@ public class TinyMonRender extends EntityRender{
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void update() {
         super.update();
     }
 
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     @Override
@@ -52,15 +65,21 @@ public class TinyMonRender extends EntityRender{
         super.render(g);
         g.setColor(Color.red);
 <<<<<<< HEAD
+<<<<<<< HEAD
         g.fillRect((int) (tiny.getPos().getWorldVar().x + tiny.getBounds().getXOffset()), (int) (tiny.getPos().getWorldVar().y - 5), 24, 5);
 
         g.setColor(Color.green);
         g.fillRect((int) (tiny.getPos().getWorldVar().x +tiny.getBounds().getXOffset()), (int) (tiny.getPos().getWorldVar().y - 5), (int) (24 * tiny.getHealthPercent()), 5);
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         g.fillRect((int) (tiny.getPos().getWorldVar().x + 20), (int) (tiny.getPos().getWorldVar().y ), 24, 5);
 
         g.setColor(Color.green);
         g.fillRect((int) (tiny.getPos().getWorldVar().x +20), (int) (tiny.getPos().getWorldVar().y ), (int) (24 * tiny.getHealthPercent()), 5);
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     }

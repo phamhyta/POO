@@ -1,7 +1,10 @@
 package game.data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import game.gameObject.monster.TinyMon;
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 import game.graphics.SpriteSheet;
@@ -19,6 +22,7 @@ public class Map01 extends MapAsset {
         int i = 0;
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         gc.origin[i] = new Vector2f(500.0F, 500.0F);
+<<<<<<< HEAD
 <<<<<<< HEAD
         setTinyBox(gc.cam,i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16),64);
         i ++;
@@ -46,6 +50,8 @@ public class Map01 extends MapAsset {
         gc.origin[i] = new Vector2f(700.0F, 1000.0F);
         setTinyMoon(gc.cam, i,gc.origin[i], tinyMoonSheet,  64);
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
         i++;
 
@@ -71,6 +77,9 @@ public class Map01 extends MapAsset {
         i++;
         gc.origin[i] = new Vector2f(700.0F, 1000.0F);
         setTinyMoon(gc.cam, i, gc.origin[i], tinyMoonSheet, 64);
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         i++;
     }
@@ -78,6 +87,7 @@ public class Map01 extends MapAsset {
     public void setMaterialPosition() {
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public void resetEnemy(int i) {
@@ -93,6 +103,8 @@ public class Map01 extends MapAsset {
         } else {
             setTinyMoon(gc.cam,i,gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48),  64);
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public void resetEnemy(int i) {
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         if (i == 0) {
@@ -105,6 +117,9 @@ public class Map01 extends MapAsset {
             setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         } else {
             setTinyMoon(gc.cam, i, gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48), 64);
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         }
     }
@@ -112,7 +127,11 @@ public class Map01 extends MapAsset {
     public void setNPC() {
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 }
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6

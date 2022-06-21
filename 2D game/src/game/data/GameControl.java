@@ -1,8 +1,13 @@
 package game.data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import game.gameObject.GameObject;
 import game.gameObject.monster.Enemy;
+=======
+import game.gameObject.object.GameObject;
+import game.gameObject.enemy.Enemy;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
@@ -24,15 +29,21 @@ public class GameControl {
     public Player player;
     public GameStateManager gsm;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private MapAsset[] mapAs;
     private int currentMap = 0;
     private static ArrayList<GameObject> gameObject;
     public Enemy[] enemy;
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     private MapAsset mapAs;
     public static int currentMap = 0;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public long[] deadStartTime;
     public NPC[] npc;
@@ -45,7 +56,10 @@ public class GameControl {
         this.cam = cam;
         this.gsm = gsm;
 <<<<<<< HEAD
+<<<<<<< HEAD
         mapAs = new MapAsset[5];
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         gameObject = new ArrayList();
@@ -54,6 +68,7 @@ public class GameControl {
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         for(int i = 0; i < this.deadStartTime.length; ++i) {
             this.deadStartTime[i] = 0L;
@@ -65,10 +80,15 @@ public class GameControl {
         this.npc = new NPC[5];
         mapAs = new Map01(this);
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
+        this.npc = new NPC[5];
+        mapAs = new Map01(this);
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
 
     private void resetAsset() {
         gameObject.clear();
+<<<<<<< HEAD
 <<<<<<< HEAD
         for(int i = 0; i < this.enemy.length; ++i) {
             this.enemy[i] = null;
@@ -77,11 +97,16 @@ public class GameControl {
 
         for(int i = 0; i < this.npc.length; ++i) {
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         for (int i = 0; i < this.enemy.length; ++i) {
             this.enemy[i] = null;
             this.entityRender[i] = null;
         }
         for (int i = 0; i < this.npc.length; ++i) {
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
             this.npc[i] = null;
         }
@@ -91,6 +116,7 @@ public class GameControl {
     public void update(double time) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         for(int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
                 if (gameObject.get(i).type == 6) {
@@ -98,12 +124,17 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type != 8) {
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         for (int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type != GameObject.type_nextMap) {
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
@@ -112,8 +143,14 @@ public class GameControl {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         for(int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
+=======
+        for (int i = 0; i < enemy.length; ++i) {
+            if (this.enemy[i] != null) {
+
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
         for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
@@ -124,6 +161,7 @@ public class GameControl {
                 }
 
                 if (enemy[i].getDeath()) {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     player.setEXP(this.player.getEXP() + enemy[i].getEXP());
                     enemy[i].drop();
@@ -139,6 +177,8 @@ public class GameControl {
             if (enemy[i] == null && this.deadStartTime[i] != 0L && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
                 mapAs[currentMap].resetEnemy(i);
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
                     player.setEXP(player.getEXP() + enemy[i].getEXP());
                     enemy[i].drop();
                     entityRender[i] = null;
@@ -154,13 +194,19 @@ public class GameControl {
             if (enemy[i] == null && this.deadStartTime[i] != 0L
                     && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
                 mapAs.resetEnemy(i);
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
                 deadStartTime[i] = 0L;
             }
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
@@ -175,6 +221,7 @@ public class GameControl {
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         for(int i = 0; i < gameObject.size(); ++i) {
             gameObject.get(i).render(g);
@@ -184,12 +231,17 @@ public class GameControl {
 
     public void input(MouseHandler mouse, KeyHandler key) {
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         for(int i = 0; i < gameObject.size(); ++i) {
             gameObject.get(i).getObjectRender().render(g);
         }
     }
 
     public  void input(MouseHandler mouse, KeyHandler key) {
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         key.enter.tick();
 

@@ -2,7 +2,12 @@ package game.gameObject;
 
 import game.GamePanel;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import game.gameObject.monster.Enemy;
+=======
+import game.gameObject.enemy.Enemy;
+import game.gameObject.object.GameObject;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 import game.gameObject.enemy.Enemy;
 import game.gameObject.object.GameObject;
@@ -15,7 +20,10 @@ import game.util.MouseHandler;
 import game.math.Vector2f;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.awt.*;
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 import java.util.ArrayList;
@@ -25,11 +33,16 @@ public class Player extends Entity {
     private ArrayList<GameObject> inventory;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private int maxMana=50;
     private int mana = 5;
     private float manapercent = 1;
     private int nextLevelEXP = 50;
     private boolean skillOn= false;
+=======
+    private int skillCounter =0;
+    private int nextLevelEXP = 50;
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
     private int skillCounter =0;
     private int nextLevelEXP = 50;
@@ -41,9 +54,12 @@ public class Player extends Entity {
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
     private void setDefaultValue(){
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         skill= new ArrayList<>();
 
     }
@@ -55,6 +71,9 @@ public class Player extends Entity {
         maxHealth = 200;
         defense=10;
 
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         acc = 2f;
         maxSpeed= 4f;
@@ -63,6 +82,7 @@ public class Player extends Entity {
         bounds.setHeight(30);
         bounds.setXOffset(10);
         bounds.setYOffset(30);
+<<<<<<< HEAD
 <<<<<<< HEAD
         hitBounds.setWidth(37);
         hitBounds.setHeight(37);
@@ -86,12 +106,17 @@ public class Player extends Entity {
     }
 
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         name = "player";
     }
 
     public void setTargetEnemy(Enemy enemy) {
         this.enemy.add(enemy);
     }
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public void setTargetMaterial(GameObject go) {
         this.inventory.add(go);
@@ -102,7 +127,10 @@ public class Player extends Entity {
 
     private void resetPosition(){
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("Reseting Player... ");
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         pos.x = GamePanel.width/2-32;
@@ -116,7 +144,11 @@ public class Player extends Entity {
     private void checkLevelUp(){
         if(this.EXP >= nextLevelEXP){
 <<<<<<< HEAD
+<<<<<<< HEAD
             maxHealth *=2;
+=======
+            maxHealth = (int)(maxHealth*1.5);
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
             maxHealth = (int)(maxHealth*1.5);
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
@@ -124,6 +156,7 @@ public class Player extends Entity {
             maxMana = maxMana*2;
             mana= maxMana;
             nextLevelEXP *=2;
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
     }
@@ -144,6 +177,8 @@ public class Player extends Entity {
                 }
                 enemy.get(i).setHealth(enemy.get(i).getHealth()- damage, force*getDirection(), currentDirection == UP || currentDirection == DOWN);
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
             damage = damage +10;
             defense +=2;
             GameStateManager.sound.playSingleMusic(8);
@@ -174,6 +209,9 @@ public class Player extends Entity {
                     mana = mana - attackManaConsume;
                 }
                 enemy.get(i).setHealth(enemy.get(i).getHealth()- damageCaculate(enemy.get(i)), force*getDirection(), currentDirection == UP || currentDirection == DOWN);
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
                 enemy.remove(i);
             }
@@ -205,6 +243,7 @@ public class Player extends Entity {
                 }
             }
         checkLevelUp();
+<<<<<<< HEAD
 <<<<<<< HEAD
         updateHealthManaPercent();
         if(skill){
@@ -267,6 +306,8 @@ public class Player extends Entity {
                 left = false;
             }
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     }
 
     public void input(MouseHandler mouse,KeyHandler key ){
@@ -308,6 +349,9 @@ public class Player extends Entity {
                 }
             }
 
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
         }else {
             up = false;
@@ -316,9 +360,13 @@ public class Player extends Entity {
             left = false;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     }
 
+=======
+    }
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
     }
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6

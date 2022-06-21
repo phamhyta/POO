@@ -1,6 +1,7 @@
 package game.gameObject;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.util.Camera;
@@ -17,6 +18,8 @@ public class NPC extends Entity{
 
     public void update(double time){
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 import game.math.Vector2f;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
@@ -27,6 +30,9 @@ public class NPC extends Entity {
     }
 
     public void update(double time) {
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     }
@@ -35,7 +41,11 @@ public class NPC extends Entity {
 
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 =======
 }
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6

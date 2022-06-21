@@ -14,6 +14,7 @@ public class EntityRender {
     protected Camera camera;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     protected int UP =3;
     protected int DOWN=2;
     protected int RIGHT=0;
@@ -22,6 +23,8 @@ public class EntityRender {
     protected int ATTACK = 5;
     protected int IDLE = 6;
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     protected int UP = 7;
     protected int DOWN = 6;
     protected int RIGHT = 4;
@@ -36,12 +39,16 @@ public class EntityRender {
     protected int SKILL_DOWN = 0;
     protected int SKILL_LEFT = 1;
     protected int SKILL_RIGHT = 3;
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     protected int currentAnimation;
 
     protected SpriteSheet spriteSheet;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public EntityRender(Camera camera,Entity entity, SpriteSheet spriteSheet){
         this.entity = entity;
@@ -93,6 +100,8 @@ public class EntityRender {
                     setAnimation(IDLE, spriteSheet.getSpriteArray(IDLE), 10);
                 } else if(!entity.isHasIdle()) {
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
     public EntityRender(Camera camera, Entity entity, SpriteSheet spriteSheet) {
         this.entity = entity;
         this.spriteSheet = spriteSheet;
@@ -164,12 +173,16 @@ public class EntityRender {
                 if (entity.isHasIdle() && currentAnimation != IDLE) {
                     setAnimation(IDLE, spriteSheet.getSpriteArray(IDLE), 10);
                 } else if (!entity.isHasIdle()) {
+<<<<<<< HEAD
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
                     setAnimation(currentAnimation, spriteSheet.getSpriteArray(currentAnimation), -1);
                 }
             }
         }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     public void update(){
         animate();
@@ -188,6 +201,8 @@ public class EntityRender {
 
 }
 =======
+=======
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
 
     public void update() {
         animate();
@@ -208,5 +223,9 @@ public class EntityRender {
         }
     }
 
+<<<<<<< HEAD
+}
+>>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
+=======
 }
 >>>>>>> 4d72d22ccbea68d402644b700aed4dfd928807d6
