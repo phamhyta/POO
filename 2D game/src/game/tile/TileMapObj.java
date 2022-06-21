@@ -4,6 +4,7 @@ package game.tile;
 import game.graphics.SpriteSheet;
 import game.tile.blocks.Block;
 import game.tile.blocks.HoleBlock;
+import game.tile.blocks.NormBlock;
 import game.tile.blocks.ObjBlock;
 import game.math.BoundingBox;
 import game.math.Vector2f;
@@ -34,15 +35,12 @@ public class TileMapObj extends TileMap {
         for(int i = 0; i < (width * height); i++) {
             int temp = Integer.parseInt(block[i].replaceAll("\\s+",""));
              if(temp != 0) {
-                 if(temp == 172) {
-                     tempBlock = new HoleBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
-                 } else {
-                     tempBlock = new ObjBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
-                 }
-                 event_blocks[i] = tempBlock;
-             }
+                    tempBlock = new ObjBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
+                    event_blocks[i] = tempBlock;
+                }
+            }
         }
-    }
+    
 
     public void render(Graphics2D g, BoundingBox cam) {
         int x = (int) ((cam.getPos().x) / tileWidth);
