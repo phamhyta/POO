@@ -1,4 +1,4 @@
-package game.gameObject.object;
+package game.render;
 
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
