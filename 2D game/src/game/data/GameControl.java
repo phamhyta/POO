@@ -4,7 +4,6 @@ import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
 import game.gameObject.npc.NPC;
 import game.gameObject.Player;
-import game.math.BoundingBox;
 import game.math.Vector2f;
 import game.render.EntityRender;
 import game.states.GameStateManager;
@@ -21,7 +20,7 @@ public class GameControl {
     public Player player;
     public NpcUI pui;
     public GameStateManager gsm;
-    private MapAsset mapAs;
+    private game.data.MapAsset mapAs;
     public static int currentMap = 0;
     public int defaultMap=0;
     public static ArrayList<GameObject> gameObject;
