@@ -38,10 +38,10 @@ public class Player extends Entity {
         acc = 2f;
         maxSpeed= 4f;
         deacc = 0.3f;
-        bounds.setWidth(40);
-        bounds.setHeight(30);
-        bounds.setXOffset(10);
-        bounds.setYOffset(30);
+        bounds.setWidth(32);
+        bounds.setHeight(16);
+        bounds.setXOffset(16);
+        bounds.setYOffset(20);
         name = "player";
     }
 

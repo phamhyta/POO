@@ -2,12 +2,13 @@ package game.data;
 
 import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
-import game.gameObject.NPC;
+import game.gameObject.npc.NPC;
 import game.gameObject.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;
 import game.states.GameStateManager;
 import game.tile.TileManager;
+import game.ui.NpcUI;
 import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
@@ -17,9 +18,11 @@ import java.util.ArrayList;
 public class GameControl {
     public Camera cam;
     public Player player;
+    public NpcUI pui;
     public GameStateManager gsm;
-    private MapAsset mapAs;
+    private game.data.MapAsset mapAs;
     public static int currentMap = 0;
+    public int defaultMap=0;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
     public long[] deadStartTime;
@@ -38,11 +41,10 @@ public class GameControl {
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
-        MapAsset[] mapAs = new MapAsset[5];
-       
-        mapAs[0] = new Map03(this);
-        //this.mapAs[1] = new Map02(this);
-        //this.mapAs[2] = new Map03(this);
+
+        mapAs = new Map01(this);
+//        this.mapAs[1] = new Map02(this);
+//        this.mapAs[2] = new Map03(this);
     }
 
     private void resetAsset() {
@@ -64,7 +66,9 @@ public class GameControl {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
-                } else if (gameObject.get(i).type != GameObject.type_nextMap) {
+                } else if (gameObject.get(i).type == GameObject.type_nextMap) {
+                    currentMap++;
+                }else{
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
                 }
@@ -73,7 +77,6 @@ public class GameControl {
 
         for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
-
                 if (player.getHitBounds().collides(enemy[i].getBounds())) {
                     player.setTargetEnemy(enemy[i]);
                 }
@@ -90,15 +93,45 @@ public class GameControl {
                         enemy[i].update(player, time, origin[i]);
                 }
             }
-
             if (enemy[i] == null && this.deadStartTime[i] != 0L
                     && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
-                mapAs.resetEnemy(i);
-                deadStartTime[i] = 0L;
+                    mapAs.resetEnemy(i);
+                    deadStartTime[i] = 0;
             }
         }
 
+        for(int i=0; i< npc.length; i++ ) {
+            if(npc[i]!=null) {
+                if (player.getHitBounds().collides(npc[i].getBounds())) {
+                    System.out.println("Shop");
+                    if(gsm.isStateActive(GameStateManager.DIALOGUES)){
+                        gsm.pop(GameStateManager.DIALOGUES);
+                    }else{
+                        gsm.add(GameStateManager.DIALOGUES);
+                    }
+                    pui = new NpcUI(npc[i]);
+                }
+            }
+        }
+        if(currentMap != defaultMap){
+            defaultMap = currentMap;
+            resetAsset();
+            loadNewMap();
+        }
+
     }
+
+    public void loadNewMap(){
+        if(currentMap == 0){
+            mapAs = new Map01(this);
+        }
+        else if(currentMap == 1){
+            mapAs = new Map02(this);
+        }else{
+            mapAs = new Map03(this);
+        }
+    }
+
 
     public void render(Graphics2D g) {
         this.tm.render(g);
