@@ -25,7 +25,7 @@ public class GameControl {
     public int defaultMap=0;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
-    public long[] deadStartTime;
+    private long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
     public TileManager tm;
