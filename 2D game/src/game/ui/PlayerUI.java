@@ -1,6 +1,5 @@
 package game.ui;
 
-
 import game.gameObject.Player;
 import game.graphics.SpriteSheet;
 import game.util.KeyHandler;
