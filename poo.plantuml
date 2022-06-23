@@ -411,5 +411,12 @@
     GameObject o-- BoundingBox
     Entity o-- BoundingBox
     BoundingBox o-- Vector2f
+    GameControl o-- MapAsset
+    PlayState o-- GameControl
+    PlayState o-- Player
+    GameStateManager o-- GameState
+    Skill o-- SkillRender
+    GameObject o-- ObjectRender
+    EntityRender o-- Animation
 
 @enduml
