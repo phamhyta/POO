@@ -10,7 +10,7 @@ public class Sound {
     URL soundURL[]= new URL[30];
 
     public Sound() {
-        //change file music for game!!!!!!!!!!!1
+        //change file music for game!!!!!!!!!!!
         soundURL[0]= getClass().getResource("/res/sound/Our-Mountain.wav");
         soundURL[1]= getClass().getResource("/res/sound/coin.wav");
         soundURL[2]= getClass().getResource("/res/sound/powerup.wav");

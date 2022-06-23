@@ -11,7 +11,7 @@ import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
-import game.util.Sound;
+
 
 import java.awt.*;
 
@@ -32,8 +32,8 @@ public class PlayState extends GameState {
         map = new Vector2f(0,0);
         Vector2f.setWorldVar(map.x,map.y);
         this.cam = cam;
-        player = new Player(new Vector2f(0 + (GamePanel.width / 2) +100, 0 + (GamePanel.height / 2) +100), 64);
-        playerRender = new EntityRender(cam,player,new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32) );
+        player = new Player(new Vector2f(0 + (GamePanel.width / 2) +100, 0 + (GamePanel.height / 2) +150), 64);
+        playerRender = new EntityRender(player,new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32) );
         gc = new GameControl(player, cam, gsm);
         cam.target(player);
         pui = new PlayerUI(player);
@@ -85,7 +85,6 @@ public class PlayState extends GameState {
         String coinInterface = "Coin:"+player.getCoin();
         SpriteSheet.drawArray(g,coinInterface, new Vector2f(GamePanel.width- coinInterface.length()*32,96) , 32,24);
 
-        cam.render(g);
         pui.render(g);
     }
 }

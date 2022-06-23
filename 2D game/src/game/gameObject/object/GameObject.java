@@ -3,6 +3,7 @@ package game.gameObject.object;
 import game.gameObject.Player;
 import game.math.BoundingBox;
 import game.math.Vector2f;
+import game.render.ObjectRender;
 
 public class GameObject {
 

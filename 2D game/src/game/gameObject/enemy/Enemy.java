@@ -30,6 +30,10 @@ public class Enemy extends Entity {
         r_sense = 350;
         r_attackrange = 32;
         r_enemyArea= 500;
+        bounds.setWidth(40);
+        bounds.setHeight(30);
+        bounds.setXOffset(10);
+        bounds.setYOffset(30);
 
         sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
         attackrange = new BoundingBox(new Vector2f(origin.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2,
