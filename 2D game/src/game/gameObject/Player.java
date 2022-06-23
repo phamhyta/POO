@@ -84,7 +84,7 @@ public class Player extends Entity {
 
         if(skilling){ skillCounter++;}
         if(skilling && skillCounter ==90){
-            skill.add(new Skill(this, 32));
+            skill.add(new Skill(this, 48));
             this.mana -= skillManaConsume;
             skillCounter =0;
         }
