@@ -9,12 +9,11 @@ import game.states.PlayState;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
-
 import java.util.ArrayList;
 
 public class Player extends Entity {
     private ArrayList<Enemy> enemy;
-    private ArrayList<GameObject> inventory;
+    public ArrayList<GameObject> inventory;
 
     private int skillCounter =0;
     private int nextLevelEXP = 50;
@@ -25,7 +24,6 @@ public class Player extends Entity {
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
         skill= new ArrayList<>();
-
     }
     private void setDefaultValue(){
         damage = 25;
@@ -55,11 +53,11 @@ public class Player extends Entity {
     }
 
     private void resetPosition(){
-        pos.x = GamePanel.width/2-32;
+        pos.x =(GamePanel.width / 2) +100;
         PlayState.map.x=0;
         GameStateManager.cam.getPos().x =0;
 
-        pos.y = GamePanel.height/2-32;
+        pos.y = (GamePanel.height / 2) +150;
         GameStateManager.cam.getPos().y =0;
         PlayState.map.y=0;
     }
@@ -178,4 +176,6 @@ public class Player extends Entity {
             left = false;
         }
     }
+
 }
+
