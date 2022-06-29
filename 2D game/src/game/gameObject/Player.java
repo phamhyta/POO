@@ -56,11 +56,11 @@ public class Player extends Entity {
     }
 
     private void resetPosition(){
-        pos.x = GamePanel.width/2-32;
+        pos.x =(GamePanel.width / 2) +100;
         PlayState.map.x=0;
         GameStateManager.cam.getPos().x =0;
 
-        pos.y = GamePanel.height/2-32;
+        pos.y = (GamePanel.height / 2) +150;
         GameStateManager.cam.getPos().y =0;
         PlayState.map.y=0;
     }
