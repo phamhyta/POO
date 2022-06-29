@@ -34,7 +34,6 @@ public class Player extends Entity {
         health = 200;
         maxHealth = 200;
         defense=10;
-
         acc = 2f;
         maxSpeed= 4f;
         deacc = 0.3f;

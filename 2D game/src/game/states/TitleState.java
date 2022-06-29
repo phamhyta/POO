@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import static game.states.GameStateManager.fontf;
 
+
 public class TitleState extends GameState{
     private int commandNum=0;
     BufferedImage image;
@@ -47,17 +48,21 @@ public class TitleState extends GameState{
             }
         }
         if(key.enter.clicked) {
-            if(commandNum== 0) {
+            if(commandNum == 0) {
                 gsm.pop(GameStateManager.TITLE);
-                gsm.add(GameStateManager.PLAY);
+                gsm.add(GameStateManager.INTRO);
             }
             if(commandNum== 1) {
-                // add later
+                gsm.pop(GameStateManager.TITLE);
+                gsm.add(GameStateManager.INSTRUCTION);
             }
             if(commandNum== 2) {
                 System.exit(0);
             }
         }
+    }
+    void setUp(){
+
     }
 
     @Override
@@ -76,7 +81,7 @@ public class TitleState extends GameState{
         //draw main color
         g.setColor(Color.black);
         g.drawString(text, x, y);
-
+        
         //MENU
         g.setFont(fontf.getFont("MeatMadness").deriveFont(Font.BOLD,40F));
 

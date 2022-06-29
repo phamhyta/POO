@@ -32,7 +32,6 @@ public class GamePanel extends JPanel implements Runnable{
     public GamePanel( int width, int height) {
         GamePanel.width = width;
         GamePanel.height = height;
-
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         requestFocus();
@@ -68,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable{
         double lastUpdateTime = System.nanoTime();
         double lastRenderTime;
 
-        final double TARGET_FPS = 1000;
+        final double TARGET_FPS = 60;
         final double TTBR = 1000000000 / TARGET_FPS; // Total time before render
 
         int frameCount = 0;
@@ -134,7 +133,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public void render(){
         if(g!=null){
-            g.setColor(new Color(4, 4, 30));
+            g.setColor(new Color(0, 0, 0));
             g.fillRect(0,0,width,height);
             gsm.render(g);
         }
