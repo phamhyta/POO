@@ -22,7 +22,6 @@ public class ShopState extends GameState{
     public ShopState(GameStateManager gsm) {
         super(gsm);
     }
-
     public void drawDialogues(Graphics2D g2){
 
         int x = 200;
