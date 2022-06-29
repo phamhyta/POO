@@ -231,7 +231,7 @@ public class Entity {
     public boolean isRight() {return right;}
     public boolean isLeft() {return left;}
     public boolean isFallen() {return fallen;}
-    public boolean isAttacking() {return attacking;   }
+    public boolean isAttacking() {return attacking;}
     public boolean isSkilling() {return skilling;}
     public boolean isHasIdle() {return hasIdle;}
     public void setName(String name) { this.name = name; }

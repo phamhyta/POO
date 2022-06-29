@@ -14,18 +14,9 @@ public class NpcUI {
 
     private NPC npc;
     private Graphics2D g2;
-    private GamePanel gp;
-    private KeyHandler key;
 
     public NpcUI(NPC npc) {
         this.npc = npc;
-
-    }
-
-    public void drawSubWindow(int x, int y, int width, int height){
-        Color c = new Color(0,0,0);
-        g2.setColor(c);
-        g2.fillRoundRect(x,y,width,height,35 ,35);
     }
 
     public void input(MouseHandler mouse, KeyHandler key) {

@@ -103,14 +103,10 @@ public class GameControl {
         for(int i=0; i< npc.length; i++ ) {
             if(npc[i]!=null) {
                 if (player.getHitBounds().collides(npc[i].getBounds())) {
-                    System.out.println("Shop");
-                    if(gsm.isStateActive(GameStateManager.DIALOGUES)){
-                        gsm.pop(GameStateManager.DIALOGUES);
-                    }else{
-                        gsm.add(GameStateManager.DIALOGUES);
-                    }
+                    System.out.println("Dialogues");
+                    gsm.add(GameStateManager.DIALOGUES);
                     pui = new NpcUI(npc[i]);
-                }
+                } else gsm.pop(GameStateManager.DIALOGUES);
             }
         }
     }
@@ -124,7 +120,7 @@ public class GameControl {
                 }
             }
         }
-        for(int i = 0; i < gameObject.size(); ++i) {
+        for(int i = 0; i < gameObject.size(); ++i){
             gameObject.get(i).getObjectRender().render(g);
         }
     }

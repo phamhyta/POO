@@ -28,13 +28,13 @@ public class NPCRender extends EntityRender {
         RIGHT = 1;
     }
 
-
     public void update() {
         super.update();
     }
 
     public void render(Graphics2D g) {
         super.render(g);
+        g.setFont(new Font("NewellsHand", Font.PLAIN, 32));
         g.setColor(Color.green);
         g.drawString("Shop",(int) (npc.getPos().getWorldVar().x + npc.getBounds().getXOffset())-25, (int) (npc.getPos().getWorldVar().y));
     }

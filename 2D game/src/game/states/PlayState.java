@@ -70,7 +70,6 @@ public class PlayState extends GameState {
             }else{
                 gsm.add(GameStateManager.SHOP);
             }
-
         }
         pui.input(mouse, key);
     }
@@ -84,7 +83,7 @@ public class PlayState extends GameState {
         SpriteSheet.drawArray(g,tps, new Vector2f(GamePanel.width- fps.length()*32,64) , 32,24);
         String coinInterface = "Coin:"+player.getCoin();
         SpriteSheet.drawArray(g,coinInterface, new Vector2f(GamePanel.width- coinInterface.length()*32,96) , 32,24);
-
+        
         cam.render(g);
         pui.render(g);
     }
