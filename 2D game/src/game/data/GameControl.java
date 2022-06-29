@@ -43,8 +43,6 @@ public class GameControl {
         this.npc = new NPC[5];
 
         mapAs = new Map01(this);
-//        this.mapAs[1] = new Map02(this);
-//        this.mapAs[2] = new Map03(this);
     }
 
     private void resetAsset() {
@@ -114,7 +112,8 @@ public class GameControl {
             }
         }
         if(currentMap != defaultMap){
-            defaultMap = currentMap;
+            if(currentMap > 3) currentMap=0;
+            else defaultMap = currentMap;
             resetAsset();
             loadNewMap();
         }

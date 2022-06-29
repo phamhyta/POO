@@ -1,16 +1,11 @@
 package game.states;
 
-import game.gameObject.GameObject;
-import game.graphics.SpriteSheet;
-import game.math.Vector2f;
+import game.gameObject.object.GameObject;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static game.states.GameStateManager.fontf;
 
 public class ShopState extends GameState{
     private int commandNum=0;

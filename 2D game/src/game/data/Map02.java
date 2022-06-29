@@ -10,7 +10,7 @@ public class Map02 extends MapAsset {
     public Map02(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/winter.xml", gc.cam);
-        gc.gameObject.add(new Door(new Vector2f(1500,2000),128));
+        gc.gameObject.add(new Door(new Vector2f(1500,2500),128));
     }
 
     public void setMonsterPosition() {
