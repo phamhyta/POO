@@ -4,7 +4,6 @@ import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
 import game.gameObject.npc.NPC;
 import game.gameObject.Player;
-import game.math.BoundingBox;
 import game.math.Vector2f;
 import game.render.EntityRender;
 import game.states.GameStateManager;
@@ -21,15 +20,17 @@ public class GameControl {
     public Player player;
     public NpcUI pui;
     public GameStateManager gsm;
-    private MapAsset mapAs;
+    private game.data.MapAsset mapAs;
     public static int currentMap = 0;
+    public int defaultMap=0;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
-    public long[] deadStartTime;
+    private long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
     public TileManager tm;
     public EntityRender entityRender[];
+    public String Mp;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
@@ -41,11 +42,10 @@ public class GameControl {
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
-        MapAsset[] mapAs = new MapAsset[5];
-       
-        mapAs[0] = new Map03(this);
-        //this.mapAs[1] = new Map02(this);
-        //this.mapAs[2] = new Map03(this);
+
+        mapAs = new Map01(this);
+//        this.mapAs[1] = new Map02(this);
+//        this.mapAs[2] = new Map03(this);
     }
 
     private void resetAsset() {
@@ -67,7 +67,9 @@ public class GameControl {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
-                } else if (gameObject.get(i).type != GameObject.type_nextMap) {
+                } else if (gameObject.get(i).type == GameObject.type_nextMap) {
+                    currentMap++;
+                }else{
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
                 }
@@ -76,7 +78,6 @@ public class GameControl {
 
         for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
-
                 if (player.getHitBounds().collides(enemy[i].getBounds())) {
                     player.setTargetEnemy(enemy[i]);
                 }
@@ -93,13 +94,13 @@ public class GameControl {
                         enemy[i].update(player, time, origin[i]);
                 }
             }
-
             if (enemy[i] == null && this.deadStartTime[i] != 0L
                     && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
-                mapAs.resetEnemy(i);
-                deadStartTime[i] = 0L;
+                    mapAs.resetEnemy(i);
+                    deadStartTime[i] = 0;
             }
         }
+
         for(int i=0; i< npc.length; i++ ) {
             if(npc[i]!=null) {
                 if (player.getHitBounds().collides(npc[i].getBounds())) {
@@ -109,7 +110,25 @@ public class GameControl {
                 } else gsm.pop(GameStateManager.DIALOGUES);
             }
         }
+        if(currentMap != defaultMap){
+            defaultMap = currentMap;
+            resetAsset();
+            loadNewMap();
+        }
+
     }
+
+    public void loadNewMap(){
+        if(currentMap == 0){
+            mapAs = new Map01(this);
+        }
+        else if(currentMap == 1){
+            mapAs = new Map02(this);
+        }else{
+            mapAs = new Map03(this);
+        }
+    }
+
 
     public void render(Graphics2D g) {
         this.tm.render(g);

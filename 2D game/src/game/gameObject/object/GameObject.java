@@ -5,6 +5,9 @@ import game.math.BoundingBox;
 import game.math.Vector2f;
 import java.awt.*;
 
+import game.render.ObjectRender;
+
+
 public class GameObject {
 
     protected BoundingBox bounds;

@@ -2,12 +2,13 @@ package game.gameObject.object;
 
 import game.gameObject.Player;
 import game.math.Vector2f;
+import game.render.ObjectRender;
 
 public class ManaCrystal extends GameObject {
 
 	public ManaCrystal(Vector2f origin, int size) {
 		super(origin, size);
-		type = type_consumable;
+		type = type_pickupOnly;
 		name = "Mana Crystal";
 		MP =10;
 		objectRender = new ObjectRender(pos, 5, 6,size );

@@ -9,12 +9,11 @@ import game.states.PlayState;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
-
 import java.util.ArrayList;
 
 public class Player extends Entity {
     private ArrayList<Enemy> enemy;
-    private ArrayList<GameObject> inventory;
+    public ArrayList<GameObject> inventory;
 
     private int skillCounter =0;
     private int nextLevelEXP = 50;
@@ -25,7 +24,6 @@ public class Player extends Entity {
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
         skill= new ArrayList<>();
-
     }
     private void setDefaultValue(){
         damage = 25;
@@ -34,14 +32,13 @@ public class Player extends Entity {
         health = 200;
         maxHealth = 200;
         defense=10;
-
         acc = 2f;
         maxSpeed= 4f;
         deacc = 0.3f;
-        bounds.setWidth(40);
-        bounds.setHeight(30);
-        bounds.setXOffset(10);
-        bounds.setYOffset(30);
+        bounds.setWidth(32);
+        bounds.setHeight(16);
+        bounds.setXOffset(16);
+        bounds.setYOffset(20);
         name = "player";
     }
 
@@ -56,11 +53,11 @@ public class Player extends Entity {
     }
 
     private void resetPosition(){
-        pos.x = GamePanel.width/2-32;
+        pos.x =(GamePanel.width / 2) +100;
         PlayState.map.x=0;
         GameStateManager.cam.getPos().x =0;
 
-        pos.y = GamePanel.height/2-32;
+        pos.y = (GamePanel.height / 2) +150;
         GameStateManager.cam.getPos().y =0;
         PlayState.map.y=0;
     }
@@ -84,7 +81,7 @@ public class Player extends Entity {
 
         if(skilling){ skillCounter++;}
         if(skilling && skillCounter ==90){
-            skill.add(new Skill(this, 32));
+            skill.add(new Skill(this, 48));
             this.mana -= skillManaConsume;
             skillCounter =0;
         }
@@ -179,4 +176,6 @@ public class Player extends Entity {
             left = false;
         }
     }
+
 }
+

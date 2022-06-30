@@ -44,7 +44,6 @@ public class ShopState extends GameState{
     public ShopState(GameStateManager gsm) {
         super(gsm);
     }
-
     public void drawDialogues(Graphics2D g2){
         int cursurX = slotXstart + size*slotCol*3/2;
         int cursurY = slotYstart + size*slotRow*3/2;

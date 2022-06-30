@@ -2,6 +2,7 @@ package game.gameObject.object;
 
 
 import game.math.Vector2f;
+import game.render.ObjectRender;
 
 
 public class Boots extends GameObject {

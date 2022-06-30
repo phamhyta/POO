@@ -241,6 +241,7 @@ public class Entity {
     public void setDeacc(float f) { deacc = f; }
     public int getCoin() {return coin;}
     public void setCoin(int coin) {this.coin = coin;}
+    public void setDamage(int damage){this.damage = damage;}
     public float getDeacc() { return deacc; }
     public float getAcc() { return acc; }
     public float getMaxSpeed() { return maxSpeed; }
