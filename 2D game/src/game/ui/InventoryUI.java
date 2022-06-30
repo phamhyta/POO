@@ -76,33 +76,15 @@ public class InventoryUI {
             int cursurY = slotYstart + 60*slotRow;
             int cursurWight = 40;
             int cursurHeight = 40;
-            // Kho update
+            // update
             if (act == 1) {
                 System.out.println("up");
-                // if (function == 1) {
-                //     slotRow--;
-                //     if (slotRow < 0) slotRow = 4;
-                // } else {
-                //     commandNum--;
-                //     if (commandNum < 0) {
-                //         commandNum = 2;
-                //     }
-                // }
                 slotRow--;
                 if (slotRow < 0) slotCol = 3;
                 act = 0;
             }
             if (act == 2) {
                 System.out.println("Down");
-                // if (function == 1) {
-                //     slotRow++;
-                //     if (slotRow > 8) slotRow = 0;
-                // } else {
-                //     commandNum++;
-                //     if (commandNum > 2) {
-                //         commandNum = 0;
-                //     }
-                // }
                 slotRow ++;
                 if(slotRow > 3) slotRow = 0;
                 act = 0;
