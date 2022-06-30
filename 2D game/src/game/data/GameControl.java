@@ -6,6 +6,7 @@ import game.gameObject.npc.NPC;
 import game.gameObject.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;
+import game.render.NPCRender;
 import game.states.GameStateManager;
 import game.tile.TileManager;
 import game.ui.NpcUI;
@@ -31,6 +32,7 @@ public class GameControl {
     public TileManager tm;
     public EntityRender entityRender[];
     public String Mp;
+    public NPCRender[] npcRender;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
@@ -42,6 +44,8 @@ public class GameControl {
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
+        npcRender = new NPCRender[5];
+
 
         mapAs = new Map01(this);
 //        this.mapAs[1] = new Map02(this);
@@ -142,6 +146,11 @@ public class GameControl {
         for(int i = 0; i < gameObject.size(); ++i){
             gameObject.get(i).getObjectRender().render(g);
         }
+        for(int i = 0; i < npcRender.length; i++){
+            if(npcRender[i] != null){
+                npcRender[i].render(g);
+            }
+        }
     }
 
     public  void input(MouseHandler mouse, KeyHandler key) {
@@ -151,6 +160,7 @@ public class GameControl {
             if (npc[i] != null && player.getBounds().collides(npc[i].getBounds()) && key.enter.clicked) {
             }
         }
+        
     }
 
     public static void setGameObject(GameObject go) {

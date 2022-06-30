@@ -1,6 +1,7 @@
 package game.states;
 
 import game.GamePanel;
+import game.gameObject.Player;
 import game.graphics.Font;
 
 import game.graphics.Fontf;
@@ -77,7 +78,7 @@ public class GameStateManager {
         } else if (state == GAMEOVER) {
             states[GAMEOVER] = new GameOverState(this);
         } else if (state == SHOP) {
-            states[SHOP] = new ShopState(this);
+            states[SHOP] = new ShopState(this, PlayState.player);
         } else if (state == DIALOGUES) {
             states[DIALOGUES] = new DialoguesState(this);
         } else if(state == INTRO){
