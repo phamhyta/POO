@@ -140,7 +140,7 @@ public class Enemy extends Entity {
 
         if (attackrange.colCircleBox(player.getBounds()) && !isInvincible) {
             attacking = true;
-            player.setHealth(player.getHealth()-damageCaculate(player), 5f * getDirection(), currentDirection == UP || currentDirection == DOWN);
+            player.setHealth(player.getHealth()-damageCaculate(player), force/5 * getDirection(), currentDirection == UP || currentDirection == DOWN);
         } else {
             attacking = false;
         }

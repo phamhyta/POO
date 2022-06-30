@@ -15,10 +15,13 @@ public class Map01 extends MapAsset {
         int i = 0;
         SpriteSheet ghostSpriteSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
+        SpriteSheet wizardSheet = new SpriteSheet("res/entity/boss_wizard/Idle.png", 110, 110);
         gc.origin[i] = new Vector2f(500.0F, 500.0F);
         setTinyBox(gc.cam, i, gc.origin[i],ghostSpriteSheet, 128);
         i++;
-
+        gc.origin[i] = new Vector2f(800.0F, 500.0F);
+        setWizard(gc.cam, i, gc.origin[i],wizardSheet, 128);
+        i++;
         gc.origin[i] = new Vector2f(600.0F, 600.0F);
         setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
         i++;

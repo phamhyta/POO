@@ -3,10 +3,12 @@ package game.data;
 
 import game.gameObject.enemy.TinyBox;
 import game.gameObject.enemy.TinyMon;
+import game.gameObject.enemy.Wizard_BOSS;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.render.TinyBoxRender;
 import game.render.TinyMonRender;
+import game.render.WizardRender;
 import game.util.Camera;
 
 public abstract class MapAsset {
@@ -34,6 +36,10 @@ public abstract class MapAsset {
         gc.enemy[i] = tiny;
         gc.entityRender[i] = new TinyMonRender(camera,tiny,spriteSheet);
     }
-
+    public void setWizard (Camera camera,int i, Vector2f vt, SpriteSheet spriteSheet,int size){
+        Wizard_BOSS wiz = new Wizard_BOSS (new Vector2f(gc.origin[i]), size);
+        gc.enemy[i] = wiz;
+        gc.entityRender[i] = new WizardRender(camera,wiz,spriteSheet);
+    }
     public abstract void setNPC();
 }

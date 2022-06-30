@@ -37,7 +37,7 @@ public class EntityRender {
         this.spriteSheet = spriteSheet;
         this.camera = camera;
         ani = new Animation();
-        setAnimation(1, spriteSheet.getSpriteArray(1), 10);
+        setAnimation(1, spriteSheet.getSpriteArray(0), 10);
     }
 
     public void setAnimation(int i, Sprite[] frames, int delay) {
