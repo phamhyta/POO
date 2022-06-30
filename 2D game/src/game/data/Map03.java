@@ -1,6 +1,7 @@
 package game.data;
 
 import game.gameObject.enemy.TinyMon;
+import game.gameObject.object.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;
@@ -10,6 +11,7 @@ public class Map03 extends MapAsset {
     public Map03(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/nature.xml", gc.cam);
+        gc.gameObject.add(new Door(new Vector2f(1500,2000),128));
     }
 
     public void setMonsterPosition() {

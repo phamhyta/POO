@@ -31,7 +31,6 @@ public class GameControl {
     public Vector2f[] origin;
     public TileManager tm;
     public EntityRender entityRender[];
-    public String Mp;
     public NPCRender[] npcRender;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
@@ -44,8 +43,6 @@ public class GameControl {
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
-        npcRender = new NPCRender[5];
-
 
         mapAs = new Map01(this);
 //        this.mapAs[1] = new Map02(this);
@@ -108,10 +105,14 @@ public class GameControl {
         for(int i=0; i< npc.length; i++ ) {
             if(npc[i]!=null) {
                 if (player.getHitBounds().collides(npc[i].getBounds())) {
-                    System.out.println("Dialogues");
-                    gsm.add(GameStateManager.DIALOGUES);
+                    System.out.println("Shop");
+                    if(gsm.isStateActive(GameStateManager.DIALOGUES)){
+                        gsm.pop(GameStateManager.DIALOGUES);
+                    }else{
+                        gsm.add(GameStateManager.DIALOGUES);
+                    }
                     pui = new NpcUI(npc[i]);
-                } else gsm.pop(GameStateManager.DIALOGUES);
+                }
             }
         }
         if(currentMap != defaultMap){
@@ -143,7 +144,7 @@ public class GameControl {
                 }
             }
         }
-        for(int i = 0; i < gameObject.size(); ++i){
+        for(int i = 0; i < gameObject.size(); ++i) {
             gameObject.get(i).getObjectRender().render(g);
         }
         for(int i = 0; i < npcRender.length; i++){
@@ -160,7 +161,6 @@ public class GameControl {
             if (npc[i] != null && player.getBounds().collides(npc[i].getBounds()) && key.enter.clicked) {
             }
         }
-        
     }
 
     public static void setGameObject(GameObject go) {

@@ -40,7 +40,6 @@ public class GameObject {
 
     public GameObject() {
     }
-
     public String getName() {
         return name;
     };
