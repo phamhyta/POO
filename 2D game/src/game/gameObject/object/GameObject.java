@@ -64,10 +64,12 @@ public class GameObject {
 
     public void use (Player player){
         if( HP != 0 ){
-            player.setHealth(player.getHealth()+HP);
+            if(player.getHealth()+HP > player.getMaxHealth()) player.setHealth(player.getMaxHealth());
+            else player.setHealth(player.getHealth()+HP);
         }
         if( MP != 0 ){
-            player.setCurrentMana(player.getMana()+MP);
+            if(player.getMana()+MP > player.getMaxMana()) player.setCurrentMana(player.getMaxMana());
+            else player.setCurrentMana(player.getMana()+MP);
         }
         if( attackValue != 0 ){
             player.setDamage(player.getDamage()+attackValue);
