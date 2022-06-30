@@ -56,6 +56,26 @@ public class PlayerUI {
         if(key.attack.clicked == true){
             inve.shop = 0;
         }
+        key.invDn.tick();
+        key.invUp.tick();
+        key.invLeft.tick();
+        key.invRight.tick();
+        key.invEnter.tick();
+        if (key.invUp.clicked) {
+            inve.act = 1;
+        }
+        if (key.invDn.clicked) {
+            inve.act = 2;
+        }
+        if (key.invLeft.clicked) {
+            inve.act = 3;
+        }
+        if (key.invRight.clicked) {
+            inve.act = 4;
+        }
+        if (key.invEnter.clicked) {
+            inve.act = 5;
+        }
     }
 
     public void render(Graphics2D g) {

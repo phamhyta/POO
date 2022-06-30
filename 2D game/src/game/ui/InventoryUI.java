@@ -20,6 +20,7 @@ public class InventoryUI {
     private int commandNum=0;
     private int function = 0;
     public int shop = 0;
+    public int act = 0;
     private int slotCol = 0;
     private int slotRow = 0;
     // private Entity e;
@@ -61,9 +62,9 @@ public class InventoryUI {
     public void render(Graphics2D g2) {
         if(shop != 0){
             int x = 850;
-            int y= 450;
+            int y= 400;
             int width = 48*8;
-            int height = 48*5;
+            int height = 52*5;
 
             // Slot
             final int slotXstart = x+20;
@@ -71,11 +72,54 @@ public class InventoryUI {
             int slotX = slotXstart;
             int slotY = slotYstart;
             // Cursur
-            int cursurX = slotXstart + 48*slotCol;
-            int cursurY = slotYstart + 48*slotRow;
+            int cursurX = slotXstart + 60*slotCol;
+            int cursurY = slotYstart + 60*slotRow;
             int cursurWight = 40;
             int cursurHeight = 40;
-            // Kho
+            // Kho update
+            if (act == 1) {
+                System.out.println("up");
+                // if (function == 1) {
+                //     slotRow--;
+                //     if (slotRow < 0) slotRow = 4;
+                // } else {
+                //     commandNum--;
+                //     if (commandNum < 0) {
+                //         commandNum = 2;
+                //     }
+                // }
+                slotRow--;
+                if (slotRow < 0) slotCol = 3;
+                act = 0;
+            }
+            if (act == 2) {
+                System.out.println("Down");
+                // if (function == 1) {
+                //     slotRow++;
+                //     if (slotRow > 8) slotRow = 0;
+                // } else {
+                //     commandNum++;
+                //     if (commandNum > 2) {
+                //         commandNum = 0;
+                //     }
+                // }
+                slotRow ++;
+                if(slotRow > 3) slotRow = 0;
+                act = 0;
+            }
+            if (act == 3) {
+                System.out.println("left");
+                slotCol--;
+                if (slotCol < 0) slotCol = 6;
+                act = 0;
+            }
+            if (act == 4) {
+                System.out.println("Right");
+                slotCol++;
+                if (slotCol > 5) slotCol = 0;
+                act = 0;
+            }
+            //===================================
             drawSubWindow(g2, x, y, width, height);
             Color c = new Color(255, 255, 255);
             g2.setColor(c);
@@ -84,24 +128,25 @@ public class InventoryUI {
             // Draw Items
             //System.out.println(inventory.get(0));
             for(int i = 0; i < inventory.size(); i++){
-            g2.drawImage(inventory.get(i).getObjectRender().getimage(), slotX, slotY, null);
-            //Vector2f pos, int row, int col, int size
-                slotX += 60;
-                if(i == 5 || i == 11 || i == 16){
-                    slotX = slotXstart;
-                    slotY += 60;
-                }
+                g2.drawImage(inventory.get(i).getObjectRender().getimage(), slotX, slotY, null);
+                //Vector2f pos, int row, int col, int size
+                    slotX += 60;
+                    if(i == 5 || i == 11 || i == 16){
+                        slotX = slotXstart;
+                        slotY += 60;
+                    }
             }
         }
     }
     public void input(MouseHandler mouse, KeyHandler key) {
-        key.down.tick();
-        key.up.tick();
-        key.left.tick();
-        key.right.tick();
-        key.enter.tick();
+        key.invDn.tick();
+        key.invUp.tick();
+        key.invLeft.tick();
+        key.invRight.tick();
+        key.invEnter.tick();
         if(shop == 1) {
-            if (key.up.clicked) {
+            if (act == 1) {
+                System.out.println("up");
                 if (function == 1) {
                     slotRow--;
                     if (slotRow < 0) slotRow = 8;
@@ -112,7 +157,8 @@ public class InventoryUI {
                     }
                 }
             }
-            if (key.down.clicked) {
+            if (act == 2) {
+                System.out.println("Down");
                 if (function == 1) {
                     slotRow++;
                     if (slotRow > 8) slotRow = 0;
@@ -123,11 +169,13 @@ public class InventoryUI {
                     }
                 }
             }
-            if (key.left.clicked) {
+            if (act == 3) {
+                System.out.println("left");
                 slotCol--;
                 if (slotCol < 0) slotCol = 10;
             }
-            if (key.right.clicked) {
+            if (act == 4) {
+                System.out.println("Right");
                 slotCol++;
                 if (slotCol > 10) slotCol = 0;
             }
