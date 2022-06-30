@@ -17,30 +17,21 @@ public class NPC extends Entity {
     protected int xOffset;
     protected int yOffset;
     protected Graphics2D g2;
+    protected boolean canAttack;
     public NPC(Vector2f origin, int size) {
         super(origin, size);
-
         xOffset = size / 4;
         yOffset = size / 4;
         r_sense = 30;
+        canAttack = false;
         bounds.setWidth(42);
         bounds.setHeight(20);
         bounds.setXOffset(16);
         bounds.setYOffset(40);
-
         sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2), r_sense);
 
     }
+    public void update(double time){}
+    public void input(MouseHandler mouse, KeyHandler key) {}
 
-    public void setG2(Graphics2D g2) { this.g2 = g2; }
-    public Graphics2D getG2() { return g2; }
-
-    public void update(double time){
-
-    }
-
-
-    public void input(MouseHandler mouse, KeyHandler key) {
-
-    }
 }
