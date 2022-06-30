@@ -9,13 +9,12 @@ import game.states.PlayState;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
-
 import java.util.ArrayList;
 
 public class Player extends Entity {
     public static int coin=0;
     private ArrayList<Enemy> enemy;
-    private ArrayList<GameObject> inventory;
+    public ArrayList<GameObject> inventory;
 
     private int skillCounter =0;
     private int nextLevelEXP = 50;
@@ -26,7 +25,6 @@ public class Player extends Entity {
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
         skill= new ArrayList<>();
-
     }
     private void setDefaultValue(){
         damage = 25;
@@ -35,7 +33,6 @@ public class Player extends Entity {
         health = 200;
         maxHealth = 200;
         defense=10;
-
         acc = 2f;
         maxSpeed= 4f;
         deacc = 0.3f;
@@ -180,4 +177,6 @@ public class Player extends Entity {
             left = false;
         }
     }
+
 }
+

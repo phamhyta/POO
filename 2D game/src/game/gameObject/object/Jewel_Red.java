@@ -17,9 +17,4 @@ public class Jewel_Red extends GameObject {
 		objectRender = new ObjectRender(pos, 18, 1,size );
 	}
 
-	public void use(Player player) {
-		
-	}
-
-
 }

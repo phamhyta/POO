@@ -15,11 +15,5 @@ public class Glove_1 extends GameObject {
         coin = 50;
 		objectRender = new ObjectRender(pos, 8, 0,size );
 	}
-
-	public void use(Player player) {
-		
-	}
-
-
 }
 

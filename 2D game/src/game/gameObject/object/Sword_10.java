@@ -15,10 +15,4 @@ public class Sword_10 extends GameObject {
         coin = 500;
 		objectRender = new ObjectRender(pos, 5, 9,size );
 	}
-
-	public void use(Player player) {
-		
-	}
-
-
 }

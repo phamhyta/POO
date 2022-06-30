@@ -16,14 +16,4 @@ public class Potion_Blue_2 extends GameObject {
 		objectRender = new ObjectRender(pos, 9, 5,size );
 	}
 
-	public void use(Player player) {
-		// if(player.getHealth() + this.HP < player.getMaxHealth()) {
-		// 	player.setHealth(player.getHP() + this.MP);
-		// }
-		// else{
-		// 	player.setHealth(player.getMaxHealth());
-		// }
-	}
-
-
 }

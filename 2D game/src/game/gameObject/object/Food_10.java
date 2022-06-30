@@ -15,11 +15,5 @@ public class Food_10 extends GameObject {
         coin = 50;
 		objectRender = new ObjectRender(pos, 15, 4,size );
 	}
-
-	public void use(Player player) {
-		
-	}
-
-
 }
 

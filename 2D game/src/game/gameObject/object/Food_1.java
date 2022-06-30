@@ -16,10 +16,5 @@ public class Food_1 extends GameObject {
 		objectRender = new ObjectRender(pos, 14, 0,size );
 	}
 
-	public void use(Player player) {
-		
-	}
-
-
 }
 

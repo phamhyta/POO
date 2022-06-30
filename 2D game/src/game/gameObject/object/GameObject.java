@@ -63,7 +63,21 @@ public class GameObject {
     public int getSize() { return size; }
 
     public void use (Player player){
-        
+        if( HP != 0 ){
+            player.setHealth(player.getHealth()+HP);
+        }
+        if( MP != 0 ){
+            player.setCurrentMana(player.getMana()+MP);
+        }
+        if( attackValue != 0 ){
+            player.setDamage(player.getDamage()+attackValue);
+        }
+        if( defense != 0 ){
+            player.setDefense(player.getDefense()+defense);
+        }
+        // if( speed != 0 ){
+            
+        // }
     }
     public void update(){}
 

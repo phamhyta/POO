@@ -258,6 +258,8 @@ public class Entity {
     public float getManapercent() {return manapercent;}
     public int getMaxHealth() {return maxHealth;}
     public int getDamage() { return damage;}
+    public void setDamage(int damage) {this.damage=damage;}
+    public void setDefense(int defense) {this.defense=defense;}
     public ArrayList<Skill> getSkill() {return skill;}
 }
 

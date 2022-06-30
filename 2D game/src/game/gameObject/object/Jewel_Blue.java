@@ -16,15 +16,4 @@ public class Jewel_Blue extends GameObject {
 		coin = 150;
 		objectRender = new ObjectRender(pos, 18, 0,size );
 	}
-
-	public void use(Player player) {
-		// if(player.getHealth() + this.HP < player.getMaxHealth()) {
-		// 	player.setHealth(player.getHP() + this.MP);
-		// }
-		// else{
-		// 	player.setHealth(player.getMaxHealth());
-		// }
-	}
-
-
 }
