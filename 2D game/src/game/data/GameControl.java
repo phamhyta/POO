@@ -21,7 +21,7 @@ public class GameControl {
     public Player player;
     public NpcUI pui;
     public GameStateManager gsm;
-    private game.data.MapAsset mapAs;
+    private MapAsset mapAs;
     public static int currentMap = 0;
     public int defaultMap=0;
     public static ArrayList<GameObject> gameObject;
@@ -42,11 +42,11 @@ public class GameControl {
         origin = new Vector2f[20];
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
+        npcRender = new NPCRender[5];
         this.npc = new NPC[5];
 
         mapAs = new Map01(this);
-//        this.mapAs[1] = new Map02(this);
-//        this.mapAs[2] = new Map03(this);
+
     }
 
     private void resetAsset() {

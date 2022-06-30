@@ -1,13 +1,15 @@
 package game.states;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import java.awt.Color;
-import java.awt.Graphics2D;
+
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
+
+import static game.states.GameStateManager.fontf;
 
 
 public class IntroState extends GameState
@@ -47,6 +49,7 @@ public class IntroState extends GameState
         this.listString = new String[10];
         this.listOfPlayer = new Sprite[10];
         setUp();
+        GameStateManager.g.setFont(fontf.getFont("MaruMonica").deriveFont(Font.TRUETYPE_FONT,96F));
     }
 
     @Override

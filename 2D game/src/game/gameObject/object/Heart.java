@@ -3,8 +3,6 @@ package game.gameObject.object;
 
 import game.math.Vector2f;
 
-import java.awt.*;
-
 
 public class Heart extends GameObject {
 

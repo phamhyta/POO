@@ -1,7 +1,6 @@
 package game.states;
 
 import game.GamePanel;
-import game.gameObject.Player;
 import game.graphics.Font;
 
 import game.graphics.Fontf;
@@ -18,6 +17,8 @@ import java.awt.*;
 public class GameStateManager {
 
     private GameState states[];
+    public static SpriteSheet button;
+    public static SpriteSheet ui;
     public static Vector2f map;
     public static Sound sound;
     public static final int TITLE = 0;
@@ -31,7 +32,7 @@ public class GameStateManager {
     public static final int INSTRUCTION = 8;
 
     public static Camera cam;
-    public Graphics2D g;
+    public static Graphics2D g;
 
     public static Font font;
     public static Fontf fontf;
@@ -46,10 +47,11 @@ public class GameStateManager {
         fontf.loadFont("res/font/Stackedpixel.ttf", "MeatMadness");
         fontf.loadFont("res/font/MotionPersonalUseBold-2O0od.ttf", "Motion");
         fontf.loadFont("res/font/x12y16pxMaruMonica.ttf", "MaruMonica");
-
+        button = new SpriteSheet("res/ui/buttons.png", 122, 57);
+        ui= new SpriteSheet("res/ui/ui_button.png");
         sound = new Sound();
         SpriteSheet.currentFont = font;
-        cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 128, GamePanel.height + 128));
+        cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
         states[TITLE] = new TitleState(this);
     }
 
@@ -70,7 +72,6 @@ public class GameStateManager {
             return;
 
         if (state == PLAY) {
-            cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 200, GamePanel.height + 200));
             states[PLAY] = new PlayState(this, cam);
         } else if (state == TITLE) {
             states[TITLE] = new TitleState(this);
@@ -91,10 +92,6 @@ public class GameStateManager {
         else if(state == INSTRUCTION){
             states[INSTRUCTION] = new GameIntruction(this);
         }
-        // else if (state == EDIT) {
-        // if(states[PLAY] != null) {
-        // states[EDIT] = new EditState(this, cam);
-        // }
     }
 
     public void addAndpop(int state) {
