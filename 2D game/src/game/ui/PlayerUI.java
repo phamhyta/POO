@@ -13,6 +13,8 @@ public class PlayerUI {
 
     private FillBars healthbar;
     private FillBars manaBar;
+    private InventoryUI inve;
+
     Player p;
 //    private Slots[] buildingslots;
 
@@ -35,7 +37,7 @@ public class PlayerUI {
 
         pos = new Vector2f(16, 50);
         this.manaBar = new FillBars(p, manaBarSprite, pos, 10, 16,p.getHealthPercent());
-        
+        this.inve = new InventoryUI(p, manaBarSprite, pos, 10, 16,p.getHealthPercent());
 //        BuildOptionUI boUI = new BuildOptionUI();
 //        buildingslots = boUI.getSlots();
     }
@@ -46,12 +48,20 @@ public class PlayerUI {
     }
 
     public void input(MouseHandler mouse, KeyHandler key) {
-
+        key.inv.tick();
+        key.attack.tick();
+        if(key.inv.clicked == true) {
+            inve.shop = 1;
+        }
+        if(key.attack.clicked == true){
+            inve.shop = 0;
+        }
     }
 
     public void render(Graphics2D g) {
         healthbar.render(g,p.getHealthPercent());
         manaBar.render(g,p.getManapercent());
+        inve.render(g);
     }
 
 }

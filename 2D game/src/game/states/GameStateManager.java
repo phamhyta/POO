@@ -25,6 +25,9 @@ public class GameStateManager {
     public static final int GAMEOVER = 3;
     public static final int SHOP = 4;
     public static final int DIALOGUES = 5;
+    public static final int INTRO = 6;
+    public static final int MENU = 7;
+    public static final int INSTRUCTION = 8;
 
     public static Camera cam;
     public Graphics2D g;
@@ -46,7 +49,6 @@ public class GameStateManager {
         SpriteSheet.currentFont = font;
         cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 128, GamePanel.height + 128));
         states[TITLE] = new TitleState(this);
-
     }
 
     public boolean isStateActive(int state) {
@@ -69,7 +71,7 @@ public class GameStateManager {
             cam = new Camera(new BoundingBox(new Vector2f(-64, -64), GamePanel.width + 128, GamePanel.height + 128));
             states[PLAY] = new PlayState(this, cam);
         } else if (state == TITLE) {
-            states[TITLE] = new MenuState(this);
+            states[TITLE] = new TitleState(this);
         } else if (state == PAUSE) {
             states[PAUSE] = new PauseState(this);
         } else if (state == GAMEOVER) {
@@ -78,6 +80,14 @@ public class GameStateManager {
             states[SHOP] = new ShopState(this);
         } else if (state == DIALOGUES) {
             states[DIALOGUES] = new DialoguesState(this);
+        } else if(state == INTRO){
+            states[INTRO] = new IntroState(this);
+        }
+        else if(state == MENU){
+            states[MENU] = new MenuState(this);
+        }
+        else if(state == INSTRUCTION){
+            states[INSTRUCTION] = new GameIntruction(this);
         }
         // else if (state == EDIT) {
         // if(states[PLAY] != null) {
@@ -117,5 +127,4 @@ public class GameStateManager {
             }
         }
     }
-
 }
