@@ -12,8 +12,7 @@ public class Heart extends GameObject {
 		super(origin, size);
 		type = type_pickupOnly;
 		name = "Heart";
-		HP = 2;
-
+		HP = 100;
 	}
 
 	public void render(Graphics2D g) {

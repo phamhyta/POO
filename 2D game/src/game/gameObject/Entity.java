@@ -67,10 +67,10 @@ public class Entity {
     protected float deacc = 0.3f;
     protected float force = 25f;
 
-    protected int coin =0;
+    protected int coin = 1000;
     protected boolean teleported = false;
     protected TileCollision tc;
-    protected String name = "";
+    protected String name = "" ;
     protected int attackManaConsume = 2;
     protected int skillManaConsume = 10;
     protected ArrayList<Skill> skill;

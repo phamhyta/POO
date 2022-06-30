@@ -3,6 +3,8 @@ package game.gameObject.object;
 import game.gameObject.Player;
 import game.math.BoundingBox;
 import game.math.Vector2f;
+import game.render.ObjectRender;
+
 import java.awt.*;
 
 public class GameObject {
@@ -20,7 +22,6 @@ public class GameObject {
     protected int speed;
     protected int attackValue;
     protected int defense;
-    protected Image image;
 
     public int type;
 
@@ -43,8 +44,6 @@ public class GameObject {
 
     public String getName() {return name;};
     public void setName(String name) {this.name = name;}
-    public Image getImage() {return image;}
-    public void setImage(Image image) {this.image = image;}
     public int getCoin() {return coin;}
     public void setCoin(int coin) {this.coin = coin;}
     public int getHP() {return HP;}

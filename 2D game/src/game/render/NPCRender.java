@@ -9,8 +9,8 @@ public class NPCRender extends EntityRender {
     private NPC npc;
 
 
-    public NPCRender(Camera camera, NPC npc, SpriteSheet spriteSheet) {
-        super(camera, npc, spriteSheet);
+    public NPCRender(NPC npc, SpriteSheet spriteSheet) {
+        super(npc, spriteSheet);
         this.npc = npc;
         ATTACK_DOWN = 1;
         ATTACK_UP = 1;

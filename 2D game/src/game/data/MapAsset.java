@@ -26,21 +26,21 @@ public abstract class MapAsset {
 
     public abstract void resetEnemy(int i);
 
-    public void setTinyBox(Camera camera,int i, Vector2f vt, SpriteSheet spriteSheet, int size){
+    public void setTinyBox(int i, Vector2f vt, SpriteSheet spriteSheet, int size){
         TinyBox tiny = new TinyBox( new Vector2f(gc.origin[i]), size);
         gc.enemy[i] = tiny;
-        gc.entityRender[i] = new TinyBoxRender(camera,tiny,spriteSheet);
+        gc.entityRender[i] = new TinyBoxRender(tiny,spriteSheet);
     }
-    public void setTinyMoon(Camera camera,int i, Vector2f vt, SpriteSheet spriteSheet,int size){
+    public void setTinyMoon(int i, Vector2f vt, SpriteSheet spriteSheet,int size){
         TinyMon tiny = new TinyMon(new Vector2f(gc.origin[i]), size);
         gc.enemy[i] = tiny;
-        gc.entityRender[i] = new TinyMonRender(camera,tiny,spriteSheet);
+        gc.entityRender[i] = new TinyMonRender(tiny,spriteSheet);
     }
 
-    public void setNPC(Camera camera,int i, Vector2f vt, SpriteSheet spriteSheet,int size) {
+    public void setNPC(int i, Vector2f vt, SpriteSheet spriteSheet,int size) {
         NPC npc = new NPC(new Vector2f(gc.origin[i]), size);
         gc.npc[i] = npc;
-        gc.entityRender[i] = new NPCRender(camera,npc,spriteSheet);
+        gc.npcRender[i] = new NPCRender(npc,spriteSheet);
     }
     public void setNPC(){}
 }
