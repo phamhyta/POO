@@ -5,18 +5,221 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="edae4ad5-8003-4de5-beca-5c85ed1e0863" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/2D game.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/GamePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/Window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/data/GameControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/data/Map01.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/data/MapAsset.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/Entity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/GameObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/NPC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/monster/Enemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/monster/TinyBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/monster/TinyMon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Boots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Coin_Bronze.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Door.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Heart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Key.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_ManaCrystal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Potion_Red.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Shield_Blue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Shield_Wood.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/gameObject/object/OBJ_Sworld_Normal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/graphics/Animation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/graphics/Font.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/graphics/Fontf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/graphics/Sprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/graphics/SpriteSheet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/math/BoundingBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/math/Vector2f.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/render/EntityRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/render/PlayerRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/render/TinyBoxRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/render/TinyMonRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/GameOverState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/GameState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/GameStateManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/MenuState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/PauseState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/PlayState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/states/TitleState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/TileManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/TileMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/TileMapNorm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/TileMapObj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/blocks/Block.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/blocks/HoleBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/blocks/NormBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/tile/blocks/ObjBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/ui/FillBars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/ui/NpcUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/ui/PlayerUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/util/Camera.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/util/KeyHandler$Key.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/util/KeyHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/util/MouseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/game/util/TileCollision.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/entity/linkFormatted.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/entity/littlegirl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/entity/minimonsters.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/entity/monsters.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/font/DrymePersonalUseBold-2OYRe.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/font/MotionPersonalUseBold-2O0od.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/font/Stackedpixel.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/font/ZeldaFont.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/font/font.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/font/x12y16pxMaruMonica.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/tile/dungeon_tiles_formatted_v2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/tile/dungeon_tiles_formatted_v2.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/tile/tilemap.tmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/tile/tilemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/buttons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/fillbars.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/items.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/pngTree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/slots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/out/production/2D game/res/ui/ui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/resources" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/data/GameControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/GameControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/data/Map01.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/Map01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/data/Map02.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/Map02.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/data/Map03.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/Map03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/GameObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/npc/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/npc/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/data/MapAsset.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/MapAsset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/SkillRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/SkillRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Boots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Coin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Heart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/ManaCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/ManaCrystal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/ObjectRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/ObjectRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Potion_Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/object/Potion_Red.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/render/EntityRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/EntityRender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/render/NPCRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/NPCRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/states/DialoguesState.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/states/DialoguesState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/render/TinyBoxRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/TinyBoxRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/render/TinyMonRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/TinyMonRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/states/GameStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/states/GameStateManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/states/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/states/PlayState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/states/ShopState.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/states/ShopState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/ui/NpcUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/ui/NpcUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/util/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/tile/TileMapNorm.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/tile/TileMapNorm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/tile/TileMapObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/tile/TileMapObj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/ui/PlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/ui/PlayerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/util/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/util/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/util/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/util/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/UltraViewer_setup_6.5_vi.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/beach.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/res/tile/beach.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/beach.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/res/tile/beach.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/dungeon_tiles_formatted_v2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/dungeon_tiles_formatted_v2.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/nature.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/res/tile/nature.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/nature.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/res/tile/nature.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/tilemap.tmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/res/tile/tilemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/POO.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/GamePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/Window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/data/GameControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/data/Map01.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/data/MapAsset.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/Entity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/GameObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/NPC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/Skill.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/SkillRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/enemy/Enemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/enemy/TinyBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/enemy/TinyMon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/npc/NPC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/Boots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/Coin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/GameObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/Heart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/ManaCrystal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/ObjectRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/gameObject/object/Potion_Red.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/graphics/Animation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/graphics/Font.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/graphics/Fontf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/graphics/Sprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/graphics/SpriteSheet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/math/BoundingBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/math/Vector2f.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/render/EntityRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/render/NPCRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/render/TinyBoxRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/render/TinyMonRender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/DialoguesState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/GameOverState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/GameState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/GameStateManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/MenuState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/PauseState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/PlayState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/ShopState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/states/TitleState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/TileManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/TileMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/TileMapNorm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/TileMapObj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/blocks/Block.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/blocks/HoleBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/blocks/NormBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/tile/blocks/ObjBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/ui/FillBars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/ui/NpcUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/ui/PlayerUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/util/Camera.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/util/KeyHandler$Key.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/util/KeyHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/util/MouseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/util/Sound.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/game/util/TileCollision.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/entity/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/entity/linkFormatted.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/entity/linkFormatted_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/entity/littlegirl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/entity/minimonsters.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/entity/monsters.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/font/MotionPersonalUseBold-2O0od.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/font/Stackedpixel.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/font/ZeldaFont.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/font/font.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/font/x12y16pxMaruMonica.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/BlueBoyAdventure.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/Our-Mountain.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/burning.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/coin.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/cursor.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/fanfare.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/hitmonster.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/levelup.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/powerup.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/receivedamage.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/swingweapon.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/sound/unlock.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/tile/dungeon_tiles_formatted_v2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/tile/dungeon_tiles_formatted_v2.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/tile/tilemap.tmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/tile/tilemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/buttons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/fillbars.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/items.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/pngTree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/slots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO/res/ui/ui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/poo.plantuml" beforeDir="false" afterPath="$PROJECT_DIR$/poo.plantuml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +242,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/MyGame/POO",
+    "last_opened_file_path": "C:/Users/MINH/POO",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

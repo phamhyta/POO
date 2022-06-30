@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class PlayState extends GameState {
 
-    private Player player;
+    public static Player player;
     private EntityRender playerRender;
 
     public static Vector2f map;
@@ -71,9 +71,12 @@ public class PlayState extends GameState {
         key.shop.tick();
         if(key.shop.clicked){
             if(gsm.isStateActive(GameStateManager.SHOP)){
-                gsm.pop(GameStateManager.SHOP);
+                gsm.pop(GameStateManager.DIALOGUES);
             }else{
-                gsm.add(GameStateManager.SHOP);
+                if(gsm.isStateActive(GameStateManager.DIALOGUES)){
+                    gsm.add(GameStateManager.SHOP);
+                    gsm.pop(GameStateManager.DIALOGUES);
+                }
             }
         }
         if(key.menu.clicked){
@@ -100,7 +103,6 @@ public class PlayState extends GameState {
         SpriteSheet.drawArray(g,tps, new Vector2f(GamePanel.width- fps.length()*32,64) , 32,24);
         String coinInterface = "Coin:"+player.getCoin();
         SpriteSheet.drawArray(g,coinInterface, new Vector2f(GamePanel.width- coinInterface.length()*32,96) , 32,24);
-
         pui.render(g);
     }
     public void chageMusic(){
