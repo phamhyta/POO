@@ -33,7 +33,6 @@ public class Animation {
         delay=2;
         if(states[state] == 0) {
             numFrames = frames.length;
-            System.out.println(this.numFrames);
         } else {
             numFrames = states[state];
         }
