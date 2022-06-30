@@ -10,15 +10,14 @@ public class ManaCrystal extends GameObject {
 		super(origin, size);
 		type = type_pickupOnly;
 		name = "Mana Crystal";
-		MP =10;
-		objectRender = new ObjectRender(pos, 5, 6,size );
+		MP = 10;
+		objectRender = new ObjectRender(pos, 5, 6, size);
 	}
 
 	public void use(Player player) {
-		if(player.getMana() + this.MP < player.getMaxMana()) {
+		if (player.getMana() + this.MP < player.getMaxMana()) {
 			player.setCurrentMana(player.getMana() + this.MP);
-		}
-		else{
+		} else {
 			player.setCurrentMana(player.getMaxMana());
 		}
 	}
