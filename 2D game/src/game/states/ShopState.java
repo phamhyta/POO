@@ -1,104 +1,137 @@
 package game.states;
 
+
+import game.data.AddItems;
+import game.gameObject.Player;
 import game.gameObject.object.GameObject;
+import game.graphics.SpriteSheet;
+import game.math.Vector2f;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
 import java.awt.*;
 import java.util.ArrayList;
 
+import static game.states.GameStateManager.fontf;
+
 public class ShopState extends GameState{
     private int commandNum=0;
     private int function = 0;
     private int shop = 0;
+    private int buy = 0;
+    private int back = 0;
     private int slotCol = 0;
     private int slotRow = 0;
     private ArrayList<GameObject> items;
-    public ShopState(GameStateManager gsm) {
-        super(gsm);
-    }
-    public void drawDialogues(Graphics2D g2){
-
-        int x = 200;
-        int y= 100;
-        int width = 48*12;
-        int height = 48*10;
-
+    private SpriteSheet spriteSheet;
+    private Image image;
+    private Player player;
+    private int x = 200;
+    private int y= 100;
+    private int size = 32;
+    private int width = size*11;
+    private int height = size*13;
+    private AddItems additems;
+    
         // Slot
-        final int slotXstart = x+20;
-        final int slotYstart = y+20;
-        int slotX = slotXstart;
-        int slotY = slotYstart;
+    private final int slotXstart = x+20;
+    private final int slotYstart = y+20;
+    private int slotX ;
+    private int slotY ;
         // Cursur
-        int cursurX = slotXstart + 48*slotCol;
-        int cursurY = slotYstart + 48*slotRow;
-        int cursurWight = 48;
-        int cursurHeight = 48;
-        // Buy
-        if(function == 1 && commandNum == 0) {
-            // Kho
-            drawSubWindow(g2, x, y, width, height);
-            Color c = new Color(255, 255, 255);
-            g2.setColor(c);
-            g2.setStroke(new BasicStroke(3));
-            g2.drawRoundRect(cursurX, cursurY, cursurWight, cursurHeight, 10, 10);
-            // Mo ta
-            drawSubWindow(g2, x+width, y,2*width/3, height);
-            g2.drawString("MO TA TRANG BI", x+width +32, y+64);
-            g2.drawString("ENTER de thoat", x+width+32, y+height-32);
-            g2.drawString("B de mua", x+width+32, y+height-64);
-            // Draw Items
-            items = new ArrayList<>();
-        }
-        // Sell
-        if(function == 1 && commandNum == 1){
-            drawSubWindow(g2, x, y, width, height);
-            Color c = new Color(255, 255, 255);
-            g2.setColor(c);
-            g2.setStroke(new BasicStroke(3));
-            g2.drawRoundRect(cursurX, cursurY, cursurWight, cursurHeight, 10, 10);
-            // Mo ta
-            drawSubWindow(g2, x+width, y,2*width/3, height);
-            g2.drawString("MO TA TRANG BI", x+width +32, y+64);
-            g2.drawString("ENTER de thoat", x+width+32, y+height-32);
-            g2.drawString("S de Ban", x+width+32, y+height-64);
-        }
-        // buyBox
+    private int cursurWight = size;
+    private int cursurHeight = size;
+
+    public ShopState(GameStateManager gsm, Player player) {
+        super(gsm);
+        this.player=player;
+        items = new ArrayList<>();
+        additems = new AddItems(items);
+    }
+
+    public void drawIntro(Graphics2D g2){
         int xBuy = x+width;
         int yBuy = y+2*height/3;
-        if(function == 0 ){
-            drawSubWindow(g2, x, y, width+200, height-200);
-            Color c = new Color(220, 20, 60);
+        spriteSheet = new SpriteSheet("res/ui/Dialogues.png");
+            image = spriteSheet.getSubimage(0*size,3*size/2+1,3*size,size*7/4);
+            g2.drawImage(image,x,y, size*16,size*28/3, null);
+            Color c = new Color(0, 0, 0);
             g2.setColor(c);
-            g2.drawString("Toi la sinh vien co khi Bach Khoa", x+48, y+48);
-            g2.drawString("va khong bo ngang sang IT", x+48, y+48*2);
-            g2.drawString("Ban can toi giup gi nao ?", x+48, y+48*3+10);
+            g2.setFont(new Font("NewellsHand", Font.PLAIN, size));  
+            g2.drawString("Tôi là sinh viên cơ khí Bách Khoa", x+size*2/3, y+48*2);
+            g2.drawString("và không bỏ ngang sang IT", x+size*2/3, y+48*3);
+            g2.drawString("Bạn cần tôi giúp gì nào ?", x+size*2/3, y+48*4+10);
             drawSubWindow(g2,xBuy, yBuy,200,height/3);
 
             g2.drawString("Buy", xBuy+64, yBuy+48);
             if(commandNum == 0) {
                 g2.drawString(">",xBuy+32,yBuy+48);
             }
-            g2.drawString("Sell", xBuy+64, yBuy+48*2);
+            g2.drawString("Leave", xBuy+64, yBuy+48*2);
             if(commandNum == 1) {
-                g2.drawString(">",xBuy +32,yBuy+48*2);
+                g2.drawString(">",xBuy+32,yBuy+48*2);
             }
-            g2.drawString("Leave", xBuy+64, yBuy+48*3);
-            if(commandNum == 2) {
-                g2.drawString(">",xBuy+32,yBuy+48*3);
-            }
-        }
+    }
 
+    public void buy(GameObject go){
+        player.setTargetMaterial(go);
+        player.setCoin(player.getCoin() - go.getCoin());
+    }
+
+    public void drawAttributes(Graphics2D g2, int slotX, int slotY){
+        if(slotX+slotY*10 < items.size()){
+            g2.setFont(new Font("NewellsHand", Font.PLAIN, size*2/3));
+            g2.drawString(items.get(slotX+slotY*10).getName(), x+width*3/2+size/2, y+3*size/2);
+            int cnt=1;
+            if(items.get(slotCol+slotRow*10).getHP() != 0){
+                g2.drawString("+" + String.valueOf(items.get(slotCol+slotRow*10).getHP()) + " HP", x+width*3/2+size/2, y+3*size/2 + cnt*size);
+                cnt++;
+            }
+            if(items.get(slotCol+slotRow*10).getMP() != 0){
+                g2.drawString("+" + String.valueOf(items.get(slotCol+slotRow*10).getMP()) + " MP", x+width*3/2+size/2, y+3*size/2 + cnt*size);
+                cnt++;
+            }
+            if(items.get(slotCol+slotRow*10).getAttackValue() != 0){
+                g2.drawString("+" + String.valueOf(items.get(slotCol+slotRow*10).getAttackValue()) + " attack", x+width*3/2+size/2, y+3*size/2 + cnt*size);
+                cnt++;
+            }
+            if(items.get(slotCol+slotRow*10).getDefense() != 0){
+                g2.drawString("+" + String.valueOf(items.get(slotCol+slotRow*10).getDefense()) + " defense", x+width*3/2+size/2, y+3*size/2 + cnt*size);
+                cnt++;
+            }
+            if(items.get(slotCol+slotRow*10).getSpeed() != 0){
+                g2.drawString("+" + String.valueOf(items.get(slotCol+slotRow*10).getSpeed()) + " Speed", x+width*3/2+size/2, y+3*size/2 + cnt*size);
+                cnt++;
+            }
+            if(items.get(slotCol+slotRow*10).getCoin() != 0){
+                g2.drawString("Gia: " + String.valueOf(items.get(slotCol+slotRow*10).getCoin()) + " Coins", x+width*3/2+size/2, y+3*size/2 + cnt*size);
+                cnt++;
+            }  
+        }
+            
     }
 
     public void drawSubWindow(Graphics2D g2, int x, int y, int width, int height){
-        Color c = new Color(0,0,0);
-        g2.setColor(c);
         g2.fillRoundRect(x,y,width,height,35 ,35);
-        c = new Color(255, 255, 255);
+        Color c = new Color(255, 255, 255);
         g2.setColor(c);
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10,height-10,25,25);
+        g2.setFont(new Font("NewellsHand", Font.PLAIN, 32));
+    }
+    public void drawShop(Graphics2D g2, int x, int y, int row, int col ){
+        spriteSheet = new SpriteSheet("res/ui/slots.png");
+        image = spriteSheet.getSubimage(3*size+8,0*size,size+8,size+8);
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                g2.drawImage(image,slotXstart+j*size*3/2, slotYstart+i*size*3/2, size*3/2,size*3/2, null);
+            }
+        }
+        Color c = new Color(218,165,32);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+size/2, y+size/2,col*size*3/2+size*1/4,row*size*3/2+size*1/4,25,25);
+        g2.setFont(new Font("NewellsHand", Font.PLAIN, 32));
     }
 
     @Override
@@ -114,40 +147,53 @@ public class ShopState extends GameState{
         key.left.tick();
         key.right.tick();
         key.enter.tick();
+        key.buy.tick();
+        key.back.tick();
         if(shop == 1) {
-            if (key.up.clicked) {
-                if (function == 1) {
+            if(key.up.clicked){
+                if (function == 1){
                     slotRow--;
-                    if (slotRow < 0) slotRow = 8;
+                    if(slotY == 0 && slotRow < 0) slotRow = 0;
+                    else {
+                        if (slotRow < 0) slotRow = slotY-1;
+                    }
                 } else {
                     commandNum--;
                     if (commandNum < 0) {
-                        commandNum = 2;
+                        commandNum = 1;
                     }
                 }
             }
             if (key.down.clicked) {
                 if (function == 1) {
                     slotRow++;
-                    if (slotRow > 8) slotRow = 0;
+                    if (slotRow > slotY-1) slotRow = 0;
                 } else {
                     commandNum++;
-                    if (commandNum > 2) {
+                    if (commandNum > 1) {
                         commandNum = 0;
                     }
                 }
             }
             if (key.left.clicked) {
                 slotCol--;
-                if (slotCol < 0) slotCol = 10;
+                if (slotCol < 0) {
+                    slotCol = slotX-1;
+                    slotRow--;
+                    if (slotRow < 0) slotRow = slotY-1;
+                }
             }
             if (key.right.clicked) {
                 slotCol++;
-                if (slotCol > 10) slotCol = 0;
+                if (slotCol > slotX-1) {
+                    slotCol = 0;
+                    slotRow++;
+                    if (slotRow > slotY-1) slotRow = 0;
+                }
             }
 
             if (key.enter.clicked) {
-                if (commandNum == 2 && function == 0) {
+                if (commandNum == 1 && function == 0) {
                     gsm.pop(GameStateManager.SHOP);
                     gsm.add(GameStateManager.PLAY);
                 } else {
@@ -155,13 +201,96 @@ public class ShopState extends GameState{
                     else function = 0;
                 }
             }
+            if(key.buy.clicked){
+                buy = 1;
+            }
+            if(key.back.clicked){
+                back = 1;
+            }
         }
     }
 
     @Override
     public void render(Graphics2D g) {
         if(shop == 1) {
-            drawDialogues(g);
+            if(function == 0 ){
+                drawIntro(g);
+            }
+            if(function == 1 && commandNum==0){
+                int cursurX = slotXstart + size*slotCol*3/2;
+                int cursurY = slotYstart + size*slotRow*3/2;
+                drawShop(g, x, y, 8, 10);
+                spriteSheet = new SpriteSheet("res/ui/buttons.png");
+                image = spriteSheet.getSubimage(0*size, size-1,4*size-6,size-8);
+                g.drawImage(image, x+5*size, y-size*3/2, 6*size, size*3/2, null);
+                Color c = new Color(0,0,0);
+                g.setColor(c);
+                g.drawString("Shop", x+5*size + 2*size, y- size/2);
+                c = new Color(255, 255, 255);
+                g.setColor(c);
+                g.setStroke(new BasicStroke(3));
+                g.drawRoundRect(cursurX, cursurY, cursurWight*3/2, cursurHeight*3/2, 10, 10);
+
+                // drawitems
+                slotX=0;
+                slotY=0;
+                if(function == 1 && commandNum == 0) {
+                    for(int i=0; i< items.size(); i++){
+                        g.drawImage(items.get(i).getObjectRender().getImage(),slotXstart+slotX*size*3/2,slotYstart+slotY*size*3/2,48,48,null);
+                        slotX ++;
+                        if(slotX > 9){
+                            slotY ++;
+                            slotX=0;
+                        }
+                    }
+                }
+                slotX=10;
+
+                // Mo ta
+                c = new Color(255,165,0);
+                g.setColor(c);
+                drawSubWindow(g, x+width*3/2 - size/4, y + size/2,width+size, height);
+                c = new Color(0,0,0);
+                g.setColor(c);
+                g.setFont(new Font("NewellsHand", Font.PLAIN, size));
+                g.drawString("ENTER để thoát", x+width*3/2+32, y+height-32);
+                g.drawString("B để mua", x+width*3/2+32, y+height-64);
+                g.setColor(Color.YELLOW);
+                drawSubWindow(g, x+size/2, y+height, 400, 80);
+                g.setColor(Color.BLACK);
+                g.drawString("Your coins: " + player.getCoin(),x+size, y+height+size*3/2);
+
+                drawAttributes(g, slotCol, slotRow);
+                
+                if(buy >= 1){
+                    if(player.getCoin() < items.get(slotCol+slotRow*10).getCoin()){
+                        g.setColor(Color.YELLOW);
+                        drawSubWindow(g, x+3*size/2, y+height/2, 650, 80);
+                        g.setColor(Color.BLACK);
+                        g.drawString("Your coin is not enough! Backspace to back",x+2*size, y+height/2+size*3/2);
+                        if(back==1){
+                            buy = 0;
+                            back = 0;
+                        }
+                    }else{
+                        if(buy==1){
+                            buy(items.get(slotCol + slotRow*10));
+                        }
+                        buy++;
+                        if(buy<30){
+                            g.setColor(Color.YELLOW);
+                            drawSubWindow(g, x+3*size/2, y+height/2, 600, 80);
+                            g.setColor(Color.BLACK);
+                            g.drawString("Thanks for buying!",x+2*size, y+height/2+size*3/2);
+                            if(back==1){
+                                back = 0;
+                            }
+                            
+                        }else buy =0;
+                        
+                    }
+                }
+            }
         }
     }
 }

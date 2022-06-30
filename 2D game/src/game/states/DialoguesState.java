@@ -1,11 +1,14 @@
 package game.states;
 
+import game.graphics.SpriteSheet;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
 import java.awt.*;
 
 public class DialoguesState extends GameState{
+    private SpriteSheet spriteSheet;
+    private Image image;
     public DialoguesState(GameStateManager gsm) {
         super(gsm);
     }
@@ -22,15 +25,12 @@ public class DialoguesState extends GameState{
 
     @Override
     public void render(Graphics2D g) {
+        spriteSheet = new SpriteSheet("res/ui/Dialogues.png");
+        image = spriteSheet.getSubimage(0,49,3*32,32*7/4);
+        g.drawImage(image,180,90, 350,204, null);
+        g.setFont(new Font("NewellsHand", Font.PLAIN, 32));
         Color c = new Color(0,0,0);
         g.setColor(c);
-        g.fillRoundRect(100,100,500,100,35 ,35);
-        c = new Color(255, 255, 255);
-        g.setColor(c);
-        g.setStroke(new BasicStroke(5));
-        g.drawRoundRect(100+5, 100+5,500-10,100-10,25,25);
-        c = new Color(220, 20, 60);
-        g.setColor(c);
-        g.drawString("Nhan P de noi chuyen", 150, 160);
+        g.drawString("Nhan P de noi chuyen", 200, 170);
     }
 }

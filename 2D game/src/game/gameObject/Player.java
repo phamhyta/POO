@@ -12,6 +12,7 @@ import game.math.Vector2f;
 import java.util.ArrayList;
 
 public class Player extends Entity {
+    public static int coin=0;
     private ArrayList<Enemy> enemy;
     public ArrayList<GameObject> inventory;
 

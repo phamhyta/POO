@@ -46,7 +46,13 @@ public class KeyHandler implements KeyListener {
     public Key shift = new Key();
     public Key skill = new Key();
     public Key shop = new Key();
+    public Key buy = new Key();
+
+    public Key back = new Key();
+
     public Key inv = new Key();
+
+
 
     public KeyHandler(GamePanel game){
         game.addKeyListener(this);
@@ -74,6 +80,8 @@ public class KeyHandler implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_SHIFT) shift.toggle(pressed);
         if(e.getKeyCode() == KeyEvent.VK_K) skill.toggle(pressed);
         if(e.getKeyCode() == KeyEvent.VK_P) shop.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_B) buy.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) back.toggle(pressed);
         if(e.getKeyCode() == KeyEvent.VK_I) inv.toggle(pressed);
     }
     @Override

@@ -5,6 +5,8 @@ import game.math.BoundingBox;
 import game.math.Vector2f;
 import game.render.ObjectRender;
 
+import java.awt.*;
+
 public class GameObject {
 
     protected BoundingBox bounds;
@@ -36,15 +38,47 @@ public class GameObject {
         this.size = size;
     }
 
+    
+    public GameObject() {
+    }
+
+    public String getName() {return name;};
+    public void setName(String name) {this.name = name;}
     public int getCoin() {return coin;}
     public void setCoin(int coin) {this.coin = coin;}
+    public int getHP() {return HP;}
+    public void setHP(int HP) {this.HP = HP;}
+    public int getMP() {return MP;}
+    public void setMP(int MP) {this.MP = MP;}
+    public int getSpeed() {return speed;}
+    public void setSpeed(int speed) {this.speed = speed;}
+    public int getAttackValue() {return attackValue;}
+    public void setAttackValue(int attackValue) {this.attackValue = attackValue;}
+    public int getDefense() {return defense;}
+    public void setDefense(int defense) {this.defense = defense;}
     public ObjectRender getObjectRender() {return objectRender;}
 
     public BoundingBox getBounds() { return bounds; }
     public Vector2f getPos() { return pos; }
     public int getSize() { return size; }
 
-    public void use (Player player){}
-    public void update(){};
+    public void use (Player player){
+        if( HP != 0 ){
+            player.setHealth(player.getHealth()+HP);
+        }
+        if( MP != 0 ){
+            player.setCurrentMana(player.getMana()+MP);
+        }
+        if( attackValue != 0 ){
+            player.setDamage(player.getDamage()+attackValue);
+        }
+        if( defense != 0 ){
+            player.setDefense(player.getDefense()+defense);
+        }
+        // if( speed != 0 ){
+            
+        // }
+    }
+    public void update(){}
 
 }

@@ -6,6 +6,7 @@ import game.gameObject.npc.NPC;
 import game.gameObject.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;
+import game.render.NPCRender;
 import game.states.GameStateManager;
 import game.tile.TileManager;
 import game.ui.NpcUI;
@@ -30,6 +31,7 @@ public class GameControl {
     public Vector2f[] origin;
     public TileManager tm;
     public EntityRender entityRender[];
+    public NPCRender[] npcRender;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
@@ -43,6 +45,8 @@ public class GameControl {
         this.npc = new NPC[5];
 
         mapAs = new Map01(this);
+//        this.mapAs[1] = new Map02(this);
+//        this.mapAs[2] = new Map03(this);
     }
 
     private void resetAsset() {
@@ -112,8 +116,7 @@ public class GameControl {
             }
         }
         if(currentMap != defaultMap){
-            if(currentMap > 3) currentMap=0;
-            else defaultMap = currentMap;
+            defaultMap = currentMap;
             resetAsset();
             loadNewMap();
         }
@@ -143,6 +146,11 @@ public class GameControl {
         }
         for(int i = 0; i < gameObject.size(); ++i) {
             gameObject.get(i).getObjectRender().render(g);
+        }
+        for(int i = 0; i < npcRender.length; i++){
+            if(npcRender[i] != null){
+                npcRender[i].render(g);
+            }
         }
     }
 

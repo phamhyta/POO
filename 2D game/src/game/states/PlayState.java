@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class PlayState extends GameState {
 
-    private Player player;
+    public static Player player;
     private EntityRender playerRender;
 
     public static Vector2f map;
@@ -71,11 +71,13 @@ public class PlayState extends GameState {
         key.shop.tick();
         if(key.shop.clicked){
             if(gsm.isStateActive(GameStateManager.SHOP)){
-                gsm.pop(GameStateManager.SHOP);
+                gsm.pop(GameStateManager.DIALOGUES);
             }else{
-                gsm.add(GameStateManager.SHOP);
+                if(gsm.isStateActive(GameStateManager.DIALOGUES)){
+                    gsm.add(GameStateManager.SHOP);
+                    gsm.pop(GameStateManager.DIALOGUES);
+                }
             }
-
         }
         if(key.menu.clicked){
             if(gsm.isStateActive(GameStateManager.MENU)){
