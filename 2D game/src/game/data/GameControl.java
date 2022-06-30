@@ -30,7 +30,6 @@ public class GameControl {
     public Vector2f[] origin;
     public TileManager tm;
     public EntityRender entityRender[];
-    public String Mp;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;

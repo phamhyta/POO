@@ -44,7 +44,7 @@ public class GameStateManager {
         fontf.loadFont("res/font/x12y16pxMaruMonica.ttf", "MaruMonica");
         sound = new Sound();
         SpriteSheet.currentFont = font;
-        cam = new Camera(new BoundingBox(new Vector2f(-64, -64), GamePanel.width + 128, GamePanel.height + 128));
+        cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 128, GamePanel.height + 128));
         states[TITLE] = new TitleState(this);
 
     }
@@ -66,7 +66,7 @@ public class GameStateManager {
             return;
 
         if (state == PLAY) {
-            cam = new Camera(new BoundingBox(new Vector2f(0, 0), GamePanel.width + 64, GamePanel.height + 64));
+            cam = new Camera(new BoundingBox(new Vector2f(-64, -64), GamePanel.width + 128, GamePanel.height + 128));
             states[PLAY] = new PlayState(this, cam);
         } else if (state == TITLE) {
             states[TITLE] = new MenuState(this);

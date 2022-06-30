@@ -1,11 +1,8 @@
 package game.gameObject.npc;
 
 import game.gameObject.Entity;
-import game.graphics.SpriteSheet;
 import game.math.BoundingBox;
 import game.math.Vector2f;
-import game.states.GameStateManager;
-import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
@@ -32,13 +29,8 @@ public class NPC extends Entity {
 
     }
 
-    public void setG2(Graphics2D g2) { this.g2 = g2; }
-    public Graphics2D getG2() { return g2; }
-
     public void update(double time){
-
     }
-
 
     public void input(MouseHandler mouse, KeyHandler key) {
 
