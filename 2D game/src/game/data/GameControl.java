@@ -1,8 +1,8 @@
 package game.data;
 
-import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
 import game.gameObject.npc.NPC;
+import game.gameObject.object.GameObject;
 import game.gameObject.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;

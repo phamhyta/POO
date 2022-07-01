@@ -17,11 +17,11 @@ public class GameObject {
     protected int coin =0;
 	protected String name = "";
 
-    protected int HP;
-    protected int MP;
-    protected int speed;
-    protected int attackValue;
-    protected int defense;
+    protected int HP=0;
+    protected int MP=0;
+    protected int speed=0;
+    protected int attackValue=0;
+    protected int defense=0;
 
     public int type;
 
@@ -64,10 +64,20 @@ public class GameObject {
 
     public void use (Player player){
         if( HP != 0 ){
-            player.setHealth(player.getHealth()+HP);
+            if(player.getHealth() + this.MP < player.getMaxHealth()) {
+                player.setHealth(player.getHealth() + this.HP);
+            }
+            else{
+                player.setHealth(player.getMaxHealth());
+            }
         }
         if( MP != 0 ){
-            player.setCurrentMana(player.getMana()+MP);
+            if(player.getMana() + this.MP < player.getMaxMana()) {
+                player.setCurrentMana(player.getMana() + this.MP);
+            }
+            else{
+                player.setCurrentMana(player.getMaxMana());
+            }
         }
         if( attackValue != 0 ){
             player.setDamage(player.getDamage()+attackValue);
@@ -75,9 +85,9 @@ public class GameObject {
         if( defense != 0 ){
             player.setDefense(player.getDefense()+defense);
         }
-        // if( speed != 0 ){
-            
-        // }
+        if( speed != 0 ){
+            player.setMaxSpeed(player.getMaxSpeed() + speed);
+        }
     }
     public void update(){}
 

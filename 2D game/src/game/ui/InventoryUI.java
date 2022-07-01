@@ -5,10 +5,12 @@ import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.gameObject.Entity;
 import game.math.Vector2f;
-import game.gameObject.object.GameObject;
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import game.gameObject.Player;
+import game.gameObject.object.GameObject;
+
 import java.util.ArrayList;
 import java.awt.*;
 public class InventoryUI {

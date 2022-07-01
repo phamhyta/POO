@@ -1,0 +1,18 @@
+package game.gameObject.object.Items;
+
+
+import game.gameObject.object.GameObject;
+import game.math.Vector2f;
+
+import java.awt.*;
+
+
+public class Heart extends GameObject {
+
+	public Heart(Vector2f origin, int size) {
+		super(origin, size);
+		type = type_pickupOnly;
+		name = "Heart";
+		HP = 100;
+	}
+}
