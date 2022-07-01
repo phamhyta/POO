@@ -37,7 +37,7 @@ public class PlayerUI {
 
         pos = new Vector2f(16, 50);
         this.manaBar = new FillBars(p, manaBarSprite, pos, 10, 16,p.getHealthPercent());
-        this.inve = new InventoryUI(p, manaBarSprite, pos, 10, 16,p.getHealthPercent());
+        this.inve = new InventoryUI(p);
         BuildOptionUI boUI = new BuildOptionUI();
         buildingslots = boUI.getSlots();
     }
