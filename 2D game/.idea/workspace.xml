@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e0f6110-a483-4f2a-af61-5d1863190ada" name="Changes" comment="add button">
+    <list default="true" id="9e0f6110-a483-4f2a-af61-5d1863190ada" name="Changes" comment="fixx">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/AddItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/AddItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/GameControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/GameControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/Map01.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/Map01.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/Map02.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/Map02.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/Map03.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/Map03.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/MapAsset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/MapAsset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/enemy/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/enemy/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Book_Blue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Book_Red.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Boots_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Boots_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Coin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Door.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Futility_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Futility_2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/ManaCrystal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/ManaCrystal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/graphics/Animation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/graphics/Animation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Glove_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Glove_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Heart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Jewel_Blue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Jewel_Red.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/ManaCrystal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Blue_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Blue_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Blue_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Red_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Red_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Red_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Shield_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Shield_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Shield_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/graphics/Font.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/graphics/Font.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/graphics/Fontf.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/graphics/Fontf.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/PauseState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/PauseState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/PlayState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/PlayState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/ShopState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/ShopState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/TitleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/TitleState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/ui/InventoryUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/ui/InventoryUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/ui/PlayerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/ui/PlayerUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/util/KeyHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/util/KeyHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/ui/PlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/ui/PlayerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/data/Map01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/Map01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/data/Map02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/Map02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/data/Map03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/Map03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/data/MapAsset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/MapAsset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/graphics/Fontf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/graphics/Fontf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/states/PauseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/PauseState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/states/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/PlayState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/states/TitleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/TitleState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +224,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656611558852</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="commit">
+      <created>1656660073688</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1656660073688</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fixx">
+      <created>1656743811144</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656743811144</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,6 +258,8 @@
     <MESSAGE value="jjj" />
     <MESSAGE value="fix" />
     <MESSAGE value="add button" />
-    <option name="LAST_COMMIT_MESSAGE" value="add button" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="fixx" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixx" />
   </component>
 </project>

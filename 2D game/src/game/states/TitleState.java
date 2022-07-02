@@ -14,12 +14,11 @@ import java.io.IOException;
 import static game.states.GameStateManager.fontf;
 
 public class TitleState extends GameState{
-    private int selection =0;
+    private int selection ;
     private int commandNum=0;
     BufferedImage image;
     private BufferedImage imgButton;
     private Button btn1, btn2, btn3;
-    private boolean clicked = false;
 
     public TitleState(GameStateManager gsm) {
         super(gsm);
@@ -52,22 +51,19 @@ public class TitleState extends GameState{
         btn2.input(mouse, key);
         btn3.input(mouse, key);
 
-        if(mouse.getButton() == 1 && !clicked &&  btn1.getHovering() ) {
+        if(mouse.getButton() == 1  &&  btn1.getHovering() ) {
             gsm.pop(GameStateManager.TITLE);
             gsm.add(GameStateManager.INTRO);
         }
 
-        else if(mouse.getButton() == 1 && !clicked &&  btn2.getHovering()) {
+        else if(mouse.getButton() == 1  &&  btn2.getHovering()) {
             gsm.pop(GameStateManager.TITLE);
             gsm.add(GameStateManager.INSTRUCTION);
         }
-        else if(mouse.getButton() == 1 && !clicked &&  btn3.getHovering()){
+        else if(mouse.getButton() == 1 &&  btn3.getHovering()){
             System.exit(0);
         }
 
-        else if(mouse.getButton() == -1) {
-            clicked = false;
-        }
     }
 
 
