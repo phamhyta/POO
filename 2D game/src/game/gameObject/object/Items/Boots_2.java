@@ -1,6 +1,7 @@
-package game.gameObject.object;
+package game.gameObject.object.Items;
 
 
+import game.gameObject.object.GameObject;
 import game.math.Vector2f;
 import game.render.ObjectRender;
 
