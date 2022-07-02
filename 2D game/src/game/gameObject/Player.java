@@ -12,11 +12,11 @@ import game.math.Vector2f;
 import java.util.ArrayList;
 
 public class Player extends Entity {
-    public static int coin=0;
+    public static int coin = 0;
     private ArrayList<Enemy> enemy;
     public ArrayList<GameObject> inventory;
 
-    private int skillCounter =0;
+    private int skillCounter = 0;
     private int nextLevelEXP = 50;
 
     public Player(Vector2f orgin, int size) {
@@ -24,17 +24,18 @@ public class Player extends Entity {
         setDefaultValue();
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
-        skill= new ArrayList<>();
+        skill = new ArrayList<>();
     }
-    private void setDefaultValue(){
+
+    private void setDefaultValue() {
         damage = 25;
-        maxMana=100;
+        maxMana = 100;
         mana = 100;
         health = 200;
         maxHealth = 200;
-        defense=10;
+        defense = 10;
         acc = 2f;
-        maxSpeed= 4f;
+        maxSpeed = 4f;
         deacc = 0.3f;
         bounds.setWidth(32);
         bounds.setHeight(16);
@@ -46,58 +47,63 @@ public class Player extends Entity {
     public void setTargetEnemy(Enemy enemy) {
         this.enemy.add(enemy);
     }
+
     public void setTargetMaterial(GameObject go) {
         this.inventory.add(go);
     }
-    public void removeMaterial(GameObject go){
+
+    public void removeMaterial(GameObject go) {
         this.inventory.remove(go);
     }
 
-    private void resetPosition(){
-        pos.x =(GamePanel.width / 2) +100;
-        PlayState.map.x=0;
-        GameStateManager.cam.getPos().x =0;
+    public void resetPosition() {
+        pos.x = (GamePanel.width / 2) + 100;
+        PlayState.map.x = 0;
+        GameStateManager.cam.getPos().x = 0;
 
-        pos.y = (GamePanel.height / 2) +150;
-        GameStateManager.cam.getPos().y =0;
-        PlayState.map.y=0;
+        pos.y = (GamePanel.height / 2) + 150;
+        GameStateManager.cam.getPos().y = 0;
+        PlayState.map.y = 0;
     }
-    private void checkLevelUp(){
-        if(this.EXP >= nextLevelEXP){
-            maxHealth = (int)(maxHealth*1.5);
+
+    private void checkLevelUp() {
+        if (this.EXP >= nextLevelEXP) {
+            maxHealth = (int) (maxHealth * 1.5);
             health = maxHealth;
-            maxMana = maxMana*2;
-            mana= maxMana;
-            nextLevelEXP *=2;
-            damage = damage +10;
-            defense +=2;
+            maxMana = maxMana * 2;
+            mana = maxMana;
+            nextLevelEXP *= 2;
+            damage = damage + 10;
+            defense += 2;
             GameStateManager.sound.playSingleMusic(8);
         }
     }
 
-    public void update(double time){
+    public void update(double time) {
         super.update(time);
         attacking = isAttacking(time);
         skilling = isSkilling(time);
-        if(!skilling) skillStartTime = System.nanoTime();
-        if(skilling && time/1000000 - skillStartTime/1000000 > skillDuration/2 ){
+        if (!skilling)
+            skillStartTime = System.nanoTime();
+        if (skilling && time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
             skill.add(new Skill(this, 48));
             this.mana -= skillManaConsume;
             skillStartTime = System.nanoTime();
         }
-        for(int i=0; i< skill.size(); i++){
-            if(skill.get(i).getDeath()) {
+        for (int i = 0; i < skill.size(); i++) {
+            if (skill.get(i).getDeath()) {
                 skill.remove(i);
-            }
-            else skill.get(i).update();
+            } else
+                skill.get(i).update();
         }
 
-        for(int i=0; i< enemy.size(); i++ ){
-            if(attacking && hitBounds.collides(enemy.get(i).getBounds()) ){
-                if(!enemy.get(i).isInvincible) {
+        for (int i = 0; i < enemy.size(); i++) {
+            if (attacking && hitBounds.collides(enemy.get(i).getBounds())) {
+                if (!enemy.get(i).isInvincible) {
                     mana = mana - attackManaConsume;
                 }
-                enemy.get(i).setHealth(enemy.get(i).getHealth()- damageCaculate(enemy.get(i)), force*getDirection(), currentDirection == UP || currentDirection == DOWN);
+                enemy.get(i).setHealth(enemy.get(i).getHealth() - damageCaculate(enemy.get(i)), force * getDirection(),
+                        currentDirection == UP || currentDirection == DOWN);
                 enemy.remove(i);
             }
         }
@@ -114,43 +120,42 @@ public class Player extends Entity {
             if (!tc.collisionTile(0, dy)) {
                 pos.y += dy;
                 yCol = false;
-                } else {
-                    yCol = true;
-                }
             } else {
-                xCol = false;
-                yCol = false;
-                if (Animation.hasPlayedOnce()) {
-                    resetPosition();
-                    dx = 0;
-                    dy = 0;
-                    fallen = false;
-                }
+                yCol = true;
             }
+        } else {
+            xCol = false;
+            yCol = false;
+            if (Animation.hasPlayedOnce()) {
+                resetPosition();
+                dx = 0;
+                dy = 0;
+                fallen = false;
+            }
+        }
         checkLevelUp();
     }
 
-    public void input(MouseHandler mouse,KeyHandler key ){
-        if(!fallen ){
-            if(skilling){
+    public void input(MouseHandler mouse, KeyHandler key) {
+        if (!fallen) {
+            if (skilling) {
                 up = false;
                 down = false;
                 right = false;
                 left = false;
-            }
-            else{
-                up =key.up.down;
-                down =key.down.down;
-                left=key.left.down;
-                right=key.right.down;
-                //SKILL
-                if(key.skill.down && canSkill){
+            } else {
+                up = key.up.down;
+                down = key.down.down;
+                left = key.left.down;
+                right = key.right.down;
+                // SKILL
+                if (key.skill.down && canSkill) {
                     skilltime = System.nanoTime();
                 }
-                if(key.attack.down && canAttack){
+                if (key.attack.down && canAttack) {
                     attacktime = System.nanoTime();
                 }
-                if(key.shift.down) {
+                if (key.shift.down) {
                     maxSpeed = 8;
                     GameStateManager.cam.setMaxSpeed(7);
                 } else {
@@ -158,18 +163,18 @@ public class Player extends Entity {
                     GameStateManager.cam.setMaxSpeed(4);
                 }
 
-                if(up && down) {
+                if (up && down) {
                     up = false;
                     down = false;
                 }
 
-                if(right && left) {
+                if (right && left) {
                     right = false;
                     left = false;
                 }
             }
 
-        }else {
+        } else {
             up = false;
             down = false;
             right = false;
@@ -178,4 +183,3 @@ public class Player extends Entity {
     }
 
 }
-

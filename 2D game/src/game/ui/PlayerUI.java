@@ -78,6 +78,7 @@ public class PlayerUI {
         healthbar.render(g, p.getHealthPercent());
         manaBar.render(g, p.getManapercent());
         inve.render(g);
+        // inve.drawInfo(g);
     }
 
 }
