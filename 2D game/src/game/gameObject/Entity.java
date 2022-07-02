@@ -67,13 +67,14 @@ public class Entity {
     protected float deacc = 0.3f;
     protected float force = 25f;
 
-    protected int coin =0;
+    protected int coin = 1000;
     protected boolean teleported = false;
     protected TileCollision tc;
-    protected String name = "";
+    protected String name = "" ;
     protected int attackManaConsume = 2;
     protected int skillManaConsume = 10;
     protected ArrayList<Skill> skill;
+    protected ArrayList<EnemySkill> enemySkill;
 
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
@@ -231,7 +232,7 @@ public class Entity {
     public boolean isRight() {return right;}
     public boolean isLeft() {return left;}
     public boolean isFallen() {return fallen;}
-    public boolean isAttacking() {return attacking;   }
+    public boolean isAttacking() {return attacking;}
     public boolean isSkilling() {return skilling;}
     public boolean isHasIdle() {return hasIdle;}
     public void setName(String name) { this.name = name; }
@@ -258,6 +259,8 @@ public class Entity {
     public float getManapercent() {return manapercent;}
     public int getMaxHealth() {return maxHealth;}
     public int getDamage() { return damage;}
+    public void setDamage(int damage) {this.damage=damage;}
+    public void setDefense(int defense) {this.defense=defense;}
     public ArrayList<Skill> getSkill() {return skill;}
 }
 

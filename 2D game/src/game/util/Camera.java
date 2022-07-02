@@ -43,8 +43,6 @@ public class Camera {
         this.tileSize = tileSize;
     }
 
-    public Entity getTarget() { return e; }
-
     public Vector2f getPos() {
         return collisionCam.getPos();
     }
@@ -179,10 +177,10 @@ public class Camera {
             }
         } else {
             if (!e.yCol) {
-                if (collisionCam.getPos().y + collisionCam.getHeight() / 2 + dy > e.getPos().y + e.getSize() / 2 + e.getDy() + 2) {
+                if (collisionCam.getPos().y + collisionCam.getHeight() / 2 + dy -120 > e.getPos().y + e.getSize() / 2 + e.getDy() + 2) {
                     up = true;
                     down = false;
-                } else if (collisionCam.getPos().y + collisionCam.getHeight() / 2 + dy < e.getPos().y + e.getSize() / 2 + e.getDy() - 2) {
+                } else if (collisionCam.getPos().y + collisionCam.getHeight() / 2 + dy +20 < e.getPos().y + e.getSize() / 2 + e.getDy() - 2) {
                     down = true;
                     up = false;
                 } else {
@@ -193,10 +191,10 @@ public class Camera {
             }
 
             if (!e.xCol) {
-                if (collisionCam.getPos().x + collisionCam.getWidth() / 2  + dx > e.getPos().x + e.getSize() / 2 + e.getDx() + 2) {
+                if (collisionCam.getPos().x + collisionCam.getWidth() / 2  + dx -120> e.getPos().x + e.getSize() / 2 + e.getDx() + 2) {
                     left = true;
                     right = false;
-                } else if (collisionCam.getPos().x + collisionCam.getWidth() / 2 + dx < e.getPos().x + e.getSize() / 2 + e.getDx() - 2) {
+                } else if (collisionCam.getPos().x + collisionCam.getWidth() / 2 + dx +25 < e.getPos().x + e.getSize() / 2 + e.getDx() - 2) {
                     right = true;
                     left = false;
                 } else {
@@ -208,15 +206,4 @@ public class Camera {
         }
     }
 
-    public void render(Graphics g) {
-        /* g.setColor(Color.blue);
-        g.drawRect((int) collisionCam.getPos().getWorldVar().x, (int) collisionCam.getPos().getWorldVar().y, (int) collisionCam.getWidth(),
-                (int) collisionCam.getHeight()); */
-
-
-         /* g.setColor(Color.magenta);
-         g.drawLine(GamePanel.width / 2, 0, GamePanel.width / 2, GamePanel.height);
-         g.drawLine(0, GamePanel.height / 2, GamePanel.width,GamePanel.height / 2); */
-
-    }
 }

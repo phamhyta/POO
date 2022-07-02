@@ -11,7 +11,6 @@ import java.awt.*;
 public class EntityRender {
     protected Entity entity;
     public Animation ani;
-    protected Camera camera;
 
     protected int UP = 7;
     protected int DOWN = 6;
@@ -32,10 +31,9 @@ public class EntityRender {
 
     protected SpriteSheet spriteSheet;
 
-    public EntityRender(Camera camera, Entity entity, SpriteSheet spriteSheet) {
+    public EntityRender(Entity entity, SpriteSheet spriteSheet) {
         this.entity = entity;
         this.spriteSheet = spriteSheet;
-        this.camera = camera;
         ani = new Animation();
         setAnimation(1, spriteSheet.getSpriteArray(0), 10);
     }
@@ -112,16 +110,20 @@ public class EntityRender {
     public void update() {
         animate();
         ani.update();
-        if (ani.hasPlayedOnce()) {
-            currentAnimation = RIGHT;
-        }
+        if (ani.hasPlayedOnce()) {currentAnimation = RIGHT;}
     }
 
     public void render(Graphics2D g) {
-        if (camera.getBounds().collides(entity.getBounds())) {
-            g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x),
-                    (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
-        }
+//        g.setColor(Color.red);
+//        g.drawRect((int) (entity.getPos().getWorldVar().x) , (int) (entity.getPos().getWorldVar().y),(int)entity.getBounds().getXOffset(),(int)entity.getBounds().getYOffset());
+
+        g.setColor(Color.green);
+        g.drawRect((int) (entity.getPos().getWorldVar().x) +(int)entity.getBounds().getXOffset(), (int) (entity.getPos().getWorldVar().y)+(int)entity.getBounds().getYOffset(),(int)entity.getBounds().getWidth(),(int)entity.getBounds().getHeight());
+
+//        g.setColor(Color.blue);
+//        g.drawRect((int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y),(int)entity.getSize(),(int)entity.getSize());
+
+        g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
         for (int i = 0; i < entity.getSkill().size(); i++) {
             if (entity.getSkill().get(i) != null)
                 entity.getSkill().get(i).getSkillRender().render(g);

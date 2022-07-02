@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class WizardRender  extends EntityRender{
     private Wizard_BOSS wiz;
-    public WizardRender(Camera camera, Wizard_BOSS wiz, SpriteSheet spriteSheet) {
-        super(camera,wiz, spriteSheet);
+    public WizardRender( Wizard_BOSS wiz, SpriteSheet spriteSheet) {
+        super(wiz, spriteSheet);
         this.wiz = wiz;
 
         ATTACK_DOWN = 0;
@@ -28,13 +28,13 @@ public class WizardRender  extends EntityRender{
         IDLE =2;
 
 
-        ani.setNumFrames(9, 0);
+        ani.setNumFrames(10, 0);
         currentAnimation = 0;
     }
 
     @Override
     public void render(Graphics2D g) {
-        if(camera.getBounds().collides(wiz.getBounds())) {
+
             if(wiz.useRight && wiz.isLeft()) {
                 g.drawImage(ani.getImage().image, (int) (wiz.getPos().getWorldVar().x) + wiz.getSize(), (int) (wiz.getPos().getWorldVar().y ), -wiz.getSize(), wiz.getSize(), null);
             } else {
@@ -48,6 +48,6 @@ public class WizardRender  extends EntityRender{
             g.setColor(Color.green);
             g.fillRect((int) (wiz.getPos().getWorldVar().x + 20), (int) (wiz.getPos().getWorldVar().y ), (int) (24 * wiz.getHealthPercent()), 5);
 
-        }
+
     }
 }

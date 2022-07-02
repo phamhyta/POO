@@ -1,5 +1,6 @@
 package game.data;
 
+import game.gameObject.object.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;
@@ -8,42 +9,69 @@ public class Map01 extends MapAsset {
 
     public Map01(GameControl gc) {
         super(gc);
-        gc.tm = new TileManager("res/tile/tilemap.xml", gc.cam);
+        gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
+        gc.gameObject.add(new Door(new Vector2f(1500,1600),128));
     }
 
     public void setMonsterPosition() {
-        int i = 0;
-        SpriteSheet ghostSpriteSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
+        int i = 1;
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
-        SpriteSheet wizardSheet = new SpriteSheet("res/entity/boss_wizard/Idle.png", 110, 110);
-        gc.origin[i] = new Vector2f(500.0F, 500.0F);
-        setTinyBox(gc.cam, i, gc.origin[i],ghostSpriteSheet, 128);
+        gc.origin[i] = new Vector2f(2000, 500);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
         i++;
-        gc.origin[i] = new Vector2f(800.0F, 500.0F);
-        setWizard(gc.cam, i, gc.origin[i],wizardSheet, 128);
+
+        gc.origin[i] = new Vector2f(2250, 750);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
         i++;
-        gc.origin[i] = new Vector2f(600.0F, 600.0F);
-        setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
+        gc.origin[i] = new Vector2f(1200, 1000);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
         i++;
-        gc.origin[i] = new Vector2f(550.0F, 550.0F);
-        setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
-        i++;
-        gc.origin[i] = new Vector2f(570.0F, 590.0F);
-        setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
+        gc.origin[i] = new Vector2f(1000, 1500);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         i++;
 
         SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
-        gc.origin[i] = new Vector2f(1070.0F, 1070.0F);
-        setTinyMoon(gc.cam, i, gc.origin[i], tinyMoonSheet, 64);
+        gc.origin[i] = new Vector2f(1400, 1200);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
-        gc.origin[i] = new Vector2f(1000.0F, 1000.0F);
-        setTinyMoon(gc.cam, i, gc.origin[i], tinyMoonSheet, 64);
+        gc.origin[i] = new Vector2f(2250, 1350);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
-        gc.origin[i] = new Vector2f(1500.0F, 1500.0F);
-        setTinyMoon(gc.cam, i, gc.origin[i], tinyMoonSheet, 64);
+        gc.origin[i] = new Vector2f(750, 2400);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
-        gc.origin[i] = new Vector2f(700.0F, 1000.0F);
-        setTinyMoon(gc.cam, i, gc.origin[i], tinyMoonSheet, 64);
+        gc.origin[i] = new Vector2f(1000, 2000);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+
+
+
+        gc.origin[i] = new Vector2f(1700, 1350);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
+        i++;
+
+        gc.origin[i] = new Vector2f(2250, 1400);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
+        i++;
+        gc.origin[i] = new Vector2f(1500, 1700);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
+        i++;
+        gc.origin[i] = new Vector2f(1000, 1500);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
+        i++;
+
+
+        gc.origin[i] = new Vector2f(1400, 1200);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+        gc.origin[i] = new Vector2f(2250, 1900);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+        gc.origin[i] = new Vector2f(1600, 1800);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+        gc.origin[i] = new Vector2f(1900, 1400);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
     }
 
@@ -53,18 +81,23 @@ public class Map01 extends MapAsset {
     public void resetEnemy(int i) {
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         if (i == 0) {
-            setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
+            setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
         } else if (i == 1) {
-            setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
+            setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
         } else if (i == 2) {
-            setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
+            setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
         } else if (i == 3) {
-            setTinyBox(gc.cam, i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
+            setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         } else {
-            setTinyMoon(gc.cam, i, gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48), 64);
+            setTinyMoon( i, gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48), 64);
         }
     }
 
     public void setNPC() {
+        int i=0;
+        SpriteSheet npcSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
+        gc.origin[i] = new Vector2f(600.0F, 600.0F);
+        setNPC( i,gc.origin[i], npcSheet,  64);
+        i++;
     }
 }

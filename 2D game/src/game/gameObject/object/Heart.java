@@ -12,17 +12,6 @@ public class Heart extends GameObject {
 		super(origin, size);
 		type = type_pickupOnly;
 		name = "Heart";
-		HP = 2;
-
+		HP = 100;
 	}
-
-	public void render(Graphics2D g) {
-
-	}
-
-//	public void use(Entity entity) {
-//		gp.playSE(2);
-//		gp.ui.addMessager("Life +" +value);
-//		gp.player.setLife(gp.player.getLife() + value);
-//	}
 }

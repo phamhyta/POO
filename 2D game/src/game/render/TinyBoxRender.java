@@ -9,8 +9,8 @@ import java.awt.*;
 
 public class TinyBoxRender extends EntityRender{
     private TinyBox tiny;
-    public TinyBoxRender(Camera camera,TinyBox tiny, SpriteSheet spriteSheet) {
-        super(camera,tiny, spriteSheet);
+    public TinyBoxRender(TinyBox tiny, SpriteSheet spriteSheet) {
+        super(tiny, spriteSheet);
         this.tiny= tiny;
 
         ATTACK_DOWN = 1;
@@ -40,20 +40,19 @@ public class TinyBoxRender extends EntityRender{
 
     @Override
     public void render(Graphics2D g) {
-        if(camera.getBounds().collides(tiny.getBounds())) {
-            if(tiny.useRight && tiny.isLeft()) {
-                g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x) + tiny.getSize(), (int) (tiny.getPos().getWorldVar().y ), -tiny.getSize(), tiny.getSize(), null);
-            } else {
-                g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x), (int) (tiny.getPos().getWorldVar().y), tiny.getSize(), tiny.getSize(), null);
-            }
-
-            // Health Bar
-            g.setColor(Color.red);
-            g.fillRect((int) (tiny.getPos().getWorldVar().x + 20), (int) (tiny.getPos().getWorldVar().y ), 24, 5);
-
-            g.setColor(Color.green);
-            g.fillRect((int) (tiny.getPos().getWorldVar().x + 20), (int) (tiny.getPos().getWorldVar().y ), (int) (24 * tiny.getHealthPercent()), 5);
-
+        if(tiny.useRight && tiny.isLeft()) {
+            g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x) + tiny.getSize(), (int) (tiny.getPos().getWorldVar().y ), -tiny.getSize(), tiny.getSize(), null);
+        } else {
+            g.drawImage(ani.getImage().image, (int) (tiny.getPos().getWorldVar().x), (int) (tiny.getPos().getWorldVar().y), tiny.getSize(), tiny.getSize(), null);
         }
+
+        // Health Bar
+        g.setColor(Color.red);
+        g.fillRect((int) (tiny.getPos().getWorldVar().x + 20), (int) (tiny.getPos().getWorldVar().y ), 24, 5);
+
+        g.setColor(Color.green);
+        g.fillRect((int) (tiny.getPos().getWorldVar().x + 20), (int) (tiny.getPos().getWorldVar().y ), (int) (24 * tiny.getHealthPercent()), 5);
+
+
     }
 }
