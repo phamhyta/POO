@@ -40,7 +40,7 @@ public class InventoryUI {
     public InventoryUI(Player p) {
         this.p = p;
         this.inventory = p.inventory;
-        
+
     }
 
     public void drawSubWindow(Graphics2D g2, int x, int y, int width, int height) {
@@ -52,7 +52,7 @@ public class InventoryUI {
         g2.setFont(new Font("NewellsHand", Font.PLAIN, 32));
     }
 
-    public void drawShop(Graphics2D g2, int x, int y, int row, int col) {
+    public void drawInv(Graphics2D g2, int x, int y, int row, int col) {
         spriteSheet = new SpriteSheet("res/ui/slots.png");
         image = spriteSheet.getSubimage(3 * size + 8, 0 * size, size + 8, size + 8);
         for (int i = 0; i < row; i++) {
@@ -69,37 +69,37 @@ public class InventoryUI {
     }
 
     public void drawAttributes(Graphics2D g2, int slotX, int slotY) {
-        if (slotX + slotY * 5 < inventory.size()) {
+        if (slotX + slotY * 6 < inventory.size()) {
             g2.setFont(new Font("NewellsHand", Font.PLAIN, size * 2 / 3));
-            g2.drawString(inventory.get(slotX + slotY * 5).getName(), x - size / 2 + 20, y - height * 1 / 3 + 50);
+            g2.drawString(inventory.get(slotX + slotY * 6).getName(), x - size / 2 + 20, y - height * 1 / 3 + 50);
             int cnt = 1;
-            if (inventory.get(slotCol + slotRow * 5).getHP() != 0) {
-                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 5).getHP()) + " HP",
+            if (inventory.get(slotCol + slotRow * 6).getHP() != 0) {
+                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 6).getHP()) + " HP",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
-            if (inventory.get(slotCol + slotRow * 5).getMP() != 0) {
-                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 5).getMP()) + " MP",
+            if (inventory.get(slotCol + slotRow * 6).getMP() != 0) {
+                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 6).getMP()) + " MP",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
-            if (inventory.get(slotCol + slotRow * 5).getAttackValue() != 0) {
-                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 5).getAttackValue()) + " attack",
+            if (inventory.get(slotCol + slotRow * 6).getAttackValue() != 0) {
+                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 6).getAttackValue()) + " attack",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
-            if (inventory.get(slotCol + slotRow * 5).getDefense() != 0) {
-                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 5).getDefense()) + " defense",
+            if (inventory.get(slotCol + slotRow * 6).getDefense() != 0) {
+                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 6).getDefense()) + " defense",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
-            if (inventory.get(slotCol + slotRow * 5).getSpeed() != 0) {
-                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 5).getSpeed()) + " Speed",
+            if (inventory.get(slotCol + slotRow * 6).getSpeed() != 0) {
+                g2.drawString("+" + String.valueOf(inventory.get(slotCol + slotRow * 6).getSpeed()) + " Speed",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
-            if (inventory.get(slotCol + slotRow * 5).getCoin() != 0) {
-                g2.drawString("Gia: " + String.valueOf(inventory.get(slotCol + slotRow * 5).getCoin()) + " Coins",
+            if (inventory.get(slotCol + slotRow * 6).getCoin() != 0) {
+                g2.drawString("Gia: " + String.valueOf(inventory.get(slotCol + slotRow * 6).getCoin()) + " Coins",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
@@ -109,7 +109,7 @@ public class InventoryUI {
 
     public void drawInfo(Graphics2D g2) {
         g2.setColor(Color.BLACK);
-        drawSubWindow(g2, x - 820, y - height * 1 / 3, 350, 320);
+        drawSubWindow(g2, x - 820, y - height * 1 / 3, 350, 360);
         g2.drawString("+ Damage: " + String.valueOf(p.getDamage()), x - 800, y - height * 1 / 3 + 40);
         g2.drawString("+ Defense: " + String.valueOf(p.getDefense()), x - 800, y - height * 1 / 3 + 80);
         g2.drawString("+ EXP: " + String.valueOf(p.getEXP()), x - 800, y - height * 1 / 3 + 120);
@@ -151,13 +151,13 @@ public class InventoryUI {
                     // g.setColor(Color.BLACK);
                     // g.drawString("+ " + String.valueOf(p.getMana()) + "mana", x - 800, y - height
                     // * 1 / 3 + 240);
-                    inventory.remove(inventory.get(slotCol + slotRow * 5));
+                    inventory.remove(inventory.get(slotCol + slotRow * 6));
                 }
                 act = 0;
             }
             int cursurX = slotXstart + size * slotCol * 3 / 2;
             int cursurY = slotYstart + size * slotRow * 3 / 2;
-            drawShop(g, x, y, 4, 6);
+            drawInv(g, x, y, 4, 6);
             Color c = new Color(255, 255, 255);
             g.setColor(c);
             g.drawRoundRect(cursurX, cursurY, cursurWight * 3 / 2, cursurHeight * 3 / 2, 10, 10);
