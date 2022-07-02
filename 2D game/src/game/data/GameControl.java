@@ -1,8 +1,8 @@
 package game.data;
 
-import game.gameObject.object.GameObject;
 import game.gameObject.enemy.Enemy;
 import game.gameObject.npc.NPC;
+import game.gameObject.object.GameObject;
 import game.gameObject.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;
@@ -70,9 +70,10 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
+                    player.resetPosition();
                 } else {
                     player.setTargetMaterial(gameObject.get(i));
-                    gameObject.remove(i);
+                    // gameObject.remove(i);
                 }
             }
         }
@@ -106,13 +107,10 @@ public class GameControl {
             if (npc[i] != null) {
                 if (player.getHitBounds().collides(npc[i].getBounds())) {
                     System.out.println("Shop");
-                    if (gsm.isStateActive(GameStateManager.DIALOGUES)) {
-                        gsm.pop(GameStateManager.DIALOGUES);
-                    } else {
-                        gsm.add(GameStateManager.DIALOGUES);
-                    }
+                    gsm.add(GameStateManager.DIALOGUES);
                     pui = new NpcUI(npc[i]);
-                }
+                } else
+                    gsm.pop(GameStateManager.DIALOGUES);
             }
         }
         if (currentMap != defaultMap) {

@@ -41,100 +41,80 @@ public class GameObject {
     public GameObject() {
     }
 
-    public String getName() {
-        return name;
-    };
+    public BoundingBox getBounds() { return bounds; }
+    public Vector2f getPos() { return pos; }
+    public int getSize() { return size; }
 
-    public void setName(String name) {
-        this.name = name;
+    public void use (Player player){
+        if( HP != 0 ){
+            if(player.getHealth() + this.MP < player.getMaxHealth()) {
+                player.setHealth(player.getHealth() + this.HP);
+            }
+            else{
+                player.setHealth(player.getMaxHealth());
+            }
+        }
+        if( MP != 0 ){
+            if(player.getMana() + this.MP < player.getMaxMana()) {
+                player.setCurrentMana(player.getMana() + this.MP);
+            }
+            else{
+                player.setCurrentMana(player.getMaxMana());
+            }
+        }
+        if( attackValue != 0 ){
+            player.setDamage(player.getDamage()+attackValue);
+        }
+        if( defense != 0 ){
+            player.setDefense(player.getDefense()+defense);
+        }
+        if( speed != 0 ){
+            player.setMaxSpeed(player.getMaxSpeed() + speed);
+        }
     }
-
-    public int getCoin() {
-        return coin;
+    public void setHP(int hP) {
+        HP = hP;
     }
-
-    public void setCoin(int coin) {
-        this.coin = coin;
-    }
-
     public int getHP() {
         return HP;
     }
-
-    public void setHP(int HP) {
-        this.HP = HP;
+    public void setMP(int mP) {
+        MP = mP;
     }
-
     public int getMP() {
         return MP;
     }
-
-    public void setMP(int MP) {
-        this.MP = MP;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public int getAttackValue() {
-        return attackValue;
-    }
-
     public void setAttackValue(int attackValue) {
         this.attackValue = attackValue;
     }
-
-    public int getDefense() {
-        return defense;
+    public int getAttackValue() {
+        return attackValue;
     }
-
     public void setDefense(int defense) {
         this.defense = defense;
     }
-
+    public int getDefense() {
+        return defense;
+    }
+    public int getCoin() {
+        return coin;
+    }
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+    public int getSpeed() {
+        return speed;
+    }
     public ObjectRender getObjectRender() {
         return objectRender;
     }
-
-    public BoundingBox getBounds() {
-        return bounds;
-    }
-
-    public Vector2f getPos() {
-        return pos;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void use(Player player) {
-        if (HP != 0) {
-            if (player.getHealth() + HP > player.getMaxHealth())
-                player.setHealth(player.getMaxHealth());
-            else
-                player.setHealth(player.getHealth() + HP);
-        }
-        if (MP != 0) {
-            if (player.getMana() + MP > player.getMaxMana())
-                player.setCurrentMana(player.getMaxMana());
-            else
-                player.setCurrentMana(player.getMana() + MP);
-        }
-        if (attackValue != 0) {
-            player.setDamage(player.getDamage() + attackValue);
-        }
-        if (defense != 0) {
-            player.setDefense(player.getDefense() + defense);
-        }
-    }
-
-    public void update() {
-    }
-
 }
