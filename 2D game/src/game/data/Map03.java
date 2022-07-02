@@ -1,7 +1,7 @@
 package game.data;
 
 import game.gameObject.enemy.TinyMon;
-import game.gameObject.object.Door;
+import game.gameObject.object.Items.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;
@@ -68,7 +68,7 @@ public class Map03 extends MapAsset {
     public void setNPC() {
         int i=0;
         SpriteSheet npcSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
-        gc.origin[i] = new Vector2f(200.0F, 200.0F);
+        gc.origin[i] = new Vector2f(600.0F, 200.0F);
         setNPC(i,gc.origin[i], npcSheet,  64);
         i++;
     }

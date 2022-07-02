@@ -2,9 +2,15 @@ package game.ui;
 
 import game.util.KeyHandler;
 import game.util.MouseHandler;
+import game.gameObject.Entity;
+import game.math.Vector2f;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import game.gameObject.Player;
 import game.gameObject.object.GameObject;
 import game.graphics.SpriteSheet;
-import game.gameObject.Player;
+
 import java.util.ArrayList;
 import java.awt.*;
 
@@ -34,6 +40,7 @@ public class InventoryUI {
     public InventoryUI(Player p) {
         this.p = p;
         this.inventory = p.inventory;
+        
     }
 
     public void drawSubWindow(Graphics2D g2, int x, int y, int width, int height) {
