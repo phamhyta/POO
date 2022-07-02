@@ -15,6 +15,7 @@ import static game.states.GameStateManager.fontf;
 public class TitleState extends GameState{
     private int commandNum=0;
     BufferedImage image;
+    int count = 0;
 
     public TitleState(GameStateManager gsm) {
         super(gsm);
@@ -68,6 +69,8 @@ public class TitleState extends GameState{
     @Override
     public void render(Graphics2D g) {
         g.drawImage(image, 0,0, GamePanel.width, GamePanel.height, null);
+        this.count++;
+        System.out.println(count);
         // title name
         g.setFont(fontf.getFont("Motion").deriveFont(Font.TRUETYPE_FONT,96F));
         String text = "POO GAME ADVENTURE";

@@ -8,7 +8,7 @@ import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
-
+import java.awt.Rectangle;
 
 public class IntroState extends GameState
 {
@@ -30,10 +30,12 @@ public class IntroState extends GameState
     private Sprite listOfMonsters[][];
     private Sprite listOfLittleGirl [];
     private Sprite listOfPlayer[];
+    private int process;
     public IntroState(GameStateManager gsm) {
         super(gsm);
         this.check = 1;
         this.check1 = 1;
+        this.process = 0;
         this.picTran1 = 255;
         this.count = 0;
         this.tran = 0;
@@ -59,10 +61,12 @@ public class IntroState extends GameState
             gsm.pop(GameStateManager.INTRO);
             gsm.add(GameStateManager.PLAY);
         }
+    
     }
     @Override
     public void render(Graphics2D g) {
         this.count++;
+        System.out.println(count);
         //Mo dau
         renderFirstInro(g);
         renderTxt(0, 4, g, listString[0],0,720 - 48*2);
@@ -139,10 +143,12 @@ public class IntroState extends GameState
         for(int i = 1;i<=56;i++){
                 loadImage(i);
                 this.listOfImages1[i] = this.scaledImage(this.listOfImages1[i], 1280, 720);
+                this.process = i;
         }
         
         
     }
+
     public void loadImage(int i){
         try{
             this.listOfImages1[i] = ImageIO.read(getClass().getResourceAsStream("/res/pic/Pic("+i+").png"));
