@@ -118,7 +118,7 @@ public class EntityRender {
 //        g.drawRect((int) (entity.getPos().getWorldVar().x) , (int) (entity.getPos().getWorldVar().y),(int)entity.getBounds().getXOffset(),(int)entity.getBounds().getYOffset());
 
         g.setColor(Color.green);
-        g.drawRect((int) (entity.getPos().getWorldVar().x) +(int)entity.getBounds().getXOffset(), (int) (entity.getPos().getWorldVar().y)+(int)entity.getBounds().getYOffset(),(int)entity.getBounds().getWidth(),(int)entity.getBounds().getHeight());
+        g.drawRect((int) (entity.getPos().getWorldVar().x) + (int) entity.getBounds().getXOffset(), (int) (entity.getPos().getWorldVar().y) + (int) entity.getBounds().getYOffset(), (int) entity.getBounds().getWidth(), (int) entity.getBounds().getHeight());
 
 //        g.setColor(Color.blue);
 //        g.drawRect((int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y),(int)entity.getSize(),(int)entity.getSize());
@@ -126,7 +126,8 @@ public class EntityRender {
         g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
         for (int i = 0; i < entity.getSkill().size(); i++) {
             if (entity.getSkill().get(i) != null)
-                entity.getSkill().get(i).getSkillRender().render(g);
+//                entity.getSkill().get(i).getSkillRender().render(g);
+            g.fillRect((int)entity.getSkill().get(i).getPos().getWorldVar().x,(int)entity.getSkill().get(i).getPos().getWorldVar().y,32,32);
         }
     }
 

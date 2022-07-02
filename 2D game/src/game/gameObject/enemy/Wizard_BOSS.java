@@ -21,11 +21,12 @@ public class Wizard_BOSS extends Enemy {
         acc = 1f;
         deacc = 2f;
         maxSpeed = 0;
-        r_sense = 100000;
-        r_attackrange = 32;
+        r_sense = 1000;
+        r_attackrange = 10;
         coin =10;
-
-
+        skillManaConsume=0;
+        mana = 1000;
+        skillSpeed = 2000;
         hasIdle = true;
         useRight = true;
         right = true;
@@ -36,60 +37,26 @@ public class Wizard_BOSS extends Enemy {
 //        else {dy -= a;}
     }
     public void update(Player player, double time, Vector2f defaultPosition) {
-        super.update(time);
+        super.update(player, time, defaultPosition);
 
-
-
-        if(teleported) {
-            teleported = false;
-
-            bounds.setWidth(size / 2);
-            bounds.setHeight(size / 2 - yOffset);
-            bounds.setXOffset(size / 2 - xOffset);
-            bounds.setYOffset(size / 2 + yOffset);
-            hitBounds = new BoundingBox(pos, size, size);
-            hitBounds.setXOffset(size / 2);
-
-            sense = new BoundingBox(new Vector2f(pos.x + size / 2 - r_sense / 2, pos.y + size / 2 - r_sense / 2), r_sense);
-            attackrange = new BoundingBox(new Vector2f(pos.x + bounds.getXOffset() + bounds.getWidth() / 2 - r_attackrange / 2 , pos.y + bounds.getYOffset() + bounds.getHeight() / 2 - r_attackrange / 2 ), r_attackrange);
+        if(player.isInCircle(this.getPos(), r_sense)&& canSkill) {
+            skilltime = System.nanoTime();
         }
+        skilling = isSkilling(time);
 
-        if (attackrange.colCircleBox(player.getBounds()) && !isInvincible) {
-            attacking = true;
-            player.setHealth(player.getHealth()-damageCaculate(player), force/5 * getDirection(), currentDirection == UP || currentDirection == DOWN);
-        } else {
-            attacking = false;
-        }
-
-        if(attacking){
-            if (this.isAttacking(time)) {
-                enemySkill.add(new EnemySkill(this,48));
-                startSkillTime=0;
-            }
-            for (int i = 0; i < enemySkill.size(); i++) {
-                if (enemySkill.get(i).getDeath()) {
-                    enemySkill.remove(i);
-                } else enemySkill.get(i).update(player);
-            }
+        if (!skilling)
+            skillStartTime = System.nanoTime();
+        if ( time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
+            skill.add(new EnemySkill(this, 48,player));
+            skillStartTime = System.nanoTime();
         }
 
 
-
-        if (!fallen) {
-            if (!tc.collisionTile(dx, 0)) {
-                sense.getPos().x += dx;
-                attackrange.getPos().x += dx;
-                pos.x += dx;
-            }
-            if (!tc.collisionTile(0, dy)) {
-                sense.getPos().y += dy;
-                attackrange.getPos().y += dy;
-                pos.y += dy;
-            }
-        } else {
-            if (Animation.hasPlayedOnce()) {
-                die = true;
-            }
+        for (int i = 0; i < skill.size(); i++) {
+            if (skill.get(i).getDeath()) {
+                skill.remove(i);
+            } else
+                skill.get(i).update();
         }
     }
 

@@ -77,6 +77,7 @@ public class Entity {
     protected ArrayList<Skill> skill;
     protected ArrayList<EnemySkill> enemySkill;
 
+
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
         this.pos = origin;
@@ -202,6 +203,38 @@ public class Entity {
             }
         }
     }
+
+    protected void autoDirecting(Vector2f posA, Vector2f posB){
+        if (posA.y > posB.y + 1) {
+            up = true;
+        } else {
+            up = false;
+        }
+        if (posA.y < posB.y - 1) {
+            down = true;
+        } else {
+            down = false;
+        }
+
+        if (posA.x > posB.x + 1) {
+            left = true;
+        } else {
+            left = false;
+        }
+        if (posA.x < posB.x - 1) {
+            right = true;
+        } else {
+            right = false;
+        }
+    }
+
+    protected void stopDirecting(){
+        up = false;
+        down = false;
+        left = false;
+        right = false;
+    }
+
 
     public void update(double time) {
         if(isInvincible) {

@@ -1,6 +1,6 @@
 package game.data;
 import game.gameObject.enemy.TinyMon;
-import game.gameObject.object.Door;
+import game.gameObject.object.Items.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;

@@ -48,6 +48,10 @@ public class WizardRender  extends EntityRender{
             g.setColor(Color.green);
             g.fillRect((int) (wiz.getPos().getWorldVar().x + 20), (int) (wiz.getPos().getWorldVar().y ), (int) (24 * wiz.getHealthPercent()), 5);
 
-
+            for (int i = 0; i < entity.getSkill().size(); i++) {
+            if (entity.getSkill().get(i) != null)
+                entity.getSkill().get(i).getSkillRender().render(g);
+//                g.fillRect((int)entity.getSkill().get(i).getPos().getWorldVar().x,(int)entity.getSkill().get(i).getPos().getWorldVar().y,32,32);
+        }
     }
 }
