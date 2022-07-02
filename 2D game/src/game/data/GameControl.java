@@ -70,9 +70,10 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
+                    player.resetPosition();
                 } else {
                     player.setTargetMaterial(gameObject.get(i));
-                    gameObject.remove(i);
+                    // gameObject.remove(i);
                 }
             }
         }
@@ -108,7 +109,8 @@ public class GameControl {
                     System.out.println("Shop");
                     gsm.add(GameStateManager.DIALOGUES);
                     pui = new NpcUI(npc[i]);
-                } else gsm.pop(GameStateManager.DIALOGUES);
+                } else
+                    gsm.pop(GameStateManager.DIALOGUES);
             }
         }
         if (currentMap != defaultMap) {

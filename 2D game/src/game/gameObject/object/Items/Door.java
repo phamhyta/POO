@@ -9,6 +9,6 @@ public class Door extends GameObject{
         super(origin, size);
         type = type_nextMap;
         name = "Door";
-        objectRender = new ObjectRender(pos, 3, 3,size );
+        objectRender = new ObjectRender(pos, 2, 6,size );
     }
 }

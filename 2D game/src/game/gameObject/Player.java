@@ -53,7 +53,7 @@ public class Player extends Entity {
         this.inventory.remove(go);
     }
 
-    private void resetPosition(){
+    public void resetPosition(){
         pos.x =(GamePanel.width / 2) +100;
         PlayState.map.x=0;
         GameStateManager.cam.getPos().x =0;
