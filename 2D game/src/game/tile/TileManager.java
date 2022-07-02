@@ -1,6 +1,5 @@
 package game.tile;
 
-
 import game.graphics.SpriteSheet;
 import game.util.Camera;
 import org.w3c.dom.Document;
@@ -20,10 +19,8 @@ public class TileManager {
     private Camera cam;
     private SpriteSheet spritesheet;
 
-
     private int width;
     private int height;
-
 
     private String file;
     private int columns;
@@ -69,7 +66,7 @@ public class TileManager {
 
             this.columns = tileColumns;
             this.file = imagePath;
-            sprite = new SpriteSheet("res/tile/" + imagePath + ".png", tileWidth, tileHeight);
+            sprite = new SpriteSheet("res/tile/" + imagePath +".png", tileWidth, tileHeight);
 
             list = doc.getElementsByTagName("layer");
             layers = list.getLength();
@@ -77,18 +74,27 @@ public class TileManager {
             for(int i = 0; i < layers; i++) {
                 node = list.item(i);
                 eElement = (Element) node;
-                if(i <= 0) {
-                    width = Integer.parseInt(eElement.getAttribute("width"));
-                    height = Integer.parseInt(eElement.getAttribute("height"));
-                }
-
+                width = Integer.parseInt(eElement.getAttribute("width"));
+                height = Integer.parseInt(eElement.getAttribute("height"));
+                //System.out.println(width+ " "+height);
                 data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
-
-                if(i >= 1) {
+                //System.out.println(data[i]);
+                /*(i == 0) {
                     tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
-                } else {
-                    tm.add(new TileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                } */
+                if(i==0){
+                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
                 }
+                else if(i==1){
+                    tm.add(new TileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                    }
+                    else{
+                        tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                    }
+                /*else{
+                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+
+                }*/
             }
 
             cam.setLimit(width * blockWidth, height * blockHeight);
@@ -107,7 +113,6 @@ public class TileManager {
     public void render(Graphics2D g) {
         if(cam == null)
             return;
-
         for(int i = 0; i < tm.size(); i++) {
             tm.get(i).render(g, cam.getBounds());
         }

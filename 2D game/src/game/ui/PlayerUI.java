@@ -1,6 +1,5 @@
 package game.ui;
 
-
 import game.gameObject.Player;
 import game.graphics.SpriteSheet;
 import game.util.KeyHandler;
@@ -14,8 +13,9 @@ public class PlayerUI {
 
     private FillBars healthbar;
     private FillBars manaBar;
+    private InventoryUI inve;
+
     Player p;
-//    private Slots[] buildingslots;
 
     public PlayerUI(Player p) {
         this.p =p;
@@ -35,24 +35,31 @@ public class PlayerUI {
                 bars.getSubimage(0, 0, 12, 20) };
 
         pos = new Vector2f(16, 50);
-        this.manaBar = new FillBars(p, manaBarSprite, pos, 10, 16,p.getHealthPercent());
-        
-//        BuildOptionUI boUI = new BuildOptionUI();
-//        buildingslots = boUI.getSlots();
+        this.manaBar = new FillBars(p, manaBarSprite, pos, 10, 16,p.getManapercent());
+        this.inve = new InventoryUI(p);
+
     }
 
     
     public void update(double time) {
-
     }
 
     public void input(MouseHandler mouse, KeyHandler key) {
+        key.inv.tick();
+        key.attack.tick();
+        if(key.inv.clicked == true) {
+            inve.shop = 1;
+        }
+        if(key.attack.clicked == true){
+            inve.shop = 0;
+        }
 
     }
 
     public void render(Graphics2D g) {
         healthbar.render(g,p.getHealthPercent());
         manaBar.render(g,p.getManapercent());
+        inve.render(g);
     }
 
 }

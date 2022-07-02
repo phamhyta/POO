@@ -1,117 +1,103 @@
 package game.gameObject;
 
 import game.GamePanel;
-import game.gameObject.monster.Enemy;
-import game.graphics.SpriteSheet;
+import game.gameObject.enemy.Enemy;
+import game.gameObject.object.GameObject;
+import game.graphics.Animation;
+import game.states.GameStateManager;
 import game.states.PlayState;
-import game.util.Camera;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import game.math.Vector2f;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 public class Player extends Entity {
-    private Camera cam;
+    public static int coin=0;
     private ArrayList<Enemy> enemy;
-    private ArrayList<Material> inventory;
+    public ArrayList<GameObject> inventory;
 
-    private int maxMana=50;
-    private int mana = 5;
-    private float manapercent = 1;
-
+    private int skillCounter =0;
     private int nextLevelEXP = 50;
 
-    public Player(Camera cam, SpriteSheet spriteSheet, Vector2f orgin, int size) {
-        super(spriteSheet, orgin, size);
-        this.cam = cam;
+    public Player(Vector2f orgin, int size) {
+        super(orgin, size);
         setDefaultValue();
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
+        skill= new ArrayList<>();
     }
     private void setDefaultValue(){
+        damage = 25;
+        maxMana=100;
+        mana = 100;
+        health = 200;
+        maxHealth = 200;
+        defense=10;
         acc = 2f;
         maxSpeed= 4f;
         deacc = 0.3f;
-        bounds.setWidth(40);
-        bounds.setHeight(30);
-        bounds.setXOffset(10);
-        bounds.setYOffset(30);
-
-        hitBounds.setWidth(37);
-        hitBounds.setHeight(37);
-
-        ani.setNumFrames(4, UP);
-        ani.setNumFrames(4, DOWN);
-        ani.setNumFrames(4, ATTACK + RIGHT);
-        ani.setNumFrames(4, ATTACK + LEFT);
-        ani.setNumFrames(4, ATTACK + UP);
-        ani.setNumFrames(4, ATTACK + DOWN);
-
-        health = 200;
-        maxHealth = 200;
+        bounds.setWidth(32);
+        bounds.setHeight(16);
+        bounds.setXOffset(16);
+        bounds.setYOffset(20);
         name = "player";
     }
-
-    public int getMaxMana() {return maxMana;}
-    public void setMaxMana(int maxMana) {this.maxMana = maxMana;}
-    public int getMana() {return mana;}
-    public void setCurrentMana(int mana) {this.mana = mana;}
-    public float getManapercent() {return manapercent;}
-    public void setManapercent(float manapercent) {this.manapercent = manapercent;}
-    public int getMaxHealth() {return maxHealth;}
-    public void setCurrentHealth(int health){this.health = health;}
 
     public void setTargetEnemy(Enemy enemy) {
         this.enemy.add(enemy);
     }
-
-    public void setTargetMaterial(Material material) {
-        this.inventory.add(material);
+    public void setTargetMaterial(GameObject go) {
+        this.inventory.add(go);
     }
-    public void removeMaterial(Material material){
-        this.inventory.remove(material);
+    public void removeMaterial(GameObject go){
+        this.inventory.remove(go);
     }
 
     private void resetPosition(){
-        System.out.println("Reseting Player... ");
-        pos.x = GamePanel.width/2-32;
+        pos.x =(GamePanel.width / 2) +100;
         PlayState.map.x=0;
-        cam.getPos().x =0;
+        GameStateManager.cam.getPos().x =0;
 
-        pos.y = GamePanel.height/2-32;
-        cam.getPos().y =0;
+        pos.y = (GamePanel.height / 2) +150;
+        GameStateManager.cam.getPos().y =0;
         PlayState.map.y=0;
-
-        setAnimation(RIGHT, spriteSheet.getSpriteArray(RIGHT), 10);
     }
     private void checkLevelUp(){
         if(this.EXP >= nextLevelEXP){
-            maxHealth *=2;
+            maxHealth = (int)(maxHealth*1.5);
             health = maxHealth;
             maxMana = maxMana*2;
             mana= maxMana;
             nextLevelEXP *=2;
+            damage = damage +10;
+            defense +=2;
+            GameStateManager.sound.playSingleMusic(8);
         }
     }
-    private void updateHealthManaPercent(){
-        manapercent = (float) mana/maxMana;
-        healthpercent= (float) health/maxHealth;
-    }
+
     public void update(double time){
         super.update(time);
-
         attacking = isAttacking(time);
+        skilling = isSkilling(time);
+        if(!skilling) skillStartTime = System.nanoTime();
+        if(skilling && time/1000000 - skillStartTime/1000000 > skillDuration/2 ){
+            skill.add(new Skill(this, 48));
+            this.mana -= skillManaConsume;
+            skillStartTime = System.nanoTime();
+        }
+        for(int i=0; i< skill.size(); i++){
+            if(skill.get(i).getDeath()) {
+                skill.remove(i);
+            }
+            else skill.get(i).update();
+        }
+
         for(int i=0; i< enemy.size(); i++ ){
             if(attacking && hitBounds.collides(enemy.get(i).getBounds()) ){
                 if(!enemy.get(i).isInvincible) {
-//                  USE MANA ???
-                    mana = mana -1;
-                    // use in skill, we will update later
+                    mana = mana - attackManaConsume;
                 }
-                enemy.get(i).setHealth(enemy.get(i).getHealth()- damage, force*getDirection(), currentDirection == UP || currentDirection == DOWN);
+                enemy.get(i).setHealth(enemy.get(i).getHealth()- damageCaculate(enemy.get(i)), force*getDirection(), currentDirection == UP || currentDirection == DOWN);
                 enemy.remove(i);
             }
         }
@@ -134,7 +120,7 @@ public class Player extends Entity {
             } else {
                 xCol = false;
                 yCol = false;
-                if (ani.hasPlayedOnce()) {
+                if (Animation.hasPlayedOnce()) {
                     resetPosition();
                     dx = 0;
                     dy = 0;
@@ -142,61 +128,54 @@ public class Player extends Entity {
                 }
             }
         checkLevelUp();
-        updateHealthManaPercent();
-    }
-    @Override
-    public void render(Graphics2D g) {
-        g.setColor(Color.green);
-        g.drawRect((int) (pos.getWorldVar().x + bounds.getXOffset()),(int)(pos.getWorldVar().y+ bounds.getYOffset()),
-                (int) bounds.getWidth(), (int) bounds.getHeight());
-        if(attack){
-            g.setColor(Color.red);
-            g.drawRect((int) (hitBounds.getPos().getWorldVar().x + hitBounds.getXOffset()),(int)(hitBounds.getPos().getWorldVar().y+ hitBounds.getYOffset()),
-                    (int) hitBounds.getWidth(), (int) hitBounds.getHeight());
-        }
-
-        g.drawImage(ani.getImage().image,(int) (pos.getWorldVar().x),(int)(pos.getWorldVar().y), size, size,null);
     }
 
     public void input(MouseHandler mouse,KeyHandler key ){
-        if(!fallen){
-            up =key.up.down;
-            down =key.down.down;
-            left=key.left.down;
-            right=key.right.down;
-            if(key.attack.down && canAttack){
-                attack = true;
-                attacktime = System.nanoTime();
-            }
-            else{
-                if(!attacking){
-                    attack = false;
-                }
-            }
-            if(key.shift.down) {
-                maxSpeed = 8;
-                cam.setMaxSpeed(7);
-            } else {
-                maxSpeed = 4;
-                cam.setMaxSpeed(4);
-            }
-
-            if(up && down) {
+        if(!fallen ){
+            if(skilling){
                 up = false;
                 down = false;
-            }
-
-            if(right && left) {
                 right = false;
                 left = false;
             }
+            else{
+                up =key.up.down;
+                down =key.down.down;
+                left=key.left.down;
+                right=key.right.down;
+                //SKILL
+                if(key.skill.down && canSkill){
+                    skilltime = System.nanoTime();
+                }
+                if(key.attack.down && canAttack){
+                    attacktime = System.nanoTime();
+                }
+                if(key.shift.down) {
+                    maxSpeed = 8;
+                    GameStateManager.cam.setMaxSpeed(7);
+                } else {
+                    maxSpeed = 4;
+                    GameStateManager.cam.setMaxSpeed(4);
+                }
+
+                if(up && down) {
+                    up = false;
+                    down = false;
+                }
+
+                if(right && left) {
+                    right = false;
+                    left = false;
+                }
+            }
+
         }else {
             up = false;
             down = false;
             right = false;
             left = false;
         }
-
     }
 
 }
+

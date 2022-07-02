@@ -44,6 +44,20 @@ public class KeyHandler implements KeyListener {
     public Key enter = new Key();
     public Key escape = new Key();
     public Key shift = new Key();
+    public Key skill = new Key();
+    public Key shop = new Key();
+    public Key buy = new Key();
+
+    public Key back = new Key();
+
+    public Key inv = new Key();
+    public Key invUp = new Key();
+    public Key invDn = new Key();
+    public Key invRight = new Key();
+    public Key invLeft = new Key();
+    public Key invEnter = new Key();
+
+
 
     public KeyHandler(GamePanel game){
         game.addKeyListener(this);
@@ -69,6 +83,16 @@ public class KeyHandler implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_ENTER) enter.toggle(pressed);
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) escape.toggle(pressed);
         if(e.getKeyCode() == KeyEvent.VK_SHIFT) shift.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_K) skill.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_P) shop.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_B) buy.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) back.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_I) inv.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_UP) invUp.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_DOWN) invDn.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) invLeft.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) invRight.toggle(pressed);
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) invEnter.toggle(pressed);
     }
     @Override
     public void keyTyped(KeyEvent e) {}
