@@ -41,8 +41,9 @@ public class Entity {
     protected boolean canAttack = true;
     protected boolean attacking = false;
 
-    protected int skillSpeed = 2500; // in milliseconds
-    protected int skillDuration = 1500; // in milliseconds
+    protected int skillSpeed = 500; // in milliseconds
+    protected int skillDuration = 500; // in milliseconds
+    protected long skillStartTime;
     protected double skilltime;
     protected boolean canSkill = true;
     protected boolean skilling = false;
@@ -261,6 +262,7 @@ public class Entity {
     public void setDamage(int damage) {this.damage=damage;}
     public void setDefense(int defense) {this.defense=defense;}
     public ArrayList<Skill> getSkill() {return skill;}
+    public int getSkillDuration() {return skillDuration;}
 }
 
 

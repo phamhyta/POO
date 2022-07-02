@@ -79,12 +79,11 @@ public class Player extends Entity {
         super.update(time);
         attacking = isAttacking(time);
         skilling = isSkilling(time);
-
-        if(skilling){ skillCounter++;}
-        if(skilling && skillCounter ==90){
+        if(!skilling) skillStartTime = System.nanoTime();
+        if(skilling && time/1000000 - skillStartTime/1000000 > skillDuration/2 ){
             skill.add(new Skill(this, 48));
             this.mana -= skillManaConsume;
-            skillCounter =0;
+            skillStartTime = System.nanoTime();
         }
         for(int i=0; i< skill.size(); i++){
             if(skill.get(i).getDeath()) {

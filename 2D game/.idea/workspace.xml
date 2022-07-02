@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e0f6110-a483-4f2a-af61-5d1863190ada" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/game/graphics/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/graphics/Animation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/render/EntityRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/EntityRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/states/GameIntruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/GameIntruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/states/GameStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/GameStateManager.java" afterDir="false" />
+    <list default="true" id="9e0f6110-a483-4f2a-af61-5d1863190ada" name="Changes" comment="add button">
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/GameObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/ManaCrystal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/ManaCrystal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/graphics/Animation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/graphics/Animation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/ui/InventoryUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/ui/InventoryUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/ui/PlayerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/ui/PlayerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/util/KeyHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/util/KeyHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/ui/PlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/ui/PlayerUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +26,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/game/ui/Slots.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/game/ui/Button.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/game/states/PlayState.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/game/ui/BuildOptionUI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/game/states/GameStateManager.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/game/ui/PlayerUI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/game/util/MouseHandler.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -35,8 +47,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yt-java-game" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/res/ui" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tungd\Downloads\Gift HUBHUB\POO\2D game\src\res\ui" />
+      <recent name="C:\Users\tungd\Downloads\Gift HUBHUB\POO\2D game\src\game\ui" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -88,7 +106,42 @@
       <option name="project" value="LOCAL" />
       <updated>1656568095775</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="jjj">
+      <created>1656574723736</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656574723736</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jjj">
+      <created>1656574777555</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656574777555</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix">
+      <created>1656604086299</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656604086299</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add button">
+      <created>1656611495501</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656611495501</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add button">
+      <created>1656611558852</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1656611558852</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,6 +158,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update Skill class" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="jjj" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="add button" />
+    <option name="LAST_COMMIT_MESSAGE" value="add button" />
   </component>
 </project>
