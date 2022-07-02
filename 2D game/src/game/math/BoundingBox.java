@@ -83,7 +83,20 @@ public class BoundingBox {
         return false;
     }
 
+    public boolean inside(int xp, int yp) {
+        if(xp == -1 || yp == - 1) return false;
 
+        int wTemp = (int) this.w;
+        int hTemp = (int) this.h;
+        int x = (int) this.pos.x;
+        int y = (int) this.pos.y;
 
+        if(xp < x || yp < y) {
+            return false;
+        }
 
+        wTemp += x;
+        hTemp += y;
+        return ((wTemp < x || wTemp > xp) && (hTemp < y || hTemp > yp));
+    }
 }

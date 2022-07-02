@@ -1,6 +1,8 @@
 package game.states;
 
 import game.GamePanel;
+import game.math.Vector2f;
+import game.ui.Button;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
@@ -11,11 +13,13 @@ import java.io.IOException;
 
 import static game.states.GameStateManager.fontf;
 
-
 public class TitleState extends GameState{
+    private int selection =0;
     private int commandNum=0;
     BufferedImage image;
-    int count = 0;
+    private BufferedImage imgButton;
+    private Button btn1, btn2, btn3;
+    private boolean clicked = false;
 
     public TitleState(GameStateManager gsm) {
         super(gsm);
@@ -24,6 +28,17 @@ public class TitleState extends GameState{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        imgButton= GameStateManager.ui.getSubimage(2490,250,1500,450);
+        btn1 = new Button("PLAY GAME", new Vector2f(64*8 +20, 64*6 + 20), 32, 24, imgButton, new Vector2f(64*8, 64*6), 290, 75);
+        btn1.addEvent(e -> selection = 0);
+
+        btn2 = new Button("INSTRUCTION", new Vector2f(64*8 -10, 64*7+32 + 20), 32, 24, imgButton, new Vector2f(64*8-10, 64*7+32), 310, 75);
+        btn2.addEvent(e -> selection = 1);
+
+        btn3 = new Button("EXIST", new Vector2f(64*9, 64*9+5 ), 32, 24, imgButton, new Vector2f(64*8+32, 64 *9-12), 200, 72);
+        btn3.addEvent(e -> selection = 2);
+
     }
 
     @Override
@@ -33,44 +48,32 @@ public class TitleState extends GameState{
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key) {
-        key.down.tick();
-        key.up.tick();
-        key.enter.tick();
-        if(key.up.clicked) {
-            commandNum --;
-            if(commandNum <0) {
-                commandNum = 2;
-            }
-        }
-        if(key.down.clicked) {
-            commandNum ++;
-            if(commandNum >2) {
-                commandNum = 0;
-            }
-        }
-        if(key.enter.clicked) {
-            if(commandNum == 0) {
-                gsm.pop(GameStateManager.TITLE);
-                gsm.add(GameStateManager.INTRO);
-            }
-            if(commandNum== 1) {
-                gsm.pop(GameStateManager.TITLE);
-                gsm.add(GameStateManager.INSTRUCTION);
-            }
-            if(commandNum== 2) {
-                System.exit(0);
-            }
-        }
-    }
-    void setUp(){
+        btn1.input(mouse, key);
+        btn2.input(mouse, key);
+        btn3.input(mouse, key);
 
+        if(mouse.getButton() == 1 && !clicked &&  btn1.getHovering() ) {
+            gsm.pop(GameStateManager.TITLE);
+            gsm.add(GameStateManager.INTRO);
+        }
+
+        else if(mouse.getButton() == 1 && !clicked &&  btn2.getHovering()) {
+            gsm.pop(GameStateManager.TITLE);
+            gsm.add(GameStateManager.INSTRUCTION);
+        }
+        else if(mouse.getButton() == 1 && !clicked &&  btn3.getHovering()){
+            System.exit(0);
+        }
+
+        else if(mouse.getButton() == -1) {
+            clicked = false;
+        }
     }
+
 
     @Override
     public void render(Graphics2D g) {
         g.drawImage(image, 0,0, GamePanel.width, GamePanel.height, null);
-        this.count++;
-        System.out.println(count);
         // title name
         g.setFont(fontf.getFont("Motion").deriveFont(Font.TRUETYPE_FONT,96F));
         String text = "POO GAME ADVENTURE";
@@ -84,33 +87,10 @@ public class TitleState extends GameState{
         //draw main color
         g.setColor(Color.black);
         g.drawString(text, x, y);
-        
-        //MENU
-        g.setFont(fontf.getFont("MeatMadness").deriveFont(Font.BOLD,40F));
-
-        text= "NEW GAME";
-        x= getXforCenteredText(text,g);
-        y+= 64*5;
-        g.drawString(text, x, y);
-        if(commandNum == 0) {
-            g.drawString(">",x-32,y);
-        }
-
-        text= "INSTRUCTION";
-        x= getXforCenteredText(text,g);
-        y+= 64;
-        g.drawString(text, x, y);
-        if(commandNum == 1) {
-            g.drawString(">",x -32,y);
-        }
-
-        text= "QUIT GAME";
-        x= getXforCenteredText(text,g);
-        y+= 64;
-        g.drawString(text, x, y);
-        if(commandNum == 2) {
-            g.drawString(">",x-32,y);
-        }
+        //Button
+        btn1.render(g);
+        btn2.render(g);
+        btn3.render(g);
     }
     public int getXforCenteredText(String text, Graphics2D g) {
         int length= (int)g.getFontMetrics().getStringBounds(text,g).getWidth();

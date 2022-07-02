@@ -41,8 +41,9 @@ public class Entity {
     protected boolean canAttack = true;
     protected boolean attacking = false;
 
-    protected int skillSpeed = 2500; // in milliseconds
-    protected int skillDuration = 1500; // in milliseconds
+    protected int skillSpeed = 500; // in milliseconds
+    protected int skillDuration = 500; // in milliseconds
+    protected long skillStartTime;
     protected double skilltime;
     protected boolean canSkill = true;
     protected boolean skilling = false;
@@ -67,10 +68,10 @@ public class Entity {
     protected float deacc = 0.3f;
     protected float force = 25f;
 
-    protected int coin =0;
+    protected int coin = 10000;
     protected boolean teleported = false;
     protected TileCollision tc;
-    protected String name = "";
+    protected String name = "" ;
     protected int attackManaConsume = 2;
     protected int skillManaConsume = 10;
     protected ArrayList<Skill> skill;
@@ -231,7 +232,7 @@ public class Entity {
     public boolean isRight() {return right;}
     public boolean isLeft() {return left;}
     public boolean isFallen() {return fallen;}
-    public boolean isAttacking() {return attacking;   }
+    public boolean isAttacking() {return attacking;}
     public boolean isSkilling() {return skilling;}
     public boolean isHasIdle() {return hasIdle;}
     public void setName(String name) { this.name = name; }
@@ -241,7 +242,6 @@ public class Entity {
     public void setDeacc(float f) { deacc = f; }
     public int getCoin() {return coin;}
     public void setCoin(int coin) {this.coin = coin;}
-    public void setDamage(int damage){this.damage = damage;}
     public float getDeacc() { return deacc; }
     public float getAcc() { return acc; }
     public float getMaxSpeed() { return maxSpeed; }
@@ -259,7 +259,10 @@ public class Entity {
     public float getManapercent() {return manapercent;}
     public int getMaxHealth() {return maxHealth;}
     public int getDamage() { return damage;}
+    public void setDamage(int damage) {this.damage=damage;}
+    public void setDefense(int defense) {this.defense=defense;}
     public ArrayList<Skill> getSkill() {return skill;}
+    public int getSkillDuration() {return skillDuration;}
 }
 
 

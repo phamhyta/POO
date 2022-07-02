@@ -3,8 +3,16 @@ package game.states;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+
+import game.GamePanel;
+import game.gameObject.Player;
+import game.gameObject.enemy.Enemy;
+import game.gameObject.enemy.TinyBox;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
+import game.math.Vector2f;
+import game.render.EntityRender;
+import game.render.TinyBoxRender;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import java.awt.*;
@@ -38,8 +46,10 @@ public class GameIntruction extends GameState {
     private Rectangle forMs1;
     private Rectangle forMs2;
     private Rectangle player;
+
     public GameIntruction(GameStateManager gsm) {
         super(gsm);
+
         this.currentCount = 0;
         this.count = 0;
         this.monsterHeath = 90;
@@ -64,9 +74,7 @@ public class GameIntruction extends GameState {
     }
 
     @Override
-    public void update(double time) {
-        
-    }
+    public void update(double time) {}
 
     public void setUp(){
         this.txt[0] = new String("Su dung A, S, D, W de di chuyen\ntoi vung chi dinh");
@@ -88,6 +96,7 @@ public class GameIntruction extends GameState {
     }
     @Override
     public void input(MouseHandler mouse, KeyHandler key) {
+//        player1.input(mouse, key);
         this.Right = false;
         this.Left = false;
         this.Down = false;
@@ -235,6 +244,8 @@ public class GameIntruction extends GameState {
     }
     @Override
     public void render(Graphics2D g) {
+//        playerRender.render(g);
+//        boxRender.render(g);
         count++;
         this.player.x = this.playerScreenX+32;
         this.player.y = this.playerScreenY+32;

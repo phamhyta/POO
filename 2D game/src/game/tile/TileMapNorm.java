@@ -5,7 +5,6 @@ import game.tile.blocks.Block;
 import game.tile.blocks.NormBlock;
 import game.math.BoundingBox;
 import game.math.Vector2f;
-import game.data.GameControl;
 
 import java.awt.*;
 
@@ -24,17 +23,15 @@ public class TileMapNorm extends TileMap {
         this.tileHeight = tileHeight;
 
         this.height = height;
-        String[] mp = {"map01","map02","map03"};
         String[] block = data.split(",");
 
         for(int i = 0; i < (width * height); i++) {
             int temp = Integer.parseInt(block[i].replaceAll("\\s+",""));
-                if(temp != 0) {
-                    //if(temp==)
-                    blocks[i] = new NormBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
-                }
+            if(temp != 0) {
+                blocks[i] = new NormBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
             }
         }
+    }
 
     public void render(Graphics2D g, BoundingBox cam) {
         int x = (int) ((cam.getPos().x) / tileWidth);

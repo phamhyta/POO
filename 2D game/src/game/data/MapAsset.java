@@ -13,6 +13,7 @@ import game.gameObject.npc.NPC;
 
 public abstract class MapAsset {
     protected GameControl gc;
+
     public MapAsset(GameControl gc) {
         this.gc = gc;
         this.setMonsterPosition();
@@ -26,21 +27,24 @@ public abstract class MapAsset {
 
     public abstract void resetEnemy(int i);
 
-    public void setTinyBox(int i, Vector2f vt, SpriteSheet spriteSheet, int size){
-        TinyBox tiny = new TinyBox( new Vector2f(gc.origin[i]), size);
+    public void setTinyBox(int i, Vector2f vt, SpriteSheet spriteSheet, int size) {
+        TinyBox tiny = new TinyBox(new Vector2f(gc.origin[i]), size);
         gc.enemy[i] = tiny;
-        gc.entityRender[i] = new TinyBoxRender(tiny,spriteSheet);
-    }
-    public void setTinyMoon(int i, Vector2f vt, SpriteSheet spriteSheet,int size){
-        TinyMon tiny = new TinyMon(new Vector2f(gc.origin[i]), size);
-        gc.enemy[i] = tiny;
-        gc.entityRender[i] = new TinyMonRender(tiny,spriteSheet);
+        gc.entityRender[i] = new TinyBoxRender(tiny, spriteSheet);
     }
 
-    public void setNPC(int i, Vector2f vt, SpriteSheet spriteSheet,int size) {
+    public void setTinyMoon(int i, Vector2f vt, SpriteSheet spriteSheet, int size) {
+        TinyMon tiny = new TinyMon(new Vector2f(gc.origin[i]), size);
+        gc.enemy[i] = tiny;
+        gc.entityRender[i] = new TinyMonRender(tiny, spriteSheet);
+    }
+
+    public void setNPC(int i, Vector2f vt, SpriteSheet spriteSheet, int size) {
         NPC npc = new NPC(new Vector2f(gc.origin[i]), size);
         gc.npc[i] = npc;
-        gc.entityRender[i] = new NPCRender(npc,spriteSheet);
+        gc.npcRender[i] = new NPCRender(npc, spriteSheet);
     }
-    public void setNPC(){}
+
+    public void setNPC() {
+    }
 }

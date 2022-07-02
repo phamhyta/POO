@@ -11,7 +11,6 @@ import java.awt.*;
 public class EntityRender {
     protected Entity entity;
     public Animation ani;
-    protected Camera camera;
 
     protected int UP = 7;
     protected int DOWN = 6;
@@ -63,13 +62,13 @@ public class EntityRender {
                 setAnimation(ATTACK_RIGHT, spriteSheet.getSpriteArray(ATTACK_RIGHT), entity.getAttackDuration() / 100);
         } else if (entity.isSkilling()) {
             if (currentAnimation == UP)
-                setAnimation(SKILL_UP, spriteSheet.getSpriteArray(SKILL_UP), 20);
+                setAnimation(SKILL_UP, spriteSheet.getSpriteArray(SKILL_UP), entity.getSkillDuration() / 100);
             if (currentAnimation == DOWN)
-                setAnimation(SKILL_DOWN, spriteSheet.getSpriteArray(SKILL_DOWN), 20);
+                setAnimation(SKILL_DOWN, spriteSheet.getSpriteArray(SKILL_DOWN), entity.getSkillDuration() / 100);
             if (currentAnimation == LEFT)
-                setAnimation(SKILL_LEFT, spriteSheet.getSpriteArray(SKILL_LEFT), 20);
+                setAnimation(SKILL_LEFT, spriteSheet.getSpriteArray(SKILL_LEFT), entity.getSkillDuration() / 100);
             if (currentAnimation == RIGHT)
-                setAnimation(SKILL_RIGHT, spriteSheet.getSpriteArray(SKILL_RIGHT), 20);
+                setAnimation(SKILL_RIGHT, spriteSheet.getSpriteArray(SKILL_RIGHT), entity.getSkillDuration() / 100);
         } else if (entity.isUp()) {
             setAnimation(UP, 5);
         } else if (entity.isDown()) {
