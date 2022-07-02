@@ -30,13 +30,13 @@ public class TitleState extends GameState{
         }
 
         imgButton= GameStateManager.ui.getSubimage(2490,250,1500,450);
-        btn1 = new Button("Play State", new Vector2f(64*8 +8, 64*6 + 20), 32, 24, imgButton, new Vector2f(64*8, 64*6), 290, 75);
+        btn1 = new Button("PLAY GAME", new Vector2f(64*8 +20, 64*6 + 20), 32, 24, imgButton, new Vector2f(64*8, 64*6), 290, 75);
         btn1.addEvent(e -> selection = 0);
 
         btn2 = new Button("INSTRUCTION", new Vector2f(64*8 -10, 64*7+32 + 20), 32, 24, imgButton, new Vector2f(64*8-10, 64*7+32), 310, 75);
         btn2.addEvent(e -> selection = 1);
 
-        btn3 = new Button("EXIST", new Vector2f(64*9, 64*9 ), 32, 24, imgButton, new Vector2f(64*8+32, 64 *9-12), 230, 72);
+        btn3 = new Button("EXIST", new Vector2f(64*9, 64*9+5 ), 32, 24, imgButton, new Vector2f(64*8+32, 64 *9-12), 200, 72);
         btn3.addEvent(e -> selection = 2);
 
     }

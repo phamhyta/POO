@@ -4,6 +4,7 @@ import game.gameObject.Entity;
 import game.gameObject.Player;
 import game.gameObject.object.Coin;
 import game.gameObject.object.ManaCrystal;
+import game.gameObject.object.Potion_Blue_1;
 import game.gameObject.object.Potion_Red_1;
 import game.graphics.Animation;
 import game.math.BoundingBox;
@@ -43,7 +44,7 @@ public class Enemy extends Entity {
 
     public void drop() {
         GameControl.setGameObject(new Coin((new Vector2f(this.getPos().x,this.getPos().y)),32, this.coin));
-        GameControl.setGameObject(new ManaCrystal(new Vector2f(this.getPos().x-50,this.getPos().y),32));
+        GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x-50,this.getPos().y),32));
         GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x-20,this.getPos().y),32));
         int rand = (int) (Math.random()*75);
         if(rand<15){

@@ -31,7 +31,7 @@ public class Slots {
         if(sprite[0] != null) {
             this.width = sprite[0].getWidth() + size;
             this.height = sprite[0].getHeight() + size;
-        } 
+        }
     }
 
     public Slots(Button button, BufferedImage[] sprite, Vector2f[] pos, int size) {
@@ -84,7 +84,7 @@ public class Slots {
     public void render(Graphics2D g) {
 
         if(!visibility) return;
-        
+
         if(button != null) {
             button.render(g);
         } else {
@@ -104,7 +104,7 @@ public class Slots {
                 childSlots[i].render(g);
             }
         }
-        
+
     }
 
 }
