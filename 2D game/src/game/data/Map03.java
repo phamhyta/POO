@@ -15,34 +15,70 @@ public class Map03 extends MapAsset {
     }
 
     public void setMonsterPosition() {
-        int i = 0;
-        SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
-        gc.origin[i] = new Vector2f(500.0F, 500.0F);
-        setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16),64);
-        i ++;
+        int i = 1;
+        SpriteSheet wizardSheet = new SpriteSheet("res/entity/boss_wizard/Idle.png", 110, 110);
+        gc.origin[i] = new Vector2f(500, 500);
+        setWizard( i, gc.origin[i], wizardSheet, 156);
+        i++;
 
-        gc.origin[i] = new Vector2f(600.0F, 600.0F);
-        setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16),64);
-        i ++;
-        gc.origin[i] = new Vector2f(550.0F, 550.0F);
-        setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16),64);
-        i ++;
-        gc.origin[i] = new Vector2f(570.0F, 590.0F);
-        setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16),64);
-        i ++;
+
+        SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
+        gc.origin[i] = new Vector2f(2000, 750);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
+        i++;
+
+        gc.origin[i] = new Vector2f(2250, 750);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
+        i++;
+        gc.origin[i] = new Vector2f(1200, 1000);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
+        i++;
+        gc.origin[i] = new Vector2f(1000, 500);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
+        i++;
 
         SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
-        gc.origin[i] = new Vector2f(1070.0F, 1070.0F);
-        setTinyMoon( i,gc.origin[i], tinyMoonSheet,  64);
+        gc.origin[i] = new Vector2f(1400, 1200);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
-        gc.origin[i] = new Vector2f(1000.0F, 1000.0F);
-        setTinyMoon( i,gc.origin[i], tinyMoonSheet,  64);
+        gc.origin[i] = new Vector2f(2500, 1350);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
-        gc.origin[i] = new Vector2f(1500.0F, 1500.0F);
-        setTinyMoon( i,gc.origin[i], tinyMoonSheet,  64);
+        gc.origin[i] = new Vector2f(750, 2400);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
-        gc.origin[i] = new Vector2f(700.0F, 1000.0F);
-        setTinyMoon( i,gc.origin[i], tinyMoonSheet,  64);
+        gc.origin[i] = new Vector2f(1000, 2000);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+
+
+
+        gc.origin[i] = new Vector2f(1700, 1350);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
+        i++;
+
+        gc.origin[i] = new Vector2f(2250, 1400);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
+        i++;
+        gc.origin[i] = new Vector2f(1500, 1700);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
+        i++;
+        gc.origin[i] = new Vector2f(1000, 1500);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
+        i++;
+
+
+        gc.origin[i] = new Vector2f(1400, 1200);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+        gc.origin[i] = new Vector2f(2500, 1900);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+        gc.origin[i] = new Vector2f(1600, 1800);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        i++;
+        gc.origin[i] = new Vector2f(1900, 1400);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
     }
 

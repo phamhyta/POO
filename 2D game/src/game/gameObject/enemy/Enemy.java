@@ -66,36 +66,6 @@ public class Enemy extends Entity {
         }
     }
 
-    private void autoDirecting(Vector2f posA, Vector2f posB) {
-        if (posA.y > posB.y + 1) {
-            up = true;
-        } else {
-            up = false;
-        }
-        if (posA.y < posB.y - 1) {
-            down = true;
-        } else {
-            down = false;
-        }
-
-        if (posA.x > posB.x + 1) {
-            left = true;
-        } else {
-            left = false;
-        }
-        if (posA.x < posB.x - 1) {
-            right = true;
-        } else {
-            right = false;
-        }
-    }
-
-    private void stopDirecting() {
-        up = false;
-        down = false;
-        left = false;
-        right = false;
-    }
 
     private void chase(Player player) {
         BoundingBox playerBounds = player.getBounds();

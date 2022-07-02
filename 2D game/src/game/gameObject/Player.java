@@ -24,7 +24,6 @@ public class Player extends Entity {
         setDefaultValue();
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
-        skill = new ArrayList<>();
     }
 
     private void setDefaultValue() {
@@ -86,7 +85,7 @@ public class Player extends Entity {
         if (!skilling)
             skillStartTime = System.nanoTime();
         if (skilling && time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
-            skill.add(new Skill(this, 48));
+            skill.add(new SkilPlayer(this, 48));
             this.mana -= skillManaConsume;
             skillStartTime = System.nanoTime();
         }

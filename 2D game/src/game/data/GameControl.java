@@ -44,9 +44,9 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        mapAs = new Map01(this);
-        // this.mapAs[1] = new Map02(this);
-        // this.mapAs[2] = new Map03(this);
+//        mapAs = new Map01(this);
+//         this.mapAs = new Map02(this);
+         this.mapAs = new Map03(this);
     }
 
     private void resetAsset() {

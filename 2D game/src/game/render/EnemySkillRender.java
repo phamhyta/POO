@@ -1,23 +1,21 @@
 package game.render;
 
 import game.gameObject.EnemySkill;
-import game.gameObject.Skill;
 import game.graphics.SpriteSheet;
 
 import java.awt.*;
 
 public
-class SkillRender{
+class EnemySkillRender {
     private SpriteSheet arrow;
-    private Skill skill;
+    private EnemySkill skill;
 
-    public SkillRender (Skill skill){
+    public EnemySkillRender(EnemySkill skill){
         this.skill = skill;
         arrow = new SpriteSheet("res/entity/arrow.png",1024,256);
+
     }
     public void render(Graphics2D g){
-
-
         if(skill.isUp()) {
             g.drawImage( arrow.getSubimage(0,0,256,256), (int)skill.getPos().getWorldVar().x,(int)skill.getPos().getWorldVar().y,64,64,null);
         }
