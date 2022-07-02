@@ -15,7 +15,6 @@ import game.util.KeyHandler;
 import game.util.MouseHandler;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
 public class GameControl {
     public Camera cam;
     public Player player;
@@ -73,9 +72,10 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
+                    player.resetPosition();
                 }else{
                     player.setTargetMaterial(gameObject.get(i));
-                    gameObject.remove(i);
+                   // gameObject.remove(i);
                 }
             }
         }

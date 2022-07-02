@@ -14,7 +14,7 @@ public class ObjectRender {
 
     public ObjectRender(Vector2f pos, int row, int col, int size){
         spriteSheet = new SpriteSheet("res/ui/items.png");
-        image =  spriteSheet.getSubimage(col*32,row*32,32,32);
+        image =  spriteSheet.getSubimage(col*32+1,row*32+1,31,31);
         this.size= size;
         this.pos=pos;
     }

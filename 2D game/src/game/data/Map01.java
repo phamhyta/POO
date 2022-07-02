@@ -1,5 +1,6 @@
 package game.data;
 
+import game.gameObject.object.Arrow;
 import game.gameObject.object.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -10,7 +11,8 @@ public class Map01 extends MapAsset {
     public Map01(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
-        gc.gameObject.add(new Door(new Vector2f(1500,1600),128));
+        gc.gameObject.add(new Door(new Vector2f(2240,1408),128)); // 35 va 22
+        gc.gameObject.add(new Arrow(new Vector2f(2240,1728),128)); // 35 va 27
     }
 
     public void setMonsterPosition() {

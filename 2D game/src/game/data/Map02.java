@@ -1,5 +1,6 @@
 package game.data;
 import game.gameObject.enemy.TinyMon;
+import game.gameObject.object.Arrow;
 import game.gameObject.object.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -10,7 +11,8 @@ public class Map02 extends MapAsset {
     public Map02(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/winter.xml", gc.cam);
-        gc.gameObject.add(new Door(new Vector2f(1500,2000),128));
+        gc.gameObject.add(new Door(new Vector2f(2880,64),128)); // 45 va 1
+        gc.gameObject.add(new Arrow(new Vector2f(2880,320),128)); // 45 va 5
     }
 
     public void setMonsterPosition() {
