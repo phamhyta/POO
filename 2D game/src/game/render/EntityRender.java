@@ -11,7 +11,6 @@ import java.awt.*;
 public class EntityRender {
     protected Entity entity;
     public Animation ani;
-    protected Camera camera;
 
     protected int UP = 7;
     protected int DOWN = 6;

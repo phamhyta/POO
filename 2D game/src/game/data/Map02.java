@@ -10,7 +10,7 @@ public class Map02 extends MapAsset {
     public Map02(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/winter.xml", gc.cam);
-        gc.gameObject.add(new Door(new Vector2f(1500,2000),128));
+        gc.gameObject.add(new Door(new Vector2f(1500,2500),128));
     }
 
     public void setMonsterPosition() {
@@ -67,7 +67,7 @@ public class Map02 extends MapAsset {
     public void setNPC() {
         int i=0;
         SpriteSheet npcSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
-        gc.origin[i] = new Vector2f(600.0F, 600.0F);
+        gc.origin[i] = new Vector2f(2056.0F, 964.0F);
         setNPC( i,gc.origin[i], npcSheet,  64);
         i++;
     }

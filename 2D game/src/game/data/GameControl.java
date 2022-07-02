@@ -23,7 +23,7 @@ public class GameControl {
     public GameStateManager gsm;
     private game.data.MapAsset mapAs;
     public static int currentMap = 0;
-    public int defaultMap=0;
+    public int defaultMap = 0;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
     private long[] deadStartTime;
@@ -31,7 +31,6 @@ public class GameControl {
     public Vector2f[] origin;
     public TileManager tm;
     public EntityRender entityRender[];
-    public String Mp;
     public NPCRender[] npcRender;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
@@ -45,11 +44,9 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-
-
         mapAs = new Map01(this);
-//        this.mapAs[1] = new Map02(this);
-//        this.mapAs[2] = new Map03(this);
+        // this.mapAs[1] = new Map02(this);
+        // this.mapAs[2] = new Map03(this);
     }
 
     private void resetAsset() {
@@ -73,7 +70,7 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
-                }else{
+                } else {
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
                 }
@@ -95,26 +92,26 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                        enemy[i].update(player, time, origin[i]);
+                    enemy[i].update(player, time, origin[i]);
                 }
             }
             if (enemy[i] == null && this.deadStartTime[i] != 0L
                     && System.currentTimeMillis() - deadStartTime[i] > 5000L) {
-                    mapAs.resetEnemy(i);
-                    deadStartTime[i] = 0;
+                mapAs.resetEnemy(i);
+                deadStartTime[i] = 0;
             }
         }
 
-        for(int i=0; i< npc.length; i++ ) {
-            if(npc[i]!=null) {
+        for (int i = 0; i < npc.length; i++) {
+            if (npc[i] != null) {
                 if (player.getHitBounds().collides(npc[i].getBounds())) {
-                    System.out.println("Dialogues");
+                    System.out.println("Shop");
                     gsm.add(GameStateManager.DIALOGUES);
                     pui = new NpcUI(npc[i]);
                 } else gsm.pop(GameStateManager.DIALOGUES);
             }
         }
-        if(currentMap != defaultMap){
+        if (currentMap != defaultMap) {
             defaultMap = currentMap;
             resetAsset();
             loadNewMap();
@@ -122,45 +119,42 @@ public class GameControl {
 
     }
 
-    public void loadNewMap(){
-        if(currentMap == 0){
+    public void loadNewMap() {
+        if (currentMap == 0) {
             mapAs = new Map01(this);
-        }
-        else if(currentMap == 1){
+        } else if (currentMap == 1) {
             mapAs = new Map02(this);
-        }else{
+        } else {
             mapAs = new Map03(this);
         }
     }
 
-
     public void render(Graphics2D g) {
         this.tm.render(g);
-        for(int i = 0; i < enemy.length; i++) {
+        for (int i = 0; i < enemy.length; i++) {
             if (enemy[i] != null && cam.getBounds().collides(enemy[i].getBounds())) {
-                if(entityRender[i] != null) {
+                if (entityRender[i] != null) {
                     this.entityRender[i].render(g);
                 }
             }
         }
-        for(int i = 0; i < gameObject.size(); ++i){
+        for (int i = 0; i < gameObject.size(); ++i) {
             gameObject.get(i).getObjectRender().render(g);
         }
-        for(int i = 0; i < npcRender.length; i++){
-            if(npcRender[i] != null){
+        for (int i = 0; i < npcRender.length; i++) {
+            if (npcRender[i] != null) {
                 npcRender[i].render(g);
             }
         }
     }
 
-    public  void input(MouseHandler mouse, KeyHandler key) {
+    public void input(MouseHandler mouse, KeyHandler key) {
         key.enter.tick();
 
-        for(int i = 0; i < this.npc.length; ++i) {
+        for (int i = 0; i < this.npc.length; ++i) {
             if (npc[i] != null && player.getBounds().collides(npc[i].getBounds()) && key.enter.clicked) {
             }
         }
-        
     }
 
     public static void setGameObject(GameObject go) {
