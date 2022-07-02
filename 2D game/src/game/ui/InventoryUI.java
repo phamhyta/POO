@@ -40,7 +40,7 @@ public class InventoryUI {
     public InventoryUI(Player p) {
         this.p = p;
         this.inventory = p.inventory;
-
+        spriteSheet = new SpriteSheet("res/ui/slots.png");
     }
 
     public void drawSubWindow(Graphics2D g2, int x, int y, int width, int height) {
@@ -53,7 +53,6 @@ public class InventoryUI {
     }
 
     public void drawInv(Graphics2D g2, int x, int y, int row, int col) {
-        spriteSheet = new SpriteSheet("res/ui/slots.png");
         image = spriteSheet.getSubimage(3 * size + 8, 0 * size, size + 8, size + 8);
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -146,8 +145,8 @@ public class InventoryUI {
                 act = 0;
             }
             if (act == 5) {
-                if (inventory.size() != 0) {
-                    inventory.get(slotCol + slotRow * 5).use(p);
+                if (inventory.size() != 0 && slotCol + slotRow * 6 < inventory.size()) {
+                    inventory.get(slotCol + slotRow * 6).use(p);
                     // g.setColor(Color.BLACK);
                     // g.drawString("+ " + String.valueOf(p.getMana()) + "mana", x - 800, y - height
                     // * 1 / 3 + 240);
@@ -176,7 +175,7 @@ public class InventoryUI {
                     }
                 }
             }
-            drawSubWindow(g, x - size / 2, y - height * 1 / 3, 350, 120);
+            drawSubWindow(g, x - size / 2, y - height * 1 / 3, 350, 145);
             g.setColor(Color.BLACK);
             drawAttributes(g, slotCol, slotRow);
             slotX = 5;
