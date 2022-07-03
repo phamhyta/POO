@@ -34,7 +34,6 @@ public class IntroState extends GameState
     private Sprite listOfLittleGirl [];
     private Sprite listOfPlayer[];
     private int process;
-    private txtAndImageRender hieu;
     public IntroState(GameStateManager gsm) {
         super(gsm);
         this.check = 1;
@@ -64,7 +63,7 @@ public class IntroState extends GameState
         key.escape.tick();
         if(key.escape.clicked){
             gsm.pop(GameStateManager.INTRO);
-            gsm.add(GameStateManager.PLAY);
+            gsm.add(GameStateManager.NEWGAME);
         }
     
     }
