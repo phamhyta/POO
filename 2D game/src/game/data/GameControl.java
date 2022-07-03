@@ -45,8 +45,8 @@ public class GameControl {
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
         mapAs = new Map01(this);
-//         this.mapAs = new Map02(this);
-//         this.mapAs = new Map03(this);
+        // this.mapAs = new Map02(this);
+        // this.mapAs = new Map03(this);
     }
 
     private void resetAsset() {
@@ -61,6 +61,10 @@ public class GameControl {
 
     }
 
+    public static void setGameObject(GameObject go) {
+        gameObject.add(go);
+    }
+
     public void update(double time) {
 
         for (int i = 0; i < gameObject.size(); ++i) {
@@ -73,7 +77,8 @@ public class GameControl {
                     player.resetPosition();
                 } else {
                     player.setTargetMaterial(gameObject.get(i));
-//                    gameObject.remove(i);
+                    gameObject.remove(i);
+                    gameObject.remove(i);
                 }
             }
         }
@@ -93,7 +98,7 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                        enemy[i].update(player, time, origin[i]);
+                    enemy[i].update(player, time, origin[i]);
                 }
             }
             if (enemy[i] == null && this.deadStartTime[i] != 0L
@@ -129,8 +134,7 @@ public class GameControl {
             mapAs = new Map02(this);
         } else if (currentMap == 2) {
             mapAs = new Map03(this);
-        }
-        else{
+        } else {
             currentMap = 0;
         }
     }
@@ -154,8 +158,4 @@ public class GameControl {
         }
     }
 
-
-    public static void setGameObject(GameObject go) {
-        gameObject.add(go);
-    }
 }
