@@ -72,7 +72,7 @@ public class GameStateManager {
             return;
 
         if (state == PLAY) {
-            states[PLAY] = new PlayState(this, cam);
+            states[PLAY] = new PlayState(this, new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220)));
         } else if (state == TITLE) {
             states[TITLE] = new TitleState(this);
         } else if (state == PAUSE) {
