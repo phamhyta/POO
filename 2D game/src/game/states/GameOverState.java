@@ -102,13 +102,13 @@ public class GameOverState extends GameState {
                     gsm.pop(GameStateManager.GAMEOVER);
                     gsm.pop(GameStateManager.PLAY);
                     gsm.sound.stopMusic();
-                    gsm.add(GameStateManager.PLAY);
+                    gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 1) {
                     gsm.pop(GameStateManager.GAMEOVER);
                     gsm.pop(GameStateManager.PLAY);
                     gsm.sound.stopMusic();
-                    gsm.add(GameStateManager.PLAY);
+                    gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 2) {
                     this.checkdificulty=true;

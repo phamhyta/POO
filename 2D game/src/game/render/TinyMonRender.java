@@ -1,8 +1,7 @@
 package game.render;
 
-import game.gameObject.enemy.TinyMon;
+import game.game_object.enemy.TinyMon;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 

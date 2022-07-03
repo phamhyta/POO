@@ -1,9 +1,8 @@
 package game.render;
 
 
-import game.gameObject.enemy.TinyBox;
+import game.game_object.enemy.TinyBox;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 
@@ -28,13 +27,12 @@ public class TinyBoxRender extends EntityRender{
         LEFT = 1;
         RIGHT = 1;
 
-        ani.setNumFrames(3, 0);
-        ani.setNumFrames(5, 1);
+
 
         currentAnimation = IDLE;
 
         ani.setNumFrames(3, 0);
-        ani.setNumFrames(5, 1);
+        ani.setNumFrames(3, 1);
         currentAnimation = IDLE;
 
     }

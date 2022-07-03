@@ -124,12 +124,12 @@ public class MenuState extends GameState {
             if(key.up.clicked) {
                 numberLine --;
                 if(numberLine <0) {
-                    numberLine = 3;
+                    numberLine = 4;
                 }
             }
             if(key.down.clicked) {
                 numberLine ++;
-                if(numberLine >5) {
+                if(numberLine >4) {
                     numberLine = 0;
                 }
             }
@@ -156,7 +156,7 @@ public class MenuState extends GameState {
                     this.checkdificulty = true;
                 }
                 if(numberLine ==4){
-                    gsm.pop(GameStateManager.NEWGAME);
+                    gsm.pop(GameStateManager.PLAY);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();

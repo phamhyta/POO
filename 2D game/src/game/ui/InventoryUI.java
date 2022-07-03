@@ -2,13 +2,12 @@ package game.ui;
 
 import game.util.KeyHandler;
 import game.util.MouseHandler;
-import game.gameObject.Entity;
 import game.math.Vector2f;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import game.gameObject.Player;
-import game.gameObject.object.GameObject;
+import game.game_object.Player;
+import game.game_object.object.GameObject;
 import game.graphics.SpriteSheet;
 
 import java.util.ArrayList;

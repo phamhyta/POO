@@ -1,8 +1,8 @@
 package game.render;
 
-import game.gameObject.npc.NPC;
+import game.game_object.npc.NPC;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
+
 import java.awt.*;
 
 public class NPCRender extends EntityRender {
