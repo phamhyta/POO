@@ -1,5 +1,5 @@
 
-package game.gameObject.object.Items;
+package game.gameObject.object.items;
 
 import game.gameObject.Player;
 import game.gameObject.object.GameObject;

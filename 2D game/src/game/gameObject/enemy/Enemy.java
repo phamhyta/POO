@@ -3,11 +3,10 @@ package game.gameObject.enemy;
 import game.data.GameControl;
 import game.gameObject.Entity;
 import game.gameObject.Player;
-import game.gameObject.object.Items.Potion_Blue_1;
-import game.gameObject.object.Items.Shield_2;
-import game.gameObject.object.Items.Coin;
-//import game.gameObject.object.Items.ManaCrystal;
-import game.gameObject.object.Items.Potion_Red_1;
+import game.gameObject.object.items.Coin;
+import game.gameObject.object.items.Potion_Blue_1;
+import game.gameObject.object.items.Potion_Red_1;
+import game.gameObject.object.items.Shield_2;
 import game.graphics.Animation;
 import game.math.BoundingBox;
 import game.math.Vector2f;
@@ -53,7 +52,7 @@ public class Enemy extends Entity {
         GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
         int rand = (int) (Math.random() * 75);
         if (rand < 15) {
-
+            
         } else if (rand < 35 && rand >= 15) {
             GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x + 25, this.getPos().y), 32));
         } else if (rand >= 50 && rand <= 75) {

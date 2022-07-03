@@ -1,7 +1,7 @@
 package game.data;
 
-import game.gameObject.object.Items.Door;
 import game.gameObject.object.Arrow;
+import game.gameObject.object.items.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;
