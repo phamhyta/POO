@@ -136,11 +136,15 @@ public class MenuState extends GameState {
             if(key.enter.clicked) {
                 if(numberLine== 0) {
                     gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.MENU);
+                    gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
                     gsm.add(GameStateManager.PLAY);
                 }
                 if(numberLine== 1) {
                     gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.MENU);
+                    gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
                     gsm.add(GameStateManager.PLAY);
                 }
@@ -153,6 +157,8 @@ public class MenuState extends GameState {
                 }
                 if(numberLine ==4){
                     gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.MENU);
+                    gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
                     gsm.add(GameStateManager.TITLE);
                 }

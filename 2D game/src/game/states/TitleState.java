@@ -80,7 +80,6 @@ public class TitleState extends GameState{
 
         int x = getXforCenteredText(text,g);
         int y = 64*2;
-
         //draw Shadow
         g.setColor(Color.white);
         g.drawString(text,x+5,y+5);

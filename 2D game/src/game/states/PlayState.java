@@ -89,7 +89,7 @@ public class PlayState extends GameState {
             }
         }
         pui.input(mouse, key);
-        if (this.player.getHealth() <= 0) {
+        if (this.player.getHealth() <= 0||this.player.isFallen()) {
             gsm.add(GameStateManager.GAMEOVER);
         }
     }
