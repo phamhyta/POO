@@ -1,9 +1,8 @@
 package game.render;
 
 
-import game.gameObject.enemy.TinyBox;
+import game.game_object.enemy.TinyBox;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 

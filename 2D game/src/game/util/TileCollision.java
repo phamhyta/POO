@@ -1,6 +1,6 @@
 package game.util;
 
-import game.gameObject.Entity;
+import game.game_object.Entity;
 import game.tile.TileMapObj;
 import game.tile.blocks.Block;
 import game.tile.blocks.HoleBlock;
@@ -16,8 +16,7 @@ public class TileCollision {
     public boolean collisionTile(float ax, float ay) {
         for (int c = 0; c < 4; c++) {
             int xt = (int) ((e.getPos().x + ax) + (c % 2) * e.getBounds().getWidth() + e.getBounds().getXOffset()) / 64;
-            int yt = (int) ((e.getPos().y + ay) + (c / 2) * e.getBounds().getHeight() + e.getBounds().getYOffset())
-                    / 64;
+            int yt = (int) ((e.getPos().y + ay) + (c / 2) * e.getBounds().getHeight() + e.getBounds().getYOffset()) / 64;
 
             if (TileMapObj.event_blocks[xt + (yt * TileMapObj.height)] instanceof Block) {
                 Block block = TileMapObj.event_blocks[xt + (yt * TileMapObj.height)];

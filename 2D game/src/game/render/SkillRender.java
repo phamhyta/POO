@@ -1,6 +1,6 @@
 package game.render;
 
-import game.gameObject.skill.Skill;
+import game.game_object.skill.Skill;
 import game.graphics.SpriteSheet;
 
 import java.awt.*;

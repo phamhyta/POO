@@ -1,7 +1,7 @@
 package game.util;
 
 import game.GamePanel;
-import game.gameObject.Entity;
+import game.game_object.Entity;
 import game.math.BoundingBox;
 import game.math.Vector2f;
 import game.states.PlayState;

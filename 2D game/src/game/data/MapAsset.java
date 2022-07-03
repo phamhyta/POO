@@ -1,17 +1,16 @@
 
 package game.data;
 
-import game.gameObject.enemy.TinyBox;
-import game.gameObject.enemy.TinyMon;
-import game.gameObject.enemy.Wizard_BOSS;
+import game.game_object.enemy.TinyBox;
+import game.game_object.enemy.TinyMon;
+import game.game_object.enemy.Wizard_BOSS;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.render.NPCRender;
 import game.render.TinyBoxRender;
 import game.render.TinyMonRender;
 import game.render.WizardRender;
-import game.util.Camera;
-import game.gameObject.npc.NPC;
+import game.game_object.npc.NPC;
 
 public abstract class MapAsset {
     protected GameControl gc;

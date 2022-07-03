@@ -1,9 +1,9 @@
 package game.data;
 
-import game.gameObject.enemy.Enemy;
-import game.gameObject.npc.NPC;
-import game.gameObject.object.GameObject;
-import game.gameObject.Player;
+import game.game_object.enemy.Enemy;
+import game.game_object.npc.NPC;
+import game.game_object.object.GameObject;
+import game.game_object.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;
 import game.render.NPCRender;
@@ -29,7 +29,7 @@ public class GameControl {
     private long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
-    public TileManager tm;
+    public static TileManager tm;
     public EntityRender entityRender[];
     public NPCRender[] npcRender;
 

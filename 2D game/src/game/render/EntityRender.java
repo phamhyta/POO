@@ -1,10 +1,9 @@
 package game.render;
 
-import game.gameObject.Entity;
+import game.game_object.Entity;
 import game.graphics.Animation;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 

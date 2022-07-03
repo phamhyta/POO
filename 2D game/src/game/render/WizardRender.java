@@ -1,8 +1,7 @@
 package game.render;
 
-import game.gameObject.enemy.Wizard_BOSS;
+import game.game_object.enemy.Wizard_BOSS;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 
