@@ -40,7 +40,7 @@ public abstract class MapAsset {
     }
 
     public void setNPC(int i, Vector2f vt, SpriteSheet spriteSheet, int size) {
-        NPC npc = new NPC(new Vector2f(gc.origin[i]), size);
+        NPC npc = new NPC(new Vector2f(vt), size);
         gc.npc[i] = npc;
         gc.npcRender[i] = new NPCRender(npc, spriteSheet);
     }

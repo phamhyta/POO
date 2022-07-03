@@ -12,7 +12,7 @@ public class Coin extends GameObject {
 		this.coin = value;
 		type= type_consumable;
 		name = "Bronze Coin";
-		objectRender = new ObjectRender(pos, 10, 2,size );
+		objectRender = new ObjectRender(pos, 12, 7,size );
 	}
 
 	public void use(Player player) {

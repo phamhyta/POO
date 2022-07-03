@@ -69,8 +69,7 @@ public class Map02 extends MapAsset {
     public void setNPC() {
         int i = 0;
         SpriteSheet npcSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
-        gc.origin[i] = new Vector2f(2056.0F, 964.0F);
-        setNPC(i, gc.origin[i], npcSheet, 64);
+        setNPC(i,new Vector2f(2056.0F, 964.0F), npcSheet, 64);
         i++;
     }
 }

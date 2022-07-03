@@ -11,6 +11,7 @@ public class DialoguesState extends GameState{
     private Image image;
     public DialoguesState(GameStateManager gsm) {
         super(gsm);
+        spriteSheet = new SpriteSheet("res/ui/Dialogues.png");
     }
 
     @Override
@@ -25,7 +26,6 @@ public class DialoguesState extends GameState{
 
     @Override
     public void render(Graphics2D g) {
-        spriteSheet = new SpriteSheet("res/ui/Dialogues.png");
         image = spriteSheet.getSubimage(0,49,3*32,32*7/4);
         g.drawImage(image,180,90, 350,204, null);
         g.setFont(new Font("NewellsHand", Font.PLAIN, 32));

@@ -198,6 +198,7 @@ public class ShopState extends GameState{
             if (key.enter.clicked) {
                 if (commandNum == 1 && function == 0) {
                     gsm.pop(GameStateManager.SHOP);
+                    shop = 0;
                     gsm.add(GameStateManager.PLAY);
                 } else {
                     if (function == 0) function = 1;
