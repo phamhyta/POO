@@ -40,7 +40,7 @@ public class InventoryUI {
     public InventoryUI(Player p) {
         this.p = p;
         this.inventory = p.inventory;
-
+        spriteSheet = new SpriteSheet("res/ui/slots.png");
     }
 
     public void drawSubWindow(Graphics2D g2, int x, int y, int width, int height) {
@@ -53,7 +53,7 @@ public class InventoryUI {
     }
 
     public void drawInv(Graphics2D g2, int x, int y, int row, int col) {
-        spriteSheet = new SpriteSheet("res/ui/slots.png");
+        
         image = spriteSheet.getSubimage(3 * size + 8, 0 * size, size + 8, size + 8);
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -69,7 +69,7 @@ public class InventoryUI {
     }
 
     public void drawAttributes(Graphics2D g2, int slotX, int slotY) {
-        if (slotX + slotY * 6 < inventory.size()) {
+        if (slotX + slotY * 6 < inventory.size() && slotX + slotY * 6 >= 0) {
             g2.setFont(new Font("NewellsHand", Font.PLAIN, size * 2 / 3));
             g2.drawString(inventory.get(slotX + slotY * 6).getName(), x - size / 2 + 20, y - height * 1 / 3 + 50);
             int cnt = 1;

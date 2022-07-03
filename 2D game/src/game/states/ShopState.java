@@ -286,16 +286,12 @@ public class ShopState extends GameState{
                                 back = 0;
                             }
                         }else{
-                            if(buy==1){
-                                buy(items.get(slotCol + slotRow*10));
-                            }
-                            buy++;
-                            if(buy<30){
-                                g.setColor(Color.yellow);
-                                drawSubWindow(g, x+3*size/2, y+height/2, 600, 80);
-                                g.setColor(Color.BLACK);
-                                g.drawString("Thanks for buying!",x+2*size, y+height/2+size*3/2);
-                            }else buy = 0;
+                            buy(items.get(slotCol + slotRow*10));
+                            g.setColor(Color.yellow);
+                            drawSubWindow(g, x+3*size/2, y+height/2, 600, 80);
+                            g.setColor(Color.BLACK);
+                            g.drawString("Thanks for buying!",x+2*size, y+height/2+size*3/2);
+                            buy = 0;
                         }
                     }
                 }

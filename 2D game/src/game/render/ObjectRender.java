@@ -26,8 +26,4 @@ public class ObjectRender {
     public void render(Graphics2D g) {
         g.drawImage(image, (int) pos.getWorldVar().x, (int) pos.getWorldVar().y, size, size, null);
     }
-
-    public BufferedImage getimage() {
-        return image;
-    }
 }

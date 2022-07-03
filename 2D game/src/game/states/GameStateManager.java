@@ -85,11 +85,9 @@ public class GameStateManager {
             states[DIALOGUES] = new DialoguesState(this);
         } else if(state == INTRO){
             states[INTRO] = new IntroState(this);
-        }
-        else if(state == MENU){
+        }else if(state == MENU){
             states[MENU] = new MenuState(this);
-        }
-        else if(state == INSTRUCTION){
+        }else if(state == INSTRUCTION){
             states[INSTRUCTION] = new GameIntruction(this);
         }
     }
