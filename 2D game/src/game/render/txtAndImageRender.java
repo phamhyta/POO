@@ -1,6 +1,7 @@
 package game.render;
 
 import java.awt.*;
+import static game.states.GameStateManager.fontf;
 
 public class txtAndImageRender{
     private String txt;
@@ -24,7 +25,8 @@ public class txtAndImageRender{
             double timeTran = (double) 255/(time1);
             this.txtTran =this.txtTran+ timeTran*check;
             g.setColor(new Color(255,255,255,(int) this.txtTran));
-            g.setFont(g.getFont().deriveFont(30F));
+            g.setFont(fontf.getFont("MeatMadness"));
+            g.setFont(g.getFont().deriveFont(30F));   
             for(String line: txt.split("\n")){
                 g.drawString(line, ScreenX, ScreenY);
                 ScreenY+=48;

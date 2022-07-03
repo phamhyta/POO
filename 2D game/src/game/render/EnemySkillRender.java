@@ -1,6 +1,6 @@
 package game.render;
 
-import game.gameObject.EnemySkill;
+import game.game_object.skill.EnemySkill;
 import game.graphics.SpriteSheet;
 
 import java.awt.*;

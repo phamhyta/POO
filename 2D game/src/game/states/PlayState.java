@@ -3,7 +3,7 @@ package game.states;
 import game.GamePanel;
 
 import game.data.GameControl;
-import game.gameObject.Player;
+import game.game_object.Player;
 import game.graphics.SpriteSheet;
 import game.render.EntityRender;
 import game.ui.PlayerUI;
@@ -36,8 +36,7 @@ public class PlayState extends GameState {
         gc = new GameControl(player, cam, gsm);
         cam.target(player);
         pui = new PlayerUI(player);
-        gsm.sound.playLoopMusic(0);
-        // gsm.sound.playLoopMusic(0);
+//        gsm.sound.playLoopMusic(0);
     }
 
     public void update(double time) {

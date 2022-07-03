@@ -1,6 +1,6 @@
 package game.data;
-import game.gameObject.enemy.TinyMon;
-import game.gameObject.object.Items.Door;
+
+import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;
@@ -14,7 +14,7 @@ public class Map02 extends MapAsset {
     }
 
     public void setMonsterPosition() {
-        int i = 1;
+        int i = 0;
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         gc.origin[i] = new Vector2f(2000, 500);
         setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
@@ -82,23 +82,22 @@ public class Map02 extends MapAsset {
     public void resetEnemy(int i) {
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         if (i == 0) {
-            setTinyBox(i,gc.origin[i],new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16),64 );
+            setTinyBox(i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
         } else if (i == 1) {
-            setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16),64);
+            setTinyBox(i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 1, 128, 32), 16, 16), 64);
         } else if (i == 2) {
-            setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16),64);
+            setTinyBox(i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 2, 128, 32), 16, 16), 64);
         } else if (i == 3) {
-            setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16),64);
+            setTinyBox(i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         } else {
-            setTinyMoon(i,gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48),  64);
+            setTinyMoon(i, gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48), 64);
         }
     }
 
     public void setNPC() {
         int i=0;
         SpriteSheet npcSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
-        gc.origin[i] = new Vector2f(600.0F, 600.0F);
-        setNPC( i,gc.origin[i], npcSheet,  64);
+        setNPC( i,new Vector2f(2056.0F, 964.0F), npcSheet,64);
         i++;
     }
 }

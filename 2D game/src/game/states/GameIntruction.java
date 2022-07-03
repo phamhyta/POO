@@ -5,14 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import game.GamePanel;
-import game.gameObject.Player;
-import game.gameObject.enemy.Enemy;
-import game.gameObject.enemy.TinyBox;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
-import game.render.EntityRender;
-import game.render.TinyBoxRender;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import java.awt.*;
