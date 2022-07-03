@@ -92,7 +92,8 @@ public class GameStateManager {
         else if(state == INSTRUCTION){
             states[INSTRUCTION] = new GameIntruction(this);
         }else if(state == NEWGAME){
-            states[PLAY] = new PlayState(this, new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220)));
+            this.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
+            states[PLAY] = new PlayState(this, this.cam);
         }
     }
 

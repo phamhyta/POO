@@ -124,12 +124,12 @@ public class MenuState extends GameState {
             if(key.up.clicked) {
                 numberLine --;
                 if(numberLine <0) {
-                    numberLine = 3;
+                    numberLine = 4;
                 }
             }
             if(key.down.clicked) {
                 numberLine ++;
-                if(numberLine >5) {
+                if(numberLine >4) {
                     numberLine = 0;
                 }
             }
