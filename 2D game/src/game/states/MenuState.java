@@ -135,18 +135,18 @@ public class MenuState extends GameState {
             }
             if(key.enter.clicked) {
                 if(numberLine== 0) {
-                    gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.NEWGAME);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
-                    gsm.add(GameStateManager.PLAY);
+                    gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 1) {
-                    gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.NEWGAME);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
-                    gsm.add(GameStateManager.PLAY);
+                    gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 3) {
                     ((PlayState) this.gsm.getState(1)).chageMusic();
@@ -156,7 +156,7 @@ public class MenuState extends GameState {
                     this.checkdificulty = true;
                 }
                 if(numberLine ==4){
-                    gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.NEWGAME);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();

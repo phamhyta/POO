@@ -24,9 +24,6 @@ public class PlayState extends GameState {
     private PlayerUI pui;
     private GameControl gc;
     private boolean music;
-    private int EASY = 1;
-    private int MEDIUM = 2;
-    private int HARD = 3;
 
     public PlayState(GameStateManager gsm, Camera cam) {
         super(gsm);
