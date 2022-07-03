@@ -18,12 +18,9 @@ public class IntroState extends GameState
     private int count;
     private BufferedImage listOfImages1[];
     private txtAndImageRender listTxt[];
-    private double tran;
-    private double tran1;
+
     private double picTran;
     private double picTran1;
-    private double check;
-    private double check1;
     private int stateOfImage;
     private int stateOfImage1;
     private SpriteSheet littleGirl;
@@ -36,13 +33,9 @@ public class IntroState extends GameState
     private int process;
     public IntroState(GameStateManager gsm) {
         super(gsm);
-        this.check = 1;
-        this.check1 = 1;
         this.process = 0;
         this.picTran1 = 255;
         this.count = 0;
-        this.tran = 0;
-        this.tran1 = 0;
         this.picTran = 255;
         this.stateOfImage = 0;
         this.stateOfImage1 = 1;
@@ -69,8 +62,8 @@ public class IntroState extends GameState
     }
     @Override
     public void render(Graphics2D g) {
+        g.setFont(fontf.getFont("MaruMonica"));
         this.count++;
-        System.out.println(count);
         //Mo dau
         renderFirstInro(g);
         listTxt[0].renderTxt(g, 0, 4, 0, 720-48*2, this.count);
@@ -135,12 +128,12 @@ public class IntroState extends GameState
         this.listOfLittleGirl = this.littleGirl.getSpriteArray(2);
         this.listOfPlayer = this.player.getSpriteArray(6);
         this.listTxt[0] = new txtAndImageRender("Chuyen ke rang");
-        this.listTxt[1] = new txtAndImageRender("Thua khai thien lap dia, than von vo sinh vo tu,\n bat diet bat vong va co tich vinh hang...");
-        this.listTxt[2] = new txtAndImageRender("Thua hong hoang mo mit, than hoa giai toan than,\n sinh ra nhat nguyet tinh tu, chu than va sinh linh van vat...");
-        this.listTxt[3] = new txtAndImageRender("Tu day cung la luc xua hien cac the luc phan loan,\n pha hoai the goi van vat");
-        this.listTxt[4] = new txtAndImageRender("Dung dau the luc nay la ....\n mot nhan vat vo cung cao cuong xuat hien tu Truc Lam Tu");
+        this.listTxt[1] = new txtAndImageRender("Thua khai thien lap dia, than von vo sinh vo tu,\nbat diet bat vong va co tich vinh hang...");
+        this.listTxt[2] = new txtAndImageRender("Thua hong hoang mo mit, than hoa giai toan than,\nsinh ra nhat nguyet tinh tu, chu than va sinh linh van vat...");
+        this.listTxt[3] = new txtAndImageRender("Tu day cung la luc xua hien cac the luc phan loan,\npha hoai the goi van vat");
+        this.listTxt[4] = new txtAndImageRender("Dung dau the luc nay la ....\nmot nhan vat vo cung cao cuong xuat hien tu Truc Lam Tu");
         this.listTxt[5] = new txtAndImageRender("Giang ho don rang lao da nghich luyen Dich Can Kinh \nNhung... khong thanh phat ma da nhap vao ma dao");
-        this.listTxt[6] = new txtAndImageRender("Lao chieu du vo so cao thu,\n trong do co Little Girl de gia nhap the luc nham thao tung van vat");
+        this.listTxt[6] = new txtAndImageRender("Lao chieu du vo so cao thu,\ntrong do co Little Girl de gia nhap the luc nham thao tung van vat");
         this.listTxt[7] = new txtAndImageRender("Va ban la");
         this.listTxt[8] = new txtAndImageRender("Chao mung ban da den day de cung chung tay chong lai the luc phan loan");
         this.listTxt[9] = new txtAndImageRender("Monster");
