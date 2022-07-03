@@ -2,7 +2,7 @@ package game.ui;
 
 import game.GamePanel;
 
-import game.gameObject.npc.NPC;
+import game.game_object.npc.NPC;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 

@@ -2,8 +2,8 @@ package game.states;
 
 
 import game.data.AddItems;
-import game.gameObject.Player;
-import game.gameObject.object.GameObject;
+import game.game_object.Player;
+import game.game_object.object.GameObject;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.util.KeyHandler;

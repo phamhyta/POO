@@ -1,9 +1,9 @@
 package game.data;
 
-import game.gameObject.enemy.Enemy;
-import game.gameObject.npc.NPC;
-import game.gameObject.object.GameObject;
-import game.gameObject.Player;
+import game.game_object.enemy.Enemy;
+import game.game_object.npc.NPC;
+import game.game_object.object.GameObject;
+import game.game_object.Player;
 import game.math.Vector2f;
 import game.render.EntityRender;
 import game.render.NPCRender;
@@ -29,7 +29,7 @@ public class GameControl {
     private long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
-    public TileManager tm;
+    public static TileManager tm;
     public EntityRender entityRender[];
     public NPCRender[] npcRender;
 
@@ -45,8 +45,8 @@ public class GameControl {
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
         mapAs = new Map01(this);
-        // this.mapAs[1] = new Map02(this);
-        // this.mapAs[2] = new Map03(this);
+//         this.mapAs = new Map02(this);
+//         this.mapAs = new Map03(this);
     }
 
     private void resetAsset() {
@@ -73,7 +73,7 @@ public class GameControl {
                     player.resetPosition();
                 } else {
                     player.setTargetMaterial(gameObject.get(i));
-                    // gameObject.remove(i);
+//                    gameObject.remove(i);
                 }
             }
         }
@@ -93,7 +93,7 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                    enemy[i].update(player, time, origin[i]);
+                        enemy[i].update(player, time, origin[i]);
                 }
             }
             if (enemy[i] == null && this.deadStartTime[i] != 0L
@@ -115,6 +115,7 @@ public class GameControl {
         }
         if (currentMap != defaultMap) {
             defaultMap = currentMap;
+
             resetAsset();
             loadNewMap();
         }
@@ -126,8 +127,11 @@ public class GameControl {
             mapAs = new Map01(this);
         } else if (currentMap == 1) {
             mapAs = new Map02(this);
-        } else {
+        } else if (currentMap == 2) {
             mapAs = new Map03(this);
+        }
+        else{
+            currentMap = 0;
         }
     }
 
@@ -150,14 +154,6 @@ public class GameControl {
         }
     }
 
-    public void input(MouseHandler mouse, KeyHandler key) {
-        key.enter.tick();
-
-        for (int i = 0; i < this.npc.length; ++i) {
-            if (npc[i] != null && player.getBounds().collides(npc[i].getBounds()) && key.enter.clicked) {
-            }
-        }
-    }
 
     public static void setGameObject(GameObject go) {
         gameObject.add(go);
