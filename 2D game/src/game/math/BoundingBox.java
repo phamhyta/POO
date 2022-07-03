@@ -1,6 +1,6 @@
 package game.math;
 
-import game.gameObject.Entity;
+import game.game_object.Entity;
 
 public class BoundingBox {
     private Vector2f pos;

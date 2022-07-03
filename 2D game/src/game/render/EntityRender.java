@@ -1,10 +1,9 @@
 package game.render;
 
-import game.gameObject.Entity;
+import game.game_object.Entity;
 import game.graphics.Animation;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 
@@ -35,7 +34,7 @@ public class EntityRender {
         this.entity = entity;
         this.spriteSheet = spriteSheet;
         ani = new Animation();
-        setAnimation(1, spriteSheet.getSpriteArray(1), 10);
+        setAnimation(1, spriteSheet.getSpriteArray(0), 10);
     }
 
     public void setAnimation(int i, Sprite[] frames, int delay) {
@@ -114,15 +113,6 @@ public class EntityRender {
     }
 
     public void render(Graphics2D g) {
-//        g.setColor(Color.red);
-//        g.drawRect((int) (entity.getPos().getWorldVar().x) , (int) (entity.getPos().getWorldVar().y),(int)entity.getBounds().getXOffset(),(int)entity.getBounds().getYOffset());
-
-        g.setColor(Color.green);
-        g.drawRect((int) (entity.getPos().getWorldVar().x) +(int)entity.getBounds().getXOffset(), (int) (entity.getPos().getWorldVar().y)+(int)entity.getBounds().getYOffset(),(int)entity.getBounds().getWidth(),(int)entity.getBounds().getHeight());
-
-//        g.setColor(Color.blue);
-//        g.drawRect((int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y),(int)entity.getSize(),(int)entity.getSize());
-
         g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
         for (int i = 0; i < entity.getSkill().size(); i++) {
             if (entity.getSkill().get(i) != null)

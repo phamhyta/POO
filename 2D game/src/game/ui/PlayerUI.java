@@ -1,6 +1,6 @@
 package game.ui;
 
-import game.gameObject.Player;
+import game.game_object.Player;
 import game.graphics.SpriteSheet;
 import game.util.KeyHandler;
 import game.util.MouseHandler;

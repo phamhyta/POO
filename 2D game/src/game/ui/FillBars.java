@@ -1,6 +1,6 @@
 package game.ui;
 
-import game.gameObject.Entity;
+import game.game_object.Entity;
 import game.math.Vector2f;
 
 import java.awt.Graphics2D;
