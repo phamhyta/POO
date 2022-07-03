@@ -13,7 +13,11 @@ public class Wizard_BOSS extends Enemy {
     public Wizard_BOSS (Vector2f origin, int size) {
         super(origin, size);
         xOffset = size / 4;
-        yOffset = size / 4;
+        yOffset = size / 2;
+        bounds.setWidth(size/2);
+        bounds.setHeight(size/2);
+        bounds.setXOffset(xOffset);
+        bounds.setYOffset(yOffset);
         maxHealth= 200;
         health= 200;
         EXP =30;

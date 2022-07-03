@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b87afb16-233f-483f-90bf-44a8d007fb76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/SkilPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/POO.iml" afterDir="false" />
+    <list default="true" id="b87afb16-233f-483f-90bf-44a8d007fb76" name="Changes" comment="kpi tháng 7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/2D game.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/data/Map01.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/Map01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/data/Map02.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/data/Map02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/EnemySkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/EnemySkill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Minataur.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Minataur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/TinyBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/TinyBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/TinyMon.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/TinyMon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Wizard_BOSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/gameObject/enemy/Wizard_BOSS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/render/EntityRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/EntityRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/render/SkillRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/SkillRender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2D game/src/game/render/WizardRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/render/WizardRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D game/src/game/states/GameStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/2D game/src/game/states/GameStateManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +74,14 @@
       <option name="presentableId" value="Default" />
       <updated>1656761678100</updated>
     </task>
+    <task id="LOCAL-00001" summary="kpi tháng 7">
+      <created>1656774143050</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656774143050</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,5 +94,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="kpi tháng 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="kpi tháng 7" />
   </component>
 </project>
