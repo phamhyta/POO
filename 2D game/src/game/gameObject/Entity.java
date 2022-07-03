@@ -1,5 +1,7 @@
 package game.gameObject;
 
+import game.gameObject.skill.EnemySkill;
+import game.gameObject.skill.Skill;
 import game.math.BoundingBox;
 import game.util.TileCollision;
 import game.math.Vector2f;
@@ -297,6 +299,7 @@ public class Entity {
     public void setDefense(int defense) {this.defense=defense;}
     public ArrayList<Skill> getSkill() {return skill;}
     public int getSkillDuration() {return skillDuration;}
+    public int getCurrentDirection() {return currentDirection;}
 }
 
 

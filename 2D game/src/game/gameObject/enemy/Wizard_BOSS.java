@@ -1,10 +1,7 @@
 package game.gameObject.enemy;
 
-import game.gameObject.EnemySkill;
+import game.gameObject.skill.EnemySkill;
 import game.gameObject.Player;
-import game.gameObject.Skill;
-import game.graphics.Animation;
-import game.math.BoundingBox;
 import game.math.Vector2f;
 
 public class Wizard_BOSS extends Enemy {

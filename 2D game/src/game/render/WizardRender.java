@@ -51,7 +51,6 @@ public class WizardRender  extends EntityRender{
             for (int i = 0; i < entity.getSkill().size(); i++) {
             if (entity.getSkill().get(i) != null)
                 entity.getSkill().get(i).getSkillRender().render(g);
-//                g.fillRect((int)entity.getSkill().get(i).getPos().getWorldVar().x,(int)entity.getSkill().get(i).getPos().getWorldVar().y,32,32);
         }
     }
 }

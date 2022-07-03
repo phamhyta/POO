@@ -14,8 +14,7 @@ import java.io.IOException;
 import static game.states.GameStateManager.fontf;
 
 public class TitleState extends GameState{
-    private int selection ;
-    private int commandNum=0;
+
     BufferedImage image;
     private BufferedImage imgButton;
     private Button btn1, btn2, btn3;
@@ -30,40 +29,27 @@ public class TitleState extends GameState{
 
         imgButton= GameStateManager.ui.getSubimage(2490,250,1500,450);
         btn1 = new Button("PLAY GAME", new Vector2f(64*8 +20, 64*6 + 20), 32, 24, imgButton, new Vector2f(64*8, 64*6), 290, 75);
-        btn1.addEvent(e -> selection = 0);
+        btn1.addEvent(e->{gsm.pop(GameStateManager.TITLE);
+                    gsm.add(GameStateManager.INTRO);});
 
         btn2 = new Button("INSTRUCTION", new Vector2f(64*8 -10, 64*7+32 + 20), 32, 24, imgButton, new Vector2f(64*8-10, 64*7+32), 310, 75);
-        btn2.addEvent(e -> selection = 1);
+        btn2.addEvent(e -> {gsm.pop(GameStateManager.TITLE);
+            gsm.add(GameStateManager.INSTRUCTION);}
+        );
 
         btn3 = new Button("EXIST", new Vector2f(64*9, 64*9+5 ), 32, 24, imgButton, new Vector2f(64*8+32, 64 *9-12), 200, 72);
-        btn3.addEvent(e -> selection = 2);
+        btn3.addEvent(e -> { System.exit(0);});
 
     }
 
     @Override
-    public void update(double time) {
-
-    }
+    public void update(double time) {}
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key) {
         btn1.input(mouse, key);
         btn2.input(mouse, key);
         btn3.input(mouse, key);
-
-        if(mouse.getButton() == 1  &&  btn1.getHovering() ) {
-            gsm.pop(GameStateManager.TITLE);
-            gsm.add(GameStateManager.INTRO);
-        }
-
-        else if(mouse.getButton() == 1  &&  btn2.getHovering()) {
-            gsm.pop(GameStateManager.TITLE);
-            gsm.add(GameStateManager.INSTRUCTION);
-        }
-        else if(mouse.getButton() == 1 &&  btn3.getHovering()){
-            System.exit(0);
-        }
-
     }
 
 

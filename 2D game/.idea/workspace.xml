@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e0f6110-a483-4f2a-af61-5d1863190ada" name="Changes" comment="fixx">
+    <list default="true" id="3d9001c1-1620-4c59-9586-667c8bd26036" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2D game.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/res/entity/rock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/AddItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/AddItems.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/GameControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/GameControl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/Map01.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/Map01.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/Map02.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/Map02.class" afterDir="false" />
@@ -11,86 +22,22 @@
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/data/MapAsset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/data/MapAsset.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/enemy/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/enemy/Enemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Armor_9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Book_Blue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Book_Red.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Boots_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Boots_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Bow_5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Coin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Door.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Food_9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Futility_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Futility_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Glove_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Glove_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Heart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Jewel_Blue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Jewel_Red.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/ManaCrystal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Blue_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Blue_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Blue_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Red_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Red_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Potion_Red_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Shield_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Shield_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Shield_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Sword_9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/gameObject/object/Trig_6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/graphics/Font.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/graphics/Font.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/graphics/Fontf.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/graphics/Fontf.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/PauseState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/PauseState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/PlayState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/PlayState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/ShopState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/ShopState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2D game/game/states/TitleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/states/TitleState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/ui/InventoryUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/ui/InventoryUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2D game/game/ui/PlayerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2D game/game/ui/PlayerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/data/GameControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/GameControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/data/Map01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/Map01.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/data/Map02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/Map02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/data/Map03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/Map03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/data/MapAsset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/data/MapAsset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/graphics/Fontf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/graphics/Fontf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameObject/EnemySkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameObject/skill/EnemySkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameObject/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameObject/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameObject/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameObject/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameObject/SkilPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameObject/skill/SkilPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameObject/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameObject/skill/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameObject/enemy/Wizard_BOSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameObject/enemy/Wizard_BOSS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/render/EnemySkillRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/EnemySkillRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/render/EntityRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/EntityRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/render/SkillRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/SkillRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/render/WizardRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/WizardRender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/states/PauseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/PauseState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/states/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/PlayState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/states/TitleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/TitleState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,42 +48,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/game/ui/Slots.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/game/ui/Button.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/game/states/PlayState.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/game/ui/BuildOptionUI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/game/states/GameStateManager.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/game/ui/PlayerUI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/game/util/MouseHandler.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2AxwpnkW0K67VsBIoQ0bgjFN1Oo" />
+  <component name="ProjectId" id="2BOb5csc6DLjQ8DfRiAw2oisa90" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/res/ui" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/res/entity" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\tungd\Downloads\Gift HUBHUB\POO\2D game\src\res\ui" />
-      <recent name="C:\Users\tungd\Downloads\Gift HUBHUB\POO\2D game\src\game\ui" />
+      <recent name="C:\Users\tungd\Downloads\Gift HUBHUB\POO\2D game\src\res\entity" />
     </key>
   </component>
   <component name="RunManager">
@@ -162,83 +93,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9e0f6110-a483-4f2a-af61-5d1863190ada" name="Changes" comment="" />
-      <created>1655964730050</created>
+      <changelist id="3d9001c1-1620-4c59-9586-667c8bd26036" name="Changes" comment="" />
+      <created>1656779899399</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1655964730050</updated>
+      <updated>1656779899399</updated>
     </task>
-    <task id="LOCAL-00001" summary="update Skill class">
-      <created>1655967272679</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1655967272679</updated>
-    </task>
-    <task id="LOCAL-00002" summary="update">
-      <created>1656502494680</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1656502494680</updated>
-    </task>
-    <task id="LOCAL-00003" summary="update">
-      <created>1656568095775</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1656568095775</updated>
-    </task>
-    <task id="LOCAL-00004" summary="jjj">
-      <created>1656574723736</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1656574723736</updated>
-    </task>
-    <task id="LOCAL-00005" summary="jjj">
-      <created>1656574777555</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1656574777555</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fix">
-      <created>1656604086299</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1656604086299</updated>
-    </task>
-    <task id="LOCAL-00007" summary="add button">
-      <created>1656611495501</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1656611495501</updated>
-    </task>
-    <task id="LOCAL-00008" summary="add button">
-      <created>1656611558852</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1656611558852</updated>
-    </task>
-    <task id="LOCAL-00009" summary="commit">
-      <created>1656660073688</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1656660073688</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fixx">
-      <created>1656743811144</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1656743811144</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -251,15 +111,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="update Skill class" />
-    <MESSAGE value="update" />
-    <MESSAGE value="jjj" />
-    <MESSAGE value="fix" />
-    <MESSAGE value="add button" />
-    <MESSAGE value="commit" />
-    <MESSAGE value="fixx" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixx" />
   </component>
 </project>

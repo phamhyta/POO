@@ -3,6 +3,7 @@ package game.gameObject;
 import game.GamePanel;
 import game.gameObject.enemy.Enemy;
 import game.gameObject.object.GameObject;
+import game.gameObject.skill.SkilPlayer;
 import game.graphics.Animation;
 import game.states.GameStateManager;
 import game.states.PlayState;
@@ -15,8 +16,6 @@ public class Player extends Entity {
     public static int coin = 0;
     private ArrayList<Enemy> enemy;
     public ArrayList<GameObject> inventory;
-
-    private int skillCounter = 0;
     private int nextLevelEXP = 50;
 
     public Player(Vector2f orgin, int size) {

@@ -1,10 +1,12 @@
-package game.gameObject;
+package game.gameObject.skill;
 
 import game.data.GameControl;
+import game.gameObject.Player;
 
 public class SkilPlayer extends Skill{
     public SkilPlayer(Player player, int size) {
         super(player, size);
+        type =SKILL_PLAYER;
         checkCurrentDirection();
     }
 
