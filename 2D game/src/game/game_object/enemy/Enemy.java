@@ -66,7 +66,6 @@ public class Enemy extends Entity {
         }
     }
 
-
     private void chase(Player player) {
         BoundingBox playerBounds = player.getBounds();
         if (sense.colCircleBox(playerBounds) && !attackrange.colCircleBox(player.getBounds())) {

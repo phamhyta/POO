@@ -30,6 +30,7 @@ public class GameStateManager {
     public static final int INTRO = 6;
     public static final int MENU = 7;
     public static final int INSTRUCTION = 8;
+    public static final int NEWGAME = 10;
 
     public static Camera cam;
     public static Graphics2D g;
@@ -41,7 +42,7 @@ public class GameStateManager {
         this.g = g;
         map = new Vector2f(GamePanel.width, GamePanel.height);
         Vector2f.setWorldVar(map.x, map.y);
-        states = new GameState[10];
+        states = new GameState[20];
         font = new Font("res/font/font.png", 10, 10);
         fontf = new Fontf();
         fontf.loadFont("res/font/Stackedpixel.ttf", "MeatMadness");
@@ -70,9 +71,8 @@ public class GameStateManager {
     public void add(int state) {
         if (states[state] != null)
             return;
-
         if (state == PLAY) {
-            states[PLAY] = new PlayState(this, cam);
+            states[PLAY] = new PlayState(this, this.cam);
         } else if (state == TITLE) {
             states[TITLE] = new TitleState(this);
         } else if (state == PAUSE) {
@@ -91,6 +91,9 @@ public class GameStateManager {
         }
         else if(state == INSTRUCTION){
             states[INSTRUCTION] = new GameIntruction(this);
+        }else if(state == NEWGAME){
+            this.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
+            states[PLAY] = new PlayState(this, this.cam);
         }
     }
 

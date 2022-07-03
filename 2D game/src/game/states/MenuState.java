@@ -124,25 +124,29 @@ public class MenuState extends GameState {
             if(key.up.clicked) {
                 numberLine --;
                 if(numberLine <0) {
-                    numberLine = 3;
+                    numberLine = 4;
                 }
             }
             if(key.down.clicked) {
                 numberLine ++;
-                if(numberLine >5) {
+                if(numberLine >4) {
                     numberLine = 0;
                 }
             }
             if(key.enter.clicked) {
                 if(numberLine== 0) {
-                    gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.NEWGAME);
+                    gsm.pop(GameStateManager.MENU);
+                    gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
-                    gsm.add(GameStateManager.PLAY);
+                    gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 1) {
-                    gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.NEWGAME);
+                    gsm.pop(GameStateManager.MENU);
+                    gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
-                    gsm.add(GameStateManager.PLAY);
+                    gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 3) {
                     ((PlayState) this.gsm.getState(1)).chageMusic();
@@ -153,6 +157,8 @@ public class MenuState extends GameState {
                 }
                 if(numberLine ==4){
                     gsm.pop(GameStateManager.PLAY);
+                    gsm.pop(GameStateManager.MENU);
+                    gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
                     gsm.add(GameStateManager.TITLE);
                 }
