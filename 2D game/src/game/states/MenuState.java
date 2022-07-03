@@ -156,7 +156,7 @@ public class MenuState extends GameState {
                     this.checkdificulty = true;
                 }
                 if(numberLine ==4){
-                    gsm.pop(GameStateManager.NEWGAME);
+                    gsm.pop(GameStateManager.PLAY);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
                     gsm.sound.stopMusic();
