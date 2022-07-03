@@ -1,8 +1,10 @@
 package game.gameObject.enemy;
 
+import game.data.GameControl;
 import game.gameObject.EnemySkill;
 import game.gameObject.Player;
 import game.gameObject.Skill;
+import game.gameObject.object.Items.*;
 import game.graphics.Animation;
 import game.math.BoundingBox;
 import game.math.Vector2f;
@@ -18,6 +20,7 @@ public class Wizard_BOSS extends Enemy {
         bounds.setHeight(size/2);
         bounds.setXOffset(xOffset);
         bounds.setYOffset(yOffset);
+
         maxHealth= 200;
         health= 200;
         EXP =30;
@@ -28,6 +31,8 @@ public class Wizard_BOSS extends Enemy {
         r_sense = 1000;
         r_attackrange = 10;
         coin =10;
+        dropRate= 0.5F;
+
         skillManaConsume=0;
         mana = 1000;
         skillSpeed = 2000;
@@ -63,5 +68,17 @@ public class Wizard_BOSS extends Enemy {
                 skill.get(i).update();
         }
     }
-
+    public void drop() {
+        int rand = (int) (Math.random() * 100 /dropRate);
+        if (rand < 50 && rand >=0) {
+            GameControl.setGameObject(new Potion_Red_3(new Vector2f(this.getPos().x - 50, this.getPos().y+5), 32));
+        } else if (rand < 80 && rand >= 50) {
+            GameControl.setGameObject(new Potion_Blue_3(new Vector2f(this.getPos().x + 25, this.getPos().y-5), 32));
+        } else if (rand >= 80 && rand <= 95) {
+            GameControl.setGameObject(new Shield_3(new Vector2f(this.getPos().x - 40, this.getPos().y+10), 32));
+        }
+        else {
+            GameControl.setGameObject(new Sword_9(new Vector2f(this.getPos().x , this.getPos().y), 32));
+        }
+    }
 }

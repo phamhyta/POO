@@ -30,18 +30,18 @@ public class Map02 extends MapAsset {
         setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         i++;
 
-        SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
+        SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
         gc.origin[i] = new Vector2f(1400, 1200);
         setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
         gc.origin[i] = new Vector2f(2250, 1350);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 82);
         i++;
         gc.origin[i] = new Vector2f(750, 2400);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 108);
         i++;
         gc.origin[i] = new Vector2f(1000, 2000);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 128);
         i++;
 
 
