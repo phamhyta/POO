@@ -215,11 +215,16 @@ public class Entity {
         pathFind.setNodes((int)(pos.x /64),(int)(this.pos.y /64),
                 (int)(entity.pos.x /64),(int)(entity.pos.y /64));
         if(pathFind.search()){
-            if(!pathFind.pathList.isEmpty()){
+            if(!pathFind.pathList.isEmpty() && pathFind.pathList.get(0) != pathFind.goalNode){
                 int col = pathFind.pathList.get(0).getCol();
                 int row = pathFind.pathList.get(0).getRow();
                 Vector2f vt = new Vector2f(col * 64+32,row * 64+32 );
-                autoDirecting(this.pos,vt);}
+                autoDirecting(this.pos,vt);
+
+            }
+            else{
+                autoDirecting(this.pos,entity.getPos());
+            }
         }
     }
 

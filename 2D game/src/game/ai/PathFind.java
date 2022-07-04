@@ -10,7 +10,7 @@ public class PathFind {
     public static Node[][] node;
     ArrayList<Node> openList = new ArrayList<>();
     public ArrayList<Node> pathList = new ArrayList<>();
-    Node startNode, goalNode, currentNode;
+    public Node startNode, goalNode, currentNode;
     boolean goalReached= false;
     int step =0;
     private int maxCol;
