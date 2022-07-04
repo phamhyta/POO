@@ -1,14 +1,27 @@
 package game.render;
 
 import java.awt.*;
+import java.nio.Buffer;
+
+import game.graphics.Sprite;
+import game.graphics.SpriteSheet;
+
 import static game.states.GameStateManager.fontf;
 
 public class txtAndImageRender{
     private String txt;
     private double txtTran;
+    private SpriteSheet image[][];
+    private int stateOfImage;
+    private double Tran;
     public txtAndImageRender(String txt) {
         this.txt = txt;
-        this.txtTran = 0;
+        this.Tran = 0;
+    }
+    public txtAndImageRender(SpriteSheet image[][]) {
+        this.image = image;
+        this.stateOfImage = 0;
+        this.Tran = 255;
     }
     
 
@@ -46,6 +59,7 @@ public class txtAndImageRender{
             double timeTran = (double) 255/(time1);
             this.txtTran =this.txtTran+ timeTran*check;
             g.setColor(new Color(255,255,255,(int) this.txtTran));
+            g.setFont(fontf.getFont("MeatMadness"));
             g.setFont(g.getFont().deriveFont(size));
             for(String line: txt.split("\n")){
                 g.drawString(line, ScreenX, ScreenY);
@@ -53,5 +67,27 @@ public class txtAndImageRender{
         }
     }    
     }
-
+    public void RenderImage(Graphics2D g,int timeBegin,int timeEnd,int ScreenX,int ScreenY,int Width,int Height,int count,int obj){
+        if(count>timeBegin*60&&count<=timeEnd*60){
+            if(count%20==0){
+                this.stateOfImage++;
+                if(this.stateOfImage==4){
+                    this.stateOfImage=0;
+                }
+            }
+            // g.drawImage(this.image[obj][this.stateOfImage].image,ScreenX , ScreenY,Width,Height,null);
+            if((timeEnd-4)*60 <count&&count <= (timeEnd)*60){
+                double k2 = 255.0/240.0;
+                this.Tran += k2;
+                g.setColor(( new Color(0,0,0,(int) this.Tran)));
+                g.fillRect(0, 0, 1280, 720);
+            }
+            if(count<=(timeBegin+4)*60){
+                double k2 =  255.0/240.0;
+                this.Tran -= k2;
+                g.setColor(( new Color(0,0,0,(int) this.Tran)));
+                g.fillRect(0, 0, 1280, 720);
+            }
+    }
+    }
 }

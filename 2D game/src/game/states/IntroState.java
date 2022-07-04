@@ -30,6 +30,7 @@ public class IntroState extends GameState
     private Sprite listOfMonsters[][];
     private Sprite listOfLittleGirl [];
     private Sprite listOfPlayer[];
+    private txtAndImageRender Monster[][];
     private int process;
     public IntroState(GameStateManager gsm) {
         super(gsm);
@@ -137,7 +138,8 @@ public class IntroState extends GameState
         this.listTxt[7] = new txtAndImageRender("Va ban la");
         this.listTxt[8] = new txtAndImageRender("Chao mung ban da den day de cung chung tay chong lai the luc phan loan");
         this.listTxt[9] = new txtAndImageRender("Monster");
-        // Load pic 1
+        // this.Monster = new txtAndImageRender(new SpriteSheet("res/entity/minimonsters.png",16,16));
+        // Load pic 1)
         for(int i = 1;i<=56;i++){
                 loadImage(i);
                 this.listOfImages1[i] = this.scaledImage(this.listOfImages1[i], 1280, 720);
@@ -173,7 +175,6 @@ public class IntroState extends GameState
             g.setColor(( new Color(0,0,0,(int) this.picTran)));
             g.fillRect(0, 0, 1280, 720);
         }
-        
     }
 public void renderImage1(int timeBegin,int timeEnd,Graphics2D g,Sprite listSprite[][],Sprite [] littleGirl){
     if(this.count>timeBegin*60&&this.count<=timeEnd*60){

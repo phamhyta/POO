@@ -129,4 +129,7 @@ public class GameStateManager {
             }
         }
     }
+    public GameState[] getState(){
+        return this.states;
+    }
 }
