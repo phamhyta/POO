@@ -1,5 +1,7 @@
 package game.game_object;
 
+import game.ai.PathFind;
+import game.data.GameControl;
 import game.game_object.skill.EnemySkill;
 import game.game_object.skill.Skill;
 import game.math.BoundingBox;
@@ -78,7 +80,8 @@ public class Entity {
     protected int skillManaConsume = 10;
     protected ArrayList<Skill> skill;
     protected ArrayList<EnemySkill> enemySkill;
-
+    protected PathFind pathFind;
+    protected boolean onPath = false;
 
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
@@ -90,6 +93,7 @@ public class Entity {
 
         tc = new TileCollision(this);
         skill= new ArrayList<>();
+        pathFind = new PathFind();
     }
     public void setPos(Vector2f pos) {
         this.pos = pos;
@@ -206,6 +210,20 @@ public class Entity {
         }
     }
 
+    protected void moveInPath(Entity entity){
+        pathFind.resetNodes();
+        pathFind.setNodes((int)(pos.x /64),(int)(this.pos.y /64),
+                (int)(entity.pos.x /64),(int)(entity.pos.y /64));
+        if(pathFind.search()){
+            if(!pathFind.pathList.isEmpty()){
+                int col = pathFind.pathList.get(0).getCol();
+                int row = pathFind.pathList.get(0).getRow();
+                Vector2f vt = new Vector2f(col * 64+32,row * 64+32 );
+                autoDirecting(this.pos,vt);}
+        }
+    }
+
+
     protected void autoDirecting(Vector2f posA, Vector2f posB){
         if (posA.y > posB.y + 1) {
             up = true;
@@ -217,7 +235,6 @@ public class Entity {
         } else {
             down = false;
         }
-
         if (posA.x > posB.x + 1) {
             left = true;
         } else {

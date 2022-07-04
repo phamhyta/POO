@@ -1,5 +1,6 @@
 package game.data;
 
+import game.ai.MapSolid;
 import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -10,6 +11,7 @@ public class Map02 extends MapAsset {
     public Map02(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/winter.xml", gc.cam);
+        gc.mapSolid = new MapSolid(gc.tm);
         gc.gameObject.add(new Door(new Vector2f(1500,2500),128));
     }
 
