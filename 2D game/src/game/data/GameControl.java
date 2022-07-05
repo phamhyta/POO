@@ -37,9 +37,12 @@ public class GameControl {
         origin = new Vector2f[20];
         deadStartTime = new long[20];
         entityRender = new EntityRender[20];
-
         this.npc = new NPC[5];
-        mapAs = new Map01(this);
+        MapAsset[] mapAs = new MapAsset[5];
+       
+        mapAs[0] = new Map03(this);
+        //this.mapAs[1] = new Map02(this);
+        //this.mapAs[2] = new Map03(this);
     }
 
     private void resetAsset() {
