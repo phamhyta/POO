@@ -215,17 +215,17 @@ public class Entity {
         pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
                 (int)(entity.pos.x + entity.getBounds().getXOffset())/64,(int)(entity.pos.y+entity.getBounds().getYOffset() )/64);
         if(pathFind.search()){
-            if(!pathFind.pathList.isEmpty() && pathFind.pathList.get(0) != pathFind.goalNode){
+            if(!pathFind.pathList.isEmpty() || !pathFind.pathList.get(0).equals( pathFind.goalNode)){
                 int col = pathFind.pathList.get(0).getCol();
                 int row = pathFind.pathList.get(0).getRow();
+                pathFind.pathList.remove(0);
                 Vector2f vt = new Vector2f(col * 64,row * 64 );
                 autoDirecting(this.pos,vt);
-
             }
-            else{
-                autoDirecting(this.pos,entity.getPos());
-            }
+        }else{
+                autoDirecting(this.pos, entity.getPos());
         }
+
     }
 
     protected void moveInPath(Vector2f origin){
@@ -233,37 +233,36 @@ public class Entity {
         pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
                 (int)(origin.x /64),(int)(origin.y /64));
         if(pathFind.search()){
-            if(!pathFind.pathList.isEmpty() && pathFind.pathList.get(0) != pathFind.goalNode){
+            if(!pathFind.pathList.isEmpty()|| !pathFind.pathList.get(0).equals( pathFind.goalNode)){
                 int col = pathFind.pathList.get(0).getCol();
                 int row = pathFind.pathList.get(0).getRow();
-                Vector2f vt = new Vector2f(col * 64+1,row * 64+1 );
+                pathFind.pathList.remove(0);
+                Vector2f vt = new Vector2f(col * 64,row * 64 );
                 autoDirecting(this.pos,vt);
-
             }
-            else{
-                autoDirecting(this.pos,origin);
-            }
+        }else{
+            stopDirecting();
         }
     }
 
 
     protected void autoDirecting(Vector2f posA, Vector2f posB){
-        if (posA.y > posB.y + 1) {
+        if (posA.y > posB.y + 5) {
             up = true;
         } else {
             up = false;
         }
-        if (posA.y < posB.y - 1) {
+        if (posA.y < posB.y - 5) {
             down = true;
         } else {
             down = false;
         }
-        if (posA.x > posB.x + 1) {
+        if (posA.x > posB.x + 5) {
             left = true;
         } else {
             left = false;
         }
-        if (posA.x < posB.x - 1) {
+        if (posA.x < posB.x - 5) {
             right = true;
         } else {
             right = false;

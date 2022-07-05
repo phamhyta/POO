@@ -83,7 +83,8 @@ public class Enemy extends Entity {
     }
 
     public void moveInCircle(Vector2f center, double r, Player player) {
-        if (this.isInCirclePath(center, r)  && !player.isInCircle(center, r)) {
+        if (this.isInCirclePath(center, r) && sense.colCircleBox(player.getBounds())
+                && !player.isInCircle(center, r)) {
             dx = 0;
             dy = 0;
             stopDirecting();
