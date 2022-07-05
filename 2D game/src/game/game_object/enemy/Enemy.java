@@ -34,8 +34,8 @@ public class Enemy extends Entity {
         r_enemyArea = 500;
         bounds.setWidth(20);
         bounds.setHeight(20);
-        bounds.setXOffset(0);
-        bounds.setYOffset(0);
+        bounds.setXOffset(20);
+        bounds.setYOffset(20);
 
         sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2),
                 r_sense);
@@ -76,15 +76,14 @@ public class Enemy extends Entity {
 
     public void moveBack(Vector2f center) {
         if (this.pos.x != center.x || this.pos.y != center.y) {
-            autoDirecting(pos, center);
+            moveInPath(center);
         } else {
             stopDirecting();
         }
     }
 
     public void moveInCircle(Vector2f center, double r, Player player) {
-        if (this.isInCirclePath(center, r) && sense.colCircleBox(player.getBounds())
-                && !player.isInCircle(center, r)) {
+        if (this.isInCirclePath(center, r)  && !player.isInCircle(center, r)) {
             dx = 0;
             dy = 0;
             stopDirecting();
