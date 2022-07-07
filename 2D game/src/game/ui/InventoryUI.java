@@ -57,9 +57,10 @@ public class InventoryUI {
     }
 
     public void drawAttributes(Graphics2D g2, int slotX, int slotY) {
-        if (slotX + slotY * 6 < p.getInventory().size() && slotX + slotY * 6 >=0) {
+        if (slotX + slotY * 6 < p.getInventory().size() && slotX + slotY * 6 >= 0) {
             g2.setFont(new Font("NewellsHand", Font.PLAIN, size * 2 / 3));
-            g2.drawString(p.getInventory().get(slotX + slotY * 6).getName(), x - size / 2 + 20, y - height * 1 / 3 + 50);
+            g2.drawString(p.getInventory().get(slotX + slotY * 6).getName(), x - size / 2 + 20,
+                    y - height * 1 / 3 + 50);
             int cnt = 1;
             if (p.getInventory().get(slotCol + slotRow * 6).getHP() != 0) {
                 g2.drawString("+" + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getHP()) + " HP",
@@ -72,12 +73,14 @@ public class InventoryUI {
                 cnt++;
             }
             if (p.getInventory().get(slotCol + slotRow * 6).getAttackValue() != 0) {
-                g2.drawString("+" + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getAttackValue()) + " attack",
+                g2.drawString(
+                        "+" + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getAttackValue()) + " attack",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
             if (p.getInventory().get(slotCol + slotRow * 6).getDefense() != 0) {
-                g2.drawString("+" + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getDefense()) + " defense",
+                g2.drawString(
+                        "+" + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getDefense()) + " defense",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
@@ -87,7 +90,8 @@ public class InventoryUI {
                 cnt++;
             }
             if (p.getInventory().get(slotCol + slotRow * 6).getCoin() != 0) {
-                g2.drawString("Gia: " + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getCoin()) + " Coins",
+                g2.drawString(
+                        "Gia: " + String.valueOf(p.getInventory().get(slotCol + slotRow * 6).getCoin()) + " Coins",
                         x - size / 2 + 20, y - height * 1 / 3 + 50 + cnt * size);
                 cnt++;
             }
@@ -108,36 +112,35 @@ public class InventoryUI {
 
     public void render(Graphics2D g) {
 
-            // // update
+        // // update
 
-            int cursurX = slotXstart + size * slotCol * 3 / 2;
-            int cursurY = slotYstart + size * slotRow * 3 / 2;
-            drawInv(g, x, y, 4, 6);
-            Color c = new Color(255, 255, 255);
-            g.setColor(c);
-            g.drawRoundRect(cursurX, cursurY, cursurWight * 3 / 2, cursurHeight * 3 / 2, 10, 10);
+        int cursurX = slotXstart + size * slotCol * 3 / 2;
+        int cursurY = slotYstart + size * slotRow * 3 / 2;
+        drawInv(g, x, y, 4, 6);
+        Color c = new Color(255, 255, 255);
+        g.setColor(c);
+        g.drawRoundRect(cursurX, cursurY, cursurWight * 3 / 2, cursurHeight * 3 / 2, 10, 10);
 
-            // drawitems
-            slotX = 0;
-            slotY = 0;
-            for (int i = 0; i < p.getInventory().size(); i++) {
-                if (i <= 23) {
-                    g.drawImage(p.getInventory().get(i).getObjectRender().getImage(), slotXstart + slotX * size * 3 / 2,
-                            slotYstart + slotY * size * 3 / 2, 48, 48, null);
-                    slotX++;
-                    if (slotX > 5) {
-                        slotY++;
-                        slotX = 0;
-                    }
+        // drawitems
+        slotX = 0;
+        slotY = 0;
+        for (int i = 0; i < p.getInventory().size(); i++) {
+            if (i <= 23) {
+                g.drawImage(p.getInventory().get(i).getObjectRender().getImage(), slotXstart + slotX * size * 3 / 2,
+                        slotYstart + slotY * size * 3 / 2, 48, 48, null);
+                slotX++;
+                if (slotX > 5) {
+                    slotY++;
+                    slotX = 0;
                 }
             }
-            drawSubWindow(g, x - size / 2, y - height * 1 / 3, 350, 145);
-            g.setColor(Color.BLACK);
-            drawAttributes(g, slotCol, slotRow);
-            slotX = 5;
+        }
+        drawSubWindow(g, x - size / 2, y - height * 1 / 3, 350, 145);
+        g.setColor(Color.BLACK);
+        drawAttributes(g, slotCol, slotRow);
+        slotX = 5;
 
-            drawInfo(g);
-
+        drawInfo(g);
 
     }
 
@@ -150,7 +153,7 @@ public class InventoryUI {
         if (key.invUp.clicked) {
             slotRow--;
             if (slotRow < 0)
-                slotCol = 3;
+                slotRow = 3;
         }
         if (key.invDn.clicked) {
             slotRow++;
