@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.awt.*;
 
 public class InventoryUI {
-    public int shop = 0;
     public int act = 0;
     private int slotCol = 0;
     private int slotRow = 0;
@@ -117,7 +116,7 @@ public class InventoryUI {
     }
 
     public void render(Graphics2D g) {
-        if (shop != 0) {
+
             // // update
             if (act == 1) {
                 slotRow--;
@@ -178,11 +177,33 @@ public class InventoryUI {
             g.setColor(Color.BLACK);
             drawAttributes(g, slotCol, slotRow);
             slotX = 5;
-        }
+
+            drawInfo(g);
+
 
     }
 
     public void input(MouseHandler mouse, KeyHandler key) {
+        key.invDn.tick();
+        key.invUp.tick();
+        key.invLeft.tick();
+        key.invRight.tick();
+        key.invEnter.tick();
+        if (key.invUp.clicked) {
+            act = 1;
+        }
+        if (key.invDn.clicked) {
+            act = 2;
+        }
+        if (key.invLeft.clicked) {
+            act = 3;
+        }
+        if (key.invRight.clicked) {
+            act = 4;
+        }
+        if (key.invEnter.clicked) {
+            act = 5;
+        }
     }
 
     public void update(double time) {

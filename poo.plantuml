@@ -1,38 +1,10 @@
 @startuml
-    class Entity{
-        # currentDirection: int
-        # hitsize: int
-        # hitBounds: BoundingBox
-        # bounds: BoundingBox
-        # pos: Vector2f
-        # size: int
-        # invincible: int
-        # attackSpeed: int
-        # attackDuration: int
-        # maxHealth: int
-        # health: int
-        # healthpercent: float
-        # defense: int
-        # damage: int
-        # EXP: int
-        + Entity()
-        + setPos(): void
-        + addForce(): void
-        + setHealth(): void
-        + getDirection(): int
-        - setHitBoxDirection(): void
-        # isAttacking(): boolean
-        +  isInCircle(): boolean
-        +  isInCirclePath(): boolean
-        + move(): void
-        + update(): void
-    }
     class Player extends Entity{
-        - maxMana: int
-        - mana: int
-        - manapercent: float
+        + coin: int
+        - enemy: ArrayList<Enemy>
+        + inventory: ArrayList<GameObject>
         - nextLevelEXP: int
-        - skillOn: boolean
+
         + Player()
         - setDefaultValue(): void
         + setTargetEnemy(): void
@@ -40,29 +12,125 @@
         + removeMaterial(): void
         - resetPosition(): void
         - checkLevelUp(): void
-        - updateHealthManaPercent(): void
         + update(): void
         + input(): void 
     }
+    class Entity{
+        # currentDirection: int
+        # hitsize: int
+        # hitBounds: BoundingBox
+        # bounds: BoundingBox
+        # pos: Vector2f
+        # size: int
+        # UP: int
+        # DOWN: int
+        # RIGHT: int
+        # LEFT: int
+        # up:  boolean
+        # down:  boolean
+        # right:  boolean
+        # left:  boolean
+        # fallen:  boolean
+        # hasIdle:  boolean
+        + xCol: boolean
+        + yCol: boolean
+        # invincible: int
+        # invincibletime: double
+        # isInvincible:  boolean
+        # die:  boolean
+        # attackSpeed: int
+        # attackDuration: int
+        # attacktime: double
+        # canAttack: boolean
+        # attacking: boolean
+        # skillSpeed: int
+        # skillDuration: int
+        # skillStartTime: long
+        # skilltime: double
+        # canSkill: boolean
+        # skilling: boolean
+        # maxHealth: int
+        # health: int
+        # healthpercent: float
+        # defense: int
+        # damage: int
+        # maxMana: int
+        # mana: int
+        # manapercent: float
+        # EXP: int
+        # dx: float
+        # dy: float
+        # maxSpeed: float
+        # acc: float
+        # deacc: float
+        # force: float
+        # coin: int
+        # teleported: boolean
+        # tc: TileCollision
+        # name: String
+        # attackManaConsume: int
+        # skillManaConsume: int
+        # skill: ArrayList<Skill>
+        # enemySkill: ArrayList<EnemySkill> 
+        + Entity()
+        + setPos(): void
+        + addForce(): void
+        + setHealth(): void
+        + damageCaculate: int
+        + getDirection(): int
+        - setHitBoxDirection(): void
+        # isAttacking(): boolean
+        # isSkilling: boolean
+        #  isInCircle(): boolean
+        #  isInCirclePath(): boolean
+        + move(): void
+        # autoDirecting: void
+        # stopDirecting: void
+        + update(): void
+        + updateHealthManaPercent(): void
+    }
+    '-------------object-----------
     abstract class GameObject{
         # spriteSheet: spriteSheet
+        # objectRender: ObjectRender
         # bounds: BoundingBox
         # pos: Vector2f
         # size: int
         # coin: int
-        # teleported: boolean
         # name: String
         # HP: int
         # MP: int
         # speed: int
         # attackValue: int
         # defense: int
+        # type: int
         + GameObject()
-        + setPos(): void
         + use(): void
-        + update():void
     }
-
+    '-------------ai-------------------
+    class MapSolid{
+        - tileManager: TileManager
+        + MapSolid(): void
+    } 
+    class PathFind{
+        + node: Node[][] 
+         openList: ArrayList<Node>
+        +  pathList: ArrayList<Node>
+        + startNode, goalNode, currentNode:  Node
+        goalReached: boolean
+        step: int
+        - maxCol: int
+        - maxRow: int
+        + PathFind()
+        + instantiateNodes(): void
+        + update(): void
+        + resetNodes(): void
+        + setNodes(): void
+        + getCost(): void
+        + search(): void
+        + openNode(): void
+        + trackThePath(): void
+    }
     '-----------------enemy----------------
     class Enemy extends Entity{
         # sense: BoundingBox
@@ -74,10 +142,7 @@
         # yOffset: int
         + useRight: boolean
         + Enemy()
-        + reset(): void
         + drop(): void
-        - autoDirecting(): void
-        - stopDirecting(): void
         + chase(): void
         + moveBack(): void
         + moveInCircle(): void
@@ -107,7 +172,6 @@
         # yOffset: int
         # g2: Graphics2D
         + NPC()
-        + setG2(): void
         + update(): void
         + input(): void
     }
@@ -148,10 +212,10 @@
         - timesPlayed: int
         + Animation()
         + setFrames(): void
+        + setDelay(): void
         + setNumFrames(): void
         + update(): void
     }
-
     class Font{
         - FONTSHEET: BufferedImage
         + spriteArray: BufferedImage
@@ -162,6 +226,8 @@
         - hLetter: int
         + Font()
         + setSize(): void
+        + setWidth(): void
+        + setHeight(): void
         - loadFont(): BufferedImage
         - loadFontArray(): BufferedImage
         + getLetter(): BufferedImage
@@ -187,12 +253,16 @@
         - file: String
         + currentFont: Font
         + SpriteSheet()
+        + setSize(): void
+        + setWidth(): void
+        + setHeight(): void
         - loadSprite: BufferedImage
         + loadSpriteArray: void
+        + getSprite: Sprite
         + drawArray(): void
     }
     class Fontf{
-        - fonts: HashMap
+        - fonts: HashMap<String, Font>
         + Fontf()
         + loadFont(): void
         + getFont(): void
@@ -210,8 +280,10 @@
         + BoundingBox()
         + setBox(): void
         + setCircle(): void
+        + distance(): float
         + collides(): boolean
         + colCircleBox(): boolean
+        + inside(): boolean
     }
     class Vector2f{
         + x: float
@@ -246,12 +318,6 @@
         + setAnimation(): void
         + animate(): void
         + update(): void
-        + render(): void
-    }
-    class EnemySkillRender{
-        - arrow: SpriteSheet
-        - skill: EnemySkill
-        + EnemySkillRender()
         + render(): void
     }
     class NPCRender extends EntityRender{
@@ -292,7 +358,7 @@
         + txtAndImageRender()
         + renderTxt(): void
     }
-    class WizardRender  extends EntityRender{
+    class WizardRender extends EntityRender{
         - wiz: Wizard_BOSS
         + WizardRender()
         + render(): void
@@ -461,26 +527,36 @@
     class GameControl{
         + cam: Camera
         + player: Player
+        + pui: NpcUI
         + gsm: GameStateManager
         - mapAs: MapAsset
         - currentMap: int
-        - gameObject: GameObject 
-        + enemy: Enemy
-        + npc: NPC
-        + origin: Vector2f
+        + defaultMap: int
+        - gameObject: ArrayList<GameObject>
+        + enemy: Enemy[]
+        + deadStartTime: long[]
+        + npc: NPC[]
+        + origin: Vector2f[]
         + tm: TileManager
-        + entityRender: EntityRender
+        + entityRender[]: EntityRender
+        + npcRender: NPCRender[]
         + GameControl()
-        + resetAsset(): void
-        + update(): void
-        + render(): void
+        - resetAsset(): void
         + setGameObject(): void
+        + update(): void
+        + loadNewMap(): void
+        + render(): void
     }
     abstract class MapAsset{
         # gc: GameControl
         + MapAsset()
+        # setMonsterPosition(): void
+        # setMaterialPosition():void
+        # resetEnemy(): void
         + setTinyBox(): void
         + setTinyMoon(): void
+        + setWizard(): void
+        + setNPC(): void
     }
     class Map01 extends MapAsset {
         + Map01()
@@ -511,6 +587,10 @@
 
     class Camera{
         - collisionCam: BoundingBox
+        - up: boolean
+        - down: boolean
+        - left: boolean
+        - right: boolean
         - dx: float
         - dy: float
         - maxSpeed: float
@@ -519,6 +599,7 @@
         - widthLimit: int
         - heightLimit: int
         - tileSize: int
+        - e: Entity
         + Camera()
         + setLimit(): void
         + setTileSize(): void
@@ -526,16 +607,50 @@
         + move(): void
         + target(): void
         + input(): void
-        + render(): void
     }
     class KeyHandler{
+        + keys: List<Key>
+        + up : Key
+        + down : Key
+        + left : Key
+        + right : Key
+        + attack : Key
+        + menu : Key
+        + enter : Key
+        + escape : Key
+        + shift : Key
+        + skill : Key
+        + shop : Key
+        + buy : Key
+        + back : Key
+        + inv : Key
+        + invUp : Key
+        + invDn : Key
+        + invRight : Key
+        + invLeft : Key
+        + invEnter : Key
         + Key()
-        + toggle(): void
-        + tick(): void
         + KeyHandler()
         + releaseAll(): void
+        + tick(): void
+        + toggle(): void
+        + keyTyped(): void
+        + keyPressed(): void
+        + keyReleased(): void
+    }
+    class MouseHandler{
+        + mouseX: int
+        + mouseY: int
+        + mouseB: int
+        + MouseHandler()
+        + mousePressed(): void
+        + mouseReleased(): void
+        + mouseDragged(): void
+        + mouseMoved(): void
     }
     class Sound{
+        + clip: Clip
+        + soundURL[]: URL
         - setFile(): void
         - play(): void
         - loop(): void
@@ -551,7 +666,38 @@
         + collisionHole(): boolean
     }
     '-------------tile--------------
-
+    class TileManager {
+        + tm: ArrayList<TileMap>
+        - cam: Camera
+        - spritesheet: SpriteSheet
+        - width: int
+        - height: int
+        - file: String
+        - columns: int
+        + TileManager()
+        + addTileMap(): void
+        + render(): void
+    }
+    abstract class TileMap {
+        + render(): void
+    }
+    class TileMapNorm extends TileMap {
+        + blocks: Block[] 
+        - tileWidth: int
+        - tileHeight: int
+        - height: int
+        + TileMapNorm()
+        + render(): void
+    }
+    class TileMapObj extends TileMap{
+        + event_blocks: Block[] 
+        - tileWidth: int
+        - tileHeight: int
+        + width: int
+        + height: int
+        + TileMapObj()
+        + render(): void
+    }
     '------------ui----------------
     class Button{
         - label: String
@@ -598,6 +744,14 @@
         + FillBars()
         + render(): void
     }
+    class NpcUI{
+        - npc: NPC
+        - g2: Graphics2D
+        + NpcUI()
+        + input(): void
+        + render(): void
+        + update(): void
+    }
     class InventoryUI{
         + shop: int
         + act: int
@@ -625,6 +779,33 @@
         + drawInfo(): void
         
     }
+    class PlayerUI{
+        - healthbar: FillBars
+        - manaBar: FillBars
+        - inve: InventoryUI
+        - p: Player
+        + PlayerUI()
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class Slots{
+        - pos: Vector2f[]
+        - slot: BufferedImage[]
+        - childSlots: Slots[]
+        - button: Button
+        - width: int
+        - height: int
+        - size: int
+        - visibility: boolean
+        - showChildren: boolean
+        + Slots()
+        + showChildren(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+
     GameObject o-- BoundingBox
     Entity o-- BoundingBox
     BoundingBox o-- Vector2f
@@ -635,5 +816,8 @@
     Skill o-- SkillRender
     GameObject o-- ObjectRender
     EntityRender o-- Animation
-
+    PlayerUI o-- NpcUI
+    PlayerUI o-- InventoryUI
+    PlayerUI o-- Slots
+    PlayerUI o-- FillBars
 @enduml

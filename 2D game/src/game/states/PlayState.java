@@ -42,7 +42,7 @@ public class PlayState extends GameState {
     public void update(double time) {
         Vector2f.setWorldVar(map.x, map.y);
         if (!gsm.isStateActive(GameStateManager.PAUSE) && !gsm.isStateActive(GameStateManager.GAMEOVER)
-                && !gsm.isStateActive(GameStateManager.SHOP)) {
+                && !gsm.isStateActive(GameStateManager.SHOP) && !gsm.isStateActive(GameStateManager.MENU) ) {
             playerRender.update();
             player.update(time);
             gc.update(time);
@@ -78,14 +78,12 @@ public class PlayState extends GameState {
         if (key.menu.clicked) {
             if (gsm.isStateActive(GameStateManager.MENU)) {
                 gsm.pop(GameStateManager.MENU);
-                gsm.pop(GameStateManager.PAUSE);
             } else {
-                gsm.add(GameStateManager.PAUSE);
                 gsm.add(GameStateManager.MENU);
             }
         }
         pui.input(mouse, key);
-        if (this.player.getHealth() <= 0||this.player.isFallen()) {
+        if (this.player.getHealth() <= 0) {
             gsm.add(GameStateManager.GAMEOVER);
         }
     }
