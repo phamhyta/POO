@@ -49,6 +49,8 @@ public class BoundingBox {
     public void setYOffset(float f) { yOffset = f; }
     public float getXOffset() { return xOffset; }
     public float getYOffset() { return yOffset; }
+    public void setPos(Vector2f pos) {this.pos = pos;}
+
 
     public float distance(Vector2f other) {
         float dx = pos.x - other.x;
