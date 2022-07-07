@@ -26,7 +26,7 @@ public class GameObject {
     public int type;
 
     public static final int type_sword = 0;
-    public static final int type_axe = 1;
+    public static final int type_direction = 1;
     public static final int type_shield = 2;
     public static final int type_consumable = 3;
     public static final int type_pickupOnly = 4;
@@ -71,6 +71,7 @@ public class GameObject {
         if( speed != 0 ){
             player.setMaxSpeed(player.getMaxSpeed() + speed);
         }
+        player.updateHealthManaPercent();
     }
     public void setHP(int hP) {
         HP = hP;

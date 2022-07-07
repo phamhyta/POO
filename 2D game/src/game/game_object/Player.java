@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Player extends Entity {
     public static int coin = 0;
     private ArrayList<Enemy> enemy;
-    public ArrayList<GameObject> inventory;
+    private ArrayList<GameObject> inventory;
     private int nextLevelEXP = 50;
     private int attackBase ;
 
@@ -61,19 +61,6 @@ public class Player extends Entity {
         bounds.setYOffset(20);
         name = "player";
     }
-
-    public void setTargetEnemy(Enemy enemy) {
-        this.enemy.add(enemy);
-    }
-
-    public void setTargetMaterial(GameObject go) {
-        this.inventory.add(go);
-    }
-
-    public void removeMaterial(GameObject go) {
-        this.inventory.remove(go);
-    }
-
     public void resetPosition() {
         pos.x = (GamePanel.width / 2) + 100;
         PlayState.map.x = 0;
@@ -212,4 +199,14 @@ public class Player extends Entity {
     public int getMP_Equip() {return MP_Equip;}
     public float getSpeedEquip() {return speedEquip;}
     public int getLevel(){ return level;}
+    public ArrayList<GameObject> getInventory() {return inventory;}
+    public void setTargetEnemy(Enemy enemy) {
+        this.enemy.add(enemy);
+    }
+    public void setTargetMaterial(GameObject go) {
+        this.inventory.add(go);
+    }
+    public void removeMaterial(GameObject go) {
+        this.inventory.remove(go);
+    }
 }

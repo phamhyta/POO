@@ -36,7 +36,6 @@ public class PlayerUI {
 
         pos = new Vector2f(16, 50);
         this.manaBar = new FillBars(p, manaBarSprite, pos, 10, 16, p.getManapercent());
-
     }
 
     public void update(double time) {

@@ -266,7 +266,7 @@ public class ShopState extends GameState{
                 drawAttributes(g, slotCol, slotRow);
                 
                 if(buy >= 1){
-                    if(player.inventory.size() > 24) {
+                    if(player.getInventory().size() > 24) {
                         g.setColor(Color.YELLOW);
                         drawSubWindow(g, x+3*size/2, y+height/2, 650, 80);
                         g.setColor(Color.BLACK);
