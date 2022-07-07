@@ -1,7 +1,11 @@
 package game.game_object.enemy;
 
 import game.data.GameControl;
-import game.gameObject.object.Items.*;
+
+import game.game_object.object.item.Potion_Blue_2;
+import game.game_object.object.item.Potion_Red_2;
+import game.game_object.object.item.Shield_2;
+import game.game_object.object.item.Sword_3;
 import game.math.Vector2f;
 
 public class TinyMon extends Enemy {

@@ -1,12 +1,14 @@
-package game.gameObject.enemy;
+package game.game_object.enemy;
 
 import game.data.GameControl;
-import game.gameObject.EnemySkill;
-import game.gameObject.Player;
-import game.gameObject.Skill;
-import game.gameObject.object.Items.*;
-import game.graphics.Animation;
-import game.math.BoundingBox;
+
+import game.game_object.Player;
+import game.game_object.object.item.Potion_Blue_3;
+import game.game_object.object.item.Potion_Red_3;
+import game.game_object.object.item.Shield_3;
+import game.game_object.object.item.Sword_9;
+import game.game_object.skill.EnemySkill;
+
 import game.math.Vector2f;
 
 public class Wizard_BOSS extends Enemy {
@@ -54,9 +56,9 @@ public class Wizard_BOSS extends Enemy {
         skilling = isSkilling(time);
 
         if (!skilling)
-            skillStartTime = System.nanoTime();
-        if ( time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
-            skill.add(new EnemySkill(this, 48,player));
+                    skillStartTime = System.nanoTime();
+            if ( time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
+                skill.add(new EnemySkill(this, 48,player));
             skillStartTime = System.nanoTime();
         }
 

@@ -1,7 +1,11 @@
 package game.game_object.enemy;
 
 import game.data.GameControl;
-import game.gameObject.object.Items.*;
+
+import game.game_object.object.item.Potion_Blue_3;
+import game.game_object.object.item.Potion_Red_3;
+import game.game_object.object.item.Shield_2;
+import game.game_object.object.item.Sword_5;
 import game.math.Vector2f;
 
 public class Minataur extends Enemy {

@@ -78,7 +78,7 @@ public class GameControl {
                 } else {
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
-                    gameObject.remove(i);
+
                 }
             }
         }
