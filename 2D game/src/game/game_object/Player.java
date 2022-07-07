@@ -17,12 +17,28 @@ public class Player extends Entity {
     private ArrayList<Enemy> enemy;
     public ArrayList<GameObject> inventory;
     private int nextLevelEXP = 50;
+    private int attackBase ;
+    private int attackEquip ;
+    private int defenseBase ;
+    private int defenseEquip ;
+    private int HP_Base;
+    private int HP_Equip;
+    private int MP_Base;
+    private int MP_Equip;
+    private int speedBase;
+    private int speedEquip;
 
     public Player(Vector2f orgin, int size) {
         super(orgin, size);
         setDefaultValue();
         enemy = new ArrayList<>();
         inventory = new ArrayList<>();
+    }
+
+    private void caculateAttribute(){
+        maxHealth = HP_Base + HP_Equip;
+        maxMana = MP_Base + MP_Equip;
+
     }
 
     private void setDefaultValue() {
@@ -131,6 +147,7 @@ public class Player extends Entity {
                 fallen = false;
             }
         }
+//        caculateAttribute();
         checkLevelUp();
     }
 

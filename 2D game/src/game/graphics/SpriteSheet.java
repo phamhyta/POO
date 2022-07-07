@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class SpriteSheet {
 
     private Sprite SPRITESHEET = null;
-    public Sprite[][] spriteArray;
+    private Sprite[][] spriteArray;
     private final int TILE_SIZE = 32;
-    public int w;
-    public int h;
+    private int w;
+    private int h;
     private int wSprite;
     private int hSprite;
     private String file;

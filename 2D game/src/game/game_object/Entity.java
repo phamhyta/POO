@@ -215,10 +215,10 @@ public class Entity {
         pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
                 (int)(entity.pos.x + entity.getBounds().getXOffset())/64,(int)(entity.pos.y+entity.getBounds().getYOffset() )/64);
         if(pathFind.search()){
-            if(!pathFind.pathList.isEmpty() || !pathFind.pathList.get(0).equals( pathFind.goalNode)){
-                int col = pathFind.pathList.get(0).getCol();
-                int row = pathFind.pathList.get(0).getRow();
-                pathFind.pathList.remove(0);
+            if(!pathFind.getPathList().isEmpty() || !pathFind.getPathList().get(0).equals( pathFind.getGoalNode())){
+                int col = pathFind.getPathList().get(0).getCol();
+                int row = pathFind.getPathList().get(0).getRow();
+                pathFind.getPathList().remove(0);
                 Vector2f vt = new Vector2f(col * 64,row * 64 );
                 autoDirecting(this.pos,vt);
             }
@@ -233,10 +233,10 @@ public class Entity {
         pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
                 (int)(origin.x /64),(int)(origin.y /64));
         if(pathFind.search()){
-            if(!pathFind.pathList.isEmpty()|| !pathFind.pathList.get(0).equals( pathFind.goalNode)){
-                int col = pathFind.pathList.get(0).getCol();
-                int row = pathFind.pathList.get(0).getRow();
-                pathFind.pathList.remove(0);
+            if(!pathFind.getPathList().isEmpty()|| !pathFind.getPathList().get(0).equals( pathFind.getGoalNode())){
+                int col = pathFind.getPathList().get(0).getCol();
+                int row = pathFind.getPathList().get(0).getRow();
+                pathFind.getPathList().remove(0);
                 Vector2f vt = new Vector2f(col * 64,row * 64 );
                 autoDirecting(this.pos,vt);
             }
