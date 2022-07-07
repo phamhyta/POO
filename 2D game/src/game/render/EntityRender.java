@@ -109,7 +109,7 @@ public class EntityRender {
     public void update() {
         animate();
         ani.update();
-        if (ani.hasPlayedOnce()) {currentAnimation = RIGHT;}
+        if (ani.hasPlayedOnce() && entity.isFallen()) {currentAnimation = RIGHT;}
     }
 
     public void render(Graphics2D g) {

@@ -1,5 +1,7 @@
 package game.data;
 
+import game.ai.MapSolid;
+import game.ai.PathFind;
 import game.game_object.enemy.Enemy;
 import game.game_object.npc.NPC;
 import game.game_object.object.GameObject;
@@ -33,6 +35,8 @@ public class GameControl {
     public EntityRender entityRender[];
     public NPCRender[] npcRender;
 
+    public static MapSolid mapSolid;
+
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
         this.cam = cam;
@@ -45,8 +49,7 @@ public class GameControl {
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
         mapAs = new Map01(this);
-        // this.mapAs = new Map02(this);
-        // this.mapAs = new Map03(this);
+
     }
 
     private void resetAsset() {
@@ -78,7 +81,6 @@ public class GameControl {
                 } else {
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
-
                 }
             }
         }
@@ -130,10 +132,13 @@ public class GameControl {
     public void loadNewMap() {
         if (currentMap == 0) {
             mapAs = new Map01(this);
+            cam.target(player);
         } else if (currentMap == 1) {
             mapAs = new Map02(this);
+            cam.target(player);
         } else if (currentMap == 2) {
             mapAs = new Map03(this);
+            cam.target(player);
         } else {
             currentMap = 0;
         }
