@@ -1,17 +1,15 @@
 package game.render;
 
-import game.gameObject.Entity;
+import game.game_object.Entity;
 import game.graphics.Animation;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 
 public class EntityRender {
     protected Entity entity;
     public Animation ani;
-    protected Camera camera;
 
     protected int UP = 7;
     protected int DOWN = 6;
@@ -32,12 +30,11 @@ public class EntityRender {
 
     protected SpriteSheet spriteSheet;
 
-    public EntityRender(Camera camera, Entity entity, SpriteSheet spriteSheet) {
+    public EntityRender(Entity entity, SpriteSheet spriteSheet) {
         this.entity = entity;
         this.spriteSheet = spriteSheet;
-        this.camera = camera;
         ani = new Animation();
-        setAnimation(1, spriteSheet.getSpriteArray(1), 10);
+        setAnimation(1, spriteSheet.getSpriteArray(0), 10);
     }
 
     public void setAnimation(int i, Sprite[] frames, int delay) {
@@ -64,13 +61,13 @@ public class EntityRender {
                 setAnimation(ATTACK_RIGHT, spriteSheet.getSpriteArray(ATTACK_RIGHT), entity.getAttackDuration() / 100);
         } else if (entity.isSkilling()) {
             if (currentAnimation == UP)
-                setAnimation(SKILL_UP, spriteSheet.getSpriteArray(SKILL_UP), 20);
+                setAnimation(SKILL_UP, spriteSheet.getSpriteArray(SKILL_UP), entity.getSkillDuration() / 100);
             if (currentAnimation == DOWN)
-                setAnimation(SKILL_DOWN, spriteSheet.getSpriteArray(SKILL_DOWN), 20);
+                setAnimation(SKILL_DOWN, spriteSheet.getSpriteArray(SKILL_DOWN), entity.getSkillDuration() / 100);
             if (currentAnimation == LEFT)
-                setAnimation(SKILL_LEFT, spriteSheet.getSpriteArray(SKILL_LEFT), 20);
+                setAnimation(SKILL_LEFT, spriteSheet.getSpriteArray(SKILL_LEFT), entity.getSkillDuration() / 100);
             if (currentAnimation == RIGHT)
-                setAnimation(SKILL_RIGHT, spriteSheet.getSpriteArray(SKILL_RIGHT), 20);
+                setAnimation(SKILL_RIGHT, spriteSheet.getSpriteArray(SKILL_RIGHT), entity.getSkillDuration() / 100);
         } else if (entity.isUp()) {
             setAnimation(UP, 5);
         } else if (entity.isDown()) {
@@ -112,16 +109,11 @@ public class EntityRender {
     public void update() {
         animate();
         ani.update();
-        if (ani.hasPlayedOnce()) {
-            currentAnimation = RIGHT;
-        }
+        if (ani.hasPlayedOnce()) {currentAnimation = RIGHT;}
     }
 
     public void render(Graphics2D g) {
-        if (camera.getBounds().collides(entity.getBounds())) {
-            g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x),
-                    (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
-        }
+        g.drawImage(ani.getImage().image, (int) (entity.getPos().getWorldVar().x), (int) (entity.getPos().getWorldVar().y), entity.getSize(), entity.getSize(), null);
         for (int i = 0; i < entity.getSkill().size(); i++) {
             if (entity.getSkill().get(i) != null)
                 entity.getSkill().get(i).getSkillRender().render(g);

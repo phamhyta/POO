@@ -87,7 +87,6 @@ public class SpriteSheet {
 
     public void loadSpriteArray() {
         spriteArray = new Sprite[hSprite][wSprite];
-
         for (int y = 0; y < hSprite; y++) {
             for (int x = 0; x < wSprite; x++) {
                 spriteArray[y][x] = getSprite(x, y);
@@ -159,6 +158,4 @@ public class SpriteSheet {
             y += yOffset;
         }
     }
-
-
 }

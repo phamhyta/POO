@@ -11,10 +11,9 @@ import java.awt.*;
 public class TileMapNorm extends TileMap {
 
     public Block[] blocks;
-
     private int tileWidth;
     private int tileHeight;
-
+    
     private int height;
 
     public TileMapNorm(String data, SpriteSheet spriteSheet, int width, int height, int tileWidth, int tileHeight, int tileColumns) {
@@ -24,7 +23,6 @@ public class TileMapNorm extends TileMap {
         this.tileHeight = tileHeight;
 
         this.height = height;
-
         String[] block = data.split(",");
 
         for(int i = 0; i < (width * height); i++) {

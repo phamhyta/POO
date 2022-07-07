@@ -6,8 +6,7 @@ import java.util.HashMap;
 public class Fontf {
     private HashMap<String, Font> fonts = new HashMap();
 
-    public Fontf() {
-    }
+    public Fontf() {}
 
     public void loadFont(String path, String name) {
         try {

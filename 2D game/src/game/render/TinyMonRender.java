@@ -1,15 +1,14 @@
 package game.render;
 
-import game.gameObject.enemy.TinyMon;
+import game.game_object.enemy.TinyMon;
 import game.graphics.SpriteSheet;
-import game.util.Camera;
 
 import java.awt.*;
 
 public class TinyMonRender extends EntityRender{
     private TinyMon tiny;
-    public TinyMonRender(Camera camera, TinyMon tiny, SpriteSheet spriteSheet) {
-        super(camera,tiny, spriteSheet);
+    public TinyMonRender(TinyMon tiny, SpriteSheet spriteSheet) {
+        super(tiny, spriteSheet);
         this.tiny = tiny;
 
         ATTACK_DOWN = 2;
@@ -33,6 +32,7 @@ public class TinyMonRender extends EntityRender{
     @Override
     public void render(Graphics2D g) {
         super.render(g);
+
         g.setColor(Color.red);
         g.fillRect((int) (tiny.getPos().getWorldVar().x + 20), (int) (tiny.getPos().getWorldVar().y ), 24, 5);
 
