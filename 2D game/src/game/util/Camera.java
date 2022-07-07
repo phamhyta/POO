@@ -55,14 +55,14 @@ public class Camera {
         if(e != null) {
             if (!e.xCol) {
                 if ((e.getPos().getWorldVar().x + dy) < Vector2f.getWorldVarX(widthLimit - collisionCam.getWidth() / 2+ tileSize) + tileSize*2
-                        && (e.getPos().getWorldVar().x + dy) > Vector2f.getWorldVarX(GamePanel.width / 2 + tileSize * 2)) {
+                        && (e.getPos().getWorldVar().x + dy) > Vector2f.getWorldVarX(GamePanel.width / 2 ) - tileSize) {
                     PlayState.map.x += dx;
                     collisionCam.getPos().x += dx;
                 }
             }
             if (!e.yCol) {
                 if ((e.getPos().getWorldVar().y + dy) < Vector2f.getWorldVarY(heightLimit - collisionCam.getHeight() / 2 +tileSize) + tileSize*2
-                        && (e.getPos().getWorldVar().y + dy) > Vector2f.getWorldVarY(GamePanel.height / 2 + tileSize * 2)) {
+                        && (e.getPos().getWorldVar().y + dy) > Vector2f.getWorldVarY(GamePanel.height / 2 ) -tileSize) {
                     PlayState.map.y += dy;
                     collisionCam.getPos().y += dy;
                 }
