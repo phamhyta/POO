@@ -1,7 +1,14 @@
 package game.game_object.enemy;
 
-import game.game_object.skill.EnemySkill;
+import game.data.GameControl;
+
 import game.game_object.Player;
+import game.game_object.object.item.Potion_Blue_3;
+import game.game_object.object.item.Potion_Red_3;
+import game.game_object.object.item.Shield_3;
+import game.game_object.object.item.Sword_9;
+import game.game_object.skill.EnemySkill;
+
 import game.math.Vector2f;
 
 public class Wizard_BOSS extends Enemy {
@@ -10,7 +17,12 @@ public class Wizard_BOSS extends Enemy {
     public Wizard_BOSS (Vector2f origin, int size) {
         super(origin, size);
         xOffset = size / 4;
-        yOffset = size / 4;
+        yOffset = size / 2;
+        bounds.setWidth(size/2);
+        bounds.setHeight(size/2);
+        bounds.setXOffset(xOffset);
+        bounds.setYOffset(yOffset);
+
         maxHealth= 200;
         health= 200;
         EXP =30;
@@ -21,6 +33,8 @@ public class Wizard_BOSS extends Enemy {
         r_sense = 1000;
         r_attackrange = 10;
         coin =10;
+        dropRate= 0.5F;
+
         skillManaConsume=0;
         mana = 1000;
         skillSpeed = 2000;
@@ -42,9 +56,9 @@ public class Wizard_BOSS extends Enemy {
         skilling = isSkilling(time);
 
         if (!skilling)
-            skillStartTime = System.nanoTime();
-        if ( time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
-            skill.add(new EnemySkill(this, 48,player));
+                    skillStartTime = System.nanoTime();
+            if ( time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
+                skill.add(new EnemySkill(this, 48,player));
             skillStartTime = System.nanoTime();
         }
 
@@ -56,5 +70,17 @@ public class Wizard_BOSS extends Enemy {
                 skill.get(i).update();
         }
     }
-
+    public void drop() {
+        int rand = (int) (Math.random() * 100 /dropRate);
+        if (rand < 50 && rand >=0) {
+            GameControl.setGameObject(new Potion_Red_3(new Vector2f(this.getPos().x - 50, this.getPos().y+5), 32));
+        } else if (rand < 80 && rand >= 50) {
+            GameControl.setGameObject(new Potion_Blue_3(new Vector2f(this.getPos().x + 25, this.getPos().y-5), 32));
+        } else if (rand >= 80 && rand <= 95) {
+            GameControl.setGameObject(new Shield_3(new Vector2f(this.getPos().x - 40, this.getPos().y+10), 32));
+        }
+        else {
+            GameControl.setGameObject(new Sword_9(new Vector2f(this.getPos().x , this.getPos().y), 32));
+        }
+    }
 }
