@@ -1,9 +1,7 @@
 package game.ai;
 
 import game.tile.TileManager;
-import game.tile.TileMapNorm;
 import game.tile.TileMapObj;
-import game.tile.blocks.Block;
 import game.tile.blocks.ObjBlock;
 
 public class MapSolid {
