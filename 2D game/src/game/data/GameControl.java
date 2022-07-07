@@ -78,7 +78,8 @@ public class GameControl {
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
                     player.resetPosition();
-                } else {
+                } else if(gameObject.get(i).type == GameObject.type_direction) {}
+                else{
                     player.setTargetMaterial(gameObject.get(i));
                     gameObject.remove(i);
                 }
@@ -93,6 +94,7 @@ public class GameControl {
 
                 if (enemy[i].getDeath()) {
                     player.setEXP(player.getEXP() + enemy[i].getEXP());
+                    player.setCoin(player.getCoin() +enemy[i].getCoin());
                     enemy[i].drop();
                     entityRender[i] = null;
                     enemy[i] = null;
@@ -132,13 +134,10 @@ public class GameControl {
     public void loadNewMap() {
         if (currentMap == 0) {
             mapAs = new Map01(this);
-            cam.target(player);
         } else if (currentMap == 1) {
             mapAs = new Map02(this);
-            cam.target(player);
         } else if (currentMap == 2) {
             mapAs = new Map03(this);
-            cam.target(player);
         } else {
             currentMap = 0;
         }
