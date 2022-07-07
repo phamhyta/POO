@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class PathFind {
     public static Node[][] node;
     ArrayList<Node> openList = new ArrayList<>();
-    public ArrayList<Node> pathList = new ArrayList<>();
-    public Node startNode, goalNode, currentNode;
+    private ArrayList<Node> pathList = new ArrayList<>();
+    private Node startNode, goalNode, currentNode;
     boolean goalReached= false;
     int step =0;
     private int maxCol;
@@ -166,5 +166,9 @@ public class PathFind {
 
     public int getMaxCol() {return maxCol;}
     public int getMaxRow() {return maxRow;}
+    public ArrayList<Node> getPathList() {return pathList;}
+    public Node getStartNode() {return startNode;}
+    public Node getGoalNode() {return goalNode;}
+    public Node getCurrentNode() {return currentNode;}
 
 }

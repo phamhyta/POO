@@ -39,7 +39,7 @@ public class Sound {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public void stop() {
-        clip.stop();
+        if(clip != null) clip.stop();
     }
     public void playLoopMusic(int i) {
         setFile(i);
