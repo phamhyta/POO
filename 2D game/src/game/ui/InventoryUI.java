@@ -4,10 +4,7 @@ import game.util.KeyHandler;
 import game.util.MouseHandler;
 import java.awt.Graphics2D;
 import game.game_object.Player;
-import game.game_object.object.GameObject;
 import game.graphics.SpriteSheet;
-
-import java.util.ArrayList;
 import java.awt.*;
 
 public class InventoryUI {
@@ -173,9 +170,6 @@ public class InventoryUI {
         if (key.invEnter.clicked) {
             if (p.getInventory().size() != 0 && slotCol + slotRow * 6 < p.getInventory().size()) {
                 p.getInventory().get(slotCol + slotRow * 6).use(p);
-                // g.setColor(Color.BLACK);
-                // g.drawString("+ " + String.valueOf(p.getMana()) + "mana", x - 800, y - height
-                // * 1 / 3 + 240);
                 p.getInventory().remove(slotCol + slotRow * 6);
             }
         }
