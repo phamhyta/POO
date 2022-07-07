@@ -132,10 +132,13 @@ public class GameControl {
     public void loadNewMap() {
         if (currentMap == 0) {
             mapAs = new Map01(this);
+            cam.target(player);
         } else if (currentMap == 1) {
             mapAs = new Map02(this);
+            cam.target(player);
         } else if (currentMap == 2) {
             mapAs = new Map03(this);
+            cam.target(player);
         } else {
             currentMap = 0;
         }
