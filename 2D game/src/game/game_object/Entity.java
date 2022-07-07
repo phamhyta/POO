@@ -1,5 +1,7 @@
 package game.game_object;
 
+import game.ai.PathFind;
+import game.data.GameControl;
 import game.game_object.skill.EnemySkill;
 import game.game_object.skill.Skill;
 import game.math.BoundingBox;
@@ -78,7 +80,8 @@ public class Entity {
     protected int skillManaConsume = 10;
     protected ArrayList<Skill> skill;
     protected ArrayList<EnemySkill> enemySkill;
-
+    protected PathFind pathFind;
+    protected boolean onPath = false;
 
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
@@ -90,6 +93,7 @@ public class Entity {
 
         tc = new TileCollision(this);
         skill= new ArrayList<>();
+        pathFind = new PathFind();
     }
     public void setPos(Vector2f pos) {
         this.pos = pos;
@@ -206,24 +210,59 @@ public class Entity {
         }
     }
 
+    protected void moveInPath(Entity entity){
+        pathFind.resetNodes();
+        pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
+                (int)(entity.pos.x + entity.getBounds().getXOffset())/64,(int)(entity.pos.y+entity.getBounds().getYOffset() )/64);
+        if(pathFind.search()){
+            if(!pathFind.pathList.isEmpty() || !pathFind.pathList.get(0).equals( pathFind.goalNode)){
+                int col = pathFind.pathList.get(0).getCol();
+                int row = pathFind.pathList.get(0).getRow();
+                pathFind.pathList.remove(0);
+                Vector2f vt = new Vector2f(col * 64,row * 64 );
+                autoDirecting(this.pos,vt);
+            }
+        }else{
+                autoDirecting(this.pos, entity.getPos());
+        }
+
+    }
+
+    protected void moveInPath(Vector2f origin){
+        pathFind.resetNodes();
+        pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
+                (int)(origin.x /64),(int)(origin.y /64));
+        if(pathFind.search()){
+            if(!pathFind.pathList.isEmpty()|| !pathFind.pathList.get(0).equals( pathFind.goalNode)){
+                int col = pathFind.pathList.get(0).getCol();
+                int row = pathFind.pathList.get(0).getRow();
+                pathFind.pathList.remove(0);
+                Vector2f vt = new Vector2f(col * 64,row * 64 );
+                autoDirecting(this.pos,vt);
+            }
+        }else{
+            stopDirecting();
+        }
+    }
+
+
     protected void autoDirecting(Vector2f posA, Vector2f posB){
-        if (posA.y > posB.y + 1) {
+        if (posA.y > posB.y + 5) {
             up = true;
         } else {
             up = false;
         }
-        if (posA.y < posB.y - 1) {
+        if (posA.y < posB.y - 5) {
             down = true;
         } else {
             down = false;
         }
-
-        if (posA.x > posB.x + 1) {
+        if (posA.x > posB.x + 5) {
             left = true;
         } else {
             left = false;
         }
-        if (posA.x < posB.x - 1) {
+        if (posA.x < posB.x - 5) {
             right = true;
         } else {
             right = false;
