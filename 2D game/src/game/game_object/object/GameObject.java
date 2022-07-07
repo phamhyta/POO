@@ -71,6 +71,7 @@ public class GameObject {
         if( speed != 0 ){
             player.setMaxSpeed(player.getMaxSpeed() + speed);
         }
+        player.updateHealthManaPercent();
     }
     public void setHP(int hP) {
         HP = hP;
