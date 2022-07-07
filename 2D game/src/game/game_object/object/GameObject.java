@@ -46,30 +46,32 @@ public class GameObject {
     public int getSize() { return size; }
 
     public void use (Player player){
-        if( HP != 0 ){
-            if(player.getHealth() + this.MP < player.getMaxHealth()) {
-                player.setHealth(player.getHealth() + this.HP);
+        if(type == type_consumable){
+            if( HP != 0 ){
+                if(player.getHealth() + this.HP < player.getMaxHealth()) {
+                    player.setHealth(player.getHealth() + this.HP);
+                }
+                else{
+                    player.setHealth(player.getMaxHealth());
+                }
             }
-            else{
-                player.setHealth(player.getMaxHealth());
+            if( MP != 0 ){
+                if(player.getMana() + this.MP < player.getMaxMana()) {
+                    player.setCurrentMana(player.getMana() + this.MP);
+                }
+                else{
+                    player.setCurrentMana(player.getMaxMana());
+                }
             }
         }
-        if( MP != 0 ){
-            if(player.getMana() + this.MP < player.getMaxMana()) {
-                player.setCurrentMana(player.getMana() + this.MP);
-            }
-            else{
-                player.setCurrentMana(player.getMaxMana());
-            }
+        if(type == type_shield){
+            if(HP != 0){player.setHP_Equip(HP);}
+            if(MP != 0){player.setMP_Equip(MP);}
+            if( defense != 0 ){player.setDefenseEquip(defense);}
+            if( speed != 0 ){player.setSpeedEquip(speed);}
         }
-        if( attackValue != 0 ){
-            player.setDamage(player.getDamage()+attackValue);
-        }
-        if( defense != 0 ){
-            player.setDefense(player.getDefense()+defense);
-        }
-        if( speed != 0 ){
-            player.setMaxSpeed(player.getMaxSpeed() + speed);
+        if(type == type_sword){
+            if( attackValue != 0 ){player.setAttackEquip(attackValue);}
         }
         player.updateHealthManaPercent();
     }
