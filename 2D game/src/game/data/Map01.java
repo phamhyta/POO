@@ -1,5 +1,6 @@
 package game.data;
 
+import game.ai.MapSolid;
 import game.game_object.object.item.Door;
 import game.game_object.object.Arrow;
 import game.graphics.SpriteSheet;
@@ -11,6 +12,7 @@ public class Map01 extends MapAsset {
     public Map01(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
+        gc.mapSolid = new MapSolid(gc.tm);
         gc.gameObject.add(new Door(new Vector2f(2240, 1408), 128)); // 35 va 22
         gc.gameObject.add(new Arrow(new Vector2f(2240, 1728), 128)); // 35 va 27
     }
@@ -32,7 +34,7 @@ public class Map01 extends MapAsset {
         setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         i++;
 
-        SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
+        SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
         gc.origin[i] = new Vector2f(1400, 1200);
         setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;

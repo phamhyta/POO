@@ -26,7 +26,7 @@ public class GameObject {
     public int type;
 
     public static final int type_sword = 0;
-    public static final int type_axe = 1;
+    public static final int type_direction = 1;
     public static final int type_shield = 2;
     public static final int type_consumable = 3;
     public static final int type_pickupOnly = 4;
@@ -46,31 +46,34 @@ public class GameObject {
     public int getSize() { return size; }
 
     public void use (Player player){
-        if( HP != 0 ){
-            if(player.getHealth() + this.MP < player.getMaxHealth()) {
-                player.setHealth(player.getHealth() + this.HP);
+        if(type == type_consumable){
+            if( HP != 0 ){
+                if(player.getHealth() + this.HP < player.getMaxHealth()) {
+                    player.setHealth(player.getHealth() + this.HP);
+                }
+                else{
+                    player.setHealth(player.getMaxHealth());
+                }
             }
-            else{
-                player.setHealth(player.getMaxHealth());
+            if( MP != 0 ){
+                if(player.getMana() + this.MP < player.getMaxMana()) {
+                    player.setCurrentMana(player.getMana() + this.MP);
+                }
+                else{
+                    player.setCurrentMana(player.getMaxMana());
+                }
             }
         }
-        if( MP != 0 ){
-            if(player.getMana() + this.MP < player.getMaxMana()) {
-                player.setCurrentMana(player.getMana() + this.MP);
-            }
-            else{
-                player.setCurrentMana(player.getMaxMana());
-            }
+        if(type == type_shield){
+            if(HP != 0){player.setHP_Equip(HP);}
+            if(MP != 0){player.setMP_Equip(MP);}
+            if( defense != 0 ){player.setDefenseEquip(defense);}
+            if( speed != 0 ){player.setSpeedEquip(speed);}
         }
-        if( attackValue != 0 ){
-            player.setDamage(player.getDamage()+attackValue);
+        if(type == type_sword){
+            if( attackValue != 0 ){player.setAttackEquip(attackValue);}
         }
-        if( defense != 0 ){
-            player.setDefense(player.getDefense()+defense);
-        }
-        if( speed != 0 ){
-            player.setMaxSpeed(player.getMaxSpeed() + speed);
-        }
+        player.updateHealthManaPercent();
     }
     public void setHP(int hP) {
         HP = hP;

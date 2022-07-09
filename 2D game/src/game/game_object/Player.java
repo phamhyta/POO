@@ -15,8 +15,20 @@ import java.util.ArrayList;
 public class Player extends Entity {
     public static int coin = 0;
     private ArrayList<Enemy> enemy;
-    public ArrayList<GameObject> inventory;
+    private ArrayList<GameObject> inventory;
     private int nextLevelEXP = 50;
+    private int attackBase ;
+
+    private int attackEquip ;
+    private int defenseBase ;
+    private int defenseEquip ;
+    private int HP_Base;
+    private int HP_Equip;
+    private int MP_Base;
+    private int MP_Equip;
+    private float speedBase;
+    private float speedEquip;
+    private int level =1;
 
     public Player(Vector2f orgin, int size) {
         super(orgin, size);
@@ -25,15 +37,23 @@ public class Player extends Entity {
         inventory = new ArrayList<>();
     }
 
+    private void caculateAttribute(){
+        maxHealth = HP_Base + HP_Equip;
+        maxMana = MP_Base + MP_Equip;
+        defense = defenseBase + defenseEquip;
+        damage = attackBase + attackEquip;
+        maxSpeed = speedBase + speedEquip;
+    }
+
     private void setDefaultValue() {
-        damage = 25;
-        maxMana = 100;
+        attackBase = 25;
+        MP_Base = 100;
         mana = 100;
+        HP_Base = 200;
         health = 200;
-        maxHealth = 200;
-        defense = 10;
+        defenseBase = 10;
         acc = 2f;
-        maxSpeed = 4f;
+        speedBase = 3f;
         deacc = 0.3f;
         bounds.setWidth(32);
         bounds.setHeight(16);
@@ -41,19 +61,6 @@ public class Player extends Entity {
         bounds.setYOffset(20);
         name = "player";
     }
-
-    public void setTargetEnemy(Enemy enemy) {
-        this.enemy.add(enemy);
-    }
-
-    public void setTargetMaterial(GameObject go) {
-        this.inventory.add(go);
-    }
-
-    public void removeMaterial(GameObject go) {
-        this.inventory.remove(go);
-    }
-
     public void resetPosition() {
         pos.x = (GamePanel.width / 2) + 100;
         PlayState.map.x = 0;
@@ -66,13 +73,15 @@ public class Player extends Entity {
 
     private void checkLevelUp() {
         if (this.EXP >= nextLevelEXP) {
-            maxHealth = (int) (maxHealth * 1.5);
-            health = maxHealth;
-            maxMana = maxMana * 2;
-            mana = maxMana;
+            HP_Base = (int) (HP_Base * 1.5);
+            MP_Base = (int)(MP_Base * 1.5);
             nextLevelEXP *= 2;
-            damage = damage + 10;
-            defense += 2;
+            level++;
+            attackBase += 10;
+            defenseBase += 2;
+            caculateAttribute();
+            health = maxHealth;
+            mana = maxMana;
             GameStateManager.sound.playSingleMusic(8);
         }
     }
@@ -131,6 +140,7 @@ public class Player extends Entity {
                 fallen = false;
             }
         }
+        caculateAttribute();
         checkLevelUp();
     }
 
@@ -179,5 +189,24 @@ public class Player extends Entity {
             left = false;
         }
     }
-
+    public void setAttackEquip(int attackEquip) {this.attackEquip = attackEquip;}
+    public void setDefenseEquip(int defenseEquip) {this.defenseEquip = defenseEquip;}
+    public void setHP_Equip(int HP_Equip) {this.HP_Equip = HP_Equip;}
+    public void setMP_Equip(int MP_Equip) {this.MP_Equip = MP_Equip;}
+    public void setSpeedEquip(float speedEquip) {this.speedEquip = speedEquip;}
+    public int getDefenseEquip() {return defenseEquip;}
+    public int getHP_Equip() {return HP_Equip;}
+    public int getMP_Equip() {return MP_Equip;}
+    public float getSpeedEquip() {return speedEquip;}
+    public int getLevel(){ return level;}
+    public ArrayList<GameObject> getInventory() {return inventory;}
+    public void setTargetEnemy(Enemy enemy) {
+        this.enemy.add(enemy);
+    }
+    public void setTargetMaterial(GameObject go) {
+        this.inventory.add(go);
+    }
+    public void removeMaterial(GameObject go) {
+        this.inventory.remove(go);
+    }
 }

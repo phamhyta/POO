@@ -6,7 +6,6 @@ import game.game_object.Player;
 import game.game_object.object.item.Potion_Blue_1;
 import game.game_object.object.item.Shield_2;
 import game.game_object.object.item.Coin;
-//import game.gameObject.object.Items.ManaCrystal;
 import game.game_object.object.item.Potion_Red_1;
 import game.graphics.Animation;
 import game.math.BoundingBox;
@@ -22,6 +21,7 @@ public class Enemy extends Entity {
     protected int xOffset;
     protected int yOffset;
 
+    protected float dropRate;
     public boolean useRight = false;
 
     public Enemy(Vector2f origin, int size) {
@@ -33,10 +33,10 @@ public class Enemy extends Entity {
         r_sense = 350;
         r_attackrange = 32;
         r_enemyArea = 500;
-        bounds.setWidth(40);
-        bounds.setHeight(30);
-        bounds.setXOffset(10);
-        bounds.setYOffset(30);
+        bounds.setWidth(20);
+        bounds.setHeight(20);
+        bounds.setXOffset(20);
+        bounds.setYOffset(20);
 
         sense = new BoundingBox(new Vector2f(origin.x + size / 2 - r_sense / 2, origin.y + size / 2 - r_sense / 2),
                 r_sense);
@@ -47,29 +47,13 @@ public class Enemy extends Entity {
     }
 
     public void drop() {
-        GameControl.setGameObject(new Coin((new Vector2f(this.getPos().x, this.getPos().y)), 32, this.coin));
-        GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x - 50, this.getPos().y), 32));
-        GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x - 20, this.getPos().y), 32));
-        GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
-        int rand = (int) (Math.random() * 75);
-        if (rand < 15) {
 
-        } else if (rand < 35 && rand >= 15) {
-            GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x + 25, this.getPos().y), 32));
-        } else if (rand >= 50 && rand <= 75) {
-            GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x - 50, this.getPos().y), 32));
-            GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x + 25, this.getPos().y), 32));
-            GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
-        } else if (rand >= 35 && rand < 50) {
-            GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
-            GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x - 50, this.getPos().y), 32));
-        }
     }
 
     private void chase(Player player) {
         BoundingBox playerBounds = player.getBounds();
         if (sense.colCircleBox(playerBounds) && !attackrange.colCircleBox(player.getBounds())) {
-            autoDirecting(this.pos, player.getPos());
+            moveInPath(player);
         } else {
             stopDirecting();
         }
@@ -77,7 +61,7 @@ public class Enemy extends Entity {
 
     public void moveBack(Vector2f center) {
         if (this.pos.x != center.x || this.pos.y != center.y) {
-            autoDirecting(pos, center);
+            moveInPath(center);
         } else {
             stopDirecting();
         }
@@ -90,15 +74,8 @@ public class Enemy extends Entity {
             dy = 0;
             stopDirecting();
         } else {
-            if (this.isInCircle(center, r)) {
-                if (sense.colCircleBox(player.getBounds())) {
-                    this.chase(player);
-                } else {
-                    this.moveBack(center);
-                }
-            } else {
-                this.moveBack(center);
-            }
+            if (this.isInCircle(center, r) &&sense.colCircleBox(player.getBounds())) {this.chase(player);}
+            else {this.moveBack(center);}
             move();
         }
     }

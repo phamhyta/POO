@@ -1,5 +1,6 @@
 package game.data;
 
+import game.ai.MapSolid;
 import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -10,6 +11,7 @@ public class Map03 extends MapAsset {
     public Map03(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/nature.xml", gc.cam);
+        gc.mapSolid = new MapSolid(gc.tm);
         gc.gameObject.add(new Door(new Vector2f(1500,2000),128));
     }
 
@@ -36,18 +38,18 @@ public class Map03 extends MapAsset {
         setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         i++;
 
-        SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/littlegirl.png", 48, 48);
+        SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
         gc.origin[i] = new Vector2f(1400, 1200);
         setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
         gc.origin[i] = new Vector2f(2500, 1350);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 72);
         i++;
         gc.origin[i] = new Vector2f(750, 2400);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 80);
         i++;
         gc.origin[i] = new Vector2f(1000, 2000);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 92);
         i++;
 
 
@@ -71,13 +73,13 @@ public class Map03 extends MapAsset {
         setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
         i++;
         gc.origin[i] = new Vector2f(2500, 1900);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 108);
         i++;
         gc.origin[i] = new Vector2f(1600, 1800);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 72);
         i++;
         gc.origin[i] = new Vector2f(1900, 1400);
-        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
+        setTinyMoon( i, gc.origin[i], tinyMoonSheet, 80);
         i++;
     }
 

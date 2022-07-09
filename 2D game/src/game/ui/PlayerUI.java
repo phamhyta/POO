@@ -36,8 +36,6 @@ public class PlayerUI {
 
         pos = new Vector2f(16, 50);
         this.manaBar = new FillBars(p, manaBarSprite, pos, 10, 16, p.getManapercent());
-        this.inve = new InventoryUI(p);
-
     }
 
     public void update(double time) {
@@ -46,39 +44,21 @@ public class PlayerUI {
     public void input(MouseHandler mouse, KeyHandler key) {
         key.inv.tick();
         key.attack.tick();
-        if (key.inv.clicked == true) {
-            inve.shop = 1;
+        if(inve != null && key.attack.clicked == true){
+            this.inve = null;
         }
-        if (key.attack.clicked == true) {
-            inve.shop = 0;
+        if(inve == null && key.inv.clicked == true){
+            this.inve = new InventoryUI(p);
         }
-        key.invDn.tick();
-        key.invUp.tick();
-        key.invLeft.tick();
-        key.invRight.tick();
-        key.invEnter.tick();
-        if (key.invUp.clicked) {
-            inve.act = 1;
+        if(inve != null){
+            inve.input(mouse,key);
         }
-        if (key.invDn.clicked) {
-            inve.act = 2;
-        }
-        if (key.invLeft.clicked) {
-            inve.act = 3;
-        }
-        if (key.invRight.clicked) {
-            inve.act = 4;
-        }
-        if (key.invEnter.clicked) {
-            inve.act = 5;
-        }
+
     }
 
     public void render(Graphics2D g) {
         healthbar.render(g, p.getHealthPercent());
         manaBar.render(g, p.getManapercent());
-        inve.render(g);
-        // inve.drawInfo(g);
+        if(inve != null){inve.render(g);}
     }
-
 }
