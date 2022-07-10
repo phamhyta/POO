@@ -4,6 +4,7 @@ import game.GamePanel;
 
 import game.data.GameControl;
 import game.game_object.Player;
+import game.graphics.Animation;
 import game.graphics.SpriteSheet;
 import game.render.EntityRender;
 import game.ui.PlayerUI;
@@ -18,7 +19,6 @@ public class PlayState extends GameState {
 
     public static Player player;
     private EntityRender playerRender;
-
     public static Vector2f map;
     private Camera cam;
     private PlayerUI pui;
@@ -86,6 +86,7 @@ public class PlayState extends GameState {
         if (this.player.getHealth() <= 0) {
             gsm.add(GameStateManager.GAMEOVER);
         }
+        
     }
 
     public void render(Graphics2D g) {

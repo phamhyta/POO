@@ -65,7 +65,6 @@ public class Player extends Entity {
         pos.x = (GamePanel.width / 2) + 100;
         PlayState.map.x = 0;
         GameStateManager.cam.getPos().x = 0;
-
         pos.y = (GamePanel.height / 2) + 150;
         GameStateManager.cam.getPos().y = 0;
         PlayState.map.y = 0;
@@ -134,10 +133,13 @@ public class Player extends Entity {
             xCol = false;
             yCol = false;
             if (Animation.hasPlayedOnce()) {
-                resetPosition();
-                dx = 0;
-                dy = 0;
+                System.out.println("Here");
+ 
+                // dx = 0;
+                // dy = 0;
                 fallen = false;
+                this.health = 0;
+                
             }
         }
         caculateAttribute();

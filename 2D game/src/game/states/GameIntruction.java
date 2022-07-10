@@ -74,7 +74,7 @@ public class GameIntruction extends GameState {
     public void setUp(){
         this.txt[0] = new String("Su dung A, S, D, W de di chuyen\ntoi vung chi dinh");
         this.txt[1] = new String("Tiep theo tan cong cay \nde hoan thanh khoa huan luyen");
-        this.txt[2] = new String("Chuc mung ban da hoan thanh khoa huan luyen\n Bam Enter de bat dau cuoc hanh trinh cua ban");
+        this.txt[2] = new String("Chuc mung ban da hoan thanh khoa huan luyen\nBam Enter de bat dau cuoc hanh trinh cua ban");
         SpriteSheet input = new SpriteSheet("res/tile/nature.png", 12*8, 12*8);
         this.soil = input.getSprite(2, 2,32,32);
         this.rock = input.getSprite(2, 1, 32, 32);

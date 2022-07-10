@@ -39,7 +39,7 @@ public class TitleState extends GameState {
                 new Vector2f(64 * 8 - 10, 64 * 7 + 32), 310, 75);
         btn2.addEvent(e -> {
             gsm.pop(GameStateManager.TITLE);
-            gsm.add(GameStateManager.INSTRUCTION);
+            gsm.add(GameStateManager.CHECK);
         });
 
         btn3 = new Button("EXIST", new Vector2f(64 * 9, 64 * 9 + 5), 32, 24, imgButton,
