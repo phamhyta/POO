@@ -18,8 +18,10 @@ public class TileManager {
     public static ArrayList<TileMap> tm;
     private Camera cam;
     private SpriteSheet spritesheet;
+
     private int width;
     private int height;
+
     private String file;
     private int columns;
 
@@ -37,6 +39,8 @@ public class TileManager {
         cam.setTileSize(blockWidth);
         String imagePath;
 
+        int width = 0;
+        int height = 0;
         int tileWidth;
         int tileHeight;
         int tileColumns;
@@ -113,8 +117,5 @@ public class TileManager {
             tm.get(i).render(g, cam.getBounds());
         }
     }
-
-    public int getWidth() {return width;}
-    public int getHeight() {return height;}
 
 }

@@ -1,5 +1,6 @@
 package game.data;
 
+import game.ai.MapSolid;
 import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
