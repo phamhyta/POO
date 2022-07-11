@@ -61,6 +61,7 @@ public class Player extends Entity {
         bounds.setYOffset(20);
         name = "player";
     }
+    
     public void resetPosition() {
         pos.x = (GamePanel.width / 2) + 100;
         PlayState.map.x = 0;

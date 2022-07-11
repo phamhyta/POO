@@ -48,8 +48,12 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        mapAs = new Map01(this);
-
+        if(!gsm.isStateActive(GameStateManager.CHECK)){
+            mapAs = new MapIntruc(this);
+        }
+        else{
+            mapAs = new Map01(this);
+        }
     }
 
     private void resetAsset() {
@@ -61,7 +65,6 @@ public class GameControl {
         for (int i = 0; i < this.npc.length; ++i) {
             this.npc[i] = null;
         }
-
     }
 
     public static void setGameObject(GameObject go) {
@@ -77,7 +80,13 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
-                    player.resetPosition();
+                    if(currentMap==1){
+                        gsm.pop(GameStateManager.CHECK);
+                        gsm.add(GameStateManager.PLAY);
+                    }
+                    else{
+                        player.resetPosition();
+                    }
                 } else if(gameObject.get(i).type == GameObject.type_direction) {}
                 else{
                     player.setTargetMaterial(gameObject.get(i));
@@ -102,7 +111,7 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                    enemy[i].update(player, time, origin[i]);
+                        enemy[i].update(player, time, origin[i]);
                 }
             }
             if (enemy[i] == null && this.deadStartTime[i] != 0L
@@ -124,7 +133,6 @@ public class GameControl {
         }
         if (currentMap != defaultMap) {
             defaultMap = currentMap;
-
             resetAsset();
             loadNewMap();
         }
@@ -133,10 +141,12 @@ public class GameControl {
 
     public void loadNewMap() {
         if (currentMap == 0) {
-            mapAs = new Map01(this);
+            mapAs = new MapIntruc(this);
         } else if (currentMap == 1) {
-            mapAs = new Map02(this);
+            mapAs = new Map01(this);
         } else if (currentMap == 2) {
+            mapAs = new Map02(this);
+        }else if(currentMap ==3){
             mapAs = new Map03(this);
         } else {
             currentMap = 0;
