@@ -9,10 +9,10 @@ import game.tile.TileManager;
 
 public class MapIntruction extends MapAsset {
 
-    MapIntruction(GameControl gc){
+    public MapIntruction(GameControl gc){
 
         super(gc);
-        gc.tm = new TileManager("res/tile/.xml", gc.cam);
+        gc.tm = new TileManager("res/tile/intro.xml", gc.cam);
        
 }
     @Override
