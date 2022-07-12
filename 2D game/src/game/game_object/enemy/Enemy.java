@@ -21,6 +21,7 @@ public class Enemy extends Entity {
     protected int xOffset;
     protected int yOffset;
 
+    protected float dropRate;
     public boolean useRight = false;
 
     public Enemy(Vector2f origin, int size) {
@@ -46,23 +47,7 @@ public class Enemy extends Entity {
     }
 
     public void drop() {
-        GameControl.setGameObject(new Coin((new Vector2f(this.getPos().x, this.getPos().y)), 32, this.coin));
-        GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x - 50, this.getPos().y), 32));
-        GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x - 20, this.getPos().y), 32));
-        GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
-        int rand = (int) (Math.random() * 75);
-        if (rand < 15) {
 
-        } else if (rand < 35 && rand >= 15) {
-            GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x + 25, this.getPos().y), 32));
-        } else if (rand >= 50 && rand <= 75) {
-            GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x - 50, this.getPos().y), 32));
-            GameControl.setGameObject(new Potion_Blue_1(new Vector2f(this.getPos().x + 25, this.getPos().y), 32));
-            GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
-        } else if (rand >= 35 && rand < 50) {
-            GameControl.setGameObject(new Shield_2(new Vector2f(this.getPos().x - 40, this.getPos().y), 32));
-            GameControl.setGameObject(new Potion_Red_1(new Vector2f(this.getPos().x - 50, this.getPos().y), 32));
-        }
     }
 
     private void chase(Player player) {

@@ -101,13 +101,13 @@ public class GameOverState extends GameState {
                 if(numberLine== 0) {
                     gsm.pop(GameStateManager.GAMEOVER);
                     gsm.pop(GameStateManager.PLAY);
-                    gsm.sound.stopMusic();
+//                    gsm.sound.stopMusic();
                     gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 1) {
                     gsm.pop(GameStateManager.GAMEOVER);
                     gsm.pop(GameStateManager.PLAY);
-                    gsm.sound.stopMusic();
+//                    gsm.sound.stopMusic();
                     gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 2) {
@@ -116,7 +116,7 @@ public class GameOverState extends GameState {
                 if(numberLine ==3){
                     gsm.pop(GameStateManager.GAMEOVER);
                     gsm.pop(GameStateManager.PLAY);
-                    gsm.sound.stopMusic();
+//                    gsm.sound.stopMusic();
                     gsm.add(GameStateManager.TITLE);
                 }
             }

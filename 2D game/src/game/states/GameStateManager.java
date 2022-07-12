@@ -53,7 +53,7 @@ public class GameStateManager {
         sound = new Sound();
         SpriteSheet.currentFont = font;
         cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
-        states[PLAY] = new PlayState(this, cam);
+        states[TITLE] = new TitleState(this);
     }
 
     public boolean isStateActive(int state) {

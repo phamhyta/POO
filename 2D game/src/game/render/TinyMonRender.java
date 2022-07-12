@@ -11,21 +11,25 @@ public class TinyMonRender extends EntityRender{
         super(tiny, spriteSheet);
         this.tiny = tiny;
 
-        ATTACK_DOWN = 2;
-        ATTACK_UP = 3;
+        ATTACK_DOWN = 1;
+        ATTACK_UP = 1;
         ATTACK_LEFT = 1;
         ATTACK_RIGHT = 0;
-        SKILL_UP=0;
-        SKILL_DOWN=0;
-        SKILL_LEFT=0;
+        SKILL_UP=1;
+        SKILL_DOWN=1;
+        SKILL_LEFT=1;
         SKILL_RIGHT=0;
-        FALLEN = 0;
-        UP = 3;
-        DOWN = 2;
+        IDLE = 0;
+        FALLEN = 1;
+        UP = 1;
+        DOWN = 1;
         LEFT = 1;
         RIGHT = 0;
 
-        ani.setNumFrames(3, 0);
+
+
+
+        ani.setNumFrames(8, 0);
         currentAnimation = 0;
     }
 

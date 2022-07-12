@@ -7,8 +7,8 @@ public class Font {
     private BufferedImage FONTSHEET = null;
     public BufferedImage[][] spriteArray;
     private final int TILE_SIZE = 32;
-    public int w;
-    public int h;
+    private int w;
+    private int h;
     private int wLetter;
     private int hLetter = 0;
 

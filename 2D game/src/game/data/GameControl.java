@@ -95,6 +95,7 @@ public class GameControl {
 
                 if (enemy[i].getDeath()) {
                     player.setEXP(player.getEXP() + enemy[i].getEXP());
+                    player.setCoin(player.getCoin() +enemy[i].getCoin());
                     enemy[i].drop();
                     entityRender[i] = null;
                     enemy[i] = null;
