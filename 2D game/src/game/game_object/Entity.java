@@ -36,7 +36,7 @@ public class Entity {
     public boolean yCol= false;
     protected int invincible = 800;
     protected double invincibletime;
-    protected boolean isInvincible = false;
+    public boolean isInvincible = false;
     protected boolean die = false;
 
     protected int attackSpeed = 1050; // in milliseconds

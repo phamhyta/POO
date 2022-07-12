@@ -3,7 +3,8 @@ package game.game_object;
 import game.GamePanel;
 import game.game_object.enemy.Enemy;
 import game.game_object.object.GameObject;
-import game.game_object.skill.SkilPlayer;
+import game.game_object.skill.SkillPlayer;
+import game.game_object.skill.Skill;
 import game.graphics.Animation;
 import game.states.GameStateManager;
 import game.states.PlayState;
@@ -93,7 +94,7 @@ public class Player extends Entity {
         if (!skilling)
             skillStartTime = System.nanoTime();
         if (skilling && time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
-            skill.add(new SkilPlayer(this, 48));
+            skill.add(new SkillPlayer(this, 48));
             this.mana -= skillManaConsume;
             skillStartTime = System.nanoTime();
         }

@@ -3,8 +3,8 @@ package game.game_object.skill;
 import game.data.GameControl;
 import game.game_object.Player;
 
-public class SkilPlayer extends Skill{
-    public SkilPlayer(Player player, int size) {
+public class SkillPlayer extends Skill{
+    public SkillPlayer(Player player, int size) {
         super(player, size);
         type =SKILL_PLAYER;
         checkCurrentDirection();

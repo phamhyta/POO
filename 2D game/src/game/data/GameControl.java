@@ -87,15 +87,12 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
-                    if(!gsm.isStateActive(11)){
-                        player.resetPosition();
+                    player.resetPosition();
+                } else {
+                    if (gameObject.get(i).type != GameObject.type_Arrow){
+                        player.setTargetMaterial(gameObject.get(i));
+                        gameObject.remove(i);
                     }
-                    
-
-                } else if(gameObject.get(i).type == GameObject.type_direction) {}
-                else{
-                    player.setTargetMaterial(gameObject.get(i));
-                    gameObject.remove(i);
                 }
             }
         }

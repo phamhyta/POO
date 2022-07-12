@@ -5,9 +5,11 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import game.GamePanel;
+import game.data.GameControl;
 import game.graphics.Sprite;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
+import game.tile.TileManager;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 import java.awt.*;
@@ -129,6 +131,8 @@ public class GameIntruction extends GameState {
         }
     }
     public void mapRender(Graphics2D g){
+        /*super(gc);
+        gc.tm = new TileManager("res/tile/beach.xml", gc.cam);*/
         // Soil
         for(int i = 0; i <= 13;i++){
             for(int j = 0; j <=3;j++){
@@ -145,6 +149,7 @@ public class GameIntruction extends GameState {
         g.drawImage(this.Musroom.image,6*32 ,360+32*4 , 32*3,32*3,null);
         g.drawImage(this.Musroom.image,6*32*5 ,360 , 32*3,32*3,null);
         //Tree
+
     }
     public void playerRender(Graphics2D g){
         if(this.count%10==0&&(Up==true||Down==true||Left==true||Right==true)){
