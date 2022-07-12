@@ -7,19 +7,21 @@ import game.math.Vector2f;
 import game.tile.TileManager;
 
 
-public class MapIntruc extends MapAsset {
+public class MapIntruction extends MapAsset {
 
-    MapIntruc(GameControl gc){
+    MapIntruction(GameControl gc){
 
         super(gc);
         gc.tm = new TileManager("res/tile/winter.xml", gc.cam);
         gc.mapSolid = new MapSolid(gc.tm);
-        gc.gameObject.add(new Door(new Vector2f(1000,600),48));
+        // gc.gameObject.add(new Door(new Vector2f(1000,600),48));
 }
     @Override
     protected void setMonsterPosition() {
-        // TODO Auto-generated method stub
-        
+        int i = 1;
+        SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
+        gc.origin[i] = new Vector2f(1000, 600);
+        setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 48);
     }
 
     @Override

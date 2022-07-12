@@ -54,6 +54,9 @@ public class GameStateManager {
         sound = new Sound();
         SpriteSheet.currentFont = font;
         cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
+        for(int i = 0;i < 19;i++){
+            this.states[i] = null;
+        }
         states[TITLE] = new TitleState(this);
     }
 

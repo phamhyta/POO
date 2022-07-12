@@ -4,6 +4,7 @@ import game.GamePanel;
 
 import game.data.GameControl;
 import game.game_object.Player;
+import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
 import game.render.EntityRender;
 import game.ui.PlayerUI;
@@ -30,7 +31,7 @@ public class GameIntruction1 extends GameState {
         this.cam = cam;
         player = new Player(new Vector2f(0 + (GamePanel.width / 2) + 100, 0 + (GamePanel.height / 2) + 150), 64);
         playerRender = new EntityRender(player, new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32));
-        gc = new GameControl(player, cam, gsm);
+        gc = new GameControl(player, cam, gsm,true);
         pui = new PlayerUI(player);
     }
 
@@ -43,6 +44,9 @@ public class GameIntruction1 extends GameState {
             gc.update(time);
             pui.update(time);
             cam.update();
+        }
+        if(gc.enemy[1]==null){
+            gc.gameObject.add(new Door(new Vector2f(1000,600),48));
         }
     }
 

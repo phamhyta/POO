@@ -13,8 +13,6 @@ import game.states.GameStateManager;
 import game.tile.TileManager;
 import game.ui.NpcUI;
 import game.util.Camera;
-import game.util.KeyHandler;
-import game.util.MouseHandler;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
@@ -48,12 +46,21 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        if(!gsm.isStateActive(GameStateManager.CHECK)){
-            mapAs = new MapIntruc(this);
-        }
-        else{
-            mapAs = new Map01(this);
-        }
+        this.mapAs = new Map01(this);
+
+    }
+    public GameControl(Player player, Camera cam, GameStateManager gsm,boolean INSTRUCTION) {
+        this.player = player;
+        this.cam = cam;
+        this.gsm = gsm;
+        gameObject = new ArrayList();
+        enemy = new Enemy[20];
+        origin = new Vector2f[20];
+        deadStartTime = new long[20];
+        entityRender = new EntityRender[20];
+        this.npc = new NPC[5];
+        npcRender = new NPCRender[5];
+        this.mapAs = new MapIntruction(this);
     }
 
     private void resetAsset() {
@@ -80,13 +87,11 @@ public class GameControl {
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
                     currentMap++;
-                    if(currentMap==1){
-                        gsm.pop(GameStateManager.CHECK);
-                        gsm.add(GameStateManager.PLAY);
-                    }
-                    else{
+                    if(!gsm.isStateActive(11)){
                         player.resetPosition();
                     }
+                    
+
                 } else if(gameObject.get(i).type == GameObject.type_direction) {}
                 else{
                     player.setTargetMaterial(gameObject.get(i));
@@ -141,8 +146,10 @@ public class GameControl {
 
     public void loadNewMap() {
         if (currentMap == 0) {
-            mapAs = new MapIntruc(this);
+            mapAs = new MapIntruction(this);
         } else if (currentMap == 1) {
+            gsm.pop(GameStateManager.CHECK);
+            gsm.add(GameStateManager.PLAY);
             mapAs = new Map01(this);
         } else if (currentMap == 2) {
             mapAs = new Map02(this);
