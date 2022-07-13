@@ -204,7 +204,7 @@ public class ShopState extends GameState {
 
     @Override
     public void update(double time) {
-        System.out.println("Shop");
+        // System.out.println("Shop");
         shop = 1;
     }
 

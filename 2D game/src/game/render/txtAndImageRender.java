@@ -5,7 +5,7 @@ import game.graphics.Sprite;
 import java.awt.image.BufferedImage;
 import static game.states.GameStateManager.fontf;
 
-public class TxtAndImageRender{
+public class TxtAndImageRender {
     private String txt;
     private double txtTran;
     private Sprite image[];
