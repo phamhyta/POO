@@ -13,12 +13,12 @@ Game SimpleRPG là 1 đề tài rất phù hợp để vận dụng phương ph�
 **MÔ TẢ**
 - Người chơi điều khiển một hoặc nhiều nhân vật trong một bản đồ được lưu trong một cấu trúc dữ liệu tương tự như hình bên, trong đó mỗi ô tương ứng với một dạng bản đồ khác nhau (đất, cỏ, nước…) Trên bản đồ có các quái vật có thể di chuyển được.
 - Các nhân vật người chơi điều khiển và quái vật có các chỉ số xác định tình trạng và thể lực (ví dụ HP, MP, Attack, Defense, Speed…). Người chơi có thể tấn công quái vật và sử dụng các kỹ năng đặc biệt. Tương tự, quái vật cũng có thể tìm đến và tấn công người chơi.
-- Người chơi có thể di chuyển qua lại giữa các bản đồ khác nhau (ví dụ khi đi vào vùng M0, M1, M2… trên bản đồ) hoặc đi đến kết thúc của trò chơi (ví dụ khi đi vào vùng END trên bản đồ)
-![image](image.png)
+- Người chơi có thể di chuyển qua lại giữa các bản đồ khác nhau (ví dụ khi đi vào vùng M0, M1, M2… trên bản đồ) hoặc đi đến kết thúc của trò chơi (ví dụ khi đi vào vùng END trên bản đồ)  
+![image](image.png)  
 **CÔNG NGHỆ**
 - Java
-**UML**
-![image](image.png)
+**UML**  
+![image](image.png)  
 **TỔNG QUAN**
 1.	Hướng dẫn người chơi
 - Khi bắt đầu vào game, người chơi sẽ có 3 lựa chọn:
@@ -28,8 +28,8 @@ Game SimpleRPG là 1 đề tài rất phù hợp để vận dụng phương ph�
 - Khi chọn Instruction, người chơi sẽ được dẫn đến màn hình hướng dẫn cách chơi. Sau khi người chơi hoàn thành các nhiệm vụ di chuyển và đánh quái, người chơi sẽ được chuyển đến phần Intro đầu game.
 2.	Intro đầu game
 Đây là một câu chuyện bao quanh các nhân vật và player có trong game. Người chơi có thể ấn ESC để bỏ qua và vào thẳng game
-3.	Player
-![image](image.png)
+3.	Player  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/linkFormatted_new.png)  
 Player có thể thực hiện các hành động sau đây:
 -	Di chuyển xung quanh bản đồ bằng phím:
 + W: Lên trên
@@ -55,12 +55,13 @@ Player có thể thực hiện các hành động sau đây:
 + Các món đồ sau khi nhặt sẽ được lưu trong inventory
 4.	Các loại quái
 Trong game có 3 loại quái chính:
-- TinyBox
-![image](image.png)
-- TinyMon
-![image](image.png)
-- Boss: Đây là loại quái mạnh nhất trong game.
-![image](image.png)
+- TinyBox  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/minimonsters.png)  
+- TinyMon  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/mon1_sprite.png)  
+- Boss: Đây là loại quái mạnh nhất trong game.  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/boss_wizard/Attack1.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/boss_wizard/Attack2.png)  
 Người chơi sẽ thực hiện đánh quái để nhặt trang bị nhằm tăng sức mạnh hoặc nhặt xu để mua trang bị, sau khi đủ mạnh mới có thể đánh thắng được Boss.
 5.	NPC – Shop
 -	Đây là vị trí người chơi có thể mua,bán đồ:
@@ -69,44 +70,69 @@ Người chơi sẽ thực hiện đánh quái để nhặt trang bị nhằm t�
 + Người chơi có thể bán đề trong inventory để nhận xu
 6.	Map
 Trong game có 3 map, người chơi có thể đi đến cổng để chuyển map. Mỗi map sẽ có các loại quái khác nhau, giao diện khác nhau. Độ khó của các map sẽ tăng dần và Boss nằm ở map thứ 3. 
-- Map 1:
-![image](image.png)
-- Map 2:
-![image](image.png)
-- Map 3:
-![image](image.png)
+- Map 1:  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/tile/beach.png)  
+- Map 2:  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/tile/winter.png)  
+- Map 3:  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/tile/nature.png)  
 7.	Menu
 Menu trong game sẽ hiện khi người chơi chết hoặc khi ấn phím E
 -	New game: Bắt đầu một game mới
 -	Restart Level: Đưa level về 0
 -	Difficulty: Chọn độ khó (Khó, trung bình, dễ)
 -	Sound: Cài đặt âm thanh
--	Exit to main menu: Thoát ra đầu game
-![image](image.png)
-- HD chơi:
-![image](image.png)
-- Intro: 
-![image](image.png)
-- Bắt đầu game, map 1:
-![image](image.png)
-- NPC
-![image](image.png)
-- Buy
-![image](image.png)
-- Sell
-![image](image.png)
-- Inventory
-![image](image.png)
-- Map 2:
-![image](image.png)
-- Map 3: 
-![image](image.png)
-- Boss
-![image](image.png)
--Die
-![image](image.png)
-game over: 
-![image](image.png)
+-	Exit to main menu: Thoát ra đầu game  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(196).png)  
+  
+- HD chơi:  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(207).png)  
+  
+- Intro:   
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(197).png)  
+  
+- Bắt đầu game, map 1:  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(198).png)  
+  
+- NPC  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(199).png)  
+  
+- Buy  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(200).png)  
+  
+- Sell  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(201).png)  
+  
+- Inventory  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(202).png)  
+  
+- Map 2:  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(203).png)  
+  
+- Map 3:   
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(204).png)  
+  
+- Boss  
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(205).png)  
+  
+Game over:   
+  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(208).png)  
+  
 
 **KẾT LUẬN**
 Mặc dù còn nhiều thiếu sót nhưng Game là sản phẩm đầu tay. Mong mọi người có một trải nghiệm thật thú vị
