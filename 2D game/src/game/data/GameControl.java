@@ -140,8 +140,19 @@ public class GameControl {
         }
 
     }
-
+    
     public void loadNewMap() {
+        if (currentMap == 0) {
+            mapAs = new Map01(this);
+        } else if (currentMap == 1) {
+            mapAs = new Map02(this);
+        } else if (currentMap == 2) {
+            mapAs = new Map03(this);
+        } else {
+            currentMap = 0;
+        }
+    }
+    /*public void loadNewMap() {
         if (currentMap == 0) {
             mapAs = new MapIntruction(this);
         } else if (currentMap == 1) {
@@ -155,7 +166,7 @@ public class GameControl {
         } else {
             currentMap = 0;
         }
-    }
+    }*/
 
     public void render(Graphics2D g) {
         this.tm.render(g);

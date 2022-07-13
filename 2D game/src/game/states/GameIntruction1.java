@@ -31,7 +31,7 @@ public class GameIntruction1 extends GameState {
         this.cam = cam;
         player = new Player(new Vector2f(0 + (GamePanel.width / 2) + 100, 0 + (GamePanel.height / 2) + 150), 64);
         playerRender = new EntityRender(player, new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32));
-        gc = new GameControl(player, cam, gsm,true);
+        gc = new GameControl(player, cam, gsm,true );
         pui = new PlayerUI(player);
     }
 
