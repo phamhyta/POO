@@ -437,6 +437,7 @@
         - slotCol: int
         - slotRow: int
         - items: ArrayList<GameObject> 
+        - inv: ArrayList<GameObject> 
         - spriteSheet1: SpriteSheet
         - spriteSheet2: SpriteSheet
         - spriteSheet3: SpriteSheet
@@ -445,7 +446,9 @@
         + ShopState()
         + drawIntro(): void
         + buy(): void
+        + sell(): void
         + drawAttributes(): void
+        + SellAttributes(): void
         + drawSubWindow(): void
         + drawShop(): void
         + update(): void
@@ -622,6 +625,7 @@
         + skill : Key
         + shop : Key
         + buy : Key
+        + sell : Key
         + back : Key
         + inv : Key
         + invUp : Key

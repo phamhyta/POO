@@ -14,7 +14,7 @@ public class MapIntruction extends MapAsset {
         super(gc);
         gc.tm = new TileManager("res/tile/intro.xml", gc.cam);
        
-}
+    }
     @Override
     protected void setMonsterPosition() {
         int i = 1;

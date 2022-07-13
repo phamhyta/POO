@@ -31,7 +31,6 @@ public class TileMapObj extends TileMap {
 
         TileMapObj.width = width;
         TileMapObj.height = height;
-
         String[] block = data.split(",");
         for(int i = 0; i < (width * height); i++) {
             int temp = Integer.parseInt(block[i].replaceAll("\\s+",""));
