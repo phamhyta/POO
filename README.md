@@ -14,11 +14,11 @@ Game SimpleRPG là 1 đề tài rất phù hợp để vận dụng phương ph�
 - Người chơi điều khiển một hoặc nhiều nhân vật trong một bản đồ được lưu trong một cấu trúc dữ liệu tương tự như hình bên, trong đó mỗi ô tương ứng với một dạng bản đồ khác nhau (đất, cỏ, nước…) Trên bản đồ có các quái vật có thể di chuyển được.
 - Các nhân vật người chơi điều khiển và quái vật có các chỉ số xác định tình trạng và thể lực (ví dụ HP, MP, Attack, Defense, Speed…). Người chơi có thể tấn công quái vật và sử dụng các kỹ năng đặc biệt. Tương tự, quái vật cũng có thể tìm đến và tấn công người chơi.
 - Người chơi có thể di chuyển qua lại giữa các bản đồ khác nhau (ví dụ khi đi vào vùng M0, M1, M2… trên bản đồ) hoặc đi đến kết thúc của trò chơi (ví dụ khi đi vào vùng END trên bản đồ)  
-![image](image.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(209).png)  
 **CÔNG NGHỆ**
 - Java
 **UML**  
-![image](image.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/demo/uml.png)  
 **TỔNG QUAN**
 1.	Hướng dẫn người chơi
 - Khi bắt đầu vào game, người chơi sẽ có 3 lựa chọn:
