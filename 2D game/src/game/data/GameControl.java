@@ -1,7 +1,6 @@
 package game.data;
 
 import game.ai.MapSolid;
-import game.ai.PathFind;
 import game.game_object.enemy.Enemy;
 import game.game_object.npc.NPC;
 import game.game_object.object.GameObject;
@@ -24,6 +23,7 @@ public class GameControl {
     private game.data.MapAsset mapAs;
     public static int currentMap = 0;
     public int defaultMap = 0;
+    public boolean checkNextMap = false;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
     private long[] deadStartTime;
@@ -80,14 +80,21 @@ public class GameControl {
 
     public void update(double time) {
 
+
         for (int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
-                    currentMap++;
-                    player.resetPosition();
+                    if(!checkNextMap){
+                        currentMap++;
+                        checkNextMap = true;
+                    }
+                    System.out.println("CurrentMap: "+ currentMap);
+                    if(gsm.isStateActive(GameStateManager.PLAY)){
+                        player.resetPosition();
+                    }
                 } else {
                     if (gameObject.get(i).type != GameObject.type_Arrow){
                         player.setTargetMaterial(gameObject.get(i));
@@ -96,6 +103,7 @@ public class GameControl {
                 }
             }
         }
+
 
         for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
@@ -125,31 +133,35 @@ public class GameControl {
 
         for (int i = 0; i < npc.length; i++) {
             if (npc[i] != null) {
-                if (player.getHitBounds().collides(npc[i].getBounds())) {
-                    System.out.println("Shop");
-                    gsm.add(GameStateManager.DIALOGUES);
-                    pui = new NpcUI(npc[i]);
-                } else
-                    gsm.pop(GameStateManager.DIALOGUES);
+                    if (player.getHitBounds().collides(npc[i].getBounds())) {
+                        if(npc[i].getName() == "Shop"){
+                        System.out.println("Shop");
+                        gsm.add(GameStateManager.DIALOGUES);
+                        pui = new NpcUI(npc[i]);
+                    } else
+                        gsm.pop(GameStateManager.DIALOGUES);
+                    if(npc[i].getName() == "Guide"){
+                        
+                    }
+                }
+                    
             }
         }
-        if (currentMap != defaultMap) {
-            defaultMap = currentMap;
-            resetAsset();
-            loadNewMap();
-        }
-
+        
+        
     }
     
     public void loadNewMap() {
+        checkNextMap = false;
         if (currentMap == 0) {
-            mapAs = new Map01(this);
+            mapAs = new MapIntruction(this);
         } else if (currentMap == 1) {
-            mapAs = new Map02(this);
+            gsm.pop(GameStateManager.INSTRUCTION);
+            gsm.add(GameStateManager.PLAY);
         } else if (currentMap == 2) {
-            mapAs = new Map03(this);
+            mapAs = new Map02(this);
         } else {
-            currentMap = 0;
+            mapAs = new Map03(this);
         }
     }
     /*public void loadNewMap() {
@@ -169,6 +181,11 @@ public class GameControl {
     }*/
 
     public void render(Graphics2D g) {
+        if (currentMap != defaultMap) {
+            resetAsset();
+            loadNewMap();
+            defaultMap = currentMap;
+        }
         this.tm.render(g);
         for (int i = 0; i < enemy.length; i++) {
             if (enemy[i] != null && cam.getBounds().collides(enemy[i].getBounds())) {

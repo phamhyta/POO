@@ -34,6 +34,8 @@ public class PlayState extends GameState {
         player = new Player(new Vector2f(0 + (GamePanel.width / 2) + 100, 0 + (GamePanel.height / 2) + 150), 64);
         playerRender = new EntityRender(player, new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32));
         gc = new GameControl(player, cam, gsm);
+        gc.currentMap = 1;
+        gc.defaultMap = 1;
         cam.target(player);
         pui = new PlayerUI(player);
         gsm.sound.playLoopMusic(0);

@@ -45,12 +45,12 @@ public abstract class MapAsset {
         gc.entityRender[i] = new TinyMonRender(tiny, spriteSheet);
     }
 
-    public void setNPC(int i, Vector2f vt, SpriteSheet spriteSheet, int size) {
-        NPC npc = new NPC(vt, size);
+    public void setNPC(int i, Vector2f vt, SpriteSheet spriteSheet, int size,String name) {
+        NPC npc = new NPC(vt, size,name);
         gc.npc[i] = npc;
         gc.npcRender[i] = new NPCRender(npc, spriteSheet);
     }
-
+    
     public void setNPC() {
     }
 }

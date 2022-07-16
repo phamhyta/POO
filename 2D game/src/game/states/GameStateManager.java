@@ -31,7 +31,6 @@ public class GameStateManager {
     public static final int MENU = 7;
     public static final int INSTRUCTION = 8;
     public static final int NEWGAME = 10;
-    public static final int CHECK = 11;
 
     public static Camera cam;
     public static Graphics2D g;
@@ -94,14 +93,12 @@ public class GameStateManager {
             states[MENU] = new MenuState(this);
         }
         else if(state == INSTRUCTION){
-            states[INSTRUCTION] = new GameIntruction(this);
+            states[INSTRUCTION] = new GameIntruction(this,cam);
         }else if(state == NEWGAME){
             this.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
             states[PLAY] = new PlayState(this, this.cam);
         }
-        else if(state == CHECK){
-            states[CHECK] = new GameIntruction1(this, cam);
-        }
+
     }
 
     public void addAndpop(int state) {
