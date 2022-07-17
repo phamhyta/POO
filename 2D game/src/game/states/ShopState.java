@@ -11,6 +11,8 @@ import game.util.MouseHandler;
 import java.awt.*;
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 import static game.states.GameStateManager.fontf;
 
 public class ShopState extends GameState {

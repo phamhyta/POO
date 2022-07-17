@@ -47,7 +47,7 @@ public class Player extends Entity {
     }
 
     private void setDefaultValue() {
-        attackBase = 25;
+        attackBase = 100;
         MP_Base = 100;
         mana = 100;
         HP_Base = 200;
@@ -64,10 +64,11 @@ public class Player extends Entity {
     }
 
     public void resetPosition() {
+
         pos.x = (GamePanel.width / 2) + 100;
+        pos.y = (GamePanel.height / 2) + 150;
         PlayState.map.x = 0;
         GameStateManager.cam.getPos().x = 0;
-        pos.y = (GamePanel.height / 2) + 150;
         GameStateManager.cam.getPos().y = 0;
         PlayState.map.y = 0;
     }
