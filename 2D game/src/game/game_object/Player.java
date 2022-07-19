@@ -18,18 +18,18 @@ public class Player extends Entity {
     private ArrayList<Enemy> enemy;
     private ArrayList<GameObject> inventory;
     private int nextLevelEXP = 50;
-    private int attackBase ;
+    private int attackBase;
 
-    private int attackEquip ;
-    private int defenseBase ;
-    private int defenseEquip ;
+    private int attackEquip;
+    private int defenseBase;
+    private int defenseEquip;
     private int HP_Base;
     private int HP_Equip;
     private int MP_Base;
     private int MP_Equip;
     private float speedBase;
     private float speedEquip;
-    private int level =1;
+    private int level = 1;
 
     public Player(Vector2f orgin, int size) {
         super(orgin, size);
@@ -38,7 +38,7 @@ public class Player extends Entity {
         inventory = new ArrayList<>();
     }
 
-    private void caculateAttribute(){
+    private void caculateAttribute() {
         maxHealth = HP_Base + HP_Equip;
         maxMana = MP_Base + MP_Equip;
         defense = defenseBase + defenseEquip;
@@ -62,7 +62,7 @@ public class Player extends Entity {
         bounds.setYOffset(20);
         name = "player";
     }
-    
+
     public void resetPosition() {
 
         pos.x = (GamePanel.width / 2) + 100;
@@ -76,7 +76,7 @@ public class Player extends Entity {
     private void checkLevelUp() {
         if (this.EXP >= nextLevelEXP) {
             HP_Base = (int) (HP_Base * 1.5);
-            MP_Base = (int)(MP_Base * 1.5);
+            MP_Base = (int) (MP_Base * 1.5);
             nextLevelEXP *= 2;
             level++;
             attackBase += 10;
@@ -137,12 +137,12 @@ public class Player extends Entity {
             yCol = false;
             if (Animation.hasPlayedOnce()) {
                 System.out.println("Here");
- 
+
                 // dx = 0;
                 // dy = 0;
                 fallen = false;
                 this.health = 0;
-                
+
             }
         }
         caculateAttribute();
@@ -194,23 +194,61 @@ public class Player extends Entity {
             left = false;
         }
     }
-    public void setAttackEquip(int attackEquip) {this.attackEquip = attackEquip;}
-    public void setDefenseEquip(int defenseEquip) {this.defenseEquip = defenseEquip;}
-    public void setHP_Equip(int HP_Equip) {this.HP_Equip = HP_Equip;}
-    public void setMP_Equip(int MP_Equip) {this.MP_Equip = MP_Equip;}
-    public void setSpeedEquip(float speedEquip) {this.speedEquip = speedEquip;}
-    public int getDefenseEquip() {return defenseEquip;}
-    public int getHP_Equip() {return HP_Equip;}
-    public int getMP_Equip() {return MP_Equip;}
-    public float getSpeedEquip() {return speedEquip;}
-    public int getLevel(){ return level;}
-    public ArrayList<GameObject> getInventory() {return inventory;}
+
+    public void setAttackEquip(int attackEquip) {
+        this.attackEquip = attackEquip;
+    }
+
+    public void setDefenseEquip(int defenseEquip) {
+        this.defenseEquip = defenseEquip;
+    }
+
+    public void setHP_Equip(int HP_Equip) {
+        this.HP_Equip = HP_Equip;
+    }
+
+    public void setMP_Equip(int MP_Equip) {
+        this.MP_Equip = MP_Equip;
+    }
+
+    public void setSpeedEquip(float speedEquip) {
+        this.speedEquip = speedEquip;
+    }
+
+    public int getDefenseEquip() {
+        return defenseEquip;
+    }
+
+    public int getHP_Equip() {
+        return HP_Equip;
+    }
+
+    public int getMP_Equip() {
+        return MP_Equip;
+    }
+
+    public float getSpeedEquip() {
+        return speedEquip;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public ArrayList<GameObject> getInventory() {
+        return inventory;
+    }
+
     public void setTargetEnemy(Enemy enemy) {
         this.enemy.add(enemy);
     }
+
     public void setTargetMaterial(GameObject go) {
-        this.inventory.add(go);
+        if (inventory.size() < 12) {
+            this.inventory.add(go);
+        }
     }
+
     public void removeMaterial(GameObject go) {
         this.inventory.remove(go);
     }
