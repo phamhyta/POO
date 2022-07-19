@@ -30,7 +30,7 @@ Game SimpleRPG là 1 đề tài rất phù hợp để vận dụng phương ph�
     + Play game: Vào thẳng Intro và bỏ qua hướng dẫn chơi
     + Instruction: Vào màn hình hướng dẫn chơi
     + Exit: Thoát
-- Khi chọn Instruction, người chơi sẽ được dẫn đến màn hình hướng dẫn cách chơi. Sau khi người chơi hoàn thành các nhiệm vụ di chuyển và đánh quái, người chơi sẽ được chuyển đến phần Intro đầu game.
+- Khi chọn Instruction, người chơi sẽ được dẫn đến màn hình hướng dẫn cách chơi. Sau khi người chơi hoàn thành các nhiệm vụ di chuyển và đánh quái, người chơi sẽ được chuyển vào trong game.
 2.	Intro đầu game
 Đây là một câu chuyện bao quanh các nhân vật và player có trong game. Người chơi có thể ấn ESC để bỏ qua và vào thẳng game
 3.	Player  
@@ -44,20 +44,23 @@ Player có thể thực hiện các hành động sau đây:
 -	Đánh quái:
     + SPACE: Đánh thường
     + K: Đánh quái bằng skill (Sử dụng cung)
--	Mua đồ: Khi di chuyển đến gặp NPC, người chơi có thể lựa chọn mua những món đồ với thông tin thuộc tính được hiện bên cạnh
+-	Nhặt đồ:
+    + Khi đánh chết quái, quái sẽ rơi ra những đồ vật ngẫu nhiên
+    + Người chơi di chuyển lại gần đồ vật rơi ra và sẽ nhặt được đồ vật đất nên inventory còn chỗ trống
+    + Người chơi có thể nhặt được các bình HP, MP 
+    + Người chơi có thể nhặt được các trang bị quý hiếm
+    + Các món đồ sau khi nhặt sẽ được lưu trong inventory
+-	Mua, bán đồ: Khi di chuyển đến gặp NPC, người chơi có thể lựa chọn mua những món đồ với thông tin thuộc tính được hiện bên cạnh hoặc bán đồ trong inventory
     + P: Nói chuyện với NPC
     + Dùng các phím W, S, A, D để di chuyển lựa chọn đồ
     + B: Mua đồ
+    + F: Bán đồ
     + Chọn Exit để thoát
 -	Kiểm tra đồ hiện có trong inventory:
     + I: Hiện inventory
     + Sử dụng phím PgUp, PgDn, Home, End để di chuyển chọn món đồ
     + Ấn U để sử dụng món đồ và thuộc tính món đồ sẽ cộng vào thuộc tính của người chơi
     + Ấn phím SPACE để thoát
--	Nhặt đồ sau khi đánh quái:
-    + Người chơi có thể nhặt được các bình HP, MP 
-    + Người chơi có thể nhặt được các trang bị quý hiếm
-    + Các món đồ sau khi nhặt sẽ được lưu trong inventory
 4.	Các loại quái
 Trong game có 3 loại quái chính:
 - TinyBox  
@@ -134,10 +137,14 @@ Menu trong game sẽ hiện khi người chơi chết hoặc khi ấn phím E
   
 ![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(205).png)  
   
-Game over:   
+- Game over:   
   
 ![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(208).png)  
   
+- Thoát game:  
+  
+  ![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(210).png)  
 
-**KẾT LUẬN**
+
+**KẾT LUẬN**  
 Mặc dù còn nhiều thiếu sót nhưng Game là sản phẩm đầu tay. Mong mọi người có một trải nghiệm thật thú vị

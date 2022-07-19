@@ -100,7 +100,7 @@ public class KeyHandler implements KeyListener {
             shop.toggle(pressed);
         if (e.getKeyCode() == KeyEvent.VK_B)
             buy.toggle(pressed);
-        if (e.getKeyCode() == KeyEvent.VK_B)
+        if (e.getKeyCode() == KeyEvent.VK_F)
             sell.toggle(pressed);
         if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
             back.toggle(pressed);
