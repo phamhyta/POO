@@ -14,7 +14,7 @@ import game.util.MouseHandler;
 import game.math.Vector2f;
 
 import java.awt.*;
-import java.util.Currency;
+
 
 public class GameIntruction extends GameState {
 
@@ -98,7 +98,7 @@ public class GameIntruction extends GameState {
                 }
             }
             if(mission[2] == 1){
-                if(gc.enemy[1]==null){
+                if(GameControl.enemy[1]==null){
                     mission[2] = 2;
                     gc.npc[0].setTalk(true);
                     this.missionDone = true;
@@ -118,7 +118,7 @@ public class GameIntruction extends GameState {
                 }
             }
             if(mission[3] == 1){
-                if(gc.enemy[3]==null){
+                if(GameControl.enemy[3]==null){
                     mission[3] = 2;
                     gc.npc[0].setTalk(true);
                     this.missionDone = true;
@@ -136,7 +136,7 @@ public class GameIntruction extends GameState {
                 }
             }
             if(mission[4] == 1){
-                gc.gameObject.add(new Door(new Vector2f(1000, 600), 48));
+                GameControl.gameObject.add(new Door(new Vector2f(1000, 600), 48));
             }
         }
     }

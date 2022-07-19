@@ -138,14 +138,14 @@ public class MenuState extends GameState {
                     gsm.pop(GameStateManager.NEWGAME);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
-                    gsm.sound.stopMusic();
+                    GameStateManager.sound.stopMusic();
                     gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 1) {
                     gsm.pop(GameStateManager.NEWGAME);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
-                    gsm.sound.stopMusic();
+                    GameStateManager.sound.stopMusic();
                     gsm.add(GameStateManager.NEWGAME);
                 }
                 if(numberLine== 3) {
@@ -159,7 +159,7 @@ public class MenuState extends GameState {
                     gsm.pop(GameStateManager.PLAY);
                     gsm.pop(GameStateManager.MENU);
                     gsm.pop(GameStateManager.PAUSE);
-                    gsm.sound.stopMusic();
+                    GameStateManager.sound.stopMusic();
                     gsm.add(GameStateManager.TITLE);
                 }
             }

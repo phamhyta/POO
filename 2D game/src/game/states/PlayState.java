@@ -4,7 +4,6 @@ import game.GamePanel;
 
 import game.data.GameControl;
 import game.game_object.Player;
-import game.graphics.Animation;
 import game.graphics.SpriteSheet;
 import game.render.EntityRender;
 import game.ui.PlayerUI;
@@ -34,11 +33,11 @@ public class PlayState extends GameState {
         player = new Player(new Vector2f(0 + (GamePanel.width / 2) + 100, 0 + (GamePanel.height / 2) + 150), 64);
         playerRender = new EntityRender(player, new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32));
         gc = new GameControl(player, cam, gsm);
-        gc.currentMap = 1;
+        GameControl.currentMap = 1;
         gc.defaultMap = 1;
         cam.target(player);
         pui = new PlayerUI(player);
-        gsm.sound.playLoopMusic(0);
+        GameStateManager.sound.playLoopMusic(0);
     }
 
     public void update(double time) {
@@ -85,7 +84,7 @@ public class PlayState extends GameState {
             }
         }
         pui.input(mouse, key);
-        if (this.player.getHealth() <= 0) {
+        if (PlayState.player.getHealth() <= 0) {
             gsm.add(GameStateManager.GAMEOVER);
         }
         
@@ -107,15 +106,15 @@ public class PlayState extends GameState {
     public void chageMusic() {
         if (this.music == true) {
             this.music = false;
-            this.gsm.sound.stopMusic();
+            GameStateManager.sound.stopMusic();
         } else {
             this.music = true;
-            this.gsm.sound.playLoopMusic(0);
+            GameStateManager.sound.playLoopMusic(0);
             ;
         }
     }
 
     public Player getPlayer() {
-        return this.player;
+        return PlayState.player;
     }
 }
