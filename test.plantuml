@@ -1,0 +1,109 @@
+class Button{
+        - label: String
+        - lbWidth: int
+        - lbHeight: int
+        - image: BufferedImage
+        - hoverImage: BufferedImage
+        - pressedImage: BufferedImage
+        - iPos: Vector2f
+        - lbPos: Vector2f
+        - bounds: BoundingBox
+        - hovering: boolean
+        - hoverSize: int
+        - events: ArrayList
+        - slotevents: ArrayList
+        - clicked: boolean
+        - pressed: boolean
+        - canHover: boolean
+        - drawString: boolean
+        - pressedtime: float
+        - slot: Slots
+        + Button()
+        + createIconButton(): BufferedImage
+        + createButton(): BufferedImage
+        + resizeImage(): BufferedImage
+        + addHoverImage(): void
+        + addPressedImage(): void
+        + update(): void
+        + hover(): void
+        + input(): void
+        + render(): void
+    }
+    interface ClickedEvent{
+        action(): void
+    }
+    class FillBars{
+        - bar: BufferedImage
+        - e: Entity
+        - pos: Vector2f
+        - size: int
+        - length: int
+        - energyLength: int
+        - barWidthRatio: int
+        - energyWidthRatio: int
+        - barHeightRatio: int
+        - percent: float
+        + FillBars()
+        + render(): void
+    }
+    class NpcUI{
+        - npc: NPC
+        - g2: Graphics2D
+        + NpcUI()
+        + input(): void
+        + render(): void
+        + update(): void
+    }
+    class InventoryUI{
+        + shop: int
+        + act: int
+        - slotCol: int
+        - slotRow: int
+        - spriteSheet: SpriteSheet
+        - image: Image
+        - size: int
+        - x: int
+        - y: int
+        - width: int
+        - height: int
+        - slotXstart: int
+        - slotYstart: int
+        - slotX: int
+        - slotY: int
+        - cursurWight: int
+        - cursurHeight: int
+        - p: Player
+        + inventory: ArrayList
+        + InventoryUI()
+        + drawSubWindow(): void
+        + drawInv(): void
+        + drawAttributes(): void
+        + drawInfo(): void
+        
+    }
+    class PlayerUI{
+        - healthbar: FillBars
+        - manaBar: FillBars
+        - inve: InventoryUI
+        - p: Player
+        + PlayerUI()
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class Slots{
+        - pos: Vector2f[]
+        - slot: BufferedImage[]
+        - childSlots: Slots[]
+        - button: Button
+        - width: int
+        - height: int
+        - size: int
+        - visibility: boolean
+        - showChildren: boolean
+        + Slots()
+        + showChildren(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
