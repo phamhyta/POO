@@ -7,9 +7,9 @@ import game.math.Vector2f;
 import game.tile.TileManager;
 
 
-public class MapIntruction extends MapAsset {
+public class MapInstruction extends MapAsset {
 
-    public MapIntruction(GameControl gc){
+    public MapInstruction(GameControl gc){
 
         super(gc);
         gc.tm = new TileManager("res/tile/intro.xml", gc.cam);

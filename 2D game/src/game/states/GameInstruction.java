@@ -16,7 +16,7 @@ import game.math.Vector2f;
 import java.awt.*;
 import java.util.Currency;
 
-public class GameIntruction extends GameState {
+public class GameInstruction extends GameState {
 
     public static Player player;
     private EntityRender playerRender;
@@ -28,7 +28,7 @@ public class GameIntruction extends GameState {
     private int mission[];
     private boolean missionDone = true;
 
-    public GameIntruction(GameStateManager gsm, Camera cam) {
+    public GameInstruction(GameStateManager gsm, Camera cam) {
         super(gsm);
         this.mission = new int[10];
         map = new Vector2f(0, 0);
