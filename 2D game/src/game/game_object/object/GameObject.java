@@ -31,6 +31,8 @@ public class GameObject {
     public static final int type_consumable = 3;
     public static final int type_pickupOnly = 4;
     public static final int type_nextMap = 5;
+    public static final int type_Arrow = 6;
+
 
     public GameObject(Vector2f origin, int size) {
         this.bounds = new BoundingBox(origin, size, size);

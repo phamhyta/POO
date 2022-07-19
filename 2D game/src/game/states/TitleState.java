@@ -1,6 +1,7 @@
 package game.states;
 
 import game.GamePanel;
+import game.data.GameControl;
 import game.math.Vector2f;
 import game.ui.Button;
 import game.util.KeyHandler;
@@ -21,6 +22,7 @@ public class TitleState extends GameState {
 
     public TitleState(GameStateManager gsm) {
         super(gsm);
+        //GameControl.currentMap=0;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/ui/pngTree.png"));
         } catch (IOException e) {

@@ -36,7 +36,7 @@ public class Entity {
     public boolean yCol= false;
     protected int invincible = 800;
     protected double invincibletime;
-    protected boolean isInvincible = false;
+    public boolean isInvincible = false;
     protected boolean die = false;
 
     protected int attackSpeed = 1050; // in milliseconds
@@ -90,7 +90,6 @@ public class Entity {
         this.hitsize = size;
         hitBounds = new BoundingBox(origin,size,size);
         hitBounds.setXOffset(size/2);
-
         tc = new TileCollision(this);
         skill= new ArrayList<>();
         pathFind = new PathFind();
@@ -100,6 +99,19 @@ public class Entity {
         this.bounds = new BoundingBox(pos, size, size);
         teleported = true;
     }
+
+    public void setPos(Vector2f origin,boolean teleported) {
+        this.bounds = new BoundingBox(origin, size, size);
+        this.pos = origin;
+        this.hitsize = size;
+        hitBounds = new BoundingBox(origin,size,size);
+        hitBounds.setXOffset(size/2);
+        tc = new TileCollision(this);
+        skill= new ArrayList<>();
+        pathFind = new PathFind();
+    }
+
+
 
     public void addForce(float a, boolean vertical) {
         if(!vertical) {dx -= a;}
@@ -339,6 +351,9 @@ public class Entity {
     public ArrayList<Skill> getSkill() {return skill;}
     public int getSkillDuration() {return skillDuration;}
     public int getCurrentDirection() {return currentDirection;}
+    public void setBox(int zone){
+        this.bounds.setBox(pos, zone, zone);
+    }
 }
 
 

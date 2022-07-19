@@ -114,8 +114,8 @@
     } 
     class PathFind{
         + node: Node[][] 
-         openList: ArrayList<Node>
-        +  pathList: ArrayList<Node>
+        openList: ArrayList<Node>
+        + pathList: ArrayList<Node>
         + startNode, goalNode, currentNode:  Node
         goalReached: boolean
         step: int
@@ -130,6 +130,21 @@
         + search(): void
         + openNode(): void
         + trackThePath(): void
+    }
+    class Node {
+        parent: Node
+        col: int
+        row: int
+        gCost: int
+        hCost: int
+        fCost: int
+        start: boolean
+        goal: boolean
+        open: boolean
+        checked: boolean
+        + Node()
+        + getCol()
+        + getRow()
     }
     '-----------------enemy----------------
     class Enemy extends Entity{
@@ -352,7 +367,7 @@
         + update(): void
         + render(): void
     }
-    class txtAndImageRender{
+    class TxtAndImageRender{
         - txt: String
         - txtTran: double
         + txtAndImageRender()
@@ -394,24 +409,34 @@
         + render(): void
     }
     class MenuState extends GameState {
+        - tileX: int
+        - tileY: int
+        - numberLine: int
+        - numberDif: int
+        - checkdificulty: boolean
         + MenuState()
-        + update(): void
-        + input: void
-        + render(): void
         + Menu(): void
-        + Difficulty()
+        + update(): void
+        + Difficulty(): void
+        + input: void
         + EasyMode(): void
         + MediumMode(): void
         + HardMode(): void
+        + render(): void
     }
     class PauseState extends GameState {
+        - btnResume: Button
+        - btnExit: Button
+        - font: Font
         + PauseState()
         + update(): void
         + input: void
         + render(): void
     }
     class TitleState extends GameState{
-        - commandNum: int
+        image: BufferedImage
+        - imgButton: BufferedImage
+        - btn1, btn2, btn3: Button
         + TitleState()
         + update(): void
         + input: void
@@ -425,10 +450,12 @@
         - cam: Camera
         - pui: PlayerUI
         - gc: GameControl
+        - music: boolean
         + PlayState()
         + update(): void
         + input(): void
         + render(): void
+        + chageMusic(): void
     }
     class ShopState extends GameState{
         - commandNum: int
@@ -437,6 +464,7 @@
         - slotCol: int
         - slotRow: int
         - items: ArrayList<GameObject> 
+        - inv: ArrayList<GameObject> 
         - spriteSheet1: SpriteSheet
         - spriteSheet2: SpriteSheet
         - spriteSheet3: SpriteSheet
@@ -445,7 +473,9 @@
         + ShopState()
         + drawIntro(): void
         + buy(): void
+        + sell(): void
         + drawAttributes(): void
+        + SellAttributes(): void
         + drawSubWindow(): void
         + drawShop(): void
         + update(): void
@@ -453,74 +483,51 @@
         + render(): void
     }
     class GameOverState extends GameState {
+        - tileX: int
+        - tileY: int
+        - numberLine: int
+        - numberDif: int
+        - checkdificulty: boolean
         + GameOverState()
+        + Difficulty(): void
+        + Over(): void
         + update(): void
         + input(): void
         + render(): void
     }
     class GameIntruction extends GameState{
-        - count: int
-        - Sprite: rock
-        - Musroom: Sprite
-        - smallTree: Sprite
-        - soil: Sprite
-        - playerState: int
-        - currentCount: int
-        - isAttacking: boolean
-        - attackingState: int
-        - Up: boolean
-        - Down: boolean
-        - Left: boolean
-        - ms1: boolean
-        - ms2: boolean
-        - Right: boolean
-        - playerScreenX: int
-        - playerScreenY: int
-        - a: int
-        - b: int
-        - direction: int
-        - playerSpirite[][]: Sprite
-        - txt[]: String
-        - Monster[]: Sprite
-        - monsterHeath: int
-        - attack: Rectangle
-        - forMs1: Rectangle
-        - forMs2: Rectangle
-        - player: Rectangle
+        + player: Player
+        - playerRender: EntityRender
+        + map: Vector2f
+        - cam: Camera
+        - pui: PlayerUI
+        - gc: GameControl
+        - npcui: NpcUI
+        - mission[]: int
+        - missionDone: boolean
         + GameIntruction()
         + update(): void
+        + setUp(): void
         + input(): void
-        + mapRender(): void
-        + playerRender(): void
-        + checkColiision(): void
-        + buttonRender(): void
-        + move(): void
-        + renderTxt(): void
-        + renderMs1(): void
-        + renderMs2(): void
+        + mission1(): void
+        + mission2(): void
+        + mission3(): void
+        + mission4(): void
+        + render(): void
     } 
     class IntroState extends GameState{
         - count: int
         - listOfImages1[]: BufferedImage
-        - listTxt[]: txtAndImageRender
-        - picTran: double
-        - picTran1: double
-        - stateOfImage: int
-        - stateOfImage1: int
-        - littleGirl: SpriteSheet
-        - player: SpriteSheet
-        - secPerPic: double
-        - monsters: SpriteSheet
-        - listOfMonsters[][]: Sprite
-        - listOfLittleGirl []: Sprite
-        - listOfPlayer[]: Sprite
-        - process: int
+        -  listTxt[]: TxtAndImageRender
+        - intro: TxtAndImageRender
+        - Little: TxtAndImageRender
+        - Monster[]: TxtAndImageRender
+        - Player: TxtAndImageRender
         + IntroState()
         + update(): void
         + input(): void
         + render(): void
         + scaledImage(): void
-        + renderImage(): void
         + setUp(): void
     }
     ' -----------data------------
@@ -579,6 +586,10 @@
         + resetEnemy(): void
         + setNPC(): void
     }
+    class MapIntruction extends MapAsset {
+        + MapIntruction()
+        # setMonsterPosition(): void
+    }
     class AddItems{
         - size: int
         + AddItems()
@@ -622,6 +633,7 @@
         + skill : Key
         + shop : Key
         + buy : Key
+        + sell : Key
         + back : Key
         + inv : Key
         + invUp : Key
@@ -698,6 +710,37 @@
         + TileMapObj()
         + render(): void
     }
+    '--------------block-------------------
+    class Block{
+        # w: int
+        # h: int
+        + sprite: Sprite
+        + pos: Vector2f
+        + Block()
+        + update(): boolean
+        + isInside(): boolean
+        + getImage(): Sprite
+        + getPos(): Vector2f
+        + render(): void
+    }
+    class HoleBlock extends Block{
+        + HoleBlock()
+        + update(): boolean
+        + isInside(): boolean
+        + render(): void
+    }
+    class NormBlock extends Block {
+        + NormBlock()
+        + update(): boolean
+        + isInside(): boolean
+        + render(): void
+    }
+    class ObjBlock extends Block{
+        + ObjBlock()
+        + update(): boolean
+        + isInside(): boolean
+        + render(): void
+    }
     '------------ui----------------
     class Button{
         - label: String
@@ -729,6 +772,9 @@
         + hover(): void
         + input(): void
         + render(): void
+    }
+    interface ClickedEvent{
+        action(): void
     }
     class FillBars{
         - bar: BufferedImage
@@ -807,17 +853,37 @@
     }
 
     GameObject o-- BoundingBox
+    GameObject o-- SpriteSheet
+    InventoryUI o-- SpriteSheet
+    SpriteSheet o-- Sprite
     Entity o-- BoundingBox
+    Entity o-- TileCollision
     BoundingBox o-- Vector2f
     GameControl o-- MapAsset
     PlayState o-- GameControl
     PlayState o-- Player
+    PlayState o-- Camera
+    GameIntruction o-- Camera
+    GameIntruction o-- Player
+    GameIntruction o-- EntityRender
+    PlayState o-- EntityRender
     GameStateManager o-- GameState
+    TitleState o-- Button
+    IntroState o-- TxtAndImageRender
+    Slots o-- Button
     Skill o-- SkillRender
     GameObject o-- ObjectRender
     EntityRender o-- Animation
-    PlayerUI o-- NpcUI
+    PlayerUI o-- Player
     PlayerUI o-- InventoryUI
-    PlayerUI o-- Slots
-    PlayerUI o-- FillBars
+    ShopState o-- SpriteSheet
+    ShopState o-- Player
+    TileManager o-- TileMap
+    PathFind o-- Node
+    MapSolid o-- TileManager
+    TileMapNorm o-- Block
+    TileMapObj o-- Block
+    NpcUI o-- NPC
+    PauseState o-- Button
+    Player o-- Enemy
 @enduml

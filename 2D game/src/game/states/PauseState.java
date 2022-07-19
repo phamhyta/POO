@@ -28,8 +28,7 @@ public class PauseState extends GameState {
         btnExit.addHoverImage(btnExit.createButton("EXIT", imgHover, font, btnExit.getWidth(), btnExit.getHeight(), 32, 20));
 
         btnResume.addEvent(e -> {
-            gsm.pop(GameStateManager.PAUSE);
-        });
+            gsm.pop(GameStateManager.PAUSE);});
 
         btnExit.addEvent(e -> {
             System.exit(0);
@@ -48,7 +47,9 @@ public class PauseState extends GameState {
 
     @Override
     public void render(Graphics2D g) {
-        btnResume.render(g);
-        btnExit.render(g);
+        if(gsm.getState()[GameStateManager.MENU]==null){
+            btnResume.render(g);
+            btnExit.render(g);
+        }
     }
 }

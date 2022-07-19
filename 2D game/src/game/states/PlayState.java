@@ -4,6 +4,7 @@ import game.GamePanel;
 
 import game.data.GameControl;
 import game.game_object.Player;
+import game.graphics.Animation;
 import game.graphics.SpriteSheet;
 import game.render.EntityRender;
 import game.ui.PlayerUI;
@@ -18,7 +19,6 @@ public class PlayState extends GameState {
 
     public static Player player;
     private EntityRender playerRender;
-
     public static Vector2f map;
     private Camera cam;
     private PlayerUI pui;
@@ -34,9 +34,11 @@ public class PlayState extends GameState {
         player = new Player(new Vector2f(0 + (GamePanel.width / 2) + 100, 0 + (GamePanel.height / 2) + 150), 64);
         playerRender = new EntityRender(player, new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32));
         gc = new GameControl(player, cam, gsm);
+        gc.currentMap = 1;
+        gc.defaultMap = 1;
         cam.target(player);
         pui = new PlayerUI(player);
-//        gsm.sound.playLoopMusic(0);
+        gsm.sound.playLoopMusic(0);
     }
 
     public void update(double time) {
@@ -86,6 +88,7 @@ public class PlayState extends GameState {
         if (this.player.getHealth() <= 0) {
             gsm.add(GameStateManager.GAMEOVER);
         }
+        
     }
 
     public void render(Graphics2D g) {

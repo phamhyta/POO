@@ -64,6 +64,7 @@ public class TileManager {
             tileWidth = Integer.parseInt(eElement.getAttribute("tilewidth"));
             tileHeight = Integer.parseInt(eElement.getAttribute("tileheight"));
             tileColumns =  Integer.parseInt(eElement.getAttribute("columns"));
+            //System.out.println(tileColumns+" "+tileHeight+" "+tileWidth);
 
             this.columns = tileColumns;
             this.file = imagePath;
@@ -78,25 +79,27 @@ public class TileManager {
                 width = Integer.parseInt(eElement.getAttribute("width"));
                 height = Integer.parseInt(eElement.getAttribute("height"));
                 //System.out.println(width+ " "+height);
-                data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
-                //System.out.println(data[i]);
-                /*(i == 0) {
+                //System.out.println(data[i]+" " +width+' ' +height+' '+ blockWidth+ " " +blockHeight +' '+ tileColumns);
+
+                data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();                /*(i == 0) {
                     tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
                 } */
                 if(i==0){
                     tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
                 }
-                else if(i==1){
-                    tm.add(new TileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
-                    }
+                else {
+                    if(i==1){
+                            tm.add(new TileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                        }
                     else{
                         tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
                     }
+                }
                 /*else{
                     tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
 
                 }*/
-            }
+            }   
 
             cam.setLimit(width * blockWidth, height * blockHeight);
         } catch(Exception e) {
@@ -108,8 +111,6 @@ public class TileManager {
         this.width = width;
         this.height = height;
     }
-
-
 
     public void render(Graphics2D g) {
         if(cam == null)

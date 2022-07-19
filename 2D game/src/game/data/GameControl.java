@@ -1,7 +1,6 @@
 package game.data;
 
 import game.ai.MapSolid;
-import game.ai.PathFind;
 import game.game_object.enemy.Enemy;
 import game.game_object.npc.NPC;
 import game.game_object.object.GameObject;
@@ -13,8 +12,6 @@ import game.states.GameStateManager;
 import game.tile.TileManager;
 import game.ui.NpcUI;
 import game.util.Camera;
-import game.util.KeyHandler;
-import game.util.MouseHandler;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
@@ -26,6 +23,7 @@ public class GameControl {
     private game.data.MapAsset mapAs;
     public static int currentMap = 0;
     public int defaultMap = 0;
+    public boolean checkNextMap = false;
     public static ArrayList<GameObject> gameObject;
     public static Enemy[] enemy;
     private long[] deadStartTime;
@@ -48,8 +46,21 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        mapAs = new Map01(this);
+        this.mapAs = new Map01(this);
 
+    }
+    public GameControl(Player player, Camera cam, GameStateManager gsm,boolean INSTRUCTION) {
+        this.player = player;
+        this.cam = cam;
+        this.gsm = gsm;
+        gameObject = new ArrayList();
+        enemy = new Enemy[20];
+        origin = new Vector2f[20];
+        deadStartTime = new long[20];
+        entityRender = new EntityRender[20];
+        this.npc = new NPC[5];
+        npcRender = new NPCRender[5];
+        this.mapAs = new MapIntruction(this);
     }
 
     private void resetAsset() {
@@ -61,7 +72,6 @@ public class GameControl {
         for (int i = 0; i < this.npc.length; ++i) {
             this.npc[i] = null;
         }
-
     }
 
     public static void setGameObject(GameObject go) {
@@ -70,21 +80,30 @@ public class GameControl {
 
     public void update(double time) {
 
+
         for (int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
-                    currentMap++;
-                    player.resetPosition();
-                } else if(gameObject.get(i).type == GameObject.type_direction) {}
-                else{
-                    player.setTargetMaterial(gameObject.get(i));
-                    gameObject.remove(i);
+                    if(!checkNextMap){
+                        currentMap++;
+                        checkNextMap = true;
+                    }
+                    System.out.println("CurrentMap: "+ currentMap);
+                    if(gsm.isStateActive(GameStateManager.PLAY)){
+                        player.resetPosition();
+                    }
+                } else {
+                    if (gameObject.get(i).type != GameObject.type_Arrow){
+                        player.setTargetMaterial(gameObject.get(i));
+                        gameObject.remove(i);
+                    }
                 }
             }
         }
+
 
         for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
@@ -102,7 +121,7 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                    enemy[i].update(player, time, origin[i]);
+                        enemy[i].update(player, time, origin[i]);
                 }
             }
             if (enemy[i] == null && this.deadStartTime[i] != 0L
@@ -114,36 +133,59 @@ public class GameControl {
 
         for (int i = 0; i < npc.length; i++) {
             if (npc[i] != null) {
-                if (player.getHitBounds().collides(npc[i].getBounds())) {
-                    System.out.println("Shop");
-                    gsm.add(GameStateManager.DIALOGUES);
-                    pui = new NpcUI(npc[i]);
-                } else
-                    gsm.pop(GameStateManager.DIALOGUES);
+                    if (player.getHitBounds().collides(npc[i].getBounds())) {
+                        if(npc[i].getName() == "Shop"){
+                        System.out.println("Shop");
+                        gsm.add(GameStateManager.DIALOGUES);
+                        pui = new NpcUI(npc[i]);
+                    } else
+                        gsm.pop(GameStateManager.DIALOGUES);
+                    if(npc[i].getName() == "Guide"){
+                        
+                    }
+                }
+                    
             }
         }
-        if (currentMap != defaultMap) {
-            defaultMap = currentMap;
-
-            resetAsset();
-            loadNewMap();
-        }
-
+        
+        
     }
-
+    
     public void loadNewMap() {
+        checkNextMap = false;
         if (currentMap == 0) {
-            mapAs = new Map01(this);
+            mapAs = new MapIntruction(this);
         } else if (currentMap == 1) {
-            mapAs = new Map02(this);
+            gsm.pop(GameStateManager.INSTRUCTION);
+            gsm.add(GameStateManager.PLAY);
         } else if (currentMap == 2) {
+            mapAs = new Map02(this);
+        } else {
+            mapAs = new Map03(this);
+        }
+    }
+    /*public void loadNewMap() {
+        if (currentMap == 0) {
+            mapAs = new MapIntruction(this);
+        } else if (currentMap == 1) {
+            gsm.pop(GameStateManager.CHECK);
+            gsm.add(GameStateManager.PLAY);
+            mapAs = new Map01(this);
+        } else if (currentMap == 2) {
+            mapAs = new Map02(this);
+        }else if(currentMap ==3){
             mapAs = new Map03(this);
         } else {
             currentMap = 0;
         }
-    }
+    }*/
 
     public void render(Graphics2D g) {
+        if (currentMap != defaultMap) {
+            resetAsset();
+            loadNewMap();
+            defaultMap = currentMap;
+        }
         this.tm.render(g);
         for (int i = 0; i < enemy.length; i++) {
             if (enemy[i] != null && cam.getBounds().collides(enemy[i].getBounds())) {
