@@ -11,10 +11,11 @@ public class Map03 extends MapAsset {
     public Map03(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/nature.xml", gc.cam);
+        gc.mapSolid = new MapSolid(gc.tm);
     }
 
     public void setMonsterPosition() {
-        int i = 1;
+        int i = 0;
         SpriteSheet wizardSheet = new SpriteSheet("res/entity/boss_wizard/Idle.png", 110, 110);
         gc.origin[i] = new Vector2f(500, 500);
         setWizard( i, gc.origin[i], wizardSheet, 156);
@@ -96,7 +97,7 @@ public class Map03 extends MapAsset {
         } else if (i == 3) {
             setTinyBox(i,gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16),64);
         } else {
-            setTinyMoon(i,gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48),  64);
+            setTinyMoon(i,gc.origin[i], new SpriteSheet("res/entity/mon1_sprite.png", 48, 48),  64);
         }
     }
 

@@ -20,7 +20,6 @@ public class GameIntruction extends GameState {
 
     public static Player player;
     private EntityRender playerRender;
-    public static Vector2f map;
     private Camera cam;
     private PlayerUI pui;
     private GameControl gc;
@@ -31,11 +30,12 @@ public class GameIntruction extends GameState {
     public GameIntruction(GameStateManager gsm, Camera cam) {
         super(gsm);
         this.mission = new int[10];
-        map = new Vector2f(0, 0);
-        Vector2f.setWorldVar(map.x, map.y);
+        GameStateManager.map = new Vector2f(0, 0);
+        Vector2f.setWorldVar(GameStateManager.map.x, GameStateManager.map.y);
         this.cam = cam;
-        player = new Player(new Vector2f(0 + (GamePanel.width / 2) + 100, 0 + (GamePanel.height / 2) + 150), 64);
+        player = new Player(new Vector2f(0 + (GamePanel.width / 2) , 0 + (GamePanel.height / 2) ), 64);
         playerRender = new EntityRender(player, new SpriteSheet("res/entity/linkFormatted_new.png", 32, 32));
+        cam.target(player);
         gc = new GameControl(player, cam, gsm,true );
         pui = new PlayerUI(player);
         npcui = new NpcUI(gc.npc[0]);
@@ -44,15 +44,14 @@ public class GameIntruction extends GameState {
     }
 
     public void update(double time) {
-        Vector2f.setWorldVar(map.x, map.y);
-        if (!gsm.isStateActive(GameStateManager.PAUSE) && !gsm.isStateActive(GameStateManager.GAMEOVER)
-                && !gsm.isStateActive(GameStateManager.SHOP) && !gsm.isStateActive(GameStateManager.MENU) ) {
-            playerRender.update();
-            player.update(time);
-            gc.update(time);
-            pui.update(time);
-            cam.update();
-        }
+        Vector2f.setWorldVar(GameStateManager.map.x, GameStateManager.map.y);
+
+        playerRender.update();
+        player.update(time);
+        gc.update(time);
+        pui.update(time);
+        cam.update();
+
         mission1();
         mission2();
         mission3();
@@ -65,6 +64,7 @@ public class GameIntruction extends GameState {
     }
     public void input(MouseHandler mouse, KeyHandler key) {
         player.input(mouse, key);
+        cam.input(mouse, key);
         if(this.missionDone){
             gc.npc[0].input(mouse, key);
         }

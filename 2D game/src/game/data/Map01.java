@@ -1,5 +1,6 @@
 package game.data;
 
+import game.ai.MapSolid;
 import game.game_object.object.item.Arrow;
 import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
@@ -13,10 +14,11 @@ public class Map01 extends MapAsset {
         gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
         gc.gameObject.add(new Door(new Vector2f(2240, 1408), 128)); // 35 va 22
         gc.gameObject.add(new Arrow(new Vector2f(2240, 1728), 128)); // 35 va 27
+        gc.mapSolid = new MapSolid(gc.tm);
     }
 
     public void setMonsterPosition() {
-        int i = 1;
+        int i = 0;
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
         gc.origin[i] = new Vector2f(2000, 500);
         setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 64);
@@ -91,7 +93,7 @@ public class Map01 extends MapAsset {
         } else if (i == 3) {
             setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 3, 128, 32), 16, 16), 64);
         } else {
-            setTinyMoon( i, gc.origin[i], new SpriteSheet("res/entity/littlegirl.png", 48, 48), 64);
+            setTinyMoon( i, gc.origin[i], new SpriteSheet("res/entity/mon1_sprite.png", 48, 48), 64);
         }
     }
 

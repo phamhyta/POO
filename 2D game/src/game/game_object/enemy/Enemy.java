@@ -74,7 +74,7 @@ public class Enemy extends Entity {
             dy = 0;
             stopDirecting();
         } else {
-            if (this.isInCircle(center, r) &&sense.colCircleBox(player.getBounds())) {this.chase(player);}
+            if (this.isInCircle(center, r) && sense.colCircleBox(player.getBounds())) {this.chase(player);}
             else {this.moveBack(center);}
             move();
         }
@@ -82,6 +82,7 @@ public class Enemy extends Entity {
 
     public void update(Player player, double time, Vector2f defaultPosition) {
         super.update(time);
+        sense = new BoundingBox(new Vector2f(pos.x + size / 2 - r_sense / 2, pos.y + size / 2 - r_sense / 2), r_sense);
         moveInCircle(defaultPosition, r_enemyArea, player);
 
         if (teleported) {

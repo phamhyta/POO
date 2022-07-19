@@ -2,6 +2,8 @@ package game.ai;
 
 import game.data.GameControl;
 import game.tile.TileMapObj;
+import game.tile.blocks.HoleBlock;
+import game.tile.blocks.ObjBlock;
 
 
 import java.util.ArrayList;
@@ -33,15 +35,7 @@ public class PathFind {
             }
         }
     }
-    public void update(){
-        for(int i =0; i< GameControl.tm.tm.size();i++){
-            if(GameControl.tm.tm.get(i) instanceof TileMapObj){
-                node[i / maxCol][i % maxCol].solid = true;
-                System.out.println(i/maxCol);
-                System.out.println(i%maxRow);
-            }
-        }
-    }
+
     public void resetNodes() {
         int col = 0;
         int row = 0;

@@ -32,8 +32,7 @@ public class GameControl {
     public static TileManager tm;
     public EntityRender entityRender[];
     public NPCRender[] npcRender;
-
-    public static MapSolid mapSolid;
+    public MapSolid mapSolid;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
@@ -46,7 +45,7 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        this.mapAs = new Map01(this);
+        this.mapAs = new Map03(this);
 
     }
 

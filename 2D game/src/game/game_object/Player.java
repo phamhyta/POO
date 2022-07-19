@@ -67,10 +67,10 @@ public class Player extends Entity {
 
         pos.x = (GamePanel.width / 2) + 100;
         pos.y = (GamePanel.height / 2) + 150;
-        PlayState.map.x = 0;
+        GameStateManager.map.x = 0;
         GameStateManager.cam.getPos().x = 0;
         GameStateManager.cam.getPos().y = 0;
-        PlayState.map.y = 0;
+        GameStateManager.map.y = 0;
     }
 
     private void checkLevelUp() {

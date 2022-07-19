@@ -40,8 +40,8 @@ public class GameStateManager {
 
     public GameStateManager(Graphics2D g) {
         this.g = g;
-        map = new Vector2f(GamePanel.width, GamePanel.height);
-        Vector2f.setWorldVar(map.x, map.y);
+        map = new Vector2f(0, 0);
+
         states = new GameState[20];
         font = new Font("res/font/font.png", 10, 10);
         fontf = new Fontf();

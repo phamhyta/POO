@@ -43,10 +43,7 @@ public class Wizard_BOSS extends Enemy {
         right = true;
 
     }
-    public void addForce(float a, boolean vertical) {
-//        if(!vertical) {dx -= a;}
-//        else {dy -= a;}
-    }
+
     public void update(Player player, double time, Vector2f defaultPosition) {
         super.update(player, time, defaultPosition);
 
@@ -58,8 +55,8 @@ public class Wizard_BOSS extends Enemy {
         if (!skilling)
                     skillStartTime = System.nanoTime();
             if ( time / 1000000 - skillStartTime / 1000000 > skillDuration / 2) {
-                skill.add(new EnemySkill(this, 48,player));
-            skillStartTime = System.nanoTime();
+                this.skill.add(new EnemySkill(this, 48,player));
+                skillStartTime = System.nanoTime();
         }
 
 
