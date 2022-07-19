@@ -412,6 +412,7 @@ public class ShopState extends GameState {
                         }
                     }
                 }
+                slotY++;
                 slotX = 10;
                 // Mo ta
                 c = new Color(255, 165, 0);

@@ -49,7 +49,8 @@ public class GameControl {
         this.mapAs = new Map01(this);
 
     }
-    public GameControl(Player player, Camera cam, GameStateManager gsm,boolean INSTRUCTION) {
+
+    public GameControl(Player player, Camera cam, GameStateManager gsm, boolean INSTRUCTION) {
         this.player = player;
         this.cam = cam;
         this.gsm = gsm;
@@ -80,30 +81,28 @@ public class GameControl {
 
     public void update(double time) {
 
-
         for (int i = 0; i < gameObject.size(); ++i) {
             if (this.player.getBounds().collides(gameObject.get(i).getBounds())) {
                 if (gameObject.get(i).type == GameObject.type_consumable) {
                     gameObject.get(i).use(player);
                     gameObject.remove(i);
                 } else if (gameObject.get(i).type == GameObject.type_nextMap) {
-                    if(!checkNextMap){
+                    if (!checkNextMap) {
                         currentMap++;
                         checkNextMap = true;
                     }
-                    System.out.println("CurrentMap: "+ currentMap);
-                    if(gsm.isStateActive(GameStateManager.PLAY)){
+                    System.out.println("CurrentMap: " + currentMap);
+                    if (gsm.isStateActive(GameStateManager.PLAY)) {
                         player.resetPosition();
                     }
                 } else {
-                    if (gameObject.get(i).type != GameObject.type_Arrow){
+                    if (gameObject.get(i).type != GameObject.type_Arrow) {
                         player.setTargetMaterial(gameObject.get(i));
                         gameObject.remove(i);
                     }
                 }
             }
         }
-
 
         for (int i = 0; i < enemy.length; ++i) {
             if (this.enemy[i] != null) {
@@ -113,7 +112,7 @@ public class GameControl {
 
                 if (enemy[i].getDeath()) {
                     player.setEXP(player.getEXP() + enemy[i].getEXP());
-                    player.setCoin(player.getCoin() +enemy[i].getCoin());
+                    player.setCoin(player.getCoin() + enemy[i].getCoin());
                     enemy[i].drop();
                     entityRender[i] = null;
                     enemy[i] = null;
@@ -121,7 +120,7 @@ public class GameControl {
                 } else {
                     if (entityRender[i] != null)
                         entityRender[i].update();
-                        enemy[i].update(player, time, origin[i]);
+                    enemy[i].update(player, time, origin[i]);
                 }
             }
             if (enemy[i] == null && this.deadStartTime[i] != 0L
@@ -133,24 +132,22 @@ public class GameControl {
 
         for (int i = 0; i < npc.length; i++) {
             if (npc[i] != null) {
-                    if (player.getHitBounds().collides(npc[i].getBounds())) {
-                        if(npc[i].getName() == "Shop"){
+                if (player.getHitBounds().collides(npc[i].getBounds())) {
+                    if (npc[i].getName() == "Shop") {
                         System.out.println("Shop");
                         gsm.add(GameStateManager.DIALOGUES);
                         pui = new NpcUI(npc[i]);
-                    } else
-                        gsm.pop(GameStateManager.DIALOGUES);
-                    if(npc[i].getName() == "Guide"){
-                        
                     }
+                } else
+                    gsm.pop(GameStateManager.DIALOGUES);
+                if (npc[i].getName() == "Guide") {
+
                 }
-                    
             }
         }
-        
-        
+
     }
-    
+
     public void loadNewMap() {
         checkNextMap = false;
         if (currentMap == 0) {
@@ -164,21 +161,23 @@ public class GameControl {
             mapAs = new Map03(this);
         }
     }
-    /*public void loadNewMap() {
-        if (currentMap == 0) {
-            mapAs = new MapIntruction(this);
-        } else if (currentMap == 1) {
-            gsm.pop(GameStateManager.CHECK);
-            gsm.add(GameStateManager.PLAY);
-            mapAs = new Map01(this);
-        } else if (currentMap == 2) {
-            mapAs = new Map02(this);
-        }else if(currentMap ==3){
-            mapAs = new Map03(this);
-        } else {
-            currentMap = 0;
-        }
-    }*/
+    /*
+     * public void loadNewMap() {
+     * if (currentMap == 0) {
+     * mapAs = new MapIntruction(this);
+     * } else if (currentMap == 1) {
+     * gsm.pop(GameStateManager.CHECK);
+     * gsm.add(GameStateManager.PLAY);
+     * mapAs = new Map01(this);
+     * } else if (currentMap == 2) {
+     * mapAs = new Map02(this);
+     * }else if(currentMap ==3){
+     * mapAs = new Map03(this);
+     * } else {
+     * currentMap = 0;
+     * }
+     * }
+     */
 
     public void render(Graphics2D g) {
         if (currentMap != defaultMap) {
