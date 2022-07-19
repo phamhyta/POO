@@ -244,7 +244,7 @@ public class Player extends Entity {
     }
 
     public void setTargetMaterial(GameObject go) {
-        if (inventory.size() < 12) {
+        if (inventory.size() < 24) {
             this.inventory.add(go);
         }
     }
