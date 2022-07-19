@@ -93,7 +93,7 @@ public class GameStateManager {
             states[MENU] = new MenuState(this);
         }
         else if(state == INSTRUCTION){
-            states[INSTRUCTION] = new GameIntruction(this,cam);
+            states[INSTRUCTION] = new GameInstruction(this,cam);
         }else if(state == NEWGAME){
             this.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
             states[PLAY] = new PlayState(this, this.cam);

@@ -60,7 +60,7 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        this.mapAs = new MapIntruction(this);
+        this.mapAs = new MapInstruction(this);
     }
 
     private void resetAsset() {
@@ -152,16 +152,14 @@ public class GameControl {
     }
     
     public void loadNewMap() {
-        checkNextMap = false;
         if (currentMap == 0) {
-            mapAs = new MapIntruction(this);
+            mapAs = new Map01(this);
         } else if (currentMap == 1) {
-            gsm.pop(GameStateManager.INSTRUCTION);
-            gsm.add(GameStateManager.PLAY);
-        } else if (currentMap == 2) {
             mapAs = new Map02(this);
-        } else {
+        } else if (currentMap == 2) {
             mapAs = new Map03(this);
+        } else {
+            currentMap = 0;
         }
     }
     /*public void loadNewMap() {
