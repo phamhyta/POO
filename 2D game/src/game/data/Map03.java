@@ -1,7 +1,5 @@
 package game.data;
 
-import game.ai.MapSolid;
-import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
 import game.tile.TileManager;
@@ -11,7 +9,6 @@ public class Map03 extends MapAsset {
     public Map03(GameControl gc) {
         super(gc);
         gc.tm = new TileManager("res/tile/nature.xml", gc.cam);
-        gc.mapSolid = new MapSolid(gc.tm);
     }
 
     public void setMonsterPosition() {

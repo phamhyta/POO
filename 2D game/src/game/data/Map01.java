@@ -1,6 +1,5 @@
 package game.data;
 
-import game.ai.MapSolid;
 import game.game_object.object.item.Arrow;
 import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
@@ -14,7 +13,7 @@ public class Map01 extends MapAsset {
         gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
         gc.gameObject.add(new Door(new Vector2f(2240, 1408), 128)); // 35 va 22
         gc.gameObject.add(new Arrow(new Vector2f(2240, 1728), 128)); // 35 va 27
-        gc.mapSolid = new MapSolid(gc.tm);
+//        gc.mapSolid = new MapSolid(gc.tm);
     }
 
     public void setMonsterPosition() {

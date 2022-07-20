@@ -1,6 +1,5 @@
 package game.data;
 
-import game.ai.MapSolid;
 import game.game_object.enemy.Enemy;
 import game.game_object.npc.NPC;
 import game.game_object.object.GameObject;
@@ -32,7 +31,6 @@ public class GameControl {
     public static TileManager tm;
     public EntityRender entityRender[];
     public NPCRender[] npcRender;
-    public MapSolid mapSolid;
 
     public GameControl(Player player, Camera cam, GameStateManager gsm) {
         this.player = player;
@@ -45,7 +43,7 @@ public class GameControl {
         entityRender = new EntityRender[20];
         this.npc = new NPC[5];
         npcRender = new NPCRender[5];
-        this.mapAs = new Map03(this);
+        this.mapAs = new Map01(this);
 
     }
 
@@ -160,23 +158,7 @@ public class GameControl {
             mapAs = new Map03(this);
         }
     }
-    /*
-     * public void loadNewMap() {
-     * if (currentMap == 0) {
-     * mapAs = new MapIntruction(this);
-     * } else if (currentMap == 1) {
-     * gsm.pop(GameStateManager.CHECK);
-     * gsm.add(GameStateManager.PLAY);
-     * mapAs = new Map01(this);
-     * } else if (currentMap == 2) {
-     * mapAs = new Map02(this);
-     * }else if(currentMap ==3){
-     * mapAs = new Map03(this);
-     * } else {
-     * currentMap = 0;
-     * }
-     * }
-     */
+
 
     public void render(Graphics2D g) {
         if (currentMap != defaultMap) {

@@ -1,6 +1,4 @@
 package game.data;
-import game.ai.MapSolid;
-import game.game_object.enemy.TinyMon;
 import game.game_object.object.item.Arrow;
 import game.game_object.object.item.Door;
 import game.graphics.SpriteSheet;
@@ -14,7 +12,6 @@ public class Map02 extends MapAsset {
         gc.tm = new TileManager("res/tile/winter.xml", gc.cam);
         gc.gameObject.add(new Door(new Vector2f(2880, 64), 128)); // 45 va 1
         gc.gameObject.add(new Arrow(new Vector2f(2880, 320), 128)); // 45 va 5
-        gc.mapSolid = new MapSolid(gc.tm);
     }
 
     public void setMonsterPosition() {
