@@ -1,6 +1,4 @@
 package game.data;
-import game.ai.MapSolid;
-import game.game_object.object.item.Door;
 
 import game.graphics.SpriteSheet;
 import game.math.Vector2f;
@@ -10,7 +8,6 @@ import game.tile.TileManager;
 public class MapIntruction extends MapAsset {
 
     public MapIntruction(GameControl gc){
-
         super(gc);
         gc.tm = new TileManager("res/tile/intro.xml", gc.cam);
        

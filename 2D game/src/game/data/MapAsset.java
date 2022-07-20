@@ -34,7 +34,7 @@ public abstract class MapAsset {
         gc.entityRender[i] = new TinyBoxRender(tiny, spriteSheet);
     }
     public void setWizard(int i, Vector2f vt, SpriteSheet spriteSheet, int size) {
-        Wizard_BOSS wiz = new Wizard_BOSS(new Vector2f(gc.origin[i]), size);
+        Wizard_BOSS wiz = new Wizard_BOSS(new Vector2f(vt), size);
         gc.enemy[i] = wiz;
         gc.entityRender[i] = new WizardRender(wiz, spriteSheet);
     }

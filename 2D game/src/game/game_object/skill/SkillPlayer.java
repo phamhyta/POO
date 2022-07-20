@@ -11,7 +11,17 @@ public class SkillPlayer extends Skill{
     }
 
     public void update(){
-        super.update();
+        if(!die){
+            move();
+            this.pos.x += dx;
+            this.pos.y += dy;
+        }
+        if(pos.x > defaultVector.x + r_attack || pos.x < defaultVector.x - r_attack||
+                pos.y >defaultVector.y + r_attack || pos.y < defaultVector.y - r_attack){
+            die = true;
+        }
+        if(tc.collisionTile(dx, 0) || tc.collisionTile(0, dy)) die = true;
+
         for(int i = 0; i< GameControl.enemy.length; i++){
             if(GameControl.enemy[i] != null){
                 if(this.getBounds().collides(GameControl.enemy[i].getBounds())){

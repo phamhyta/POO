@@ -8,8 +8,7 @@ import game.render.TxtAndImageRender;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
-public class IntroState extends GameState
-{
+public class IntroState extends GameState {
     private int count;
     private BufferedImage listOfImages1[];
     private TxtAndImageRender listTxt[];

@@ -79,9 +79,7 @@ public class Entity {
     protected int attackManaConsume = 2;
     protected int skillManaConsume = 10;
     protected ArrayList<Skill> skill;
-    protected ArrayList<EnemySkill> enemySkill;
     protected PathFind pathFind;
-    protected boolean onPath = false;
 
     public Entity (Vector2f origin, int size){
         this.bounds = new BoundingBox(origin, size, size);
@@ -110,8 +108,6 @@ public class Entity {
         skill= new ArrayList<>();
         pathFind = new PathFind();
     }
-
-
 
     public void addForce(float a, boolean vertical) {
         if(!vertical) {dx -= a;}
@@ -156,28 +152,20 @@ public class Entity {
     }
 
     protected boolean isAttacking(double time) {
-        if((attacktime / 1000000) > ((time / 1000000) - attackSpeed) || (this.mana - attackManaConsume) <= 0) {canAttack = false;}
-            else canAttack = true;
-        if((attacktime / 1000000) + attackDuration > (time / 1000000) && (this.mana - attackManaConsume) >= 0) {
-            return true;
-        }
-        return false;
+        canAttack = !((attacktime / 1000000) > ((time / 1000000) - attackSpeed)) && (this.mana - attackManaConsume) > 0;
+        return (attacktime / 1000000) + attackDuration > (time / 1000000) && (this.mana - attackManaConsume) >= 0;
     }
 
     protected boolean isSkilling(double time) {
-        if((skilltime / 1000000) > ((time / 1000000) - skillSpeed) || (this.mana - skillManaConsume) <= 0) {canSkill = false;}
-        else canSkill = true;
-        if((skilltime / 1000000) + skillDuration > (time / 1000000) && (this.mana - skillManaConsume) >= 0) {return true;}
-        return false;
+        canSkill = !((skilltime / 1000000) > ((time / 1000000) - skillSpeed)) && (this.mana - skillManaConsume) > 0;
+        return (skilltime / 1000000) + skillDuration > (time / 1000000) && (this.mana - skillManaConsume) >= 0;
     }
 
     public boolean isInCircle (Vector2f center, double r) {
-        if (this.bounds.distance(center) < r) {return true;}
-        return false;
+        return this.bounds.distance(center) < r;
     }
     public boolean isInCirclePath (Vector2f center, double r) {
-        if (this.bounds.distance(center)  > (r-size) && this.bounds.distance(center)  < (r+ size)) {return true;}
-        return false;
+        return this.bounds.distance(center) > (r - size) && this.bounds.distance(center) < (r + size);
     }
     public void move() {
         if(up) {
@@ -223,7 +211,7 @@ public class Entity {
     }
 
     protected void moveInPath(Entity entity){
-        pathFind.resetNodes();
+        pathFind.update();
         pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
                 (int)(entity.pos.x + entity.getBounds().getXOffset())/64,(int)(entity.pos.y+entity.getBounds().getYOffset() )/64);
         if(pathFind.search()){
@@ -241,7 +229,7 @@ public class Entity {
     }
 
     protected void moveInPath(Vector2f origin){
-        pathFind.resetNodes();
+        pathFind.update();
         pathFind.setNodes((int)(pos.x +bounds.getYOffset()) /64,(int)(this.pos.y +bounds.getYOffset()) /64,
                 (int)(origin.x /64),(int)(origin.y /64));
         if(pathFind.search()){
@@ -259,26 +247,10 @@ public class Entity {
 
 
     protected void autoDirecting(Vector2f posA, Vector2f posB){
-        if (posA.y > posB.y + 5) {
-            up = true;
-        } else {
-            up = false;
-        }
-        if (posA.y < posB.y - 5) {
-            down = true;
-        } else {
-            down = false;
-        }
-        if (posA.x > posB.x + 5) {
-            left = true;
-        } else {
-            left = false;
-        }
-        if (posA.x < posB.x - 5) {
-            right = true;
-        } else {
-            right = false;
-        }
+        up = posA.y > posB.y + 5 ;
+        down = posA.y < posB.y - 5;
+        left = posA.x > posB.x + 5;
+        right = posA.x < posB.x - 5;
     }
 
     protected void stopDirecting(){

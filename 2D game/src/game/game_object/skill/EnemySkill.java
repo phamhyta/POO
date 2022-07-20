@@ -15,9 +15,8 @@ public class EnemySkill extends Skill{
     }
 
     public void update() {
-
         if(!die){
-            this.chase(player);
+            autoDirecting(this.pos, player.getPos());
             move();
             this.pos.x += dx;
             this.pos.y += dy;
@@ -34,12 +33,5 @@ public class EnemySkill extends Skill{
         }
     }
 
-    private void chase(Player player) {
-        if (!player.getDeath()) {
-            autoDirecting(this.pos, player.getPos());
-        } else {
-            stopDirecting();
-        }
-    }
 
 }

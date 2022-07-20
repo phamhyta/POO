@@ -40,8 +40,8 @@ public class GameStateManager {
 
     public GameStateManager(Graphics2D g) {
         this.g = g;
-        map = new Vector2f(GamePanel.width, GamePanel.height);
-        Vector2f.setWorldVar(map.x, map.y);
+        map = new Vector2f(0, 0);
+
         states = new GameState[20];
         font = new Font("res/font/font.png", 10, 10);
         fontf = new Fontf();
@@ -75,6 +75,7 @@ public class GameStateManager {
         if (states[state] != null)
             return;
         if (state == PLAY) {
+            cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
             states[PLAY] = new PlayState(this, this.cam);
         } else if (state == TITLE) {
             states[TITLE] = new TitleState(this);
@@ -93,6 +94,7 @@ public class GameStateManager {
             states[MENU] = new MenuState(this);
         }
         else if(state == INSTRUCTION){
+            cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
             states[INSTRUCTION] = new GameIntruction(this,cam);
         }else if(state == NEWGAME){
             this.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));

@@ -29,19 +29,7 @@ public class Skill extends Entity {
         deacc=3;
     }
 
-    public void update() {
-        if(!die){
-            move();
-            this.pos.x += dx;
-            this.pos.y += dy;
-        }
-        if(pos.x > defaultVector.x + r_attack || pos.x < defaultVector.x - r_attack||
-            pos.y >defaultVector.y + r_attack || pos.y < defaultVector.y - r_attack){
-            die = true;
-        }
-
-        if(tc.collisionTile(dx, 0) || tc.collisionTile(0, dy)) die = true;
-    }
+    public void update() {}
     public SkillRender getSkillRender() {return skillRender;}
     public int getType() {return type;}
 

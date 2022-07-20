@@ -1,13 +1,14 @@
 package game.ai;
 
-import game.data.GameControl;
 import game.tile.TileMapObj;
+import game.tile.blocks.HoleBlock;
+import game.tile.blocks.ObjBlock;
 
 
 import java.util.ArrayList;
 
 public class PathFind {
-    public static Node[][] node;
+    private Node[][] node;
     ArrayList<Node> openList = new ArrayList<>();
     private ArrayList<Node> pathList = new ArrayList<>();
     private Node startNode, goalNode, currentNode;
@@ -34,14 +35,13 @@ public class PathFind {
         }
     }
     public void update(){
-        for(int i =0; i< GameControl.tm.tm.size();i++){
-            if(GameControl.tm.tm.get(i) instanceof TileMapObj){
-                node[i / maxCol][i % maxCol].solid = true;
-                System.out.println(i/maxCol);
-                System.out.println(i%maxRow);
+        for (int i = 0; i < TileMapObj.event_blocks.length; i++) {
+            if (TileMapObj.event_blocks[i] instanceof ObjBlock || TileMapObj.event_blocks[i] instanceof HoleBlock) {
+                node[i % 50][i / 50].solid = true;
             }
         }
     }
+
     public void resetNodes() {
         int col = 0;
         int row = 0;
@@ -80,7 +80,6 @@ public class PathFind {
             }
         }
 
-        
     }
     private void getCost(Node node){
         //GET G COST(the distance from the start node)

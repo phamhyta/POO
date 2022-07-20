@@ -12,6 +12,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TileManager {
 
@@ -52,7 +53,7 @@ public class TileManager {
         try {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
-            Document doc = builder.parse(new File(getClass().getClassLoader().getResource(path).toURI()));
+            Document doc = builder.parse(new File(Objects.requireNonNull(getClass().getClassLoader().getResource(path)).toURI()));
             doc.getDocumentElement().normalize();
 
             NodeList list = doc.getElementsByTagName("tileset");
