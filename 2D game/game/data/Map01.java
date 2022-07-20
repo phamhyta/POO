@@ -10,6 +10,7 @@ public class Map01 extends MapAsset {
 
     public Map01(GameControl gc) {
         super(gc);
+        gc.currentMap = 1;
         gc.tm = new TileManager("res/tile/beach.xml", gc.cam);
         gc.gameObject.add(new Door(new Vector2f(2240, 1408), 128)); // 35 va 22
         gc.gameObject.add(new Arrow(new Vector2f(2240, 1728), 128)); // 35 va 27

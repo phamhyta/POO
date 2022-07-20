@@ -34,7 +34,7 @@ public class TileMapObj extends TileMap {
         String[] block = data.split(",");
         for(int i = 0; i < (width * height); i++) {
             int temp = Integer.parseInt(block[i].replaceAll("\\s+",""));
-            if(GameControl.currentMap==2){
+            if(GameControl.currentMap==3){
                 if(temp != 0&&temp!=42) {
                     tempBlock = new ObjBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
                     event_blocks[i] = tempBlock;
@@ -47,21 +47,23 @@ public class TileMapObj extends TileMap {
                 }
             }
             else{
-                if(GameControl.currentMap==1){
+                if(GameControl.currentMap==2||GameControl.currentMap==0){
                     if(temp!=0){
                         tempBlock = new ObjBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
                         event_blocks[i] = tempBlock;
                     }
                 }
                 else{
-                    if(temp != 0&&temp!=38) {
-                        tempBlock = new ObjBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
-                        event_blocks[i] = tempBlock;
-                    }
-                    else{
-                        if(temp==38) {
-                            tempBlock = new HoleBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
+                    if(GameControl.currentMap==1){
+                        if(temp != 0&&temp!=38) {
+                            tempBlock = new ObjBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
                             event_blocks[i] = tempBlock;
+                        }
+                        else{
+                            if(temp==38) {
+                                tempBlock = new HoleBlock(spriteSheet.getSprite((int) ((temp - 1) % tileColumns), (int) ((temp - 1) / tileColumns) ), new Vector2f((int) (i % width) * tileWidth, (int) (i / height) * tileHeight), tileWidth, tileHeight);
+                                event_blocks[i] = tempBlock;
+                            }
                         }
                     }
                 }
