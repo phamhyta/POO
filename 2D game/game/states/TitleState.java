@@ -1,7 +1,6 @@
 package game.states;
 
 import game.GamePanel;
-import game.data.GameControl;
 import game.math.Vector2f;
 import game.ui.Button;
 import game.util.KeyHandler;

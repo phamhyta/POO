@@ -70,7 +70,7 @@ public class Entity {
     protected float deacc = 0.3f;
     protected float force = 25f;
 
-    protected int coin = 10000;
+    protected int coin = 1000;
     protected boolean teleported = false;
     protected TileCollision tc;
     protected String name = "" ;

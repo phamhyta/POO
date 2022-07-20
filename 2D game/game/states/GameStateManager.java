@@ -97,8 +97,8 @@ public class GameStateManager {
             cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
             states[INSTRUCTION] = new GameIntruction(this,cam);
         }else if(state == NEWGAME){
-            this.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
-            states[PLAY] = new PlayState(this, this.cam);
+            GameStateManager.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
+            states[PLAY] = new PlayState(this, GameStateManager.cam);
         }
 
     }

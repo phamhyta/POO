@@ -45,7 +45,7 @@ public class Player extends Entity {
     }
 
     private void setDefaultValue() {
-        attackBase = 100;
+        attackBase = 25;
         MP_Base = 100;
         mana = 100;
         HP_Base = 200;
