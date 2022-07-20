@@ -1,4 +1,4 @@
-package game.ai;
+package game.math.a_star;
 
 public class Node {
     Node parent;

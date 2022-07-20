@@ -1,12 +1,7 @@
 package game.game_object.enemy;
 
-import game.data.GameControl;
 import game.game_object.Entity;
 import game.game_object.Player;
-import game.game_object.object.item.Potion_Blue_1;
-import game.game_object.object.item.Shield_2;
-import game.game_object.object.item.Coin;
-import game.game_object.object.item.Potion_Red_1;
 import game.graphics.Animation;
 import game.math.BoundingBox;
 import game.math.Vector2f;
