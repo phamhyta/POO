@@ -152,14 +152,13 @@ public class GameControl {
         } else if (currentMap == 1) {
             gsm.pop(GameStateManager.INSTRUCTION);
             gsm.add(GameStateManager.PLAY);
-            mapAs = new Map01(this);
+            // mapAs = new Map01(this);
         } else if (currentMap == 2) {
             mapAs = new Map02(this);
         } else {
             mapAs = new Map03(this);
         }
     }
-
 
     public void render(Graphics2D g) {
         if (currentMap != defaultMap) {
