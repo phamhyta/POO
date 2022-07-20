@@ -34,7 +34,7 @@ Game SimpleRPG là 1 đề tài rất phù hợp để vận dụng phương ph�
 2.	Intro đầu game
 Đây là một câu chuyện bao quanh các nhân vật và player có trong game. Người chơi có thể ấn ESC để bỏ qua và vào thẳng game
 3.	Player  
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/linkFormatted_new.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/entity/linkFormatted_new.png)  
 Player có thể thực hiện các hành động sau đây:
 -	Di chuyển xung quanh bản đồ bằng phím:
     + W: Lên trên
@@ -64,12 +64,12 @@ Player có thể thực hiện các hành động sau đây:
 4.	Các loại quái
 Trong game có 3 loại quái chính:
 - TinyBox  
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/minimonsters.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/entity/minimonsters.png)  
 - TinyMon  
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/mon1_sprite.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/entity/mon1_sprite.png)  
 - Boss: Đây là loại quái mạnh nhất trong game.  
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/boss_wizard/Attack1.png)  
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/entity/boss_wizard/Attack2.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/entity/boss_wizard/Attack1.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/entity/boss_wizard/Attack2.png)  
 Người chơi sẽ thực hiện đánh quái để nhặt trang bị nhằm tăng sức mạnh hoặc nhặt xu để mua trang bị, sau khi đủ mạnh mới có thể đánh thắng được Boss.
 5.	NPC – Shop
 -	Đây là vị trí người chơi có thể mua,bán đồ:
@@ -80,13 +80,13 @@ Người chơi sẽ thực hiện đánh quái để nhặt trang bị nhằm t�
 Trong game có 3 map, người chơi có thể đi đến cổng để chuyển map. Mỗi map sẽ có các loại quái khác nhau, giao diện khác nhau. Độ khó của các map sẽ tăng dần và Boss nằm ở map thứ 3. 
 - Map 1:  
   
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/tile/beach.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/tile/beach.png)  
 - Map 2:  
   
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/tile/winter.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/tile/winter.png)  
 - Map 3:  
   
-![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/src/res/tile/nature.png)  
+![image](https://github.com/phamhyta/POO/blob/huong/2D%20game/res/tile/nature.png)  
 7.	Menu
 Menu trong game sẽ hiện khi người chơi chết hoặc khi ấn phím E
 -	New game: Bắt đầu một game mới
