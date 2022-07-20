@@ -99,6 +99,7 @@ public class GameIntruction extends GameState {
                     mission[2] = 1;
                     Vector2f pos = new Vector2f(1000, 600);
                     gc.origin[1] = pos;
+                    GameControl.enemy[1].setPos(pos);
                 }
             }
             if (mission[2] == 1) {
@@ -120,6 +121,7 @@ public class GameIntruction extends GameState {
                     mission[3] = 1;
                     Vector2f pos = new Vector2f(1000, 600);
                     gc.origin[3] = pos;
+                    GameControl.enemy[3].setPos(pos);
                 }
             }
             if (mission[3] == 1) {

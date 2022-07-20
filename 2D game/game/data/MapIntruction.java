@@ -16,7 +16,7 @@ public class MapIntruction extends MapAsset {
     protected void setMonsterPosition() {
         int i = 1;
         SpriteSheet minimonsterSheet = new SpriteSheet("res/entity/minimonsters.png", 16, 16);
-        gc.origin[i] = new Vector2f(1000, 1000);
+        gc.origin[i] = new Vector2f(2000, 2000);
         setTinyBox( i, gc.origin[i], new SpriteSheet(minimonsterSheet.getSprite(0, 0, 128, 32), 16, 16), 48);
         
         i = 0;
@@ -39,7 +39,7 @@ public class MapIntruction extends MapAsset {
         
         i = 3;
         SpriteSheet tinyMoonSheet = new SpriteSheet("res/entity/mon1_sprite.png", 50, 50);
-        gc.origin[i] = new Vector2f(1000, 1000);
+        gc.origin[i] = new Vector2f(2000, 2000);
         setTinyMoon( i, gc.origin[i], tinyMoonSheet, 64);
     }
 
