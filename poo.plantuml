@@ -1,128 +1,222 @@
 @startuml
-    class Entity{
-        - posX: float
-        - posY: float
-        - speed:int
-        - defense: int
-        {static} - maxHP: int
-        - HP: int
+    class Player extends Entity{
+        + coin: int
+        - enemy: ArrayList<Enemy>
+        + inventory: ArrayList<GameObject>
+        - nextLevelEXP: int
+
+        + Player()
+        - setDefaultValue(): void
+        + setTargetEnemy(): void
+        + setTargetMaterial(): void
+        + removeMaterial(): void
+        - resetPosition(): void
+        - checkLevelUp(): void
+        + update(): void
+        + input(): void 
     }
+    class Entity{
+        # currentDirection: int
+        # hitsize: int
+        # hitBounds: BoundingBox
+        # bounds: BoundingBox
+        # pos: Vector2f
+        # size: int
+        # UP: int
+        # DOWN: int
+        # RIGHT: int
+        # LEFT: int
+        # up:  boolean
+        # down:  boolean
+        # right:  boolean
+        # left:  boolean
+        # fallen:  boolean
+        # hasIdle:  boolean
+        + xCol: boolean
+        + yCol: boolean
+        # invincible: int
+        # invincibletime: double
+        # isInvincible:  boolean
+        # die:  boolean
+        # attackSpeed: int
+        # attackDuration: int
+        # attacktime: double
+        # canAttack: boolean
+        # attacking: boolean
+        # skillSpeed: int
+        # skillDuration: int
+        # skillStartTime: long
+        # skilltime: double
+        # canSkill: boolean
+        # skilling: boolean
+        # maxHealth: int
+        # health: int
+        # healthpercent: float
+        # defense: int
+        # damage: int
+        # maxMana: int
+        # mana: int
+        # manapercent: float
+        # EXP: int
+        # dx: float
+        # dy: float
+        # maxSpeed: float
+        # acc: float
+        # deacc: float
+        # force: float
+        # coin: int
+        # teleported: boolean
+        # tc: TileCollision
+        # name: String
+        # attackManaConsume: int
+        # skillManaConsume: int
+        # skill: ArrayList<Skill>
+        # enemySkill: ArrayList<EnemySkill> 
+        + Entity()
+        + setPos(): void
+        + addForce(): void
+        + setHealth(): void
+        + damageCaculate: int
+        + getDirection(): int
+        - setHitBoxDirection(): void
+        # isAttacking(): boolean
+        # isSkilling: boolean
+        #  isInCircle(): boolean
+        #  isInCirclePath(): boolean
+        + move(): void
+        # autoDirecting: void
+        # stopDirecting: void
+        + update(): void
+        + updateHealthManaPercent(): void
+    }
+    '-------------object-----------
+    abstract class GameObject{
+        # spriteSheet: spriteSheet
+        # objectRender: ObjectRender
+        # bounds: BoundingBox
+        # pos: Vector2f
+        # size: int
+        # coin: int
+        # name: String
+        # HP: int
+        # MP: int
+        # speed: int
+        # attackValue: int
+        # defense: int
+        # type: int
+        + GameObject()
+        + use(): void
+    }
+    '-------------ai-------------------
+    class MapSolid{
+        - tileManager: TileManager
+        + MapSolid(): void
+    } 
+    class PathFind{
+        + node: Node[][] 
+        openList: ArrayList<Node>
+        + pathList: ArrayList<Node>
+        + startNode, goalNode, currentNode:  Node
+        goalReached: boolean
+        step: int
+        - maxCol: int
+        - maxRow: int
+        + PathFind()
+        + instantiateNodes(): void
+        + update(): void
+        + resetNodes(): void
+        + setNodes(): void
+        + getCost(): void
+        + search(): void
+        + openNode(): void
+        + trackThePath(): void
+    }
+    class Node {
+        parent: Node
+        col: int
+        row: int
+        gCost: int
+        hCost: int
+        fCost: int
+        start: boolean
+        goal: boolean
+        open: boolean
+        checked: boolean
+        + Node()
+        + getCol()
+        + getRow()
+    }
+    '-----------------enemy----------------
     class Enemy extends Entity{
-        # sense: AABB
+        # sense: BoundingBox
+        # attackrange: BoundingBox
         # r_sense: int
-        # attackrange: AABB 
         # r_attackrange: int
         # r_enemyArea: int
         # xOffset: int
         # yOffset: int
+        + useRight: boolean
         + Enemy()
-        + reset(): void
         + drop(): void
         + chase(): void
         + moveBack(): void
         + moveInCircle(): void
         + update(): void
-        + render(): void
     }
     class TinyBox extends Enemy{
         + TinyBox()
-        + render(): void
     }
     class TinyMon extends Enemy{
         + TinyMon()
     }
-    class Player{
-        + Player(): constructor
+    class Minataur extends Enemy{
+        + Minataur()
+    }
+    class Wizard_BOSS extends Enemy{
+        - cooldown: int
+        - startSkillTime: long
+        + Wizard_BOSS()
+        + addForce(): void
         + update(): void
-        + render(): void 
-        - input(): void 
-        - setDefaultValue(): void 
-        + pickUpObject(): void 
-        - checkLevelUp(): void 
-        + useItem(): void 
-        + receiveDamage(): Integer
-        + damageMonster(): Integer
-        {static} + levelEXP : int
-        {static} + maxMana: int
-        - mana: int
-        - level: int
-        - coin: int
-        - name: String
-        - attack: int
-        - currentEXP: int
     }
-    class Monster{
-        - type: String
-        - damage: integer
-        + Monster(): constructor
-        + movingAround(): void
-        + chasePlayer(): void
-        + hit(): void
-        + invincible(): void
-        + attackPlayer(): void
-    }
-    class GameObject{
-        + name: String
-        + image: BufferedImage
-        + objAttack: int
-        + objDefense: int
-        + objSpeed: int
-        + objHp:int
-        + objMana:int
-        + postion_X: float
-        + postion_Y: float
-        + GameObject(): constructor
-        + setup(): BufferedImage 
-        + draw():void
-        + update():void
-    }
-    class Material extends GameObject{
-        # MP: int
-        # HP: int
-        # speed: int
-        # attackValue: int
-        # defense: int
-        # image: BufferedImage
-        + Material()
-        + use(): void
+    '--------------npc------------
+    class NPC extends Entity{
+        # sense: BoundingBox
+        # r_sense: int
+        # xOffset: int
+        # yOffset: int
+        # g2: Graphics2D
+        + NPC()
         + update(): void
-        + render(): void
+        + input(): void
     }
-    class NPC{
-        - name: String
-        - guide: String
-        - image: BufferedImage
-        + NPC(): constructor
-        + setup(): BufferedImage 
+    '---------------skill-----------
+    class Skill extends Entity{
+        + SKILL_PLAYER: int
+        + SKILL_BOSS: int
+        # direction: int
+        # entity: Entity
+        # skillRender: SkillRender
+        # r_attack: int
+        # defaultVector: Vector2f
+        # type: int
+        + Skill()
+        + update(): void
+        + getSkillRender(): SkillRender
+        + getType(): int
     }
-    class NpcUI {
-        - npc: NPC
-        - g2: Graphics2D
-        - gp: GamePanel
-        - key: KeyHandler
-        + NpcUI()
-        + drawDialogues(): void
-        + drawSubWindow(): public
-
+    class SkilPlayer extends Skill{
+        + SkilPlayer()
+        + update(): void
+        + checkCurrentDirection(): void
     }
-    class Shop{
-        - cost: int
-        - image: BufferedImage
-        + Shop():constructor
-        + setup(): BufferedImage
-        + updateCoin(): int
+    class EnemySkill extends Skill{
+        - player: Player
+        + EnemySkill()
+        + update(): void
+        + chase(): void
     }
-    class Map{
-        + getTile(): void
-        + TileManager(): void
-        + CollisionChecker(): void
-        + loadMap(): void
-        + getTileImage(): void
-        + getObjectImage(): void
-        + setObject(): void
-        + checkObjectCollision(): void
-        + Draw(): void
-    }
+    '-------------graphics-------------
     class Animation{
         - frames: Sprite
         - states: int
@@ -133,6 +227,7 @@
         - timesPlayed: int
         + Animation()
         + setFrames(): void
+        + setDelay(): void
         + setNumFrames(): void
         + update(): void
     }
@@ -146,6 +241,8 @@
         - hLetter: int
         + Font()
         + setSize(): void
+        + setWidth(): void
+        + setHeight(): void
         - loadFont(): BufferedImage
         - loadFontArray(): BufferedImage
         + getLetter(): BufferedImage
@@ -171,11 +268,22 @@
         - file: String
         + currentFont: Font
         + SpriteSheet()
+        + setSize(): void
+        + setWidth(): void
+        + setHeight(): void
         - loadSprite: BufferedImage
         + loadSpriteArray: void
+        + getSprite: Sprite
         + drawArray(): void
     }
-    class AABB {
+    class Fontf{
+        - fonts: HashMap<String, Font>
+        + Fontf()
+        + loadFont(): void
+        + getFont(): void
+    }
+    '-------------math---------------
+    class BoundingBox {
         - pos: Vector2f
         - xOffset: float
         - yOffset: float
@@ -184,11 +292,13 @@
         - r: float
         - size: int
         - e: Entity
-        + AABB()
+        + BoundingBox()
         + setBox(): void
         + setCircle(): void
+        + distance(): float
         + collides(): boolean
         + colCircleBox(): boolean
+        + inside(): boolean
     }
     class Vector2f{
         + x: float
@@ -199,13 +309,581 @@
         + setVector()
         + setWorldVar()
     }
-    GameObject <|-- Shop
-    Entity <|-- Player
-    Entity <|-- Monster
-    Entity <|-- NPC
-    GameObject o-- AABB
-    Entity o-- AABB
-    AABB o-- Vector2f
 
+    '-----------------render-------------
+    class EntityRender{
+        # entity: Entity
+        + ani: Animation
+        # UP: int
+        # DOWN: int
+        # LEFT: int
+        # FALLEN: int
+        # IDLE: int
+        # ATTACK_RIGHT: int
+        # ATTACK_LEFT: int
+        # ATTACK_DOWN: int
+        # ATTACK_UP: int
+        # SKILL_UP: int
+        # SKILL_DOWN: int
+        # SKILL_LEFT: int
+        # SKILL_RIGHT: int
+        # currentAnimation: int
+        # spriteSheet: SpriteSheet
+        + EntityRender()
+        + setAnimation(): void
+        + animate(): void
+        + update(): void
+        + render(): void
+    }
+    class NPCRender extends EntityRender{
+        - npc: NPC
+        + NPCRender()
+        + update(): void
+        + render(): void
+    }
+    class ObjectRender{
+        - image: BufferedImage
+        - size: int
+        - pos: Vector2f
+        - spriteSheet: SpriteSheet
+        + ObjectRender()
+        + render(): void
+    }
+    class SkillRender{
+        - arrow: SpriteSheet
+        - skill: Skill
+        + SkillRender()
+        + render(): void
+    }
+    class TinyBoxRender extends EntityRender{
+        - tiny: TinyBox
+        + TinyBoxRender()
+        + update()
+        + render(): void
+    }
+    class TinyMonRender extends EntityRender{
+        - tiny: TinyMon
+        + TinyMonRender()
+        + update(): void
+        + render(): void
+    }
+    class TxtAndImageRender{
+        - txt: String
+        - txtTran: double
+        + txtAndImageRender()
+        + renderTxt(): void
+    }
+    class WizardRender extends EntityRender{
+        - wiz: Wizard_BOSS
+        + WizardRender()
+        + render(): void
+    }
+    '--------------states------------
+    class DialoguesState extends GameState{
+        + DialoguesState()
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    abstract class GameState{
+        # gsm: GameStateManager
+        + GameState()
+        + update(): void
+        + intput(): void
+        + render(): void
+    }
+    class GameStateManager{
+        - states: GameState
+        + map: Vector2f
+        + cam: Camera
+        + g: Graphics2D
+        + font: Font
+        + fontf: Fontf
+        + GameStateManager()
+        + isStateActive(): boolean
+        + pop(): void
+        + add(): void
+        + addAndpop(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class MenuState extends GameState {
+        - tileX: int
+        - tileY: int
+        - numberLine: int
+        - numberDif: int
+        - checkdificulty: boolean
+        + MenuState()
+        + Menu(): void
+        + update(): void
+        + Difficulty(): void
+        + input: void
+        + EasyMode(): void
+        + MediumMode(): void
+        + HardMode(): void
+        + render(): void
+    }
+    class PauseState extends GameState {
+        - btnResume: Button
+        - btnExit: Button
+        - font: Font
+        + PauseState()
+        + update(): void
+        + input: void
+        + render(): void
+    }
+    class TitleState extends GameState{
+        image: BufferedImage
+        - imgButton: BufferedImage
+        - btn1, btn2, btn3: Button
+        + TitleState()
+        + update(): void
+        + input: void
+        + render(): void
+        + getXforCenteredText(): int
+    }
+    class PlayState extends GameState{
+        - player: Player
+        - playerRender: PlayerRender
+        + map: Vector2f
+        - cam: Camera
+        - pui: PlayerUI
+        - gc: GameControl
+        - music: boolean
+        + PlayState()
+        + update(): void
+        + input(): void
+        + render(): void
+        + chageMusic(): void
+    }
+    class ShopState extends GameState{
+        - commandNum: int
+        - function: int
+        - shop: int
+        - slotCol: int
+        - slotRow: int
+        - items: ArrayList<GameObject> 
+        - inv: ArrayList<GameObject> 
+        - spriteSheet1: SpriteSheet
+        - spriteSheet2: SpriteSheet
+        - spriteSheet3: SpriteSheet
+        - image: Image
+        - player: Player
+        + ShopState()
+        + drawIntro(): void
+        + buy(): void
+        + sell(): void
+        + drawAttributes(): void
+        + SellAttributes(): void
+        + drawSubWindow(): void
+        + drawShop(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class GameOverState extends GameState {
+        - tileX: int
+        - tileY: int
+        - numberLine: int
+        - numberDif: int
+        - checkdificulty: boolean
+        + GameOverState()
+        + Difficulty(): void
+        + Over(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class GameIntruction extends GameState{
+        + player: Player
+        - playerRender: EntityRender
+        + map: Vector2f
+        - cam: Camera
+        - pui: PlayerUI
+        - gc: GameControl
+        - npcui: NpcUI
+        - mission[]: int
+        - missionDone: boolean
+        + GameIntruction()
+        + update(): void
+        + setUp(): void
+        + input(): void
+        + mission1(): void
+        + mission2(): void
+        + mission3(): void
+        + mission4(): void
+        + render(): void
+    } 
+    class IntroState extends GameState{
+        - count: int
+        - listOfImages1[]: BufferedImage
+        -  listTxt[]: TxtAndImageRender
+        - intro: TxtAndImageRender
+        - Little: TxtAndImageRender
+        - Monster[]: TxtAndImageRender
+        - Player: TxtAndImageRender
+        + IntroState()
+        + update(): void
+        + input(): void
+        + render(): void
+        + scaledImage(): void
+        + setUp(): void
+    }
+    ' -----------data------------
+    class GameControl{
+        + cam: Camera
+        + player: Player
+        + pui: NpcUI
+        + gsm: GameStateManager
+        - mapAs: MapAsset
+        - currentMap: int
+        + defaultMap: int
+        - gameObject: ArrayList<GameObject>
+        + enemy: Enemy[]
+        + deadStartTime: long[]
+        + npc: NPC[]
+        + origin: Vector2f[]
+        + tm: TileManager
+        + entityRender[]: EntityRender
+        + npcRender: NPCRender[]
+        + GameControl()
+        - resetAsset(): void
+        + setGameObject(): void
+        + update(): void
+        + loadNewMap(): void
+        + render(): void
+    }
+    abstract class MapAsset{
+        # gc: GameControl
+        + MapAsset()
+        # setMonsterPosition(): void
+        # setMaterialPosition():void
+        # resetEnemy(): void
+        + setTinyBox(): void
+        + setTinyMoon(): void
+        + setWizard(): void
+        + setNPC(): void
+    }
+    class Map01 extends MapAsset {
+        + Map01()
+        + setMaterialPosition(): void
+        + setMonsterPosition(): void
+        + resetEnemy(): void
+        + setNPC(): void
+    }
+    class Map02 extends MapAsset {
+        + Map02()
+        + setMaterialPosition(): void
+        + setMonsterPosition(): void
+        + resetEnemy(): void
+        + setNPC(): void
+    }
+    class Map03 extends MapAsset {
+        + Map03()
+        + setMaterialPosition(): void
+        + setMonsterPosition(): void
+        + resetEnemy(): void
+        + setNPC(): void
+    }
+    class MapIntruction extends MapAsset {
+        + MapIntruction()
+        # setMonsterPosition(): void
+    }
+    class AddItems{
+        - size: int
+        + AddItems()
+    }
+    ' ------------util--------------
 
+    class Camera{
+        - collisionCam: BoundingBox
+        - up: boolean
+        - down: boolean
+        - left: boolean
+        - right: boolean
+        - dx: float
+        - dy: float
+        - maxSpeed: float
+        - acc: float
+        - deacc: float
+        - widthLimit: int
+        - heightLimit: int
+        - tileSize: int
+        - e: Entity
+        + Camera()
+        + setLimit(): void
+        + setTileSize(): void
+        + update(): void
+        + move(): void
+        + target(): void
+        + input(): void
+    }
+    class KeyHandler{
+        + keys: List<Key>
+        + up : Key
+        + down : Key
+        + left : Key
+        + right : Key
+        + attack : Key
+        + menu : Key
+        + enter : Key
+        + escape : Key
+        + shift : Key
+        + skill : Key
+        + shop : Key
+        + buy : Key
+        + sell : Key
+        + back : Key
+        + inv : Key
+        + invUp : Key
+        + invDn : Key
+        + invRight : Key
+        + invLeft : Key
+        + invEnter : Key
+        + Key()
+        + KeyHandler()
+        + releaseAll(): void
+        + tick(): void
+        + toggle(): void
+        + keyTyped(): void
+        + keyPressed(): void
+        + keyReleased(): void
+    }
+    class MouseHandler{
+        + mouseX: int
+        + mouseY: int
+        + mouseB: int
+        + MouseHandler()
+        + mousePressed(): void
+        + mouseReleased(): void
+        + mouseDragged(): void
+        + mouseMoved(): void
+    }
+    class Sound{
+        + clip: Clip
+        + soundURL[]: URL
+        - setFile(): void
+        - play(): void
+        - loop(): void
+        - stop(): void
+        + playLoopMusic(): void
+        + stopMusic(): void
+        + playSingleMusic(): void
+    }
+    class TileCollision{
+        - e: Entity
+        + TileCollision()
+        + collisionTile(): boolean
+        + collisionHole(): boolean
+    }
+    '-------------tile--------------
+    class TileManager {
+        + tm: ArrayList<TileMap>
+        - cam: Camera
+        - spritesheet: SpriteSheet
+        - width: int
+        - height: int
+        - file: String
+        - columns: int
+        + TileManager()
+        + addTileMap(): void
+        + render(): void
+    }
+    abstract class TileMap {
+        + render(): void
+    }
+    class TileMapNorm extends TileMap {
+        + blocks: Block[] 
+        - tileWidth: int
+        - tileHeight: int
+        - height: int
+        + TileMapNorm()
+        + render(): void
+    }
+    class TileMapObj extends TileMap{
+        + event_blocks: Block[] 
+        - tileWidth: int
+        - tileHeight: int
+        + width: int
+        + height: int
+        + TileMapObj()
+        + render(): void
+    }
+    '--------------block-------------------
+    class Block{
+        # w: int
+        # h: int
+        + sprite: Sprite
+        + pos: Vector2f
+        + Block()
+        + update(): boolean
+        + isInside(): boolean
+        + getImage(): Sprite
+        + getPos(): Vector2f
+        + render(): void
+    }
+    class HoleBlock extends Block{
+        + HoleBlock()
+        + update(): boolean
+        + isInside(): boolean
+        + render(): void
+    }
+    class NormBlock extends Block {
+        + NormBlock()
+        + update(): boolean
+        + isInside(): boolean
+        + render(): void
+    }
+    class ObjBlock extends Block{
+        + ObjBlock()
+        + update(): boolean
+        + isInside(): boolean
+        + render(): void
+    }
+    '------------ui----------------
+    class Button{
+        - label: String
+        - lbWidth: int
+        - lbHeight: int
+        - image: BufferedImage
+        - hoverImage: BufferedImage
+        - pressedImage: BufferedImage
+        - iPos: Vector2f
+        - lbPos: Vector2f
+        - bounds: BoundingBox
+        - hovering: boolean
+        - hoverSize: int
+        - events: ArrayList
+        - slotevents: ArrayList
+        - clicked: boolean
+        - pressed: boolean
+        - canHover: boolean
+        - drawString: boolean
+        - pressedtime: float
+        - slot: Slots
+        + Button()
+        + createIconButton(): BufferedImage
+        + createButton(): BufferedImage
+        + resizeImage(): BufferedImage
+        + addHoverImage(): void
+        + addPressedImage(): void
+        + update(): void
+        + hover(): void
+        + input(): void
+        + render(): void
+    }
+    interface ClickedEvent{
+        action(): void
+    }
+    class FillBars{
+        - bar: BufferedImage
+        - e: Entity
+        - pos: Vector2f
+        - size: int
+        - length: int
+        - energyLength: int
+        - barWidthRatio: int
+        - energyWidthRatio: int
+        - barHeightRatio: int
+        - percent: float
+        + FillBars()
+        + render(): void
+    }
+    class NpcUI{
+        - npc: NPC
+        - g2: Graphics2D
+        + NpcUI()
+        + input(): void
+        + render(): void
+        + update(): void
+    }
+    class InventoryUI{
+        + shop: int
+        + act: int
+        - slotCol: int
+        - slotRow: int
+        - spriteSheet: SpriteSheet
+        - image: Image
+        - size: int
+        - x: int
+        - y: int
+        - width: int
+        - height: int
+        - slotXstart: int
+        - slotYstart: int
+        - slotX: int
+        - slotY: int
+        - cursurWight: int
+        - cursurHeight: int
+        - p: Player
+        + inventory: ArrayList
+        + InventoryUI()
+        + drawSubWindow(): void
+        + drawInv(): void
+        + drawAttributes(): void
+        + drawInfo(): void
+        
+    }
+    class PlayerUI{
+        - healthbar: FillBars
+        - manaBar: FillBars
+        - inve: InventoryUI
+        - p: Player
+        + PlayerUI()
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+    class Slots{
+        - pos: Vector2f[]
+        - slot: BufferedImage[]
+        - childSlots: Slots[]
+        - button: Button
+        - width: int
+        - height: int
+        - size: int
+        - visibility: boolean
+        - showChildren: boolean
+        + Slots()
+        + showChildren(): void
+        + update(): void
+        + input(): void
+        + render(): void
+    }
+
+    GameObject o-- BoundingBox
+    GameObject o-- SpriteSheet
+    InventoryUI o-- SpriteSheet
+    SpriteSheet o-- Sprite
+    Entity o-- BoundingBox
+    Entity o-- TileCollision
+    BoundingBox o-- Vector2f
+    GameControl o-- MapAsset
+    PlayState o-- GameControl
+    PlayState o-- Player
+    PlayState o-- Camera
+    GameIntruction o-- Camera
+    GameIntruction o-- Player
+    GameIntruction o-- EntityRender
+    PlayState o-- EntityRender
+    GameStateManager o-- GameState
+    TitleState o-- Button
+    IntroState o-- TxtAndImageRender
+    Slots o-- Button
+    Skill o-- SkillRender
+    GameObject o-- ObjectRender
+    EntityRender o-- Animation
+    PlayerUI o-- Player
+    PlayerUI o-- InventoryUI
+    ShopState o-- SpriteSheet
+    ShopState o-- Player
+    TileManager o-- TileMap
+    PathFind o-- Node
+    MapSolid o-- TileManager
+    TileMapNorm o-- Block
+    TileMapObj o-- Block
+    NpcUI o-- NPC
+    PauseState o-- Button
+    Player o-- Enemy
 @enduml

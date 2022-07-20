@@ -13,7 +13,6 @@ public class Window extends JFrame {
         setIgnoreRepaint(true);
         pack();
         setLocationRelativeTo(null);
-
         setVisible(true);
     }
 }

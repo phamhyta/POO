@@ -1,4 +1,5 @@
 package game.graphics;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
@@ -6,8 +7,8 @@ public class Font {
     private BufferedImage FONTSHEET = null;
     public BufferedImage[][] spriteArray;
     private final int TILE_SIZE = 32;
-    public int w;
-    public int h;
+    private int w;
+    private int h;
     private int wLetter;
     private int hLetter = 0;
 
@@ -53,6 +54,7 @@ public class Font {
     public int getWidth() {
         return w;
     }
+
     public int getHeight() {
         return h;
     }
@@ -86,10 +88,10 @@ public class Font {
     }
 
     public BufferedImage getFont(char letter) {
-        int value = letter ;
+        int value = letter;
         int x = value % wLetter;
-        int y = value/ wLetter;
-        return getLetter(x,y);
+        int y = value / wLetter;
+        return getLetter(x, y);
     }
 
 }

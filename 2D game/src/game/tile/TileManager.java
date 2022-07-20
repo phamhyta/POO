@@ -1,6 +1,5 @@
 package game.tile;
 
-
 import game.graphics.SpriteSheet;
 import game.util.Camera;
 import org.w3c.dom.Document;
@@ -13,6 +12,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TileManager {
 
@@ -20,10 +20,8 @@ public class TileManager {
     private Camera cam;
     private SpriteSheet spritesheet;
 
-
     private int width;
     private int height;
-
 
     private String file;
     private int columns;
@@ -55,7 +53,7 @@ public class TileManager {
         try {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
-            Document doc = builder.parse(new File(getClass().getClassLoader().getResource(path).toURI()));
+            Document doc = builder.parse(new File(Objects.requireNonNull(getClass().getClassLoader().getResource(path)).toURI()));
             doc.getDocumentElement().normalize();
 
             NodeList list = doc.getElementsByTagName("tileset");
@@ -66,10 +64,11 @@ public class TileManager {
             tileWidth = Integer.parseInt(eElement.getAttribute("tilewidth"));
             tileHeight = Integer.parseInt(eElement.getAttribute("tileheight"));
             tileColumns =  Integer.parseInt(eElement.getAttribute("columns"));
+            //System.out.println(tileColumns+" "+tileHeight+" "+tileWidth);
 
             this.columns = tileColumns;
             this.file = imagePath;
-            sprite = new SpriteSheet("res/tile/" + imagePath + ".png", tileWidth, tileHeight);
+            sprite = new SpriteSheet("res/tile/" + imagePath +".png", tileWidth, tileHeight);
 
             list = doc.getElementsByTagName("layer");
             layers = list.getLength();
@@ -77,19 +76,30 @@ public class TileManager {
             for(int i = 0; i < layers; i++) {
                 node = list.item(i);
                 eElement = (Element) node;
-                if(i <= 0) {
-                    width = Integer.parseInt(eElement.getAttribute("width"));
-                    height = Integer.parseInt(eElement.getAttribute("height"));
-                }
+                width = Integer.parseInt(eElement.getAttribute("width"));
+                height = Integer.parseInt(eElement.getAttribute("height"));
+                //System.out.println(width+ " "+height);
+                //System.out.println(data[i]+" " +width+' ' +height+' '+ blockWidth+ " " +blockHeight +' '+ tileColumns);
 
-                data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
-
-                if(i >= 1) {
+                data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();                /*(i == 0) {
                     tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
-                } else {
-                    tm.add(new TileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                } */
+                if(i==0){
+                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
                 }
-            }
+                else {
+                    if(i==1){
+                            tm.add(new TileMapObj(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                        }
+                    else{
+                        tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                    }
+                }
+                /*else{
+                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+
+                }*/
+            }   
 
             cam.setLimit(width * blockWidth, height * blockHeight);
         } catch(Exception e) {
@@ -102,12 +112,9 @@ public class TileManager {
         this.height = height;
     }
 
-
-
     public void render(Graphics2D g) {
         if(cam == null)
             return;
-
         for(int i = 0; i < tm.size(); i++) {
             tm.get(i).render(g, cam.getBounds());
         }

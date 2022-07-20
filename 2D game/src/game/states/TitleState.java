@@ -1,6 +1,9 @@
 package game.states;
 
 import game.GamePanel;
+import game.data.GameControl;
+import game.math.Vector2f;
+import game.ui.Button;
 import game.util.KeyHandler;
 import game.util.MouseHandler;
 
@@ -11,102 +14,79 @@ import java.io.IOException;
 
 import static game.states.GameStateManager.fontf;
 
-public class TitleState extends GameState{
-    private int commandNum=0;
+public class TitleState extends GameState {
+
     BufferedImage image;
+    private BufferedImage imgButton;
+    private Button btn1, btn2, btn3;
 
     public TitleState(GameStateManager gsm) {
         super(gsm);
+        //GameControl.currentMap=0;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/ui/pngTree.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        imgButton = GameStateManager.ui.getSubimage(2490, 250, 1500, 450);
+        btn1 = new Button("PLAY GAME", new Vector2f(64 * 8 + 20, 64 * 6 + 20), 32, 24, imgButton,
+                new Vector2f(64 * 8, 64 * 6), 290, 75);
+        btn1.addEvent(e -> {
+            gsm.pop(GameStateManager.TITLE);
+            gsm.add(GameStateManager.INTRO);
+        });
+
+        btn2 = new Button("INSTRUCTION", new Vector2f(64 * 8 - 10, 64 * 7 + 32 + 20), 32, 24, imgButton,
+                new Vector2f(64 * 8 - 10, 64 * 7 + 32), 310, 75);
+        btn2.addEvent(e -> {
+            gsm.pop(GameStateManager.TITLE);
+            gsm.add(GameStateManager.INSTRUCTION);
+        });
+
+        btn3 = new Button("EXIST", new Vector2f(64 * 9, 64 * 9 + 5), 32, 24, imgButton,
+                new Vector2f(64 * 8 + 32, 64 * 9 - 12), 200, 72);
+        btn3.addEvent(e -> {
+            System.exit(0);
+        });
+
     }
 
     @Override
     public void update(double time) {
-
     }
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key) {
-        key.down.tick();
-        key.up.tick();
-        key.enter.tick();
-        if(key.up.clicked) {
-            commandNum --;
-            if(commandNum <0) {
-                commandNum = 2;
-            }
-        }
-        if(key.down.clicked) {
-            commandNum ++;
-            if(commandNum >2) {
-                commandNum = 0;
-            }
-        }
-        if(key.enter.clicked) {
-            if(commandNum== 0) {
-                gsm.pop(GameStateManager.TITLE);
-                gsm.add(GameStateManager.PLAY);
-            }
-            if(commandNum== 1) {
-                // add later
-            }
-            if(commandNum== 2) {
-                System.exit(0);
-            }
-        }
+        btn1.input(mouse, key);
+        btn2.input(mouse, key);
+        btn3.input(mouse, key);
     }
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(image, 0,0, GamePanel.width, GamePanel.height, null);
+        g.drawImage(image, 0, 0, GamePanel.width, GamePanel.height, null);
         // title name
-        g.setFont(fontf.getFont("Motion").deriveFont(Font.TRUETYPE_FONT,96F));
+        g.setFont(fontf.getFont("Motion").deriveFont(Font.TRUETYPE_FONT, 96F));
         String text = "POO GAME ADVENTURE";
 
-        int x = getXforCenteredText(text,g);
-        int y = 64*2;
-
-        //draw Shadow
+        int x = getXforCenteredText(text, g);
+        int y = 64 * 2;
+        // draw Shadow
         g.setColor(Color.white);
-        g.drawString(text,x+5,y+5);
-        //draw main color
+        g.drawString(text, x + 5, y + 5);
+        // draw main color
         g.setColor(Color.black);
         g.drawString(text, x, y);
-
-        //MENU
-        g.setFont(fontf.getFont("MeatMadness").deriveFont(Font.BOLD,40F));
-
-        text= "NEW GAME";
-        x= getXforCenteredText(text,g);
-        y+= 64*5;
-        g.drawString(text, x, y);
-        if(commandNum == 0) {
-            g.drawString(">",x-32,y);
-        }
-
-        text= "INSTRUCTION";
-        x= getXforCenteredText(text,g);
-        y+= 64;
-        g.drawString(text, x, y);
-        if(commandNum == 1) {
-            g.drawString(">",x -32,y);
-        }
-
-        text= "QUIT GAME";
-        x= getXforCenteredText(text,g);
-        y+= 64;
-        g.drawString(text, x, y);
-        if(commandNum == 2) {
-            g.drawString(">",x-32,y);
-        }
+        // Button
+        btn1.render(g);
+        btn2.render(g);
+        btn3.render(g);
     }
+
     public int getXforCenteredText(String text, Graphics2D g) {
-        int length= (int)g.getFontMetrics().getStringBounds(text,g).getWidth();
-        int x= GamePanel.width/2 -length/2;
+        int length = (int) g.getFontMetrics().getStringBounds(text, g).getWidth();
+        int x = GamePanel.width / 2 - length / 2;
         return x;
     }
 }

@@ -1,11 +1,9 @@
-package game.ui;//package game.ui;
-//
-//
-//
+//package game.ui;
 //import game.GamePanel;
+//import game.gameObject.Player;
 //import game.graphics.SpriteSheet;
-//import game.states.GameStateManager;
 //import game.math.Vector2f;
+//import game.states.GameStateManager;
 //
 //import java.awt.image.BufferedImage;
 //
@@ -17,9 +15,11 @@ package game.ui;//package game.ui;
 //    private BufferedImage imgPressed;
 //
 //    private Slots[] parentSlots;
+//    private Player player;
 //
-//    public BuildOptionUI() {
-//        this.icons = new SpriteSheet("ui/icons.png", 32, 32);
+//    public BuildOptionUI(Player player) {
+//        this.player=player;
+//        this.icons = new SpriteSheet("res/ui/items.png", 32, 32);
 //
 //        this.imgButton = GameStateManager.button.getSubimage(0, 137, 40, 40);
 //        this.imgPressed = GameStateManager.button.getSubimage(41, 137, 40, 40);
@@ -33,9 +33,13 @@ package game.ui;//package game.ui;
 //
 //
 //    private Slots[] createGather(int size, int x, int y, BufferedImage[] slotsHori) {
-//        Button[] btnOptions = new Button[2];
+//        Button[] btnOptions = new Button[6];
 //        for(int i = 0; i < btnOptions.length; i++) {
-//            btnOptions[i] = new Button(icons.getSprite(i, 1).image, imgButton, new Vector2f(x - (size + 10) * (i + 1), y), size, size, 8);
+//            if(i < player.inventory.size()){
+//                btnOptions[i] = new Button(player.inventory.get(i).getObjectRender().getImage(), imgButton, new Vector2f(x - (size + 10) * (i + 1), y), size, size, 8);
+//            }
+//            else
+//                btnOptions[i] = new Button(imgPressed, imgButton, new Vector2f(x - (size + 10) * (i + 1), y), size, size, 8);
 //            btnOptions[i].addPressedImage(imgPressed);
 //        }
 //
@@ -52,20 +56,21 @@ package game.ui;//package game.ui;
 //        }
 //
 //        Slots[] optionslots = new Slots[btnOptions.length];
-//        optionslots[0] = new Slots(btnOptions[0], new BufferedImage[] { null, slotsHori[1], slotsHori[1] }, optionsPos[0], 0);
-//        optionslots[1] = new Slots(btnOptions[1], new BufferedImage[] { null, slotsHori[1], slotsHori[0] }, optionsPos[1], 0);
 //
+//        for(int i =0; i< optionslots.length; i++){
+//            optionslots[i] = new Slots(btnOptions[i], new BufferedImage[] { null, slotsHori[1], slotsHori[1] }, optionsPos[i], 0);
+//        }
 //        return optionslots;
 //    }
 //
 //    private Slots[] createBuildingUI() {
-//        SpriteSheet slots = new SpriteSheet("ui/slots.png");
+//        SpriteSheet slots = new SpriteSheet("res/ui/slots.png");
 //
 //        BufferedImage imgButton = GameStateManager.button.getSubimage(0, 137, 40, 40);
 //        BufferedImage imgPressed = GameStateManager.button.getSubimage(41, 137, 40, 40);
 //
 //        BufferedImage slotsHori[] = {
-//            slots.getSubimage(409, 80, 14, 24), // ends
+//            slots.getSubimage(352, 80, 14, 24), // ends
 //            slots.getSubimage(389, 76, 4, 32) // chain
 //        };
 //
@@ -80,7 +85,7 @@ package game.ui;//package game.ui;
 //            slots.getSubimage(389, 71, 32, 4) // chain
 //        };
 //
-//        Button[] btnBuilding = new Button[3];
+//        Button[] btnBuilding = new Button[1];
 //        for (int i = 0; i < btnBuilding.length; i++) {
 //            btnBuilding[i] = new Button(icons.getSprite(i, 0).image, imgButton,
 //                    new Vector2f(buildSlotX, buildSlotY + ((size + 10) * i)), size, size, 8);
@@ -103,8 +108,8 @@ package game.ui;//package game.ui;
 //
 //        Slots[] buildingslots = new Slots[btnBuilding.length]; // probably make this a for loop later...
 //        buildingslots[0] = new Slots(btnBuilding[0], gatherSlots, new BufferedImage[] { null, slotsVert[0], slotsVert[1] }, slotsPos[0], 0);
-//        buildingslots[1] = new Slots(btnBuilding[1], new BufferedImage[] { null, slotsVert[1], slotsVert[1] }, slotsPos[1], 0);
-//        buildingslots[2] = new Slots(btnBuilding[2], new BufferedImage[] { null, slotsVert[1], null }, slotsPos[2], 0);
+////        buildingslots[1] = new Slots(btnBuilding[1], new BufferedImage[] { null, slotsVert[1], slotsVert[1] }, slotsPos[1], 0);
+////        buildingslots[2] = new Slots(btnBuilding[2], new BufferedImage[] { null, slotsVert[1], null }, slotsPos[2], 0);
 //
 //        buildingButtons(buildingslots);
 //
@@ -121,7 +126,7 @@ package game.ui;//package game.ui;
 //                }
 //            });
 //        }
-//
 //    }
+//
 //
 //}
