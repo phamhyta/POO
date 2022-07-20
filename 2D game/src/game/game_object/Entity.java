@@ -1,8 +1,6 @@
 package game.game_object;
 
-import game.ai.PathFind;
-import game.data.GameControl;
-import game.game_object.skill.EnemySkill;
+import game.math.a_star.PathFind;
 import game.game_object.skill.Skill;
 import game.math.BoundingBox;
 import game.util.TileCollision;
@@ -97,18 +95,6 @@ public class Entity {
         this.bounds = new BoundingBox(pos, size, size);
         teleported = true;
     }
-
-    public void setPos(Vector2f origin,boolean teleported) {
-        this.bounds = new BoundingBox(origin, size, size);
-        this.pos = origin;
-        this.hitsize = size;
-        hitBounds = new BoundingBox(origin,size,size);
-        hitBounds.setXOffset(size/2);
-        tc = new TileCollision(this);
-        skill= new ArrayList<>();
-        pathFind = new PathFind();
-    }
-
     public void addForce(float a, boolean vertical) {
         if(!vertical) {dx -= a;}
             else {dy -= a;}
