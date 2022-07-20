@@ -1,4 +1,4 @@
-package game.ai;
+package game.math.a_star;
 
 import game.tile.TileMapObj;
 import game.tile.blocks.HoleBlock;

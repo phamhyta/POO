@@ -28,7 +28,7 @@ public class GameControl {
     private long[] deadStartTime;
     public NPC[] npc;
     public Vector2f[] origin;
-    public static TileManager tm;
+    public TileManager tm;
     public EntityRender entityRender[];
     public NPCRender[] npcRender;
 
