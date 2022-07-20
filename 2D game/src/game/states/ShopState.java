@@ -422,7 +422,7 @@ public class ShopState extends GameState {
                 g.setColor(c);
                 g.setFont(new Font("NewellsHand", Font.PLAIN, size));
                 g.drawString("ENTER để thoát", x + width * 3 / 2 + 32, y + height - 32);
-                g.drawString("B để bán", x + width * 3 / 2 + 32, y + height - 64);
+                g.drawString("F để bán", x + width * 3 / 2 + 32, y + height - 64);
                 g.setColor(Color.YELLOW);
                 drawSubWindow(g, x + size / 2, y + height, 400, 80);
                 g.setColor(Color.BLACK);
