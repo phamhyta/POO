@@ -49,11 +49,11 @@ public class GameStateManager {
         fontf.loadFont("res/font/MotionPersonalUseBold-2O0od.ttf", "Motion");
         fontf.loadFont("res/font/x12y16pxMaruMonica.ttf", "MaruMonica");
         button = new SpriteSheet("res/ui/buttons.png", 122, 57);
-        ui= new SpriteSheet("res/ui/ui_button.png");
+        ui = new SpriteSheet("res/ui/ui_button.png");
         sound = new Sound();
         SpriteSheet.currentFont = font;
         cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
-        for(int i = 0;i < 19;i++){
+        for (int i = 0; i < 19; i++) {
             this.states[i] = null;
         }
         states[TITLE] = new TitleState(this);
@@ -87,17 +87,16 @@ public class GameStateManager {
             states[SHOP] = new ShopState(this, PlayState.player);
         } else if (state == DIALOGUES) {
             states[DIALOGUES] = new DialoguesState(this);
-        } else if(state == INTRO){
+        } else if (state == INTRO) {
             states[INTRO] = new IntroState(this);
-        }
-        else if(state == MENU){
+        } else if (state == MENU) {
             states[MENU] = new MenuState(this);
-        }
-        else if(state == INSTRUCTION){
+        } else if (state == INSTRUCTION) {
             cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
-            states[INSTRUCTION] = new GameIntruction(this,cam);
-        }else if(state == NEWGAME){
-            GameStateManager.cam = new Camera(new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
+            states[INSTRUCTION] = new GameIntruction(this, cam);
+        } else if (state == NEWGAME) {
+            GameStateManager.cam = new Camera(
+                    new BoundingBox(new Vector2f(-128, -128), GamePanel.width + 220, GamePanel.height + 220));
             states[PLAY] = new PlayState(this, GameStateManager.cam);
         }
 
@@ -135,7 +134,8 @@ public class GameStateManager {
             }
         }
     }
-    public GameState[] getState(){
+
+    public GameState[] getState() {
         return this.states;
     }
 }

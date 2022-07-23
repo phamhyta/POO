@@ -21,7 +21,7 @@ public class TitleState extends GameState {
 
     public TitleState(GameStateManager gsm) {
         super(gsm);
-        //GameControl.currentMap=0;
+        // GameControl.currentMap=0;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/ui/pngTree.png"));
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class TitleState extends GameState {
             gsm.add(GameStateManager.INSTRUCTION);
         });
 
-        btn3 = new Button("EXIST", new Vector2f(64 * 9, 64 * 9 + 5), 32, 24, imgButton,
+        btn3 = new Button("EXIT", new Vector2f(64 * 9, 64 * 9 + 5), 32, 24, imgButton,
                 new Vector2f(64 * 8 + 32, 64 * 9 - 12), 200, 72);
         btn3.addEvent(e -> {
             System.exit(0);
