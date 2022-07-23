@@ -95,7 +95,7 @@ Menu trong game sẽ hiện khi người chơi chết hoặc khi ấn phím E
 -	Sound: Cài đặt âm thanh
 -	Exit to main menu: Thoát ra đầu game  
   
-![image](https://github.com/phamhyta/POO/blob/huong/demo/Screenshot%20(196).png)  
+![image](https://github.com/phamhyta/POO/blob/main/demo/Screenshot%20(196).png)  
   
 - HD chơi:  
   
